@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6ddd71b9.chunk.css",
+    "main.js": "/static/js/main.ac179359.chunk.js",
+    "main.js.map": "/static/js/main.ac179359.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.22a7d4ef.chunk.css": "/static/css/2.22a7d4ef.chunk.css",
+    "static/js/2.c4b4330e.chunk.js": "/static/js/2.c4b4330e.chunk.js",
+    "static/js/2.c4b4330e.chunk.js.map": "/static/js/2.c4b4330e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d226a91ceace60fd800372c2d84b541d.js": "/precache-manifest.d226a91ceace60fd800372c2d84b541d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.22a7d4ef.chunk.css.map": "/static/css/2.22a7d4ef.chunk.css.map",
+    "static/css/main.6ddd71b9.chunk.css.map": "/static/css/main.6ddd71b9.chunk.css.map",
+    "static/media/Communities_WelcomeScreen.png": "/static/media/Communities_WelcomeScreen.f96c95a2.png"
+  }
+}
