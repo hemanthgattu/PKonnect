@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj": {}
+    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj": {}
   },
   "projects": {
-    "C:\\Development\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj": {
+    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj",
+        "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj",
         "projectName": "PKonnect.UI",
-        "projectPath": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj",
+        "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.UI\\PKonnect.UI.csproj",
         "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.UI\\obj\\",
+        "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

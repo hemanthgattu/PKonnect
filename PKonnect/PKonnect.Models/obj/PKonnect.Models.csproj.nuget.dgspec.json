@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {}
+    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {}
   },
   "projects": {
-    "C:\\Development\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
+    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+        "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
         "projectName": "PKonnect.Models",
-        "projectPath": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+        "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
         "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
+        "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
