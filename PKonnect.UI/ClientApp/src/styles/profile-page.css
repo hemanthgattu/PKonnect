@@ -1,0 +1,228 @@
+﻿﻿ /* https://bootsnipp.com/snippets/K0ZmK */
+body {
+    /* background: -webkit-linear-gradient(left, #3931af, #00c6ff);*/
+}
+
+
+
+
+#iframewrapper {
+    float: right;
+    width: 21%;
+    position: relative;
+}
+
+#RedColor {
+    color: red;
+    font-family: Roboto;
+    font-style: normal;
+}
+
+button {
+    /* Submit */
+    position: static;
+    width: 60px;
+    height: 30px;
+    left: 20px;
+    top: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+    text-align: center;
+    background-color: black;
+    /* White */
+    color: #FFFFFF;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 10px 0px;
+}
+
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.CenterLine1 {
+    width: 564px;
+    height: 172px;
+    left: 302px;
+    top: 262px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 100.8%;
+    /* or 81px */
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.CenterLine2 {
+    width: 457px;
+    height: 37px;
+    left: 302px;
+    top: 436px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 125%;
+    /* or 32px */
+    color: #FFFFFF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.image {
+    opacity: 0.3    ;
+}
+
+#formdata {
+    padding-top: 20px;
+}
+
+#welcometitle {
+    padding-bottom: 10px;
+}
+
+
+.leftPane {
+    /* Rectangle 51 */
+    position: absolute;
+    width: 1114px;
+    height: 984px;
+    left: -1px;
+    top: -88px;
+    /* Navy */
+    background: #202B34;
+    opacity: 0.61;
+}
+
+.rightPane {
+    font-family: Roboto;
+    font-style: normal;
+    /* Rectangle 48 */
+    position: absolute;
+    left: 74.41%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    /* White */
+    background: #FFFFFF;
+}
+
+.homeImg {
+    width: 1114px;
+    height: 984px;
+    left: -1px;
+    top: -88px;
+    /* Navy */
+    background: #202B34;
+    opacity: 0.61;
+}
+
+.chkBox {
+    /* icon */
+    left: 16.67%;
+    right: 14.94%;
+    top: 20.83%;
+    bottom: 28.66%;
+    background: #000000;
+}
+
+.lbl {
+    /* Option 1 */
+    width: 70px;
+    height: 13px;
+    left: 1147px;
+    top: 294px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 100.8%;
+    /* or 13px */
+    color: #000000;
+}
+
+.bldComText {
+    /* Help us build your community */
+    width: 273px;
+    height: 60px;
+    left: 1114px;
+    top: 43px;
+    /* desktop / h2 */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    /* Navy */
+    color: #202B34;
+}
+
+.hlpcomtxt {
+    /* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tristique pellentesque pulvinar rhoncus tortor posueremattis odio augue. */
+    width: 226px;
+    height: 88px;
+    left: 1115px;
+    top: 106px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    /* Navy */
+    color: #202B34;
+}
+
+.shrideas {
+    /* Share your ideas */
+    width: 255px;
+    height: 69px;
+    left: 1114px;
+    top: 210px;
+    /* desktop / h2 */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    /* Red */
+    color: #C70000;
+}
+
+.comtsText {
+    /* Comments/Questions? */
+    width: 278px;
+    height: 17px;
+    left: 1117px;
+    top: 560px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100.8%;
+    /* or 14px */
+    color: #000000;
+}
+
+.txtarea {
+    /* Rectangle 50 */
+    width: 279px;
+    height: 120px;
+    left: 1117px;
+    top: 587px;
+    background: #FFFFFF;
+    border: 1px solid #B5B5B5;
+    box-sizing: border-box;
+    border-radius: 4px;
+}

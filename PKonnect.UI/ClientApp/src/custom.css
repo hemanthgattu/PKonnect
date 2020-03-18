@@ -1,0 +1,36 @@
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.full-width-div {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+col-lg-9 {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+col-lg-3 {
+    position: relative;
+    text-align: right;
+    color: white;
+    width: 100%;
+}
+
+/* Centered text */
