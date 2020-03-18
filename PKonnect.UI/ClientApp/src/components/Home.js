@@ -5,7 +5,6 @@ import '../styles/profile-page.css';
 export class Home extends Component {
     static displayName = Home.name;
     render() {
-
         return (
             <div className="row">
                 <div className="leftPane">
