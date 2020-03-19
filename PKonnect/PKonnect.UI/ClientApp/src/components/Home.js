@@ -17,7 +17,7 @@ export class Home extends Component {
                         <div className="CenterLine2"> A new PK digital community is coming Summer 2020</div>
                     </div>
                 </div>
-                <div className="rightPane">
+                <div className="rightPane" align="left">
                     <div id="welcometitle">
                         <h5>
                             <h1>Hello, {this.props.user.account.name}</h1>

@@ -97,7 +97,7 @@ button {
 .leftPane {
     /* Rectangle 51 */
     position: absolute;
-    width: 1114px;
+    width: 74%;
     height: 984px;
     left: -1px;
     top: -88px;
@@ -107,11 +107,12 @@ button {
 }
 
 .rightPane {
+    width: 26%;
     font-family: Roboto;
     font-style: normal;
     /* Rectangle 48 */
-    position: absolute;
-    left: 74.41%;
+    position: relative;
+    left: 76.41%;
     right: 0%;
     top: 0%;
     bottom: 0%;
@@ -120,7 +121,7 @@ button {
 }
 
 .homeImg {
-    width: 1114px;
+    width: 100%;
     height: 984px;
     left: -1px;
     top: -88px;
