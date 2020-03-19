@@ -450,3 +450,4 @@ PKonnect/PKonnect.Context/obj/PKonnect.Context.csproj.nuget.dgspec.json
 PKonnect/PKonnect.Context/obj/PKonnect.Context.csproj.nuget.cache
 PKonnect/PKonnect.Context/obj/Debug/netcoreapp3.1/PKonnect.Context.csprojAssemblyReference.cache
 PKonnect/PKonnect.Context/obj/Debug/netcoreapp3.1/PKonnect.Context.assets.cache
+PKonnect/.vs/PKonnect/config/applicationhost.config
