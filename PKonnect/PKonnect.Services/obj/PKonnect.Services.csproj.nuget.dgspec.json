@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj": {}
+    "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj": {
+    "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj",
+        "projectUniqueName": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj",
         "projectName": "PKonnect.Context",
-        "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj",
+        "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj",
         "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\obj\\",
+        "outputPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -31,8 +31,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
-                "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj"
+              "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
+                "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj"
               }
             }
           }
@@ -70,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
+    "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+        "projectUniqueName": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
         "projectName": "PKonnect.Models",
-        "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+        "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
         "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
+        "outputPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -126,14 +126,14 @@
         }
       }
     },
-    "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj": {
+    "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj",
+        "projectUniqueName": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj",
         "projectName": "PKonnect.Services",
-        "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj",
+        "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj",
         "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Services\\obj\\",
+        "outputPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -153,8 +153,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj": {
-                "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj"
+              "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj": {
+                "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Context\\PKonnect.Context.csproj"
               }
             }
           }

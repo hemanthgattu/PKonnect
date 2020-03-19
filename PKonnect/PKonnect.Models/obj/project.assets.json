@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+      "projectUniqueName": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
       "projectName": "PKonnect.Models",
-      "projectPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
+      "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\PKonnect.Models.csproj",
       "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hgattu\\source\\repos\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
+      "outputPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
