@@ -184,8 +184,6 @@ C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\runtimes\w
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Context.dll
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Models.dll
-C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Services.dll
-C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Services.pdb
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Context.pdb
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Models.pdb
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.csprojAssemblyReference.cache
@@ -199,3 +197,5 @@ C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.W
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.csproj.CopyComplete
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.dll
 C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.pdb
+C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Repositories.dll
+C:\Projects\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Repositories.pdb

@@ -11,17 +11,15 @@ namespace PKonnect.Models.Communities
     {
         [Key]
         public long CommunityFeedbackId { get; set; }
-        public string Username { get; set; }
+        public string UserName { get; set; }
         public string Email { get; set; }
         public string Feedback { get; set; }
         public bool SkillSerach { get; set; }
         public bool NetWorking { get; set; }
         public bool Training { get; set; }
         public bool Mentorship { get; set; }
-        long CreatedById { get; set; }
-        long ModifiedById { get; set; }
-        DateTimeOffset ModifiedDate { get; set; }
-        DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset ModifiedDate { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
         public bool IsActive { get; set; }
     }
 }

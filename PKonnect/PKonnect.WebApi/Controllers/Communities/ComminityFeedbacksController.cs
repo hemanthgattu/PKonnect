@@ -16,9 +16,9 @@ namespace PKonnect.WebApi.Controllers
     //[Authorize]
     public class ComminityFeedbacksController : BaseApiController
     {
-        private readonly ICommunityFeedbackService _context;
+        private readonly ICommunityFeedbackRepository _context;
 
-        public ComminityFeedbacksController(ICommunityFeedbackService context)
+        public ComminityFeedbacksController(ICommunityFeedbackRepository context)
         {
             _context = context;
         }
@@ -33,16 +33,59 @@ namespace PKonnect.WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<string> Get(int? id)
         {
-            return "value";
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var post =  _context.GetCommunityFeedback(id);
+
+                if (post == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(post);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        [HttpPost]
+        public  IActionResult Post([FromBody]CommunityFeedback objCommunityFeedback)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    objCommunityFeedback.CreatedDate = DateTime.Now;
+                    objCommunityFeedback.ModifiedDate = DateTime.Now;
+                    var id =  _context.AddCommunityFeedbacks(objCommunityFeedback);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    return BadRequest();
+                }
+
+            }
+
+            return BadRequest();
+        }
 
         // PUT api/values/5
         [HttpPut("{id}")]
@@ -52,8 +95,29 @@ namespace PKonnect.WebApi.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int? id)
         {
+            int result = 0;
+
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                result =  _context.DeleteCommunityFeedback(id);
+                if (result == 0)
+                {
+                    return NotFound();
+                }
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
         }
     }
 

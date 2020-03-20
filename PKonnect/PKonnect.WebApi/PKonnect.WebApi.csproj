@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PKonnect.Services\PKonnect.Services.csproj" />
+    <ProjectReference Include="..\PKonnect.Services\PKonnect.Repositories.csproj" />
   </ItemGroup>
 
 

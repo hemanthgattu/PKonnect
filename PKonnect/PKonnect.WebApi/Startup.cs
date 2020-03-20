@@ -62,7 +62,7 @@ namespace PKonnect.WebApi
 
                  });
 
-            services.AddTransient<ICommunityFeedbackService, CommunityFeedbackService>();
+            services.AddTransient<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
             services.AddDbContext<PKonnectDataContext>
            (options => options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
 
