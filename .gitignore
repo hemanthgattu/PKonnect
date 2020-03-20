@@ -534,3 +534,10 @@ PKonnect/PKonnect/obj/Debug/PKonnect.dll
 PKonnect/PKonnect/obj/Debug/PKonnect.pdb
 PKonnect/PKonnect/obj/Debug/PKonnect.sqlproj.FileListAbsolute.txt
 PKonnect/PKonnect/obj/Debug/PKonnect.sqlprojAssemblyReference.cache
+PKonnect/PKonnect/obj/Debug/PKonnect.sqlprojAssemblyReference.cache
+PKonnect/PKonnect.WebApi/obj/Debug/netcoreapp3.1/PKonnect.WebApi.csprojAssemblyReference.cache
+PKonnect/PKonnect.Services/obj/Debug/netcoreapp3.1/PKonnect.Services.csprojAssemblyReference.cache
+PKonnect/PKonnect.Context/obj/Debug/netcoreapp3.1/PKonnect.Context.csprojAssemblyReference.cache
+PKonnect/.vs/PKonnect/v16/.suo
+PKonnect/.vs/PKonnect/DesignTimeBuild/.dtbcache
+PKonnect/PKonnect/PKonnect.jfm
