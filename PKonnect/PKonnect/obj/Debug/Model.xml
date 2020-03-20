@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="PKonnect.dll" />
-			<Metadata Name="FileName" Value="C:\PROJECTS\PKONNECT\PKONNECT\OBJ\DEBUG\PKONNECT.DLL" />
+			<Metadata Name="FileName" Value="C:\USERS\HGATTU\DESKTOP\GIT\PKONNECT\PKONNECT\PKONNECT\OBJ\DEBUG\PKONNECT.DLL" />
 			<Metadata Name="AssemblyName" Value="PKonnect" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Projects\PKonnect\PKonnect\obj\Debug\PKonnect.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>

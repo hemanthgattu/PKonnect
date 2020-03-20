@@ -23,3 +23,13 @@ C:\Projects\PKonnect\PKonnect\PKonnect\bin\Debug\PKonnect.pdb
 C:\Projects\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.sqlprojAssemblyReference.cache
 C:\Projects\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.dll
 C:\Projects\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\bin\Debug\PKonnect.dacpac
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\bin\Debug\PKonnect.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\bin\Debug\PKonnect.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.sqlprojAssemblyReference.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\Model.xml
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\refactor.xml
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\postdeploy.sql
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\predeploy.sql
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect\obj\Debug\PKonnect.pdb
