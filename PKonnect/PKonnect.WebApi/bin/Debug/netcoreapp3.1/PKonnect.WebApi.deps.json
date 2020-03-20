@@ -27,7 +27,7 @@
           "Microsoft.AspNetCore.Authentication.AzureAD.UI": "3.1.2",
           "Microsoft.EntityFrameworkCore": "3.1.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.2",
-          "PKonnect.Services": "1.0.0",
+          "PKonnect.Repositories": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1440,15 +1440,15 @@
           "PKonnect.Models.dll": {}
         }
       },
-      "PKonnect.Services/1.0.0": {
+      "PKonnect.Repositories/1.0.0": {
         "dependencies": {
           "PKonnect.Context": "1.0.0"
         },
         "runtime": {
-          "PKonnect.Services.dll": {}
+          "PKonnect.Repositories.dll": {}
         },
         "compile": {
-          "PKonnect.Services.dll": {}
+          "PKonnect.Repositories.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.1.0.0": {
@@ -3802,7 +3802,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "PKonnect.Services/1.0.0": {
+    "PKonnect.Repositories/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

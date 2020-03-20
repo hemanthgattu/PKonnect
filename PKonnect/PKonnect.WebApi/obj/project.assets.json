@@ -1538,17 +1538,17 @@
           "bin/placeholder/PKonnect.Models.dll": {}
         }
       },
-      "PKonnect.Services/1.0.0": {
+      "PKonnect.Repositories/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "PKonnect.Context": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/PKonnect.Services.dll": {}
+          "bin/placeholder/PKonnect.Repositories.dll": {}
         },
         "runtime": {
-          "bin/placeholder/PKonnect.Services.dll": {}
+          "bin/placeholder/PKonnect.Repositories.dll": {}
         }
       }
     }
@@ -5749,10 +5749,10 @@
       "path": "../PKonnect.Models/PKonnect.Models.csproj",
       "msbuildProject": "../PKonnect.Models/PKonnect.Models.csproj"
     },
-    "PKonnect.Services/1.0.0": {
+    "PKonnect.Repositories/1.0.0": {
       "type": "project",
-      "path": "../PKonnect.Services/PKonnect.Services.csproj",
-      "msbuildProject": "../PKonnect.Services/PKonnect.Services.csproj"
+      "path": "../PKonnect.Services/PKonnect.Repositories.csproj",
+      "msbuildProject": "../PKonnect.Services/PKonnect.Repositories.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5760,42 +5760,42 @@
       "Microsoft.AspNetCore.Authentication.AzureAD.UI >= 3.1.2",
       "Microsoft.EntityFrameworkCore >= 3.1.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.2",
-      "PKonnect.Services >= 1.0.0"
+      "PKonnect.Repositories >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hgattu\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\dgunturu\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.WebApi\\PKonnect.WebApi.csproj",
+      "projectUniqueName": "C:\\Projects\\PKonnect\\PKonnect\\PKonnect.WebApi\\PKonnect.WebApi.csproj",
       "projectName": "PKonnect.WebApi",
-      "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.WebApi\\PKonnect.WebApi.csproj",
-      "packagesPath": "C:\\Users\\hgattu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.WebApi\\obj\\",
+      "projectPath": "C:\\Projects\\PKonnect\\PKonnect\\PKonnect.WebApi\\PKonnect.WebApi.csproj",
+      "packagesPath": "C:\\Users\\dgunturu\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\PKonnect\\PKonnect\\PKonnect.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\hgattu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\dgunturu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://ineight.pkgs.visualstudio.com/_packaging/In8ProjectSuite/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj": {
-              "projectPath": "C:\\Users\\hgattu\\Desktop\\Git\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Services.csproj"
+            "C:\\Projects\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Repositories.csproj": {
+              "projectPath": "C:\\Projects\\PKonnect\\PKonnect\\PKonnect.Services\\PKonnect.Repositories.csproj"
             }
           }
         }
