@@ -31,3 +31,14 @@ C:\Projects\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.
 C:\Projects\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.csproj.CopyComplete
 C:\Projects\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.dll
 C:\Projects\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\bin\Debug\netcoreapp3.1\PKonnect.Context.deps.json
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\bin\Debug\netcoreapp3.1\PKonnect.Context.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\bin\Debug\netcoreapp3.1\PKonnect.Context.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\bin\Debug\netcoreapp3.1\PKonnect.Models.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\bin\Debug\netcoreapp3.1\PKonnect.Models.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.csprojAssemblyReference.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.AssemblyInfoInputs.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.AssemblyInfo.cs
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.csproj.CopyComplete
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.pdb

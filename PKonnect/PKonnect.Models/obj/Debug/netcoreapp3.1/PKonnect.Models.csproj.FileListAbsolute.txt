@@ -21,3 +21,11 @@ C:\Projects\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.M
 C:\Projects\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.AssemblyInfo.cs
 C:\Projects\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.dll
 C:\Projects\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\bin\Debug\netcoreapp3.1\PKonnect.Models.deps.json
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\bin\Debug\netcoreapp3.1\PKonnect.Models.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\bin\Debug\netcoreapp3.1\PKonnect.Models.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.csprojAssemblyReference.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.AssemblyInfoInputs.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.AssemblyInfo.cs
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.pdb
