@@ -251,8 +251,6 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcorea
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Context.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Models.dll
-C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Services.dll
-C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Services.pdb
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Context.pdb
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Models.pdb
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.csprojAssemblyReference.cache
@@ -266,3 +264,5 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcorea
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.csproj.CopyComplete
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\obj\Debug\netcoreapp3.1\PKonnect.WebApi.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Repositories.dll
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.WebApi\bin\Debug\netcoreapp3.1\PKonnect.Repositories.pdb
