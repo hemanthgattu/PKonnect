@@ -14,10 +14,12 @@ namespace PKonnect.Models.Communities
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Feedback { get; set; }
+        //public string AdditionalQuesions { get; set; }
         public bool SkillSerach { get; set; }
         public bool NetWorking { get; set; }
         public bool Training { get; set; }
         public bool Mentorship { get; set; }
+        public bool Knowledgebase { get; set; }
         public DateTimeOffset ModifiedDate { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public bool IsActive { get; set; }
