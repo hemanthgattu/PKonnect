@@ -231,8 +231,6 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\bin\Debug\netcoreapp3.
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.csprojAssemblyReference.cache
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\staticwebassets\PKonnect.UI.StaticWebAssets.Manifest.cache
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\staticwebassets\PKonnect.UI.StaticWebAssets.xml
-C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.RazorAssemblyInfo.cache
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.RazorAssemblyInfo.cs
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.AssemblyInfoInputs.cache
@@ -248,3 +246,5 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.csproj.CopyComplete
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.UI\obj\Debug\netcoreapp3.1\PKonnect.UI.MvcApplicationPartsAssemblyInfo.cache
