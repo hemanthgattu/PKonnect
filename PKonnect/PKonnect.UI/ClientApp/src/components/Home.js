@@ -4,7 +4,6 @@ import '../styles/profile-page.css';
 
 export class Home extends Component {
     static displayName = Home.name;
-
     constructor(props) {
         super(props)
 
@@ -38,10 +37,10 @@ export class Home extends Component {
     async postData() {
         const userName = this.props.user.account.name;
         const email = this.props.user.account.name;
-        var communityfeedback = {
+        const communityfeedback = {
             "UserName": userName,
             "Email": email,
-            "Feedback": "test",
+            "Feedback": this.state.Feedback,
             //"AdditionalQuestions": this.props.AdditionalQuestions,
             "SkillSerach": this.state.chkSkillSearch,
             "NetWorking": this.state.chkNetWorking,
@@ -51,33 +50,25 @@ export class Home extends Component {
         };
         console.log(JSON.stringify(communityfeedback));
 
+        const header = new Headers({
+            "Content-Type": "application/json;charset=UTF-8",
+            "Accept": "*/*"
+        });
+
         const requestOptions = {
             method: 'POST',
-            mode: 'no-cors',
             body: JSON.stringify(communityfeedback),
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': '*/*',
-                'Accept-Encoding': 'gzip, deflate, br'
-            },            
+            headers: header            
         };
 
-        await fetch('https://localhost:44324/api/ComminityFeedbacks',
-            {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(communityfeedback),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-            })
+        await fetch("https://localhost:44324/api/ComminityFeedbacks", requestOptions)
             .then(async response => {
                 const data = await response.json();
                 // check for error response
                 if (!response.ok) {
                     // get error message from body or default to response status
                     const error = (data && data.message) || response.status;
+                    //const error = JSON.stringify(response)
                     return Promise.reject(error);
                 }
 
@@ -90,9 +81,8 @@ export class Home extends Component {
     }
 
     changeHandler(e) {
-        this.setState({
-            [e.target.name]: e.target.text
-        })
+        //this.setState({ value: e.target.value });
+        this.setState({ Feedback: e.target.value });
     }
 
     onCheckChange(e) {
@@ -102,7 +92,7 @@ export class Home extends Component {
     }
 
     render() {
-        const { Feedback, SkillSerach, NetWorking, Training, Mentorship, Knowledge } = this.state;
+        //const { Feedback, SkillSerach, NetWorking, Training, Mentorship, Knowledge } = this.state;
 
         return (
             <div className="row">                
@@ -118,7 +108,7 @@ export class Home extends Component {
                 <div className="rightPane" align="left">
                     <div id="welcometitle">
                         <h5>
-                            <h1>Hello, {this.props.user.account.name}</h1>
+                            Hello, {this.props.user.account.name}
                         </h5>
                     </div>
                     <div >
@@ -161,8 +151,8 @@ export class Home extends Component {
                             <br />
                             <br />
                             <div className="comtsText">Comments/Questions?</div>
-                            <textarea className="txtarea" id="comments" rows="5" name="feedback"
-                                cols="30" ref={node => this.state.Feedback = node} onChange={this.changeHandler}>
+                            <textarea className="txtarea" id="comments" rows="5" name="comments"
+                                cols="30" onChange={this.changeHandler} defaultValue="">                                
                             </textarea>
                             <br />
                             <br />

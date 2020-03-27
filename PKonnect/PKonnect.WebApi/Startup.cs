@@ -66,12 +66,21 @@ namespace PKonnect.WebApi
             services.AddDbContext<PKonnectDataContext>
            (options => options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
 
+            services.Configure<CustomVariables>(Configuration.GetSection("CustomVariables"));
+
+            services.AddCors();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options =>
+            options.WithOrigins("https://localhost:44314")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
