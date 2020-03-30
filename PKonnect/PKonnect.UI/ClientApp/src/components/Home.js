@@ -61,7 +61,8 @@ export class Home extends Component {
             headers: header            
         };
 
-        await fetch("https://localhost:44324/api/ComminityFeedbacks", requestOptions)
+        //https://localhost:44324/api/ComminityFeedbacks
+        await fetch("https://pkwebapi.azurewebsites.net/api/ComminityFeedbacks", requestOptions)
             .then(async response => {
                 const data = await response.json();
                 // check for error response
