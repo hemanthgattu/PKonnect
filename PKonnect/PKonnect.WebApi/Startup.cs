@@ -43,24 +43,24 @@ namespace PKonnect.WebApi
             });
 
 
-            services.AddAuthentication(sharedOptions =>
-            {
+            //services.AddAuthentication(sharedOptions =>
+            //{
 
-                sharedOptions.DefaultScheme = AzureADDefaults.AuthenticationScheme;
-            })
-                .AddJwtBearer("AzureAD", options =>
-                 {
-                     options.Audience = Configuration.GetValue<string>("AzureAd:Audience");
-                     options.Authority = Configuration.GetValue<string>("AzureAd:Instance")
-                     + Configuration.GetValue<string>("AzureAd:TenantId");
+            //    sharedOptions.DefaultScheme = AzureADDefaults.AuthenticationScheme;
+            //})
+            //    .AddJwtBearer("AzureAD", options =>
+            //     {
+            //         options.Audience = Configuration.GetValue<string>("AzureAd:Audience");
+            //         options.Authority = Configuration.GetValue<string>("AzureAd:Instance")
+            //         + Configuration.GetValue<string>("AzureAd:TenantId");
 
-                     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
-                     {
-                         ValidIssuer = Configuration.GetValue<string>("AzureAd:Issuer"),
-                         ValidAudience = Configuration.GetValue<string>("AzureAd:Audience")
-                     };
+            //         options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+            //         {
+            //             ValidIssuer = Configuration.GetValue<string>("AzureAd:Issuer"),
+            //             ValidAudience = Configuration.GetValue<string>("AzureAd:Audience")
+            //         };
 
-                 });
+            //     });
 
             services.AddTransient<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
             services.AddDbContext<PKonnectDataContext>
@@ -73,11 +73,13 @@ namespace PKonnect.WebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
+        //https://localhost:44314
+        //
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins("https://localhost:44314")
+            options.WithOrigins("https://pkonnectresearchui.azurewebsites.net")
             .AllowAnyHeader()
             .AllowAnyMethod());
 
