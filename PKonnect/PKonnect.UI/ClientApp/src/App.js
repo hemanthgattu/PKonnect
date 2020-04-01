@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Home } from './components/Home';
+
+import { SerachSkills } from './components/Employees/SearchSkills';
 import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { authProvider } from './authProvider';
 import { AzureAD, AuthenticationState } from 'react-aad-msal';
 import { getUserDetails, getUserPhoto } from './services/GraphService';
+import Employees from './components/Employees/Employees';
 
 export default class App extends Component {
     static displayName = App.name;
@@ -46,7 +49,7 @@ export default class App extends Component {
                                     authenticationState === AuthenticationState.Authenticated &&
                                     <React.Fragment>
                                         <Route exact path='/' render={(props) =>
-                                            <Home {...props} user={accountInfo} />} />
+                                            <Employees {...props} user={accountInfo} />} />
                                         <Route path='/counter' component={Counter} />
                                         <Route path='/fetch-data/:startDateIndex?' component={FetchData} />
                                     </React.Fragment>

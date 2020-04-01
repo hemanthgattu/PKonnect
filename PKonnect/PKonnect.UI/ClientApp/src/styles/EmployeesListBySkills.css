@@ -1,0 +1,73 @@
+﻿
+
+body {
+    /* background: -webkit-linear-gradient(left, #3931af, #00c6ff);*/
+    background: #EAEDEF;
+}
+
+
+
+.employeeprofile {
+    position: relative;
+    width: 80%;
+    height: 200px;
+    left: 145px;
+    top: 375px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    
+}
+.employeeinfo {
+    position: absolute;
+    width: 631px;
+    height: 148px;
+    left: 23px;
+    top: 34px;
+}
+.locationframe {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    position: absolute;
+    width: 216.23px;
+    height: 42px;
+    right: 17.77px;
+    top: 10px;
+}
+
+.emailinvite {
+    position: static;
+    left: 49.95%;
+    right: 0%;
+    top: 28.79%;
+    bottom: 28.79%;
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 19px 0px;
+}
+.mail {
+    position: absolute;
+    left: 49.95%;
+    right: 43.14%;
+    top: 35.5%;
+    bottom: 28.79%;
+}
+.invite {
+    position: absolute;
+    left: 53.62%;
+    right: 0%;
+    top: 28.79%;
+    bottom: 36.36%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 22px;
+    /* or 169% */
+    text-align: center;
+    /* Navy */
+    color: #202B34;
+}
+

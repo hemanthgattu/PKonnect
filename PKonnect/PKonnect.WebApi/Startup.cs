@@ -62,7 +62,11 @@ namespace PKonnect.WebApi
 
             //     });
 
-            services.AddTransient<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
+             services.AddScoped<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
+             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddControllers();
+
             services.AddDbContext<PKonnectDataContext>
            (options => options.UseSqlServer(Configuration.GetConnectionString("DBConnectionString")));
 
@@ -74,12 +78,12 @@ namespace PKonnect.WebApi
         }
 
         //https://localhost:44314
-        //
+        //https://pkonnectresearchui.azurewebsites.net
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins("https://pkonnectresearchui.azurewebsites.net")
+            options.WithOrigins("https://localhost:44314")
             .AllowAnyHeader()
             .AllowAnyMethod());
 
