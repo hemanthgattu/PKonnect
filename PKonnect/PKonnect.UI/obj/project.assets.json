@@ -236,9 +236,6 @@
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
-      },
-      "react.js/0.14.7": {
-        "type": "package"
       }
     }
   },
@@ -549,31 +546,11 @@
         "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
       ]
-    },
-    "react.js/0.14.7": {
-      "sha512": "vz/ldkXR45hqxm0nspBc0VCyk2ay4TTn+69C0HYAFmiYiHdq1trtmM6408FF3ZEG7OPFwOKVrsVyuGCDC/wyXw==",
-      "type": "package",
-      "path": "react.js/0.14.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Content/Scripts/react/react-dom-server.js",
-        "Content/Scripts/react/react-dom-server.min.js",
-        "Content/Scripts/react/react-dom.js",
-        "Content/Scripts/react/react-dom.min.js",
-        "Content/Scripts/react/react-with-addons.js",
-        "Content/Scripts/react/react-with-addons.min.js",
-        "Content/Scripts/react/react.js",
-        "Content/Scripts/react/react.min.js",
-        "react.js.0.14.7.nupkg.sha512",
-        "react.js.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Microsoft.AspNetCore.SpaServices.Extensions >= 3.1.1",
-      "react.js >= 0.14.7"
+      "Microsoft.AspNetCore.SpaServices.Extensions >= 3.1.1"
     ]
   },
   "packageFolders": {
@@ -621,10 +598,6 @@
           "Microsoft.AspNetCore.SpaServices.Extensions": {
             "target": "Package",
             "version": "[3.1.1, )"
-          },
-          "react.js": {
-            "target": "Package",
-            "version": "[0.14.7, )"
           }
         },
         "imports": [
