@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKonnect.Models", "PKonnect
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKonnect.Repositories", "PKonnect.Services\PKonnect.Repositories.csproj", "{07529D64-5D68-4486-927A-B81B3FD0DB76}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKonnect.UI", "PKonnect.UI\PKonnect.UI.csproj", "{ED8B58C6-34F9-426F-8CC4-2AD90EF1D7EF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKonnect.WebApi", "PKonnect.WebApi\PKonnect.WebApi.csproj", "{F5900708-6324-4617-B3E1-E173AE993B56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PKonnect.Mappers", "PKonnect.Mappers\PKonnect.Mappers.csproj", "{0FDFAF06-E5C2-43E4-AA78-CACB07B7217D}"
