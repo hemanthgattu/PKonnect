@@ -1,0 +1,27 @@
+<div *ngIf="!!employeeSearchResults" class="employee-results">
+    <div class="cards-nav">
+        <div class="cards-count">
+            <p class="showing-text">Showing 1 - {{(employeeSearchResults.length > 10) ? 10 : employeeSearchResults.length}} of {{employeeSearchResults.length}}</p>
+        </div>
+        <div class="sort">
+                <div class="btn-group">
+                        <mat-form-field>
+                            <mat-label class="custom-mat-label">
+                                <fa-icon class="slider-icon" [icon]="faFilter" size="sm"></fa-icon>
+                                <span class="sort-by-text">Sort by</span>
+                            </mat-label>
+                            <mat-select name="location" ngModel>
+                                <mat-option value="sfo">MVP</mat-option>
+                                <mat-option value="seattle">A-Z</mat-option>
+                                <mat-option value="omaha">Location</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+        </div>
+    </div>
+    <div class="employee-cards">
+        <div class="employee-card" *ngFor="let employee of employeeSearchResults">
+            <app-employee-search-card [employeeData]="employee"></app-employee-search-card>
+        </div>
+    </div>
+</div>

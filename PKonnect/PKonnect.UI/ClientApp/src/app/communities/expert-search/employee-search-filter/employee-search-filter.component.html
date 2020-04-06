@@ -1,0 +1,82 @@
+<div class="search">
+    <div class="title" id="title">
+        <div class="row">
+            <div class="col-8">
+                <h1>Java Experts</h1>
+            </div>
+            <div class="col-4">
+                <div *ngIf="isMobile" class="slider" (click)="toggleSearch()">
+                    <fa-icon class="slider-icon" [icon]="faSlidersH" size="lg"></fa-icon>
+                    <span class="slider-icon-text">Filter</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isMobile || toggleSearchForm" class="search-criteria">
+        <form #searchEmployeeForm="ngForm"
+            (ngSubmit)="searchEmployees(searchEmployeeForm.value); searchEmployeeForm.reset()">
+            <div class="row">
+                <div class="col-lg-3">
+                    <input name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
+                        placeholder="Search by skill(s)" ngModel>
+                    <div class="skills">
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let skill of searchSkills; let i = index;">
+                                {{skill}}
+                                <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
+                                    (click)="removeSkill(i)"></fa-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <input name="employeeName" type="text" class="form-control search-input" id="search-name"
+                        placeholder="Search by name" ngModel>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="btn-group">
+                                <mat-form-field>
+                                    <mat-label class="custom-mat-label">Availability</mat-label>
+                                    <mat-select name="availability" ngModel>
+                                        <mat-option value="true">Available</mat-option>
+                                        <mat-option value="false">Not Available</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="btn-group">
+                                <mat-form-field>
+                                    <mat-label class="custom-mat-label">Role</mat-label>
+                                    <mat-select name="role" ngModel>
+                                        <mat-option value="swe">Software Engineer</mat-option>
+                                        <mat-option value="sdet">SDET</mat-option>
+                                        <mat-option value="fsd">Full Stack Developer</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="btn-group">
+                                <mat-form-field>
+                                    <mat-label class="custom-mat-label">Location</mat-label>
+                                    <mat-select name="location" ngModel>
+                                        <mat-option value="sfo">San Franscisco</mat-option>
+                                        <mat-option value="seattle">Seattle</mat-option>
+                                        <mat-option value="omaha">Omaha</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button type="submit" class="btn search-filter">Filter Results</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
