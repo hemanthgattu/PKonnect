@@ -20,221 +20,93 @@ export class EmployeeSearchFilterComponent implements OnInit {
   @Output() public employeeResponseEvent = new EventEmitter();
   public searchResponse = [
     {
-      employeeName: 'Srikar',
-      employeeRole: 'UI Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123456',
-      employeeMentor: 'Jason',
-      isMvp: false,
-      available: false,
-      locationCity: 'Bellevue',
-      locationState: 'WA',
-      employeeEmail: 'skoppisetti@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Angular',
-          skillLevel: 4
-        },
-        {
-          id: 2,
-          skillName: 'Node.js',
-          skillLevel: 2
-        },
-        {
-          id: 3,
-          skillName: 'HTML',
-          skillLevel: 4
-        },
-        {
-          id: 4,
-          skillName: 'CSS',
-          skillLevel: 4
-        },
-        {
-          id: 5,
-          skillName: 'Java',
-          skillLevel: 2
-        },
-      ]
+      id: 1,
+      firstName: 'Datta',
+      lastName: 'Gunturu',
+      fullName: 'Datta Gunturu',
+      gender: 'Male',
+      city: 'Omaha',
+      state: 'NE',
+      zipCode: 68116,
+      country: 'USA',
+      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
+      secondaryEmailAddress: null,
+      recordType: null,
+      reportsTo: 'Sridhar',
+      employeeID: 'ES000368',
+      category: null,
+      siteCity: 'Omaha',
+      siteState: 'NE',
+      employeeStatus: 'Available',
+      experienceInYears: 11,
+      employeeType: 'Full time',
+      employeeCountry: 'USA',
+      primarySkill: 'Microsoft Technologies',
+      title: null,
+      serviceLine: null,
+      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
+      createdDate: '2020-04-01T21:23:49.8666667+00:00',
+      isActive: true
     },
     {
-      employeeName: 'John',
-      employeeRole: 'Full Stack Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123457',
-      employeeMentor: 'Harry',
-      isMvp: true,
-      available: true,
-      locationCity: 'Denver',
-      locationState: 'CO',
-      employeeEmail: 'john@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Angular',
-          skillLevel: 3
-        },
-        {
-          id: 2,
-          skillName: 'Node.js',
-          skillLevel: 5
-        },
-        {
-          id: 3,
-          skillName: 'HTML',
-          skillLevel: 4
-        },
-        {
-          id: 4,
-          skillName: 'CSS',
-          skillLevel: 3
-        },
-        {
-          id: 5,
-          skillName: 'Java',
-          skillLevel: 4
-        },
-      ]
+      id: 3,
+      firstName: 'Datta',
+      lastName: 'Gunturu',
+      fullName: 'Datta Gunturu',
+      gender: 'Male',
+      city: 'Omaha',
+      state: 'NE',
+      zipCode: 68116,
+      country: 'USA',
+      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
+      secondaryEmailAddress: null,
+      recordType: null,
+      reportsTo: 'Sridhar',
+      employeeID: 'ES000368',
+      category: null,
+      siteCity: 'Omaha',
+      siteState: 'NE',
+      employeeStatus: 'Available',
+      experienceInYears: 11,
+      employeeType: 'Full time',
+      employeeCountry: 'USA',
+      primarySkill: 'Microsoft Technologies',
+      title: null,
+      serviceLine: null,
+      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
+      createdDate: '2020-04-01T21:23:49.8666667+00:00',
+      isActive: true
     },
     {
-      employeeName: 'Smith',
-      employeeRole: 'Salesforce Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123458',
-      employeeMentor: 'Mike',
-      isMvp: true,
-      available: true,
-      locationCity: 'Dallas',
-      locationState: 'TX',
-      employeeEmail: 'smith@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Salesforce',
-          skillLevel: 4
-        },
-        {
-          id: 2,
-          skillName: 'Apex',
-          skillLevel: 4
-        },
-        {
-          id: 3,
-          skillName: 'Lightning',
-          skillLevel: 3
-        }
-      ]
-    },
-    {
-      employeeName: 'Srikar',
-      employeeRole: 'UI Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123456',
-      employeeMentor: 'Jason',
-      isMvp: false,
-      available: false,
-      locationCity: 'Bellevue',
-      locationState: 'WA',
-      employeeEmail: 'skoppisetti@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Angular',
-          skillLevel: 4
-        },
-        {
-          id: 2,
-          skillName: 'Node.js',
-          skillLevel: 2
-        },
-        {
-          id: 3,
-          skillName: 'HTML',
-          skillLevel: 4
-        },
-        {
-          id: 4,
-          skillName: 'CSS',
-          skillLevel: 4
-        },
-        {
-          id: 5,
-          skillName: 'Java',
-          skillLevel: 2
-        },
-      ]
-    },
-    {
-      employeeName: 'John',
-      employeeRole: 'Full Stack Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123457',
-      employeeMentor: 'Harry',
-      isMvp: true,
-      available: true,
-      locationCity: 'Denver',
-      locationState: 'CO',
-      employeeEmail: 'john@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Angular',
-          skillLevel: 3
-        },
-        {
-          id: 2,
-          skillName: 'Node.js',
-          skillLevel: 5
-        },
-        {
-          id: 3,
-          skillName: 'HTML',
-          skillLevel: 4
-        },
-        {
-          id: 4,
-          skillName: 'CSS',
-          skillLevel: 3
-        },
-        {
-          id: 5,
-          skillName: 'Java',
-          skillLevel: 4
-        },
-      ]
-    },
-    {
-      employeeName: 'Smith',
-      employeeRole: 'Salesforce Developer',
-      employeeDescription: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      employeeId: '123458',
-      employeeMentor: 'Mike',
-      isMvp: true,
-      available: true,
-      locationCity: 'Dallas',
-      locationState: 'TX',
-      employeeEmail: 'smith@pkglobal.com',
-      employeeSkills: [
-        {
-          id: 1,
-          skillName: 'Salesforce',
-          skillLevel: 4
-        },
-        {
-          id: 2,
-          skillName: 'Apex',
-          skillLevel: 4
-        },
-        {
-          id: 3,
-          skillName: 'Lightning',
-          skillLevel: 3
-        }
-      ]
+      id: 2,
+      firstName: 'Datta',
+      lastName: 'Gunturu',
+      fullName: 'Datta Gunturu',
+      gender: 'Male',
+      city: 'Omaha',
+      state: 'NE',
+      zipCode: 68116,
+      country: 'USA',
+      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
+      secondaryEmailAddress: null,
+      recordType: null,
+      reportsTo: 'Sridhar',
+      employeeID: 'ES000368',
+      category: null,
+      siteCity: 'Omaha',
+      siteState: 'NE',
+      employeeStatus: 'Available',
+      experienceInYears: 11,
+      employeeType: 'Full time',
+      employeeCountry: 'USA',
+      primarySkill: 'Microsoft Technologies',
+      title: null,
+      serviceLine: null,
+      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
+      createdDate: '2020-04-01T21:23:49.8666667+00:00',
+      isActive: true
     }
   ];
-
   constructor() { }
 
   ngOnInit(): void {

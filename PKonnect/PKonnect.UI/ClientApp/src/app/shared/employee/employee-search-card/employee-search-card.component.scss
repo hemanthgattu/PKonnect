@@ -1,0 +1,96 @@
+.employee-card {
+    margin-bottom: 17px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.display-picture{
+    margin: auto;
+}
+
+img {
+    border-radius: 50%;
+    border: 3px solid #D8AA3A;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+
+    @media screen and (max-width: 400px) {
+        margin: 7px;
+        width: 50px;
+        height: 50px;
+    }
+  }
+
+.employee-details {
+    padding-top: 15px;
+}
+
+.employee-full-name{
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    color: #000000;
+}
+
+.employee-role {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: #1B83B1;
+}
+
+.employee-description{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    color: rgba(32, 43, 52, 0.8);
+    padding: 0px 0px 0px 15px;
+}
+
+.btn-mentor {
+    margin: 5px;
+    background: #D6DCE5;
+    border-radius: 360px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 22px;
+    color: #202B34;
+
+    .mentor-text {
+        padding-left: 5px;
+    }
+
+    &:hover {
+        color: #000000;
+        background: rgb(189, 194, 201);
+    }
+}
+
+.btn-mvp {
+    margin: 5px;
+    background: #D8AA3A;
+    border-radius: 360px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 22px;
+    color: #202B34;
+
+    .mentor-text {
+        padding-left: 5px;
+    }
+
+    &:hover {
+        color: #000000;
+        background: rgb(187, 149, 50);
+    }
+}
+
+.view-profile {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+}
