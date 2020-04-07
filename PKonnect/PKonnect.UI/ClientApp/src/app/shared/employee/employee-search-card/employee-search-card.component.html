@@ -1,3 +1,56 @@
 <div class="employee-card">
-    {{employee | json}}
+    <!-- {{employee | json}} -->
+    <div class="row">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-2 display-picture">
+                    <div class="image">
+                        <img src="../../../../assets/avatars/male.png" alt="{{employee.gender}} Avatar">
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-9 employee-details">
+                    <div class="row">
+                        <div class="col-6">
+                            <span class="employee-full-name">{{employee.fullName}}</span><br>
+                            <span class="employee-role">{{employee.primarySkill}}
+                            </span>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <button type="button" class="btn btn-mentor">
+                                    <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
+                                    <span class="mentor-text">Mentor</span>
+                                </button>
+                                <button type="button" class="btn btn-mvp">
+                                    <fa-icon class="slider-icon" [icon]="faTrophy" size="md"></fa-icon>
+                                    <span class="mentor-text">MVP</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row employee-description">
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
+                            sequi ipsam consequatur, distinctio ut?</p>
+                        <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 employee-skills">
+            {{employee.employeeStatus}}
+
+            {{employee.siteCity}}
+            {{employee.siteState}}
+            {{employee.primaryEmailAddress}}
+            {{employee.skills}}
+        </div>
+    </div>
 </div>
+
+<!-- should this be employee title -->
+<!-- {{employee.reportsTo}} It is string it should be an ID  -->
+<!-- {{employee.isMvp}} not available in response -->
+<!-- need enum to loop through different employeeStatus -->
+<!-- not available in response employee skills-->
