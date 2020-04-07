@@ -18,6 +18,10 @@ using PKonnect.Context;
 using PKonnect.Services.DataServices;
 using PKonnect.Services.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.OData.Edm;
+using Microsoft.AspNet.OData.Builder;
+using PKonnect.Models.Common;
 
 namespace PKonnect.WebApi
 {
@@ -73,8 +77,13 @@ namespace PKonnect.WebApi
             services.Configure<CustomVariables>(Configuration.GetSection("CustomVariables"));
 
             services.AddCors();
+            services.AddOData();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0) ;
+
+            
+
+            
         }
 
         //https://localhost:44314
@@ -96,7 +105,7 @@ namespace PKonnect.WebApi
 
             app.UseAuthentication();
 
-            app.UseRouting();
+           app.UseRouting();
 
             app.UseAuthorization();
 
@@ -104,6 +113,26 @@ namespace PKonnect.WebApi
             {
                 endpoints.MapControllers();
             });
+
+            
+
+            app.UseMvc(routeBuilder =>
+            {
+
+                routeBuilder.EnableDependencyInjection();
+                routeBuilder.Expand().Select().Count().OrderBy().Filter();
+               routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
+            });
+
+        }
+
+
+        public static IEdmModel GetEdmModel()
+        {
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Employee>("Employees");
+            builder.EntitySet<Skill>("Skills");
+            return builder.GetEdmModel();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PKonnect.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using PKonnect.Context;
 using PKonnect.Models.Common;
 using PKonnect.Services.Infrastructure;
 using System;
@@ -26,11 +27,11 @@ namespace PKonnect.Services.DataServices
             return employeeId;
         }
 
-        public List<Employee> GetEmployees()
+        public IQueryable<Employee> GetEmployees()
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.Employee.ToList();
+                return _pkonnectdatacontext.Employee.Where(Employee => Employee.IsActive).AsNoTracking();
             }
 
             return null;

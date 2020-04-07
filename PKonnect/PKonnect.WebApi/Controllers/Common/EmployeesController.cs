@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PKonnect.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.OData;
 
 namespace PKonnect.WebApi.Controllers
 {
@@ -25,15 +26,15 @@ namespace PKonnect.WebApi.Controllers
 
         // GET api/values
         [HttpGet]
-        [ProducesResponseType(typeof(Employee), 200)]
-        public ActionResult<IEnumerable<Employee>> Get()
+        [EnableQuery()]
+        public IQueryable<Employee> Get()
         {
             return _context.GetEmployees();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int? id)
+        public IActionResult Get(int? id)
         {
             if (id == null)
             {

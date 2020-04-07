@@ -16,7 +16,8 @@ namespace PKonnect.Context
 
         public DbSet<CommunityFeedback> CommunityFeedback { get; set; }
         public DbSet<Employee> Employee { get; set; }
-
+        public DbSet<Skill> Skill { get; set; }
+        public DbSet<EmployeeSkill> EmployeeSkill { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
