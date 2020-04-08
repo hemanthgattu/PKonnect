@@ -39,18 +39,55 @@
             </div>
         </div>
         <div class="col-md-5 employee-skills">
-            {{employee.employeeStatus}}
+            <div class="row employee-minor-details">
+                <span *ngIf="true">
+                    <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
+                        [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
+                    <strong> Available for Assignment</strong>
+                </span>
+                <span>
+                    <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
+                    {{employee.siteCity}}, {{employee.siteState}}
+                </span>
+                <span>
+                    <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
+                    Email Invite
+                </span>
+            </div>
+            <div class="employee-skills-display">
+                <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills">
+                    <div class="col-5"><span class="skill-name">{{employeeSkill.skillName}}</span></div>
+                    <div class="col-7 employee-rating-bar">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"  aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
 
-            {{employee.siteCity}}
-            {{employee.siteState}}
-            {{employee.primaryEmailAddress}}
-            {{employee.skills}}
+                    <!-- {{employeeSkill.skillRating}} -->
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- should this be employee title -->
+
+
+<!-- 
+            {{employee.employeeStatus}}
+            {{employee.siteCity}}
+            {{employee.siteState}}
+            {{employee.primaryEmailAddress}}
+            {{employee.skills}}
+ -->
+
+
+<!-- employee title not available -->
 <!-- {{employee.reportsTo}} It is string it should be an ID  -->
 <!-- {{employee.isMvp}} not available in response -->
 <!-- need enum to loop through different employeeStatus -->
-<!-- not available in response employee skills-->
+<!-- not available in response employee skills -->
+<!-- profile picture ??
+employee description ??
+Deployment & AuthN with outlook
+-->

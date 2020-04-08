@@ -44,7 +44,7 @@ img {
 .employee-description{
     font-style: normal;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 11px;
     color: rgba(32, 43, 52, 0.8);
     padding: 0px 0px 0px 15px;
 }
@@ -93,4 +93,41 @@ img {
     font-style: normal;
     font-weight: 500;
     font-size: 15px;
+}
+
+.employee-minor-details{
+    margin-left: 10px;
+    color: #202B34;
+    span {
+        margin: 0px 0px 0px 20px;
+    }
+}
+
+.employee-skills-display {
+    margin: 15px 10px 10px 20px;
+
+    .employee-skill-display {
+        margin-top: 7px;
+    }
+    .skill-name {
+        float: right;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        color: #000000;
+    }
+
+    .employee-rating-bar{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+
+    .progress-bar{
+        background: #1B83B1;
+        border-radius: 10px;
+    }
+
+    .progress {
+        height: 11px !important;
+    }
 }

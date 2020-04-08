@@ -3,7 +3,7 @@
         <div class="cards-count">
             <p class="showing-text">Showing 1 - {{(employeeSearchResults.length > 10) ? 10 : employeeSearchResults.length}} of {{employeeSearchResults.length}}</p>
         </div>
-        <div class="sort">
+        <!-- <div class="sort">
                 <div class="btn-group">
                         <mat-form-field>
                             <mat-label class="custom-mat-label">
@@ -17,7 +17,7 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-        </div>
+        </div> -->
     </div>
     <div class="employee-cards">
         <div class="employee-card" *ngFor="let employee of employeeSearchResults">

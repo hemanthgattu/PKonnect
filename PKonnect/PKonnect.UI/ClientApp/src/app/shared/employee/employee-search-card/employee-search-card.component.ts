@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faUserCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faTrophy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-search-card',
@@ -9,8 +10,12 @@ import { faUserCircle, faTrophy } from '@fortawesome/free-solid-svg-icons';
 export class EmployeeSearchCardComponent implements OnInit {
 
   public employee: any;
+
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
+  public faCheckCircle = faCheckCircle;
+  public faMap = faMap;
+  public faEnvelope = faEnvelope;
 
   constructor() { }
 
@@ -23,3 +28,5 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
 }
+
+

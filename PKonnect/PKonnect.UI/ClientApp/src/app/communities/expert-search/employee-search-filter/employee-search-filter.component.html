@@ -19,15 +19,6 @@
                 <div class="col-lg-3">
                     <input name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
                         placeholder="Search by skill(s)" ngModel>
-                    <div class="skills">
-                        <mat-chip-list>
-                            <mat-chip *ngFor="let skill of searchSkills; let i = index;">
-                                {{skill}}
-                                <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
-                                    (click)="removeSkill(i)"></fa-icon>
-                            </mat-chip>
-                        </mat-chip-list>
-                    </div>
                 </div>
                 <div class="col-lg-2">
                     <input name="employeeName" type="text" class="form-control search-input" id="search-name"
@@ -75,7 +66,17 @@
                 <div class="col-lg-2">
                     <button type="submit" class="btn search-filter">Filter Results</button>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="skills">
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let skill of searchSkills; let i = index;">
+                            {{skill}}
+                            <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
+                                (click)="removeSkill(i)"></fa-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
             </div>
         </form>
     </div>

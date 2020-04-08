@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { faSlidersH, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
+import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -8,6 +10,8 @@ import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
   styleUrls: ['./employee-search-filter.component.scss']
 })
 export class EmployeeSearchFilterComponent implements OnInit {
+
+  // https://pkwebapi.azurewebsites.net/odata/Employees?$filter=startswith(FullName,%20%27Ya%27)%20eq%20true
 
   public isMobile = false;
   public toggleSearchForm = false;
@@ -46,7 +50,78 @@ export class EmployeeSearchFilterComponent implements OnInit {
       serviceLine: null,
       modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
       createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true
+      isActive: true,
+      employeeSkills: [{
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Java',
+        skillRating: 4
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'JavaScript',
+        skillRating: 3
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Spring',
+        skillRating: 5
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'HTML',
+        skillRating: 2
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'CSS',
+        skillRating: 2
+      }
+      ]
     },
     {
       id: 3,
@@ -75,7 +150,78 @@ export class EmployeeSearchFilterComponent implements OnInit {
       serviceLine: null,
       modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
       createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true
+      isActive: true,
+      employeeSkills: [{
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Java',
+        skillRating: 5
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'JavaScript',
+        skillRating: 3
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Spring',
+        skillRating: 5
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'HTML',
+        skillRating: 2
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'CSS',
+        skillRating: 2
+      }
+      ]
     },
     {
       id: 2,
@@ -104,10 +250,81 @@ export class EmployeeSearchFilterComponent implements OnInit {
       serviceLine: null,
       modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
       createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true
+      isActive: true,
+      employeeSkills: [{
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Java',
+        skillRating: 5
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'JavaScript',
+        skillRating: 3
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'Spring',
+        skillRating: 5
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'HTML',
+        skillRating: 2
+      },
+      {
+        employeeSkillId: 1,
+        employeeId: 2,
+        skillId: 2,
+        bestFitSkill: true,
+        contact: null,
+        lastYearUsed: 2020,
+        submitted: true,
+        modifiedDate: '2020-04-08T12:05:32.7+00:00',
+        createdDate: '2020-04-08T12:05:32.7+00:00',
+        isActive: true,
+        skillName: 'CSS',
+        skillRating: 2
+      }
+      ]
     }
   ];
-  constructor() { }
+  constructor(private rest: RestService) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
@@ -138,8 +355,17 @@ export class EmployeeSearchFilterComponent implements OnInit {
   searchEmployees(searchCriteria: SearchCriteria): void {
     this.toggleSearchForm = false;
     this.searchEmployeesRequest = searchCriteria;
+    const getEmployeesUrl = environment.employeeApi;
     if (!!searchCriteria.searchSkill) {
       this.searchSkills.push(searchCriteria.searchSkill);
+      this.rest.httpGet(getEmployeesUrl).subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
     this.employeeResponseEvent.emit(this.searchResponse);
   }
