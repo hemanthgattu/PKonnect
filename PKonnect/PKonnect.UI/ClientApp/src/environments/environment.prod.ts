@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  employeeApi: 'https://pkwebapi.azurewebsites.net/api/Employees'
 };
