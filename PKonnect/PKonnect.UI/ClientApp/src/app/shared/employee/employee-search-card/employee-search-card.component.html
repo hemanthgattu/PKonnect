@@ -32,7 +32,8 @@
                         <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
                             sequi ipsam consequatur, distinctio ut?</p>
                     </div>
-                    <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button>
+                    <!-- Hiding View profile until view profile page is ready -->
+                    <!-- <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button> -->
                 </div>
             </div>
         </div>
@@ -45,7 +46,7 @@
                 </span>
                 <span>
                     <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
-                    {{employee.siteCity}}, {{employee.siteState}}
+                    {{employee.city}}, {{employee.state}}
                 </span>
                 <span>
                     <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
@@ -54,7 +55,7 @@
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills">
-                    <div class="col-5"><span class="skill-name">{{employeeSkill.skillName}}</span></div>
+                    <div class="col-5"><span class="skill-name">{{employeeSkill.skillType}}</span></div>
                     <div class="col-7 employee-rating-bar">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"  aria-valuenow="25"

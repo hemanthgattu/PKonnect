@@ -12,9 +12,9 @@ import {EmployeeModule} from 'src/app/shared/employee/employee.module';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { PocAutoCompleteComponent } from './poc-auto-complete/poc-auto-complete.component';
 import { SearchSkillInputComponent } from './search-form/search-skill-input/search-skill-input.component';
 import { SearchNameInputComponent } from './search-form/search-name-input/search-name-input.component';
+import { SharedModule } from '../../shared/shared/shared.module';
 
 const expertSearchRoutes: Routes = [
   {path: '', component: ExpertSearchComponent}
@@ -25,7 +25,6 @@ const expertSearchRoutes: Routes = [
     ExpertSearchComponent,
     EmployeeSearchFilterComponent,
     EmployeeSearchResultsComponent,
-    PocAutoCompleteComponent,
     SearchSkillInputComponent,
     SearchNameInputComponent
   ],
@@ -40,6 +39,7 @@ const expertSearchRoutes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatFormFieldModule,
+    SharedModule,
     RouterModule.forChild(expertSearchRoutes)
   ]
 })

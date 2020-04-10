@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PocAutoCompleteComponent } from './poc-auto-complete.component';
+import { CommunityBuildingComponent } from './community-building.component';
 
-describe('PocAutoCompleteComponent', () => {
-  let component: PocAutoCompleteComponent;
-  let fixture: ComponentFixture<PocAutoCompleteComponent>;
+describe('CommunityBuildingComponent', () => {
+  let component: CommunityBuildingComponent;
+  let fixture: ComponentFixture<CommunityBuildingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PocAutoCompleteComponent ]
+      declarations: [ CommunityBuildingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PocAutoCompleteComponent);
+    fixture = TestBed.createComponent(CommunityBuildingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

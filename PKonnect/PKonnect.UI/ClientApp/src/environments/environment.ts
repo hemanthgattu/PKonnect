@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  employeeApi: 'https://pkwebapi.azurewebsites.net/api/Employees'
+  employeeApi: 'https://pkwebapi.azurewebsites.net/api/Employees/GetEmployeeDetails'
 };
 
 /*

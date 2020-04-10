@@ -20,15 +20,21 @@ export class SearchNameInputComponent implements OnInit {
 
   ngOnInit(): void {
     // filter from options
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          return this._filter(value);
+        })
+      );
   }
 
   private _filter(value) {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().includes(filterValue) ? option : '');
+    return this.options.filter(option => {
+      if (option.toLowerCase().includes(filterValue)) {
+        return option;
+      }
+    });
   }
 
   public log(value: string) {
@@ -50,7 +56,7 @@ export class SearchNameInputComponent implements OnInit {
             },
             (error) => console.log(error)
           );
-        }, 500);
+        }, 100);
       }
   }
 
