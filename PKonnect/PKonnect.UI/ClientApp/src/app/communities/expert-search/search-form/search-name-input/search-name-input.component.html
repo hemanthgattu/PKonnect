@@ -1,0 +1,12 @@
+<form #searchNameForm>
+        <mat-form-field>
+            <input type="text" #searchNameInput placeholder="Search by name" matInput [formControl]="myControl"
+                [matAutocomplete]="name" (keyup)="filterName(myControl.value)">
+            <mat-autocomplete autoActiveFirstOption #name="matAutocomplete">
+                <mat-option #searchName *ngFor="let option of filteredOptions | async" [value]="option"
+                    (onSelectionChange)="log(option)">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>

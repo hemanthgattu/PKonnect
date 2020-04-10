@@ -18,45 +18,48 @@ img {
 
     @media screen and (max-width: 400px) {
         margin: 7px;
-        width: 50px;
-        height: 50px;
+        width: 80px;
+        height: 80px;
     }
   }
 
 .employee-details {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .employee-full-name{
     font-style: normal;
     font-weight: 900;
-    font-size: 16px;
+    font-size: 20px;
     color: #000000;
 }
 
 .employee-role {
     font-style: normal;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 12px;
     color: #1B83B1;
 }
 
 .employee-description{
     font-style: normal;
     font-weight: normal;
-    font-size: 11px;
+    font-size: 14px;
     color: rgba(32, 43, 52, 0.8);
     padding: 0px 0px 0px 15px;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 .btn-mentor {
-    margin: 5px;
+    margin: 0px 5px 15px 5px;
     background: #D6DCE5;
-    border-radius: 360px;
+    border-radius: 560px;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
-    line-height: 22px;
     color: #202B34;
 
     .mentor-text {
@@ -70,7 +73,7 @@ img {
 }
 
 .btn-mvp {
-    margin: 5px;
+    margin: 0px 5px 15px 5px;
     background: #D8AA3A;
     border-radius: 360px;
     font-style: normal;
@@ -96,18 +99,25 @@ img {
 }
 
 .employee-minor-details{
-    margin-left: 10px;
+    margin-right: 10px;
     color: #202B34;
+    float: right;
     span {
-        margin: 0px 0px 0px 20px;
+        margin-left: 15px;
+        margin-top: 5px;
+    }
+    @media screen and (max-width: 767px) {
+        margin-top: 10px;
+        margin-left: 30px;
+        float: left;
     }
 }
 
 .employee-skills-display {
-    margin: 15px 10px 10px 20px;
+    margin: 30px 10px 0px 0px;
 
     .employee-skill-display {
-        margin-top: 7px;
+        margin-top: 5px;
     }
     .skill-name {
         float: right;
@@ -130,4 +140,19 @@ img {
     .progress {
         height: 11px !important;
     }
+
+    @media screen and (max-width: 1200px) {
+        margin-top: 60px;
+        margin-right: 80px;
+    }
+
+    @media screen and (max-width: 994px) {
+        margin-top: 60px;
+       margin-left: 20px;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: 40px;
+    }
+
 }

@@ -5,17 +5,30 @@ import { EmployeeSearchFilterComponent } from './employee-search-filter/employee
 import { EmployeeSearchResultsComponent } from './employee-search-results/employee-search-results.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatChipsModule} from '@angular/material/chips';
 import {EmployeeModule} from 'src/app/shared/employee/employee.module';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { PocAutoCompleteComponent } from './poc-auto-complete/poc-auto-complete.component';
+import { SearchSkillInputComponent } from './search-form/search-skill-input/search-skill-input.component';
+import { SearchNameInputComponent } from './search-form/search-name-input/search-name-input.component';
 
 const expertSearchRoutes: Routes = [
   {path: '', component: ExpertSearchComponent}
 ];
 
 @NgModule({
-  declarations: [ExpertSearchComponent, EmployeeSearchFilterComponent, EmployeeSearchResultsComponent],
+  declarations: [
+    ExpertSearchComponent,
+    EmployeeSearchFilterComponent,
+    EmployeeSearchResultsComponent,
+    PocAutoCompleteComponent,
+    SearchSkillInputComponent,
+    SearchNameInputComponent
+  ],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -23,6 +36,10 @@ const expertSearchRoutes: Routes = [
     MatSelectModule,
     MatChipsModule,
     EmployeeModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule.forChild(expertSearchRoutes)
   ]
 })

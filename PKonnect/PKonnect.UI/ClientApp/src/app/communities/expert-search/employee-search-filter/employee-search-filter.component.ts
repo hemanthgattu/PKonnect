@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
-import { faSlidersH, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSlidersH, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
@@ -11,16 +11,16 @@ import { environment } from '../../../../environments/environment';
 })
 export class EmployeeSearchFilterComponent implements OnInit {
 
-  // https://pkwebapi.azurewebsites.net/odata/Employees?$filter=startswith(FullName,%20%27Ya%27)%20eq%20true
-
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
   public faSlidersH = faSlidersH;
   public faTimes = faTimes;
+  public faSearch = faSearch;
   private mobileWidth = 420;
   public searchEmployeesRequest: SearchCriteria;
   public searchSkills = [];
+  public searchName = '';
   @Output() public employeeResponseEvent = new EventEmitter();
   public searchResponse = [
     {
@@ -324,6 +324,26 @@ export class EmployeeSearchFilterComponent implements OnInit {
       ]
     }
   ];
+
+  public roles = [
+    'Cloud Architect',
+    'Cloud Consultant',
+    'Cloud Product and Project Manager',
+    'Cloud Services Developer',
+    'Cloud Software and Network Engineer',
+    'Cloud System Administrator',
+    'Cloud System Engineer'
+  ];
+
+  public locations = [
+    'Fort Wayne, Indiana',
+    'Anchorage, Alaska',
+    'Baltimore, Maryland',
+    'Oklahoma City, Oklahoma',
+    'St. Louis, Missouri',
+    'Miami, Florida'
+  ];
+
   constructor(private rest: RestService) { }
 
   ngOnInit(): void {
@@ -355,23 +375,41 @@ export class EmployeeSearchFilterComponent implements OnInit {
   searchEmployees(searchCriteria: SearchCriteria): void {
     this.toggleSearchForm = false;
     this.searchEmployeesRequest = searchCriteria;
+    this.searchEmployeesRequest.employeeName = this.searchName;
+    this.searchEmployeesRequest.searchSkill = this.searchSkills;
+    console.log(this.searchEmployeesRequest);
     const getEmployeesUrl = environment.employeeApi;
-    if (!!searchCriteria.searchSkill) {
-      this.searchSkills.push(searchCriteria.searchSkill);
+    if (this.searchSkills.length > 0) {
       this.rest.httpGet(getEmployeesUrl).subscribe(
         (data) => {
-          console.log(data);
+          this.employeeResponseEvent.emit(data);
         },
         (error) => {
           console.error(error);
         }
       );
     }
-    this.employeeResponseEvent.emit(this.searchResponse);
+  }
+
+  addSkill(value: string) {
+    this.searchSkills.push(value);
+    console.log(this.searchSkills);
   }
 
   removeSkill(i: number): void {
     this.searchSkills.splice(i, 1);
+  }
+
+  skillMessage(message: []) {
+    this.searchSkills = message;
+  }
+
+  nameMessage(message: string) {
+    this.searchName = message;
+  }
+
+  onRoleKey(event: any) {
+    console.log(event);
   }
 
 

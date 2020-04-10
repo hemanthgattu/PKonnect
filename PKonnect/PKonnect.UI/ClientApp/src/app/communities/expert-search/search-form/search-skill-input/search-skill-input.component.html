@@ -1,0 +1,12 @@
+<form #skillSearchForm (submit)="skillSearchForm.reset()">
+        <mat-form-field>
+            <input type="text" #searchSkillInput placeholder="Search by skills" matInput [formControl]="myControl"
+                [matAutocomplete]="skills" (keyup.enter)="log(myControl.value); searchSkillInput.value=''">
+            <mat-autocomplete autoActiveFirstOption #skills="matAutocomplete">
+                <mat-option #skillSearch *ngFor="let option of filteredOptions | async" [value]="option"
+                    (onSelectionChange)="log(option); skillSearch.value=''">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
