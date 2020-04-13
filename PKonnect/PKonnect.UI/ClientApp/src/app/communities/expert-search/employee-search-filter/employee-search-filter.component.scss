@@ -91,7 +91,7 @@ h1 {
     }
 }
 
-::ng-deep .mat-form-field{
+.mat-form-field{
     width: 95px;
     height: 44px;
     background: $color-white;
@@ -107,7 +107,7 @@ h1 {
     padding: 0px 5px 0px 5px;
 }
 
-::ng-deep .mat-form-field{
+.mat-form-field{
     text-align: center !important;
 }
 

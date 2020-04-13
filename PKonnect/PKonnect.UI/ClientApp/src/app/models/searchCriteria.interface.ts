@@ -1,6 +1,6 @@
 
 export interface SearchCriteria {
-    searchSkill?: string;
+    searchSkill?: string[];
     employeeName?: string;
     availability?: string;
     role?: string;

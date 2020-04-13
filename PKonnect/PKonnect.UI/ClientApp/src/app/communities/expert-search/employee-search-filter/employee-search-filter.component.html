@@ -2,7 +2,7 @@
     <div class="title" id="title">
         <div class="row">
             <div class="col-8">
-                <h1>Java Experts</h1>
+                <h1>Employee Search</h1>
             </div>
             <div class="col-4">
                 <div *ngIf="isMobile" class="slider" (click)="toggleSearch()">
@@ -14,15 +14,18 @@
     </div>
     <div *ngIf="!isMobile || toggleSearchForm" class="search-criteria">
         <form #searchEmployeeForm="ngForm"
+            (keydown.enter)="$event.preventDefault()"
             (ngSubmit)="searchEmployees(searchEmployeeForm.value); searchEmployeeForm.reset()">
             <div class="row">
                 <div class="col-lg-3">
-                    <input name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
-                        placeholder="Search by skill(s)" ngModel>
+                    <!-- <input #skill (keydown.enter)="addSkill(skill.value); skill.value = ''" name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
+                        placeholder="Search by skill(s)" autocomplete="off" ngModel> -->
+                    <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
                 </div>
                 <div class="col-lg-2">
-                    <input name="employeeName" type="text" class="form-control search-input" id="search-name"
-                        placeholder="Search by name" ngModel>
+                    <!-- <input name="employeeName" type="text" class="form-control search-input" id="search-name"
+                        placeholder="Search by name" autocomplete="off" ngModel> -->
+                    <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>    
                 </div>
                 <div class="col-lg-5">
                     <div class="row">
@@ -32,6 +35,7 @@
                                     <mat-label class="custom-mat-label">Availability</mat-label>
                                     <mat-select name="availability" ngModel>
                                         <mat-option value="true">Available</mat-option>
+                                        <mat-option value="true">Partial Available</mat-option>
                                         <mat-option value="false">Not Available</mat-option>
                                     </mat-select>
                                 </mat-form-field>
@@ -42,9 +46,7 @@
                                 <mat-form-field>
                                     <mat-label class="custom-mat-label">Role</mat-label>
                                     <mat-select name="role" ngModel>
-                                        <mat-option value="swe">Software Engineer</mat-option>
-                                        <mat-option value="sdet">SDET</mat-option>
-                                        <mat-option value="fsd">Full Stack Developer</mat-option>
+                                        <mat-option *ngFor="let role of roles" value="{{role}}">{{role}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>
@@ -54,9 +56,7 @@
                                 <mat-form-field>
                                     <mat-label class="custom-mat-label">Location</mat-label>
                                     <mat-select name="location" ngModel>
-                                        <mat-option value="sfo">San Franscisco</mat-option>
-                                        <mat-option value="seattle">Seattle</mat-option>
-                                        <mat-option value="omaha">Omaha</mat-option>
+                                        <mat-option *ngFor="let location of locations" value="{{location}}">{{location}}</mat-option>
                                     </mat-select>
                                 </mat-form-field>
                             </div>

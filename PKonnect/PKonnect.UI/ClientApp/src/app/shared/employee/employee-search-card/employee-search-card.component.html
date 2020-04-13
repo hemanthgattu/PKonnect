@@ -11,12 +11,11 @@
                 <div class="col-1"></div>
                 <div class="col-9 employee-details">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-5">
                             <span class="employee-full-name">{{employee.fullName}}</span><br>
-                            <span class="employee-role">{{employee.primarySkill}}
-                            </span>
+                            <span class="employee-role">{{employee.primarySkill}}</span>
                         </div>
-                        <div class="col-6">
+                        <div class="col-7">
                             <div class="row">
                                 <button type="button" class="btn btn-mentor">
                                     <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
@@ -26,15 +25,15 @@
                                     <fa-icon class="slider-icon" [icon]="faTrophy" size="md"></fa-icon>
                                     <span class="mentor-text">MVP</span>
                                 </button>
-
                             </div>
                         </div>
                     </div>
                     <div class="row employee-description">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
+                        <p >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
                             sequi ipsam consequatur, distinctio ut?</p>
-                        <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button>
                     </div>
+                    <!-- Hiding View profile until view profile page is ready -->
+                    <!-- <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button> -->
                 </div>
             </div>
         </div>
@@ -47,7 +46,7 @@
                 </span>
                 <span>
                     <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
-                    {{employee.siteCity}}, {{employee.siteState}}
+                    {{employee.city}}, {{employee.state}}
                 </span>
                 <span>
                     <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
@@ -56,7 +55,7 @@
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills">
-                    <div class="col-5"><span class="skill-name">{{employeeSkill.skillName}}</span></div>
+                    <div class="col-5"><span class="skill-name">{{employeeSkill.skillType}}</span></div>
                     <div class="col-7 employee-rating-bar">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"  aria-valuenow="25"
