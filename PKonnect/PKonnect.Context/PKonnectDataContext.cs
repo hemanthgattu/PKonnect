@@ -18,6 +18,8 @@ namespace PKonnect.Context
         public DbSet<Employee> Employee { get; set; }
         public DbSet<Skill> Skill { get; set; }
         public DbSet<EmployeeSkill> EmployeeSkill { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<Role> Role { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
