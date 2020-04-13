@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PKonnect.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNet.OData;
 
 namespace PKonnect.WebApi.Controllers
 {
@@ -25,8 +26,9 @@ namespace PKonnect.WebApi.Controllers
 
         // GET api/values
         [HttpGet]
+        [EnableQuery()]
         [ProducesResponseType(typeof(Skill), 200)]
-        public IEnumerable<Skill> Get()
+        public IQueryable<Skill> Get()
         {
             return _context.GetSkills();
         }

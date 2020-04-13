@@ -8,7 +8,7 @@ namespace PKonnect.Models.Common
     public class Skill
     {
         [Key]
-        public int SkillId { get; set; }
+        public long SkillId { get; set; }
         public string SkillGroup { get; set; }
         public string SkillType { get; set; }
         public string PracticeArea { get; set; }

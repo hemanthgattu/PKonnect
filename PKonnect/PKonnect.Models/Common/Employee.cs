@@ -6,10 +6,16 @@ using System.Text;
 
 namespace PKonnect.Models.Common
 {
-    public class Employee
+    public partial class Employee
     {
+        //public Employee()
+        //{
+        //    EmployeeSkills = new HashSet<EmployeeSkill>();
+
+        //}
+
         [Key]
-        public long Id { get; set; }
+        public long EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
@@ -24,7 +30,7 @@ namespace PKonnect.Models.Common
         public string SecondaryEmailAddress { get; set; }
         public string RecordType { get; set; }
         public string ReportsTo { get; set; }
-        public string EmployeeID { get; set; }
+        public string EmployeeNumber { get; set; }
         public string Category { get; set; }
 
         public string SiteCity { get; set; }
@@ -41,6 +47,9 @@ namespace PKonnect.Models.Common
         public DateTimeOffset ModifiedDate { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public bool IsActive { get; set; }
+
+        //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+
 
     }
 }
