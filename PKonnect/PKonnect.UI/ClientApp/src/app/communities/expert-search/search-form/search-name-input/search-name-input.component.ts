@@ -16,16 +16,19 @@ export class SearchNameInputComponent implements OnInit {
   options: string[] = [];
   timeout = null;
 
-  constructor(private rest: RestService) {}
+  constructor(private rest: RestService) { }
 
   ngOnInit(): void {
+    // get all employees
+    this.getAllEmployeeNames();
+
     // filter from options
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => {
-          return this._filter(value);
-        })
-      );
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        return this._filter(value);
+      })
+    );
   }
 
   private _filter(value) {
@@ -44,20 +47,20 @@ export class SearchNameInputComponent implements OnInit {
   }
 
   filterName(value: string) {
-      clearTimeout(this.timeout);
-      if (!!value) {
-        this.timeout = setTimeout(() => {
-          this.rest.httpGet(`https://pkwebapi.azurewebsites.net/odata/Employees?$filter=contains(FullName,'${value}') eq true`).subscribe(
-            (data) => {
-              this.options = data.value.map((employee) => employee.FullName);
-              if (!this.options.length) {
-                this.log(value);
-              }
-            },
-            (error) => console.log(error)
-          );
-        }, 100);
-      }
+    clearTimeout(this.timeout);
+    if (!!value) {
+      this.timeout = setTimeout(() => {
+      }, 100);
+    }
+  }
+
+  getAllEmployeeNames() {
+    this.rest.httpGet(`https://pkwebapi.azurewebsites.net/odata/Employees`).subscribe(
+      (data) => {
+        this.options = data.value.map((employee) => employee.FullName);
+      },
+      (error) => console.log(error)
+    );
   }
 
 }

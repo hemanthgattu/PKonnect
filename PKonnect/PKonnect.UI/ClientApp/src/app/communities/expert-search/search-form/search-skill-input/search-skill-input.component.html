@@ -3,7 +3,7 @@
             <input type="text" #searchSkillInput placeholder="Search by skills" matInput [formControl]="myControl"
                 [matAutocomplete]="skills" (keyup.enter)="log(myControl.value); searchSkillInput.value=''">
             <mat-autocomplete autoActiveFirstOption #skills="matAutocomplete">
-                <mat-option #skillSearch *ngFor="let option of filteredOptions | async" [value]="option"
+                <mat-option #skillSearch *ngFor="let option of filteredOptions | async; let i = index;" [value]="option"
                     (onSelectionChange)="log(option); skillSearch.value=''">
                     {{option}}
                 </mat-option>
