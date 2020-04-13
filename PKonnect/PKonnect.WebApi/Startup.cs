@@ -23,6 +23,8 @@ using Microsoft.OData.Edm;
 using Microsoft.AspNet.OData.Builder;
 using PKonnect.Models.Common;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using PKonnect.Repositories.IRepositories.Common;
+using PKonnect.Repositories.Repositories.Common;
 
 namespace PKonnect.WebApi
 {
@@ -71,6 +73,8 @@ namespace PKonnect.WebApi
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
             services.AddScoped<ISkillsRepository, SkillsRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
 
             services.AddControllers();
 
