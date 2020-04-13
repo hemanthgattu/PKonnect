@@ -22,6 +22,7 @@ using Microsoft.AspNet.OData.Extensions;
 using Microsoft.OData.Edm;
 using Microsoft.AspNet.OData.Builder;
 using PKonnect.Models.Common;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 
 namespace PKonnect.WebApi
 {
@@ -66,8 +67,10 @@ namespace PKonnect.WebApi
 
             //     });
 
-             services.AddScoped<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
-             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
+            services.AddScoped<ISkillsRepository, SkillsRepository>();
 
             services.AddControllers();
 
@@ -79,11 +82,11 @@ namespace PKonnect.WebApi
             services.AddCors();
             services.AddOData();
 
-            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0) ;
+            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            
 
-            
+
+
         }
 
         //https://localhost:44314
@@ -92,7 +95,7 @@ namespace PKonnect.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(options =>
-            options.WithOrigins("https://localhost:44314")
+            options.WithOrigins("*")
             .AllowAnyHeader()
             .AllowAnyMethod());
 
@@ -105,7 +108,7 @@ namespace PKonnect.WebApi
 
             app.UseAuthentication();
 
-           app.UseRouting();
+            app.UseRouting();
 
             app.UseAuthorization();
 
@@ -114,14 +117,14 @@ namespace PKonnect.WebApi
                 endpoints.MapControllers();
             });
 
-            
+
 
             app.UseMvc(routeBuilder =>
             {
 
                 routeBuilder.EnableDependencyInjection();
                 routeBuilder.Expand().Select().Count().OrderBy().Filter();
-               routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
+                routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
 
         }
@@ -130,8 +133,35 @@ namespace PKonnect.WebApi
         public static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
+          
+
+
+         
+
             builder.EntitySet<Employee>("Employees");
+            builder.EntitySet<EmployeeSkill>("EmployeeSkills");
             builder.EntitySet<Skill>("Skills");
+
+
+
+
+
+
+
+
+
+            builder.EntitySet<Employee>(nameof(Employee));
+            {
+                var function = builder.Function("GetEmployeeDetails");
+                function.Parameter<string>("skillName");
+                function.Parameter<string>("employeeName");
+                //function.Parameter<string>("availability");
+                //function.Parameter<string>("role");
+                //function.Parameter<string>("location");
+                function.Returns<string>();
+
+            }
+
             return builder.GetEdmModel();
         }
     }

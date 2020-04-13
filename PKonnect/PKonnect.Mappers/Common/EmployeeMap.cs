@@ -10,7 +10,7 @@ namespace PKonnect.Mappers.Common
     {
         public EmployeeMap(EntityTypeBuilder<Employee> entityBuilder)
         {
-            entityBuilder.HasKey(t => t.Id);
+            entityBuilder.HasKey(t => t.EmployeeId);
             entityBuilder.Property(t => t.FirstName).IsRequired();
             entityBuilder.Property(t => t.LastName).IsRequired();
         }

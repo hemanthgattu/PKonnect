@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using PKonnect.Services.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNet.OData;
+using Microsoft.AspNet.OData.Routing;
 
 namespace PKonnect.WebApi.Controllers
 {
@@ -43,7 +44,7 @@ namespace PKonnect.WebApi.Controllers
 
             try
             {
-                var post =  _context.GetEmployee(id);
+                var post = _context.GetEmployee(id);
 
                 if (post == null)
                 {
@@ -58,69 +59,88 @@ namespace PKonnect.WebApi.Controllers
             }
         }
 
-        [HttpPost]
-        public  IActionResult Post([FromBody]Employee objEmployee)
+
+        //GET api/values
+        [HttpGet("GetEmployeeDetails")]
+        [ODataRoute("GetEmployeeDetails")]
+        public IQueryable<object> GetEmployeeDetails([FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri]string location)
+
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    objEmployee.CreatedDate = DateTime.Now;
-                    objEmployee.ModifiedDate = DateTime.Now;
-                    objEmployee.IsActive = true;
-                    var id =  _context.AddEmployee(objEmployee);
-                    if (id > 0)
-                    {
-                        return Ok(id);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    return BadRequest();
-                }
-
-            }
-
-            return BadRequest();
+            employeeName = null;// "Hemanth Gattu";
+            skillName = "Asp.Net,C#";
+            return _context.GetEmployeeDetails(skillName, employeeName, role, location);
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        #region commented code 
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int? id)
-        {
-            int result = 0;
 
-            if (id == null)
-            {
-                return BadRequest();
-            }
+        //[HttpPost]
+        //public IActionResult Post([FromBody]Employee objEmployee)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            objEmployee.CreatedDate = DateTime.Now;
+        //            objEmployee.ModifiedDate = DateTime.Now;
+        //            objEmployee.IsActive = true;
+        //            var id = _context.AddEmployee(objEmployee);
+        //            if (id > 0)
+        //            {
+        //                return Ok(id);
+        //            }
+        //            else
+        //            {
+        //                return NotFound();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
 
-            try
-            {
-                result =  _context.DeleteEmployee(id);
-                if (result == 0)
-                {
-                    return NotFound();
-                }
-                return Ok();
-            }
-            catch (Exception)
-            {
+        //            return BadRequest();
+        //        }
 
-                return BadRequest();
-            }
-        }
+        //    }
+
+        //    return BadRequest();
+        //}
+
+
+
+        //// PUT api/values/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        //// DELETE api/values/5
+        //[HttpDelete("{id}")]
+        //public IActionResult Delete(int? id)
+        //{
+        //    int result = 0;
+
+        //    if (id == null)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    try
+        //    {
+        //        result = _context.DeleteEmployee(id);
+        //        if (result == 0)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return Ok();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        return BadRequest();
+        //    }
+        //}
+
+        #endregion
     }
 
 }
