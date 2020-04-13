@@ -29,3 +29,4 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcorea
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.pdb
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.csprojAssemblyReference.cache
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Models\obj\Debug\netcoreapp3.1\PKonnect.Models.csproj.CoreCompileInputs.cache

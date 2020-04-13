@@ -42,3 +42,4 @@ C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcore
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.csproj.CopyComplete
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.dll
 C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.pdb
+C:\Users\hgattu\Desktop\Git\PKonnect\PKonnect\PKonnect.Context\obj\Debug\netcoreapp3.1\PKonnect.Context.csproj.CoreCompileInputs.cache
