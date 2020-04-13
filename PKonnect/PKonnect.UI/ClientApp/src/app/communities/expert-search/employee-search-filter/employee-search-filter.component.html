@@ -18,13 +18,9 @@
             (ngSubmit)="searchEmployees(searchEmployeeForm.value);">
             <div class="row">
                 <div class="col-lg-3">
-                    <!-- <input #skill (keydown.enter)="addSkill(skill.value); skill.value = ''" name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
-                        placeholder="Search by skill(s)" autocomplete="off" ngModel> -->
                     <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
                 </div>
                 <div class="col-lg-2">
-                    <!-- <input name="employeeName" type="text" class="form-control search-input" id="search-name"
-                        placeholder="Search by name" autocomplete="off" ngModel> -->
                     <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>    
                 </div>
                 <div class="col-lg-5">
