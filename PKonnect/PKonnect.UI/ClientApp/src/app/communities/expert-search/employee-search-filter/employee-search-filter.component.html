@@ -15,7 +15,7 @@
     <div *ngIf="!isMobile || toggleSearchForm" class="search-criteria">
         <form #searchEmployeeForm="ngForm"
             (keydown.enter)="$event.preventDefault()"
-            (ngSubmit)="searchEmployees(searchEmployeeForm.value); searchEmployeeForm.reset()">
+            (ngSubmit)="searchEmployees(searchEmployeeForm.value);">
             <div class="row">
                 <div class="col-lg-3">
                     <!-- <input #skill (keydown.enter)="addSkill(skill.value); skill.value = ''" name="searchSkill" type="text" class="form-control search-input form-input" id="search-skill"
