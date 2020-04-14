@@ -4,6 +4,9 @@ import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
 import { element } from 'protractor';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -18,315 +21,16 @@ export class EmployeeSearchFilterComponent implements OnInit {
   public faSlidersH = faSlidersH;
   public faTimes = faTimes;
   public faSearch = faSearch;
+
   private mobileWidth = 420;
-  public searchEmployeesRequest: SearchCriteria;
+  public searchEmployeesRequest: SearchCriteria = {};
   public searchSkills = [];
   public searchName = '';
   @Output() public employeeResponseEvent = new EventEmitter();
-  public searchResponse = [
-    {
-      id: 1,
-      firstName: 'Datta',
-      lastName: 'Gunturu',
-      fullName: 'Datta Gunturu',
-      gender: 'Male',
-      city: 'Omaha',
-      state: 'NE',
-      zipCode: 68116,
-      country: 'USA',
-      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
-      secondaryEmailAddress: null,
-      recordType: null,
-      reportsTo: 'Sridhar',
-      employeeID: 'ES000368',
-      category: null,
-      siteCity: 'Omaha',
-      siteState: 'NE',
-      employeeStatus: 'Available',
-      experienceInYears: 11,
-      employeeType: 'Full time',
-      employeeCountry: 'USA',
-      primarySkill: 'Microsoft Technologies',
-      title: null,
-      serviceLine: null,
-      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
-      createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true,
-      employeeSkills: [{
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Java',
-        skillRating: 4
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'JavaScript',
-        skillRating: 3
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Spring',
-        skillRating: 5
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'HTML',
-        skillRating: 2
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'CSS',
-        skillRating: 2
-      }
-      ]
-    },
-    {
-      id: 3,
-      firstName: 'Datta',
-      lastName: 'Gunturu',
-      fullName: 'Datta Gunturu',
-      gender: 'Male',
-      city: 'Omaha',
-      state: 'NE',
-      zipCode: 68116,
-      country: 'USA',
-      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
-      secondaryEmailAddress: null,
-      recordType: null,
-      reportsTo: 'Sridhar',
-      employeeID: 'ES000368',
-      category: null,
-      siteCity: 'Omaha',
-      siteState: 'NE',
-      employeeStatus: 'Available',
-      experienceInYears: 11,
-      employeeType: 'Full time',
-      employeeCountry: 'USA',
-      primarySkill: 'Microsoft Technologies',
-      title: null,
-      serviceLine: null,
-      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
-      createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true,
-      employeeSkills: [{
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Java',
-        skillRating: 5
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'JavaScript',
-        skillRating: 3
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Spring',
-        skillRating: 5
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'HTML',
-        skillRating: 2
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'CSS',
-        skillRating: 2
-      }
-      ]
-    },
-    {
-      id: 2,
-      firstName: 'Datta',
-      lastName: 'Gunturu',
-      fullName: 'Datta Gunturu',
-      gender: 'Male',
-      city: 'Omaha',
-      state: 'NE',
-      zipCode: 68116,
-      country: 'USA',
-      primaryEmailAddress: 'Gdattarajesh@pkglobal.com',
-      secondaryEmailAddress: null,
-      recordType: null,
-      reportsTo: 'Sridhar',
-      employeeID: 'ES000368',
-      category: null,
-      siteCity: 'Omaha',
-      siteState: 'NE',
-      employeeStatus: 'Available',
-      experienceInYears: 11,
-      employeeType: 'Full time',
-      employeeCountry: 'USA',
-      primarySkill: 'Microsoft Technologies',
-      title: null,
-      serviceLine: null,
-      modifiedDate: '2020-04-01T21:23:49.8666667+00:00',
-      createdDate: '2020-04-01T21:23:49.8666667+00:00',
-      isActive: true,
-      employeeSkills: [{
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Java',
-        skillRating: 5
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'JavaScript',
-        skillRating: 3
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'Spring',
-        skillRating: 5
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'HTML',
-        skillRating: 2
-      },
-      {
-        employeeSkillId: 1,
-        employeeId: 2,
-        skillId: 2,
-        bestFitSkill: true,
-        contact: null,
-        lastYearUsed: 2020,
-        submitted: true,
-        modifiedDate: '2020-04-08T12:05:32.7+00:00',
-        createdDate: '2020-04-08T12:05:32.7+00:00',
-        isActive: true,
-        skillName: 'CSS',
-        skillRating: 2
-      }
-      ]
-    }
-  ];
 
-  public roles = [
+  public roleControl = new FormControl();
+  public filteredRoleOptions: Observable<string[]>;
+  public roleOptions: string[] = [
     'Cloud Architect',
     'Cloud Consultant',
     'Cloud Product and Project Manager',
@@ -336,7 +40,9 @@ export class EmployeeSearchFilterComponent implements OnInit {
     'Cloud System Engineer'
   ];
 
-  public locations = [
+  public locationControl = new FormControl();
+  public filteredLocationOptions: Observable<string[]>;
+  public locationOptions: string[] = [
     'Fort Wayne, Indiana',
     'Anchorage, Alaska',
     'Baltimore, Maryland',
@@ -345,11 +51,53 @@ export class EmployeeSearchFilterComponent implements OnInit {
     'Miami, Florida'
   ];
 
+  public availabilityControl = new FormControl();
+  public filteredAvailabilityOptions: Observable<string[]>;
+  public availabilityOptions: string[] = [
+    'Available',
+    'Not Available',
+    'Partially Available'
+  ];
+
   constructor(private rest: RestService) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
+
+    this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._availabilityFilter(value))
+    );
+
+    this.filteredRoleOptions = this.roleControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._roleFilter(value))
+    );
+
+    this.filteredLocationOptions = this.locationControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._locationFilter(value))
+    );
   }
+
+  // _availabilityFilter
+  _availabilityFilter(value: string) {
+    const filterValue = value.toLowerCase();
+    return this.availabilityOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  // _roleFilter
+  _roleFilter(value: string) {
+    const filterValue = value.toLowerCase();
+    return this.roleOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  // _locationFilter
+  _locationFilter(value: string) {
+    const filterValue = value.toLowerCase();
+    return this.locationOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
+
 
   // Check width of the screen
   checkWidth(): boolean {
@@ -375,7 +123,6 @@ export class EmployeeSearchFilterComponent implements OnInit {
   // On Submit Filter Results
   searchEmployees(searchCriteria: SearchCriteria): void {
     this.toggleSearchForm = false;
-    this.searchEmployeesRequest = searchCriteria;
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.searchSkill = this.searchSkills;
     console.log(this.searchEmployeesRequest);
@@ -432,9 +179,26 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.searchName = message;
   }
 
+  setAvailability(option: string) {
+    console.log(option);
+    this.searchEmployeesRequest.availability = option;
+  }
+
+  setRole(option: string) {
+    console.log(option);
+    this.searchEmployeesRequest.role = option;
+  }
+
+  setLocation(option: string) {
+    console.log(option);
+    this.searchEmployeesRequest.location = option;
+  }
+
   onRoleKey(event: any) {
     console.log(event);
   }
 
-
+  reset(){
+    console.log('Reset please');
+  }
 }

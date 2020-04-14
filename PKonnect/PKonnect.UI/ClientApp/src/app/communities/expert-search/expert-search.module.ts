@@ -6,18 +6,19 @@ import { EmployeeSearchResultsComponent } from './employee-search-results/employ
 import { Routes, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
-import {MatChipsModule} from '@angular/material/chips';
-import {EmployeeModule} from 'src/app/shared/employee/employee.module';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatInputModule} from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { EmployeeModule } from 'src/app/shared/employee/employee.module';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SearchSkillInputComponent } from './search-form/search-skill-input/search-skill-input.component';
 import { SearchNameInputComponent } from './search-form/search-name-input/search-name-input.component';
 import { SharedModule } from '../../shared/shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const expertSearchRoutes: Routes = [
-  {path: '', component: ExpertSearchComponent}
+  { path: '', component: ExpertSearchComponent }
 ];
 
 @NgModule({
@@ -40,6 +41,7 @@ const expertSearchRoutes: Routes = [
     MatInputModule,
     MatFormFieldModule,
     SharedModule,
+    MatTooltipModule,
     RouterModule.forChild(expertSearchRoutes)
   ]
 })
