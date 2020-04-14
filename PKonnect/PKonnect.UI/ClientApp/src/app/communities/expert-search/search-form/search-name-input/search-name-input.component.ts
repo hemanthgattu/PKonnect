@@ -41,8 +41,13 @@ export class SearchNameInputComponent implements OnInit {
   }
 
   public log(value: string) {
-    if (!!value) {
       this.searchNameEvent.emit(value);
+  }
+
+  handleEmptyInput(event: any){
+    if (event.target.value === '') {
+      console.log('empty input');
+      this.log(undefined);
     }
   }
 

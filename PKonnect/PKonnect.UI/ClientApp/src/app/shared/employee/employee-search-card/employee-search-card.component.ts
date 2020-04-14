@@ -16,6 +16,8 @@ export class EmployeeSearchCardComponent implements OnInit {
   public faCheckCircle = faCheckCircle;
   public faMap = faMap;
   public faEnvelope = faEnvelope;
+  public displayPicture = 'https://prokarma001-my.sharepoint.com/User%20Photos/Profile%20Pictures/HGattu_prokarma_com_lThumb.jpg';
+
 
   constructor() { }
 
@@ -25,6 +27,13 @@ export class EmployeeSearchCardComponent implements OnInit {
   @Input()
   set employeeData(employee: any) {
     this.employee = employee;
+    this.setDisplayPicture(this.employee);
+  }
+
+  setDisplayPicture(employee: any) {
+    const userId = employee.email.split('@')[0];
+    // src="../../../../assets/avatars/male.png"
+    this.displayPicture = `https://prokarma001-my.sharepoint.com/User%20Photos/Profile%20Pictures/${userId}_prokarma_com_lThumb.jpg` || '../../../../assets/avatars/male.png';
   }
 
 }

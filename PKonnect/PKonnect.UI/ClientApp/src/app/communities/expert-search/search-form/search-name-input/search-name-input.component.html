@@ -1,7 +1,8 @@
 <form #searchNameForm>
         <mat-form-field>
             <input type="text" #searchNameInput placeholder="Search by name" matInput [formControl]="myControl"
-                [matAutocomplete]="name">
+                [matAutocomplete]="name" (keyup.enter)="log(myControl.value);"
+                (change)="handleEmptyInput($event)">
             <mat-autocomplete autoActiveFirstOption #name="matAutocomplete">
                 <mat-option #searchName *ngFor="let option of filteredOptions | async" [value]="option"
                     (onSelectionChange)="log(option)">

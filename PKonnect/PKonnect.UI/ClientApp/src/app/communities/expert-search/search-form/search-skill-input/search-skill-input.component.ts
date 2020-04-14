@@ -37,6 +37,7 @@ export class SearchSkillInputComponent implements OnInit {
   public log(value: string) {
     if (!!value && !this.selectedSkills.includes(value) && this.selectedSkills.length < 5) {
       this.selectedSkills.push(value);
+      console.log(value);
       this.searchSkillEvent.emit(this.selectedSkills);
     }
   }

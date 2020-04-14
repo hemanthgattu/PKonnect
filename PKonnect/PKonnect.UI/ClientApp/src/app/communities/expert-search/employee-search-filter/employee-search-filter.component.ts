@@ -3,6 +3,7 @@ import { faSlidersH, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -378,17 +379,40 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.searchSkill = this.searchSkills;
     console.log(this.searchEmployeesRequest);
-    const getEmployeesUrl = environment.employeeApi;
-    if (this.searchSkills.length > 0) {
-      this.rest.httpGet(getEmployeesUrl).subscribe(
-        (data) => {
-          this.employeeResponseEvent.emit(data);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+    const getEmployeesUrl = this.createEmployeeRequest(environment.employeeApi, this.searchEmployeesRequest, 1, 10);
+    this.rest.httpGet(getEmployeesUrl).subscribe(
+      (data) => {
+        this.employeeResponseEvent.emit(data);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
+  createEmployeeRequest(url: string, searchRequest: SearchCriteria, pageNumb: number, pageSize: number): string {
+    let finalUrl = url + '?';
+
+    if (searchRequest.searchSkill.length > 0) {
+      finalUrl += 'skillName=' + searchRequest.searchSkill.toString();
     }
+
+    if (!!searchRequest.employeeName) {
+      if (finalUrl.includes('?skillName')) {
+        finalUrl += '&employeeName=' + searchRequest.employeeName;
+      } else {
+        finalUrl += 'employeeName=' + searchRequest.employeeName;
+      }
+    }
+
+    if (finalUrl.includes('?skillName') || finalUrl.includes('?employeeName')) {
+      finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}`;
+    } else {
+      finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}`;
+    }
+
+    console.log(finalUrl);
+    return finalUrl;
   }
 
   addSkill(value: string) {

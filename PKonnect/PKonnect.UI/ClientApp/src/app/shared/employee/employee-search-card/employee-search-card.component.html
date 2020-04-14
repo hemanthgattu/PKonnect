@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-2 display-picture">
                     <div class="image">
-                        <img src="../../../../assets/avatars/male.png" alt="{{employee.gender}} Avatar">
+                        <img [src]="displayPicture" alt="{{employee.gender}} Avatar">
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -17,7 +17,10 @@
                         </div>
                         <div class="col-7">
                             <div class="row">
-                                <button type="button" class="btn btn-mentor">
+                                <button type="button" 
+                                class="btn btn-mentor"
+                                matTooltip="Feature Coming Soon..."
+                                matTooltipPosition="above">
                                     <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
                                     <span class="mentor-text">Mentor</span>
                                 </button>
@@ -48,7 +51,9 @@
                     <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
                     {{employee.city}}, {{employee.state}}
                 </span>
-                <span>
+                <span class = "employee-email"
+                matTooltip="{{employee.email}}"
+                matTooltipPosition="right">
                     <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
                     Email Invite
                 </span>
