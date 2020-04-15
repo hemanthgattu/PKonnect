@@ -52,7 +52,7 @@ namespace PKonnect.Models.Common
         public string SourceSystemId { get; set; }
         public string RoleName { get; set; }
         public string OnBenchReason { get; set; }
-        public long RoleId { get; set; }
+        public long EmployeeRoleId { get; set; }
         //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
 
 
