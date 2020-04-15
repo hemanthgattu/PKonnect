@@ -12,11 +12,11 @@ namespace PKonnect.WebApi.Controllers.Common
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RolesController : BaseApiController
+    public class ClientLocationController : BaseApiController
     {
-        private readonly IRoleRepository _context;
+        private readonly IClientLocationRepository _context;
 
-        public RolesController(IRoleRepository context)
+        public ClientLocationController(IClientLocationRepository context)
         {
             _context = context;
         }
@@ -24,10 +24,10 @@ namespace PKonnect.WebApi.Controllers.Common
         // GET api/values
         [HttpGet]
         [EnableQuery()]
-        [ProducesResponseType(typeof(Role), 200)]
-        public IQueryable<Role> Get()
+        [ProducesResponseType(typeof(ClientLocation), 200)]
+        public IQueryable<ClientLocation> Get()
         {
-            return _context.GetRoles();
+            return _context.GetLocations();
         }
 
         // GET api/values/5
@@ -41,7 +41,7 @@ namespace PKonnect.WebApi.Controllers.Common
 
             try
             {
-                var post = _context.GetRole(id);
+                var post = _context.GetLocation(id);
 
                 if (post == null)
                 {

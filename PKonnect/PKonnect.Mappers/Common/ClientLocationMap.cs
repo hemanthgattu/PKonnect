@@ -6,11 +6,11 @@ using System.Text;
 
 namespace PKonnect.Mappers.Common
 {
-    public class AddressMap
+    public class ClientLocationMap
     {
-        public AddressMap(EntityTypeBuilder<Address> entityBuilder)
+        public ClientLocationMap(EntityTypeBuilder<ClientLocation> entityBuilder)
         {
-            entityBuilder.HasKey(t => t.AddressId);
+            entityBuilder.HasKey(t => t.ClientLocationId);
         }
     }
 }

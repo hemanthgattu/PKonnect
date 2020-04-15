@@ -6,9 +6,9 @@ using System.Text;
 
 namespace PKonnect.Repositories.IRepositories.Common
 {
-    public interface IAddressRepository
+    public interface IClientLocationRepository
     {
-        IQueryable<Address> GetAddresses();
-        Address GetAddress(int? id);
+        IQueryable<ClientLocation> GetLocations();
+        ClientLocation GetLocation(int? id);
     }
 }

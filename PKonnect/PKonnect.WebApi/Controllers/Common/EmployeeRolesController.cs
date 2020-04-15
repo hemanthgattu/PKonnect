@@ -12,11 +12,11 @@ namespace PKonnect.WebApi.Controllers.Common
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AddressesController : BaseApiController
+    public class EmployeeRolesController : BaseApiController
     {
-        private readonly IAddressRepository _context;
+        private readonly IEmployeeRoleRepository _context;
 
-        public AddressesController(IAddressRepository context)
+        public EmployeeRolesController(IEmployeeRoleRepository context)
         {
             _context = context;
         }
@@ -24,10 +24,10 @@ namespace PKonnect.WebApi.Controllers.Common
         // GET api/values
         [HttpGet]
         [EnableQuery()]
-        [ProducesResponseType(typeof(Address), 200)]
-        public IQueryable<Address> Get()
+        [ProducesResponseType(typeof(EmployeeRole), 200)]
+        public IQueryable<EmployeeRole> Get()
         {
-            return _context.GetAddresses();
+            return _context.GetRoles();
         }
 
         // GET api/values/5
@@ -41,7 +41,7 @@ namespace PKonnect.WebApi.Controllers.Common
 
             try
             {
-                var post = _context.GetAddress(id);
+                var post = _context.GetRole(id);
 
                 if (post == null)
                 {

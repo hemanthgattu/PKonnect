@@ -73,8 +73,8 @@ namespace PKonnect.WebApi
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
             services.AddScoped<ISkillsRepository, SkillsRepository>();
-            services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IClientLocationRepository, ClientLocationRepository>();
+            services.AddScoped<IEmployeeRoleRepository, EmployeeRoleRepository>();
 
             services.AddControllers();
 
