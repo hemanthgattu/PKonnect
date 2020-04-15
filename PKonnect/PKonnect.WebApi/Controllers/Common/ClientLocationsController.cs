@@ -12,11 +12,11 @@ namespace PKonnect.WebApi.Controllers.Common
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientLocationController : BaseApiController
+    public class ClientLocationsController : BaseApiController
     {
         private readonly IClientLocationRepository _context;
 
-        public ClientLocationController(IClientLocationRepository context)
+        public ClientLocationsController(IClientLocationRepository context)
         {
             _context = context;
         }

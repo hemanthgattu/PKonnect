@@ -48,6 +48,11 @@ namespace PKonnect.Models.Common
         public DateTimeOffset CreatedDate { get; set; }
         public bool IsActive { get; set; }
 
+        public string SourceSystemName { get; set; }
+        public string SourceSystemId { get; set; }
+        public string RoleName { get; set; }
+        public string OnBenchReason { get; set; }
+        public long RoleId { get; set; }
         //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
 
 
