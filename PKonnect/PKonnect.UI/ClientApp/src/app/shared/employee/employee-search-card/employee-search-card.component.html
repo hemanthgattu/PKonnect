@@ -4,7 +4,9 @@
             <div class="row">
                 <div class="col-2 display-picture">
                     <div>
-                        <img class="image" [src]="displayPicture" alt="{{employee.gender}} Avatar">
+                        <img class="image" [src]="displayPicture" alt="Avatar"
+                            onerror="this.src='../../../../assets/avatars/male.png';"
+                            accept="image/x-png,image/gif,image/jpeg">
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -57,7 +59,8 @@
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills">
-                    <div class="col-6"><span class="skill-name">{{employeeSkill.textName | truncate:21:"..."}}</span></div>
+                    <div class="col-6"><span class="skill-name">{{employeeSkill.textName | truncate:21:"..."}}</span>
+                    </div>
                     <div class="col-6 employee-rating-bar">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"
