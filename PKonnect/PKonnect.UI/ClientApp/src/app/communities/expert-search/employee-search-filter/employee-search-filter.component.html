@@ -16,80 +16,60 @@
         <form #searchEmployeeForm="ngForm" (keydown.enter)="$event.preventDefault()"
             (ngSubmit)="searchEmployees(searchEmployeeForm.value);">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-2">
+                    <mat-form-field>
+                        <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
+                            [matAutocomplete]="role" (change)="handleEmptyInput($event, 'role')">
+                        <mat-autocomplete autoActiveFirstOption #role="matAutocomplete"
+                            (optionSelected)="setRole($event.option.value)">
+                            <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async" [value]="option"
+                                matTooltip="{{option}}" matTooltipPosition="right">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-2">
                     <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
                 </div>
                 <div class="col-lg-2">
                     <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
                 </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="btn-group">
-                                <mat-form-field>
-                                    <input type="text" #availabilityInput placeholder="Availability" matInput
-                                        [formControl]="availabilityControl" [matAutocomplete]="availability">
-                                    <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
-                                        (optionSelected)="setAvailability($event.option.value)">
-                                        <mat-option #availabilitySearch
-                                            *ngFor="let option of filteredAvailabilityOptions | async" [value]="option">
-                                            {{option}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="btn-group">
-                                <mat-form-field>
-                                    <input type="text" #roleInput placeholder="Role" matInput
-                                        [formControl]="roleControl" [matAutocomplete]="role">
-                                    <mat-autocomplete autoActiveFirstOption #role="matAutocomplete"
-                                        (optionSelected)="setRole($event.option.value)">
-                                        <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async"
-                                            [value]="option"
-                                            matTooltip="{{option}}"
-                                            matTooltipPosition="right">
-                                            {{option}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="btn-group">
-                                <!-- <mat-form-field>
-                                    <mat-label class="custom-mat-label">Location</mat-label>
-                                    <mat-select name="location" ngModel>
-                                        <mat-option *ngFor="let location of locations" value="{{location}}">{{location}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field> -->
-                                <mat-form-field>
-                                    <input type="text" #locationInput placeholder="Location" matInput
-                                        [formControl]="locationControl" [matAutocomplete]="location">
-                                    <mat-autocomplete autoActiveFirstOption #location="matAutocomplete"
-                                        (optionSelected)="setLocation($event.option.value)">
-                                        <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
-                                            [value]="option"
-                                            matTooltip="{{option}}"
-                                            matTooltipPosition="right">
-                                            {{option}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        
-                    </div>
+                <div class="col-lg-2">
+                    <mat-form-field>
+                        <input type="text" #availabilityInput placeholder="Resource Status" matInput
+                            [formControl]="availabilityControl" [matAutocomplete]="availability">
+                        <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
+                            (optionSelected)="setAvailability($event.option.value)">
+                            <mat-option #availabilitySearch *ngFor="let option of filteredAvailabilityOptions | async"
+                                [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
                 </div>
-                <div class="col-lg-1">
+
+                <div class="col-lg-2">
+                    <mat-form-field>
+                        <input type="text" #locationInput placeholder="Location" matInput
+                            [formControl]="locationControl" [matAutocomplete]="location">
+                        <mat-autocomplete autoActiveFirstOption #location="matAutocomplete"
+                            (optionSelected)="setLocation($event.option.value)">
+                            <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
+                                [value]="option">
+                                {{option}}
+                                <ngx-emoji [emoji]="{ id: 'santa', skin: 3 }" size="14"></ngx-emoji>
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-2">
                     <button type="submit" class="btn search-filter">Filter Results</button>
                     <!-- <input class="btn btn-primary" (click)="reset()">
-                        Reset
-                        <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="lg"></fa-icon>
-                </input> -->
-                <!-- <input type="button" class="btn btn-warning" value="Reset" (click)="searchEmployeeForm.reset()"> -->
+                            Reset
+                            <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="lg"></fa-icon>
+                    </input> -->
+                    <!-- <input type="button" class="btn btn-warning" value="Reset" (click)="searchEmployeeForm.reset()"> -->
                 </div>
             </div>
             <div class="row">

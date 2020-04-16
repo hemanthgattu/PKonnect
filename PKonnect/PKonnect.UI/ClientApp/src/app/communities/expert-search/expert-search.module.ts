@@ -16,6 +16,8 @@ import { SearchSkillInputComponent } from './search-form/search-skill-input/sear
 import { SearchNameInputComponent } from './search-form/search-name-input/search-name-input.component';
 import { SharedModule } from '../../shared/shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+
 
 const expertSearchRoutes: Routes = [
   { path: '', component: ExpertSearchComponent }
@@ -42,6 +44,7 @@ const expertSearchRoutes: Routes = [
     MatFormFieldModule,
     SharedModule,
     MatTooltipModule,
+    EmojiModule,
     RouterModule.forChild(expertSearchRoutes)
   ]
 })

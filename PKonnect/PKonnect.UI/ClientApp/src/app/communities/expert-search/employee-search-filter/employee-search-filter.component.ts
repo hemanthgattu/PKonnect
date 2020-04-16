@@ -30,39 +30,31 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   public roleControl = new FormControl();
   public filteredRoleOptions: Observable<string[]>;
-  public roleOptions: string[] = [
-    'Cloud Architect',
-    'Cloud Consultant',
-    'Cloud Product and Project Manager',
-    'Cloud Services Developer',
-    'Cloud Software and Network Engineer',
-    'Cloud System Administrator',
-    'Cloud System Engineer'
-  ];
+  public roleOptions: string[] = [];
 
   public locationControl = new FormControl();
   public filteredLocationOptions: Observable<string[]>;
   public locationOptions: string[] = [
-    'Fort Wayne, Indiana',
-    'Anchorage, Alaska',
-    'Baltimore, Maryland',
-    'Oklahoma City, Oklahoma',
-    'St. Louis, Missouri',
-    'Miami, Florida'
+    'USA',
+    'IND',
+    'ARG',
+    'MEX'
   ];
 
   public availabilityControl = new FormControl();
   public filteredAvailabilityOptions: Observable<string[]>;
   public availabilityOptions: string[] = [
-    'Available',
-    'Not Available',
-    'Partially Available'
+    'On Bench',
+    'On Project'
   ];
 
   constructor(private rest: RestService) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
+
+    this.getAllRoles();
+    // this.getAllLocations();
 
     this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
       startWith(''),
@@ -125,7 +117,6 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.searchSkill = this.searchSkills;
-    console.log(this.searchEmployeesRequest);
     const getEmployeesUrl = this.createEmployeeRequest(environment.employeeApi, this.searchEmployeesRequest, 1, 10);
     this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
@@ -140,19 +131,23 @@ export class EmployeeSearchFilterComponent implements OnInit {
   createEmployeeRequest(url: string, searchRequest: SearchCriteria, pageNumb: number, pageSize: number): string {
     let finalUrl = url + '?';
 
-    if (searchRequest.searchSkill.length > 0) {
-      finalUrl += 'skillName=' + searchRequest.searchSkill.toString();
-    }
-
-    if (!!searchRequest.employeeName) {
-      if (finalUrl.includes('?skillName')) {
-        finalUrl += '&employeeName=' + searchRequest.employeeName;
-      } else {
-        finalUrl += 'employeeName=' + searchRequest.employeeName;
+    for (const key in searchRequest) {
+      if (!!key && !!searchRequest[key] && finalUrl[finalUrl.length - 1] === '?') {
+        if (key !== 'searchSkill') {
+          finalUrl += `${key}=${searchRequest[key]}`;
+        } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
+          finalUrl += `${key}=${searchRequest[key].toString()}`;
+        }
+      } else if (!!key && !!searchRequest[key]) {
+        if (key !== 'searchSkill') {
+          finalUrl += `&${key}=${searchRequest[key]}`;
+        } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
+          finalUrl += `&${key}=${searchRequest[key].toString()}`;
+        }
       }
     }
 
-    if (finalUrl.includes('?skillName') || finalUrl.includes('?employeeName')) {
+    if (finalUrl[finalUrl.length - 1] !== '?') {
       finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}`;
     } else {
       finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}`;
@@ -160,6 +155,35 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
     console.log(finalUrl);
     return finalUrl;
+  }
+
+  getAllRoles(): void{
+    this.rest.httpGet('https://pkwebapi.azurewebsites.net/api/EmployeeRoles').subscribe(
+      (data) => {
+        this.roleOptions = data.map(role => role.roleName);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  getAllLocations(): void{
+    this.rest.httpGet('https://pkwebapi.azurewebsites.net/api/Addresses').subscribe(
+      (data) => {
+        this.locationOptions = data.map(location => `${location.city}, ${location.state}`);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  handleEmptyInput(event: any, key: string){
+    if (event.target.value === '') {
+      console.log('empty input');
+      this.searchEmployeesRequest[key] = undefined;
+    }
   }
 
   addSkill(value: string) {

@@ -7,6 +7,10 @@ $color-white: #FFFFFF;
     margin: 50px 0px 0px 0px;
 }
 
+.col-lg-2{
+    padding-right: 0px;
+}
+
 h1 {
     font-style: normal;
     font-weight: bold;
@@ -122,6 +126,12 @@ h1 {
     font-size: 14px;
     line-height: 22px;
     color: #202B34;
+
+    &:hover {
+        background-color: transparent;
+        cursor: pointer;
+        border: 1px solid #202B34;
+    }
 }
 
 ::ng-deep .fa-sm {
@@ -129,7 +139,7 @@ h1 {
 }
 
 .mat-form-field{
-    width: 90%;
+    width: 100%;
     height: 44px;
     background: $color-white;
     border: 1px solid #B5B5B5;

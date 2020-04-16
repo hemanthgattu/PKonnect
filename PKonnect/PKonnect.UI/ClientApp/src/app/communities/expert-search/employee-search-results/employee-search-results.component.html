@@ -1,4 +1,4 @@
-<div *ngIf="!!employeeSearchResults" class="employee-results">
+<div *ngIf="!!employeeSearchResults && employeeSearchResults.length > 0" class="employee-results">
     <div class="cards-nav">
         <div class="cards-count">
             <p class="showing-text">Showing 1 - {{(employeeSearchResults.length > 10) ? 10 : employeeSearchResults.length}} of {{employeeSearchResults.length}}</p>
