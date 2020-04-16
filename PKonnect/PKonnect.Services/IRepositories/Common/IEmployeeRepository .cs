@@ -9,7 +9,7 @@ namespace PKonnect.Services.Infrastructure
     public interface IEmployeeRepository
     {
         IQueryable<Employee> GetEmployees();
-        IQueryable<object> GetEmployeeDetails(string skillName, string employeeName, string role, string location);
+        IQueryable<object> GetEmployeeDetails(string skillName, string employeeName, string role, string location, int pageSize, int pageNumber);
         int DeleteEmployee(int? id);
         Employee GetEmployee(int? id);
         int AddEmployee(Employee employee);

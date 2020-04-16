@@ -9,29 +9,29 @@ using System.Text;
 
 namespace PKonnect.Repositories.Repositories.Common
 {
-    public class AddressRepository : IAddressRepository
+    public class ClientLocationRepository : IClientLocationRepository
     {
         private readonly PKonnectDataContext _pkonnectdatacontext;
 
-        public AddressRepository(PKonnectDataContext PKonnectDataContext)
+        public ClientLocationRepository(PKonnectDataContext PKonnectDataContext)
         {
             _pkonnectdatacontext = PKonnectDataContext;
         }
 
-        public IQueryable<Address> GetAddresses()
+        public IQueryable<ClientLocation> GetLocations()
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.Address.Where(address => address.IsActive).AsNoTracking();
+                return _pkonnectdatacontext.ClientLocation.Where(location => location.IsActive).AsNoTracking();
             }
 
             return null;
         }
 
-        public Address GetAddress(int? id)
+        public ClientLocation GetLocation(int? id)
         {
-            var address = _pkonnectdatacontext.Address.FirstOrDefault(b => b.AddressId == id);
-            return address;
+            var location = _pkonnectdatacontext.ClientLocation.FirstOrDefault(b => b.ClientLocationId == id);
+            return location;
         }
     }
 }

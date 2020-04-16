@@ -63,12 +63,13 @@ namespace PKonnect.WebApi.Controllers
         //GET api/values
         [HttpGet("GetEmployeeDetails")]
         [ODataRoute("GetEmployeeDetails")]
-        public IQueryable<object> GetEmployeeDetails([FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri]string location)
+        public IQueryable<object> GetEmployeeDetails([FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri]string location, [FromODataUri] int pageSize, [FromODataUri] int pageNumber)
 
         {
-            employeeName = null;// "Hemanth Gattu";
-            skillName = "Asp.Net,C#";
-            return _context.GetEmployeeDetails(skillName, employeeName, role, location);
+            // employeeName =  "Hemanth Gattu";
+            // skillName = "Java";
+            //role  = ""
+            return _context.GetEmployeeDetails(skillName, employeeName, role, location, pageSize, pageNumber);
         }
 
         #region commented code 

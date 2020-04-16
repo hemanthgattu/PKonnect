@@ -12,11 +12,11 @@ namespace PKonnect.WebApi.Controllers.Common
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AddressesController : BaseApiController
+    public class ClientLocationsController : BaseApiController
     {
-        private readonly IAddressRepository _context;
+        private readonly IClientLocationRepository _context;
 
-        public AddressesController(IAddressRepository context)
+        public ClientLocationsController(IClientLocationRepository context)
         {
             _context = context;
         }
@@ -24,10 +24,10 @@ namespace PKonnect.WebApi.Controllers.Common
         // GET api/values
         [HttpGet]
         [EnableQuery()]
-        [ProducesResponseType(typeof(Address), 200)]
-        public IQueryable<Address> Get()
+        [ProducesResponseType(typeof(ClientLocation), 200)]
+        public IQueryable<ClientLocation> Get()
         {
-            return _context.GetAddresses();
+            return _context.GetLocations();
         }
 
         // GET api/values/5
@@ -41,7 +41,7 @@ namespace PKonnect.WebApi.Controllers.Common
 
             try
             {
-                var post = _context.GetAddress(id);
+                var post = _context.GetLocation(id);
 
                 if (post == null)
                 {
