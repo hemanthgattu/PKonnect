@@ -57,10 +57,10 @@
                             (optionSelected)="setLocation($event.option.value)">
                             <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
                                 [value]="option">
+                                <span class="country-flag">
+                                        <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
+                                </span>
                                 {{option}}
-                                <!-- <span class="country-flag">
-                                        <ngx-emoji [emoji]="locationFlags[option]" size="18"></ngx-emoji>
-                                </span> -->
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
@@ -71,7 +71,8 @@
                             Reset
                             <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="lg"></fa-icon>
                     </input> -->
-                    <!-- <input type="button" class="btn btn-warning" value="Reset" (click)="searchEmployeeForm.reset()"> -->
+                    <!-- <input type="button" class="btn search-filter" value="Reset"
+                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();"> -->
                 </div>
             </div>
             <div class="row">

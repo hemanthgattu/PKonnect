@@ -2,7 +2,7 @@
 export interface SearchCriteria {
     searchSkill?: string[];
     employeeName?: string;
-    availability?: string;
+    resourceStatus?: string;
     role?: string;
     location?: string;
 }

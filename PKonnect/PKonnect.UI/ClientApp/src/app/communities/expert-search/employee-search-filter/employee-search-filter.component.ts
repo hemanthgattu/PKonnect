@@ -212,7 +212,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   setAvailability(option: string) {
     console.log(option);
-    this.searchEmployeesRequest.availability = option;
+    this.searchEmployeesRequest.resourceStatus = option;
   }
 
   setRole(option: string) {
@@ -227,6 +227,11 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   onRoleKey(event: any) {
     console.log(event);
+  }
+
+  emptySkills() {
+    this.searchSkills = [];
+
   }
 
   reset(){
