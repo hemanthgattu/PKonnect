@@ -41,6 +41,13 @@ export class EmployeeSearchFilterComponent implements OnInit {
     'MEX'
   ];
 
+  public locationFlags = {
+    USA: { id: 'flag-us' },
+    IND: { id: 'flag-in' },
+    ARG: { id: 'flag-ar' },
+    MEX: { id: 'flag-mx' }
+  };
+
   public availabilityControl = new FormControl();
   public filteredAvailabilityOptions: Observable<string[]>;
   public availabilityOptions: string[] = [
@@ -134,15 +141,15 @@ export class EmployeeSearchFilterComponent implements OnInit {
     for (const key in searchRequest) {
       if (!!key && !!searchRequest[key] && finalUrl[finalUrl.length - 1] === '?') {
         if (key !== 'searchSkill') {
-          finalUrl += `${key}=${searchRequest[key]}`;
+          finalUrl += `${key}=${encodeURIComponent(searchRequest[key])}`;
         } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
-          finalUrl += `${key}=${searchRequest[key].toString()}`;
+          finalUrl += `${key}=${encodeURIComponent(searchRequest[key].toString())}`;
         }
       } else if (!!key && !!searchRequest[key]) {
         if (key !== 'searchSkill') {
-          finalUrl += `&${key}=${searchRequest[key]}`;
+          finalUrl += `&${key}=${encodeURIComponent(searchRequest[key])}`;
         } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
-          finalUrl += `&${key}=${searchRequest[key].toString()}`;
+          finalUrl += `&${key}=${encodeURIComponent(searchRequest[key].toString())}`;
         }
       }
     }

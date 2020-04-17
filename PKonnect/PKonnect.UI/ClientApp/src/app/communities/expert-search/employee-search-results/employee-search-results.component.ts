@@ -21,4 +21,8 @@ export class EmployeeSearchResultsComponent implements OnInit {
     this.employeeSearchResults = searchResult;
   }
 
+  viewMore() {
+    console.log('Get more employees');
+  }
+
 }

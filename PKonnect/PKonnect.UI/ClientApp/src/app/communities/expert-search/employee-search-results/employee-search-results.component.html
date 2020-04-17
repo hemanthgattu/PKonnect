@@ -24,4 +24,7 @@
             <app-employee-search-card [employeeData]="employee"></app-employee-search-card>
         </div>
     </div>
+    <div class="view-more-employees" *ngIf="employeeSearchResults.length > 10">
+            <button type="submit" class="btn btn-major" (click)="viewMore()">View More</button>
+    </div>
 </div>

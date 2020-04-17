@@ -58,7 +58,9 @@
                             <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
                                 [value]="option">
                                 {{option}}
-                                <ngx-emoji [emoji]="{ id: 'santa', skin: 3 }" size="14"></ngx-emoji>
+                                <!-- <span class="country-flag">
+                                        <ngx-emoji [emoji]="locationFlags[option]" size="18"></ngx-emoji>
+                                </span> -->
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
