@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { startWith, map, debounce, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-search-skill-input',
@@ -17,7 +18,10 @@ export class SearchSkillInputComponent implements OnInit {
   options: string[] = [];
   selectedSkills = [];
 
-  constructor(private rest: RestService) {}
+  constructor(
+    private rest: RestService,
+    private snackBar: MatSnackBar
+    ) {}
 
   ngOnInit(): void {
     // get skills
@@ -37,8 +41,11 @@ export class SearchSkillInputComponent implements OnInit {
   public log(value: string) {
     if (!!value && !this.selectedSkills.includes(value) && this.selectedSkills.length < 5) {
       this.selectedSkills.push(value);
-      console.log(value);
       this.searchSkillEvent.emit(this.selectedSkills);
+    } else if (this.selectedSkills.length === 5) {
+      this.snackBar.open('Cant add more than 5 skills', undefined , { panelClass: 'snack-bar-warning' });
+    } else if (this.selectedSkills.includes(value)) {
+      this.snackBar.open('Skill already added to search', undefined , { panelClass: 'snack-bar-warning' });
     }
   }
 
@@ -50,18 +57,5 @@ export class SearchSkillInputComponent implements OnInit {
         (error) => console.log(error)
       );
   }
-
-  /*
-  filterSkills(value: string) {
-      console.log(value);
-      this.rest.httpGet(`https://pkwebapi.azurewebsites.net/odata/Skills?$filter=contains(TextName,'${value}') eq true`).subscribe(
-        (data) => {
-          this.options = data.value.map((skill) => skill.TextName);
-          console.log(this.options);
-        },
-        (error) => console.log(error)
-      );
-  }
-  */
 
 }

@@ -51,7 +51,7 @@ export class EmployeeSearchCardComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    this.snackBar.open('Email Copied to Clipboard');
+    this.snackBar.open('Email Copied to Clipboard', undefined , { panelClass: 'snack-bar-success' });
   }
 }
 

@@ -2,6 +2,7 @@ $logo-color-lg: 4%;
 $logo-color-md: 5%;
 $logo-color-1100: 6%;
 $logo-color-950: 7%;
+$logo-color-420: 17%;
 
 
 .navbar{
@@ -29,6 +30,13 @@ $logo-color-950: 7%;
         background: -moz-linear-gradient(left,  #C70000 0%, #C70000 $logo-color-950, #222B33 $logo-color-950); /* FF3.6-15 */
         background: -webkit-linear-gradient(left,  #C70000 0%,#C70000 $logo-color-950,#222B33 $logo-color-950); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to right,  #C70000 0%,#C70000 $logo-color-950,#222B33 $logo-color-950); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
+    } 
+
+    @media screen and (max-width: 420px) {
+        background: -moz-linear-gradient(left,  #C70000 0%, #C70000 $logo-color-420, #222B33 $logo-color-420); /* FF3.6-15 */
+        background: -webkit-linear-gradient(left,  #C70000 0%,#C70000 $logo-color-420,#222B33 $logo-color-420); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right,  #C70000 0%,#C70000 $logo-color-420,#222B33 $logo-color-420); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 */
     } 
 

@@ -17,6 +17,7 @@ import { SearchNameInputComponent } from './search-form/search-name-input/search
 import { SharedModule } from '../../shared/shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 
 const expertSearchRoutes: Routes = [
@@ -45,7 +46,18 @@ const expertSearchRoutes: Routes = [
     SharedModule,
     MatTooltipModule,
     EmojiModule,
+    MatSnackBarModule,
     RouterModule.forChild(expertSearchRoutes)
+  ],
+  providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 2500,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      }
+    }
   ]
 })
 export class ExpertSearchModule { }

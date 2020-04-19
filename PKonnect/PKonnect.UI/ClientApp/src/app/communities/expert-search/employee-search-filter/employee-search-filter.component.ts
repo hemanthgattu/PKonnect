@@ -3,10 +3,10 @@ import { faSlidersH, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
-import { element } from 'protractor';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -55,7 +55,10 @@ export class EmployeeSearchFilterComponent implements OnInit {
     'On Project'
   ];
 
-  constructor(private rest: RestService) { }
+  constructor(
+    private rest: RestService,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
@@ -127,6 +130,9 @@ export class EmployeeSearchFilterComponent implements OnInit {
     const getEmployeesUrl = this.createEmployeeRequest(environment.employeeApi, this.searchEmployeesRequest, 1, 10);
     this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
+        if (data.length <= 0) {
+          this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
+        }
         this.employeeResponseEvent.emit(data);
       },
       (error) => {

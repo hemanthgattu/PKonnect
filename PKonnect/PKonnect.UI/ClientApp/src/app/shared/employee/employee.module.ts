@@ -24,8 +24,7 @@ import { SharedModule } from '../shared/shared.module';
       useValue: {
         duration: 2500,
         horizontalPosition: 'right',
-        verticalPosition: 'top',
-        panelClass: ['snack-bar-success']
+        verticalPosition: 'top'
       }
     }
   ]
