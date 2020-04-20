@@ -75,6 +75,7 @@ namespace PKonnect.WebApi
             services.AddScoped<ISkillsRepository, SkillsRepository>();
             services.AddScoped<IClientLocationRepository, ClientLocationRepository>();
             services.AddScoped<IEmployeeRoleRepository, EmployeeRoleRepository>();
+            services.AddScoped<IIntacctLocationRepository, IntacctLocationRepository>();
 
             services.AddControllers();
 
@@ -143,6 +144,7 @@ namespace PKonnect.WebApi
             builder.EntitySet<EmployeeRole>("EmployeeRoles");
             builder.EntitySet<ClientLocation>("ClientLocations");
             builder.EntitySet<ClientLocation>("ClientLocations");
+            builder.EntitySet<IntacctLocation>("IntacctLocations");
 
 
             builder.EntitySet<Employee>(nameof(Employee));
