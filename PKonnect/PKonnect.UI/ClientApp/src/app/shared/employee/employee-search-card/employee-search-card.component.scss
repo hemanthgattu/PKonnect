@@ -3,14 +3,14 @@
     background: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
-    height: 190px;
+    height: 210px;
 
     @media screen and (max-width: 1200px) {
         height: 230px;
     }
 
     @media screen and (max-width: 980px) {
-        height: 280px;
+        height: 300px;
     }
 
     @media screen and (max-width: 445px) {
@@ -21,22 +21,25 @@
         height: 340px;
     }
     @media screen and (max-width: 390px) {
-        height: 430px;
+        height: 390px;
     }
 }
 
-.display-picture{
-    margin: auto;
+.display-picture {
+    margin-top: 20px;
+
+    @media screen and (max-width: 431px) {
+        margin-top: 10px;
+    }
 }
 
 .image {
     border-radius: 50%;
     border: 3px solid #D8AA3A;
-    margin: 10px;
     width: 100px;
     height: 100px;
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 992px) {
         margin: 7px;
         width: 80px;
         height: 80px;
@@ -45,6 +48,7 @@
 
 .employee-details {
     padding-top: 10px;
+    padding-left: 30px;
 }
 
 .employee-full-name{
@@ -118,33 +122,48 @@
     font-size: 15px;
 }
 
-.employee-minor-details{
+.employee-minor-details {
     margin-right: 10px;
-    color: #202B34;
     float: right;
-    span {
-        margin-left: 15px;
-        margin-top: 5px;
+
+    .employee-minor-details-element {
+        margin-left: 10px;
     }
-    @media screen and (max-width: 767px) {
-        margin-top: 10px;
-        margin-left: 30px;
-        float: left;
+
+    @media screen and (max-width: 445px) {
+        float: center;
+        margin: 0px;
+
+        .employee-minor-details-element {
+            margin: 10px 30px 0px 30px;
+        }
     }
+
 }
 
 .employee-skills-display {
-    margin: 35px 10px 0px 0px;
 
+    margin-top: 25px;
+    
     .employee-skill-display {
-        margin-top: 5px;
+        padding: 10px 10px 0px 0px;                
+
+        @media screen and (max-width: 450px) {
+            padding: 10px 20px 0px 30px;
+        }
     }
+
+    
     .skill-name {
-        float: right;
+        text-align: right;
         font-style: normal;
         font-weight: normal;
         font-size: 14px;
         color: #000000;
+
+        @media screen and (max-width: 450px) {
+            text-align: left;
+        }
     }
 
     .employee-rating-bar{
@@ -159,20 +178,6 @@
 
     .progress {
         height: 11px !important;
-    }
-
-    @media screen and (max-width: 1200px) {
-        margin-top: 60px;
-        margin-right: 80px;
-    }
-
-    @media screen and (max-width: 994px) {
-        margin-top: 60px;
-       margin-left: 20px;
-    }
-
-    @media screen and (max-width: 767px) {
-        margin-top: 40px;
     }
 
 }
@@ -193,4 +198,5 @@
     background-color: #28a745;
     color: #ffffff;
 }
+
 

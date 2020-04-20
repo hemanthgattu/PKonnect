@@ -2,21 +2,20 @@
     <div class="row">
         <div class="col-md-7">
             <div class="row">
-                <div class="col-2 display-picture">
+                <div class="col-3 display-picture">
                     <div>
-                        <img class="image" [src]="displayPicture" alt="Avatar"
+                        <img class="image mx-auto my-auto d-block" [src]="displayPicture" alt="Avatar"
                             onerror="this.src='../../../../assets/avatars/male.png';"
                             accept="image/x-png,image/gif,image/jpeg">
                     </div>
                 </div>
-                <div class="col-1"></div>
                 <div class="col-9 employee-details">
-                    <div class="row">
-                        <div class="col-12">
-                            <span class="employee-full-name">{{employee.fullName}}</span><br>
-                            <span class="employee-role">{{employee.role}}</span>
-                        </div>
-                        <!-- <div class="col-5">
+
+
+                    <span class="employee-full-name">{{employee.fullName}}</span><br>
+                    <span class="employee-role">{{employee.role}}</span>
+
+                    <!-- <div class="col-5">
                             <div class="row">
                                 <button type="button" class="btn btn-mentor" matTooltip="Feature Coming Soon..."
                                     matTooltipPosition="above">
@@ -29,7 +28,7 @@
                                 </button>
                             </div>
                         </div> -->
-                    </div>
+
                     <div class="row employee-description">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
                             sequi ipsam consequatur, distinctio ut?</p>
@@ -41,25 +40,34 @@
         </div>
         <div class="col-md-5 employee-skills">
             <div class="row employee-minor-details">
-                <span *ngIf="true" class="employee-assignment">
-                    <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
-                        [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
-                    <strong> Available for Assignment</strong>
-                </span>
-                <span class="employee-location" *ngIf="!!employee.city || !!employee.state">
-                    <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
-                    <span *ngIf="!!employee.city" class="employee-city">{{employee.city}}</span>
-                    <span *ngIf="!!employee.state" class="employee-state">, {{employee.state}}</span>
-                </span>
-                <span class="employee-email" matTooltip="Click to copy Email" matTooltipPosition="right"
-                    (click)="copyEmailToClipboard(employee.email)">
-                    <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
-                    Email
-                </span>
+                <div class="employee-minor-details-element">
+                    <span *ngIf="true" class="employee-assignment">
+                        <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
+                            [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
+                        <strong> Available for Assignment</strong>
+                    </span>
+                </div>
+                <div class="employee-minor-details-element">
+                    <span class="employee-location" *ngIf="!!employee.city || !!employee.state">
+                        <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
+                        <span *ngIf="!!employee.city" class="employee-city">{{employee.city}}</span>
+                        <span *ngIf="!!employee.state" class="employee-state">, {{employee.state}}</span>
+                    </span>
+                </div>
+                <div class="employee-minor-details-element">
+                    <span class="employee-email" matTooltip="Click to copy Email" matTooltipPosition="right"
+                        (click)="copyEmailToClipboard(employee.email)">
+                        <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
+                        Email
+                    </span>
+                </div>
+
+
+
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills">
-                    <div class="col-6"><span class="skill-name">{{employeeSkill.textName | truncate:21:"..."}}</span>
+                    <div class="col-6 skill-name"><span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
                     <div class="col-6 employee-rating-bar">
                         <div class="progress">
