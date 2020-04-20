@@ -137,21 +137,12 @@ namespace PKonnect.WebApi
         public static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-          
-
-
-         
-
             builder.EntitySet<Employee>("Employees");
             builder.EntitySet<EmployeeSkill>("EmployeeSkills");
             builder.EntitySet<Skill>("Skills");
-
-
-
-
-
-
-
+            builder.EntitySet<EmployeeRole>("EmployeeRoles");
+            builder.EntitySet<ClientLocation>("ClientLocations");
+            builder.EntitySet<ClientLocation>("ClientLocations");
 
 
             builder.EntitySet<Employee>(nameof(Employee));
