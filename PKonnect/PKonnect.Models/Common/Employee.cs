@@ -58,6 +58,8 @@ namespace PKonnect.Models.Common
 
         public string ResourceStatus { get; set; }
         //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public string IntacctLocationName { get; set; }
+        public string IntacctLocationId { get; set; }
 
 
     }
