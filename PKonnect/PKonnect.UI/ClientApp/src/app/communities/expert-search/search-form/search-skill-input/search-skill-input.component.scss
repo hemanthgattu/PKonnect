@@ -26,3 +26,8 @@ $color-white: #FFFFFF;
 ::ng-deep .mat-form-field-underline {
     display: none;
 }
+
+::ng-deep .mat-snack-bar-container.snack-bar-warning {
+    background-color: #ffc107;
+    color: #212529;
+}

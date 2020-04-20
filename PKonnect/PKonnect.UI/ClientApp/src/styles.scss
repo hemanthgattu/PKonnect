@@ -30,5 +30,32 @@ $pk-connections-theme: mat-light-theme($pk-connections-primary, $pk-connections-
 
 @import "~bootstrap/dist/css/bootstrap.css";
 
+$break-small: 510px;
+$color-black-normal: #202B34;
+$color-black-hover: #000000;
+$color-white: #FFFFFF;
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #E5E5E5; }
+
+::ng-deep .mat-snack-bar-container.snack-bar-success {
+    background-color: green($color: white);
+    color: black;
+}
+
+.btn-major {
+    width: 149px;
+    height: 44px;
+    background: $color-black-normal;
+    border-radius: 4px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    color: $color-white;
+    margin: 5px 5px 5px 0px;
+    &:hover {
+        background: $color-black-hover;
+    }
+}

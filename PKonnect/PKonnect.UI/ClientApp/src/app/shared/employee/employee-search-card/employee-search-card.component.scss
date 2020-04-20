@@ -3,13 +3,33 @@
     background: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
+    height: 190px;
+
+    @media screen and (max-width: 1200px) {
+        height: 230px;
+    }
+
+    @media screen and (max-width: 980px) {
+        height: 280px;
+    }
+
+    @media screen and (max-width: 445px) {
+        height: 300px;
+    }
+
+    @media screen and (max-width: 431px) {
+        height: 340px;
+    }
+    @media screen and (max-width: 390px) {
+        height: 430px;
+    }
 }
 
 .display-picture{
     margin: auto;
 }
 
-img {
+.image {
     border-radius: 50%;
     border: 3px solid #D8AA3A;
     margin: 10px;
@@ -114,7 +134,7 @@ img {
 }
 
 .employee-skills-display {
-    margin: 30px 10px 0px 0px;
+    margin: 35px 10px 0px 0px;
 
     .employee-skill-display {
         margin-top: 5px;
@@ -160,3 +180,17 @@ img {
 .employee-email{
     cursor: pointer;
 }
+
+.employee-state{
+    margin-left: 0px !important;
+}
+
+.employee-city{
+    margin-left: 5px !important;
+}
+
+::ng-deep .mat-snack-bar-container.snack-bar-success {
+    background-color: #28a745;
+    color: #ffffff;
+}
+

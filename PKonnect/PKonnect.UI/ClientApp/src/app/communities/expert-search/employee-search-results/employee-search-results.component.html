@@ -1,4 +1,4 @@
-<div *ngIf="!!employeeSearchResults" class="employee-results">
+<div *ngIf="!!employeeSearchResults && employeeSearchResults.length > 0" class="employee-results">
     <div class="cards-nav">
         <div class="cards-count">
             <p class="showing-text">Showing 1 - {{(employeeSearchResults.length > 10) ? 10 : employeeSearchResults.length}} of {{employeeSearchResults.length}}</p>
@@ -23,5 +23,8 @@
         <div class="employee-card" *ngFor="let employee of employeeSearchResults">
             <app-employee-search-card [employeeData]="employee"></app-employee-search-card>
         </div>
+    </div>
+    <div class="view-more-employees" *ngIf="employeeSearchResults.length > 10">
+            <button type="submit" class="btn btn-major" (click)="viewMore()">View More</button>
     </div>
 </div>

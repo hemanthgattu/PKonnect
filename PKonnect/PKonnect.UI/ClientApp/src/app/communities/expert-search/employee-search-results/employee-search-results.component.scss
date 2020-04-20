@@ -1,4 +1,9 @@
-.cards-nav {
+
+  .employee-results {
+    margin-bottom: 100px;
+  }
+
+  .cards-nav {
     display: inline-block; 
     width: 100%;
   }
@@ -24,4 +29,10 @@
 
   .sort-by-text{
       padding-left: 8px;
+  }
+
+  .view-more-employees{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
   }
