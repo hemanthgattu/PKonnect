@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
+import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -17,6 +18,7 @@ import { SearchNameInputComponent } from '../search-form/search-name-input/searc
 export class EmployeeSearchFilterComponent implements OnInit {
 
   @ViewChild(SearchNameInputComponent) searchNameChildComp: SearchNameInputComponent;
+  @ViewChild(SearchSkillInputComponent) searchSkillChildComp: SearchSkillInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
@@ -128,7 +130,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
   searchEmployees(searchCriteria: SearchCriteria): void {
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.employeeName = this.searchName;
-    this.searchEmployeesRequest.searchSkill = this.searchSkills;
+    this.searchEmployeesRequest.skillName = this.searchSkills;
     const getEmployeesUrl = this.createEmployeeRequest(environment.employeeApi, this.searchEmployeesRequest, 1, 10);
     this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
@@ -148,15 +150,15 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
     for (const key in searchRequest) {
       if (!!key && !!searchRequest[key] && finalUrl[finalUrl.length - 1] === '?') {
-        if (key !== 'searchSkill') {
+        if (key !== 'skillName') {
           finalUrl += `${key}=${encodeURIComponent(searchRequest[key])}`;
-        } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
+        } else if (key === 'skillName' && searchRequest[key].length > 0) {
           finalUrl += `${key}=${encodeURIComponent(searchRequest[key].toString())}`;
         }
       } else if (!!key && !!searchRequest[key]) {
-        if (key !== 'searchSkill') {
+        if (key !== 'skillName') {
           finalUrl += `&${key}=${encodeURIComponent(searchRequest[key])}`;
-        } else if (key === 'searchSkill' && searchRequest[key].length > 0) {
+        } else if (key === 'skillName' && searchRequest[key].length > 0) {
           finalUrl += `&${key}=${encodeURIComponent(searchRequest[key].toString())}`;
         }
       }
@@ -244,6 +246,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.searchEmployeesRequest.location = undefined;
     this.searchName = undefined;
     this.searchNameChildComp.emptyName();
+    this.searchSkillChildComp.selectedSkills = [];
   }
 
   reset(){
