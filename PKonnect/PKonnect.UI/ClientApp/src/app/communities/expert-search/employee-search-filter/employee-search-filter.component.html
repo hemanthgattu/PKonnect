@@ -67,12 +67,17 @@
                         </mat-autocomplete>
                     </mat-form-field>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 filter-form-buttons">
+
                     <button type="submit" class="btn search-filter">Filter Results</button>
+                    <span class="reset-filters"
+                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
+                        Filters</span>
+
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <div class="skills">
                         <mat-chip-list>
                             <mat-chip *ngFor="let skill of searchSkills; let i = index;">
@@ -82,11 +87,6 @@
                             </mat-chip>
                         </mat-chip-list>
                     </div>
-                </div>
-                <div class="col-lg-2 reset-filters">
-                    <span class=""
-                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
-                        Filters</span>
                 </div>
             </div>
         </form>

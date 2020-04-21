@@ -9,6 +9,9 @@ $color-white: #FFFFFF;
 
 .col-lg-2{
     padding-right: 0px;
+    @media screen and (max-width: $break-small) {
+        padding-right: 15px;
+    }
 }
 
 h1 {
@@ -126,6 +129,7 @@ h1 {
     font-size: 14px;
     line-height: 22px;
     color: #202B34;
+    border: 1px solid #ffffff;
 
     &:hover {
         background-color: transparent;
@@ -167,6 +171,10 @@ h1 {
     color: #fff;
 }
 
+.filter-form-buttons{
+    text-align: center;
+}
+
 .reset-filters {
     font-family: Roboto;
     cursor: pointer;
@@ -176,9 +184,8 @@ h1 {
     line-height: 22px;
     padding-left: 0;
     color: #1B83B1;
-    text-align: center;
 
-    :hover{
+    &:hover{
         text-decoration: underline;
     }
 }
