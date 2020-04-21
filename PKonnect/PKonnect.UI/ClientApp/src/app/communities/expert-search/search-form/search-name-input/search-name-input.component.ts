@@ -32,30 +32,24 @@ export class SearchNameInputComponent implements OnInit {
   }
 
   private _filter(value) {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => {
-      if (option.toLowerCase().includes(filterValue)) {
-        return option;
-      }
-    });
-  }
-
-  public log(value: string) {
-      this.searchNameEvent.emit(value);
-  }
-
-  handleEmptyInput(event: any){
-    if (event.target.value === '') {
-      console.log('empty input');
-      this.log(undefined);
+    if (!!value) {
+      const filterValue = value.toLowerCase();
+      return this.options.filter(option => {
+        if (option.toLowerCase().includes(filterValue)) {
+          return option;
+        }
+      });
     }
   }
 
-  filterName(value: string) {
-    clearTimeout(this.timeout);
-    if (!!value) {
-      this.timeout = setTimeout(() => {
-      }, 100);
+  public log(value: string) {
+    this.searchNameEvent.emit(value);
+  }
+
+  handleEmptyInput(event: any) {
+    if (event.target.value === '') {
+      console.log('empty input');
+      this.log(undefined);
     }
   }
 
@@ -66,6 +60,12 @@ export class SearchNameInputComponent implements OnInit {
       },
       (error) => console.log(error)
     );
+  }
+
+  emptyName() {
+    console.log(this.myControl.value);
+    this.myControl.reset();
+    console.log(this.myControl.value);
   }
 
 }

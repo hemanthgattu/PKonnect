@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'search',
+    path: '',
     loadChildren: () => import('./communities/expert-search/expert-search.module').then(m => m.ExpertSearchModule) 
   },
   {
     path: '**',
-    redirectTo: '/search',
+    redirectTo: '/',
     pathMatch: 'full'
   }
 ];

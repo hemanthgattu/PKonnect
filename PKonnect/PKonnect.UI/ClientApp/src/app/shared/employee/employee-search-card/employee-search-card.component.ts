@@ -34,9 +34,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
   setDisplayPicture(employee: any) {
-    const userId = employee.email.split('@')[0];
-    // src="../../../../assets/avatars/male.png"
-    this.displayPicture = `https://prokarma001-my.sharepoint.com/User%20Photos/Profile%20Pictures/${userId}_prokarma_com_lThumb.jpg` || '../../../../assets/avatars/male.png';
+    this.displayPicture = `https://prokarma001.sharepoint.com/_layouts/15/userphoto.aspx?size=M&accountname=${employee.email}`;
   }
 
   copyEmailToClipboard(input: string) {

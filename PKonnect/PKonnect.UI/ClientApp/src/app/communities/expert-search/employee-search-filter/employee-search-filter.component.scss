@@ -166,3 +166,19 @@ h1 {
     background-color: #dc3545;
     color: #fff;
 }
+
+.reset-filters {
+    font-family: Roboto;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 0;
+    color: #1B83B1;
+    text-align: center;
+
+    :hover{
+        text-decoration: underline;
+    }
+}

@@ -38,7 +38,8 @@
                 <div class="col-lg-2">
                     <mat-form-field>
                         <input type="text" #availabilityInput placeholder="Resource Status" matInput
-                            [formControl]="availabilityControl" [matAutocomplete]="availability" (change)="handleEmptyInput($event, 'resourceStatus')">
+                            [formControl]="availabilityControl" [matAutocomplete]="availability"
+                            (change)="handleEmptyInput($event, 'resourceStatus')">
                         <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
                             (optionSelected)="setAvailability($event.option.value)">
                             <mat-option #availabilitySearch *ngFor="let option of filteredAvailabilityOptions | async"
@@ -52,13 +53,14 @@
                 <div class="col-lg-2">
                     <mat-form-field>
                         <input type="text" #locationInput placeholder="Location" matInput
-                            [formControl]="locationControl" [matAutocomplete]="location" (change)="handleEmptyInput($event, 'location')">
+                            [formControl]="locationControl" [matAutocomplete]="location"
+                            (change)="handleEmptyInput($event, 'location')">
                         <mat-autocomplete autoActiveFirstOption #location="matAutocomplete"
                             (optionSelected)="setLocation($event.option.value)">
                             <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
                                 [value]="option">
                                 <span class="country-flag">
-                                        <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
+                                    <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
                                 </span>
                                 {{option}}
                             </mat-option>
@@ -67,23 +69,24 @@
                 </div>
                 <div class="col-lg-2">
                     <button type="submit" class="btn search-filter">Filter Results</button>
-                    <!-- <input class="btn btn-primary" (click)="reset()">
-                            Reset
-                            <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="lg"></fa-icon>
-                    </input> -->
-                    <!-- <input type="button" class="btn search-filter" value="Reset"
-                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();"> -->
                 </div>
             </div>
             <div class="row">
-                <div class="skills">
-                    <mat-chip-list>
-                        <mat-chip *ngFor="let skill of searchSkills; let i = index;">
-                            {{skill}}
-                            <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
-                                (click)="removeSkill(i)"></fa-icon>
-                        </mat-chip>
-                    </mat-chip-list>
+                <div class="col-lg-10">
+                    <div class="skills">
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let skill of searchSkills; let i = index;">
+                                {{skill}}
+                                <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
+                                    (click)="removeSkill(i)"></fa-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+                <div class="col-lg-2 reset-filters">
+                    <span class=""
+                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
+                        Filters</span>
                 </div>
             </div>
         </form>

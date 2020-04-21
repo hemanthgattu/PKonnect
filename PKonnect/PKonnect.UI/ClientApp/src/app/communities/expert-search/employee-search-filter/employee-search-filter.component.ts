@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild } from '@angular/core';
 import { faSlidersH, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -15,6 +16,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class EmployeeSearchFilterComponent implements OnInit {
 
+  @ViewChild(SearchNameInputComponent) searchNameChildComp: SearchNameInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
@@ -237,7 +239,11 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   emptySkills() {
     this.searchSkills = [];
-
+    this.searchEmployeesRequest.resourceStatus = undefined;
+    this.searchEmployeesRequest.role = undefined;
+    this.searchEmployeesRequest.location = undefined;
+    this.searchName = undefined;
+    this.searchNameChildComp.emptyName();
   }
 
   reset(){
