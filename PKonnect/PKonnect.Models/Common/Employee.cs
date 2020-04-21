@@ -35,6 +35,8 @@ namespace PKonnect.Models.Common
 
         public string SiteCity { get; set; }
         public string SiteState { get; set; }
+
+        public string SiteZipCode { get; set; }
         public string EmployeeStatus { get; set; }
         public string ExperienceInYears { get; set; }
         public string EmployeeType { get; set; }
@@ -52,8 +54,12 @@ namespace PKonnect.Models.Common
         public string SourceSystemId { get; set; }
         public string RoleName { get; set; }
         public string OnBenchReason { get; set; }
-        public long EmployeeRoleId { get; set; }
+        public long? EmployeeRoleId { get; set; }
+
+        public string ResourceStatus { get; set; }
         //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public string IntacctLocationName { get; set; }
+        public long? IntacctLocationId { get; set; }
 
 
     }
