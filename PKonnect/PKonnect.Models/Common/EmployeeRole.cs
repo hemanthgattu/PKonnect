@@ -14,5 +14,6 @@ namespace PKonnect.Models.Common
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset ModifiedDate { get; set; }
         public Boolean IsActive { get; set; }
+        public string RoleDescription { get; set; }
     }
 }
