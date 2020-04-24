@@ -2,7 +2,7 @@
     <div class="title" id="title">
         <div class="row">
             <div class="col-8">
-                <h1>Find Experts</h1>
+                <h1>Find Role or Skills</h1>
             </div>
             <div class="col-4">
                 <div *ngIf="isMobile" class="slider" (click)="toggleSearch()">
@@ -43,8 +43,8 @@
                         <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
                             (optionSelected)="setAvailability($event.option.value)">
                             <mat-option #availabilitySearch *ngFor="let option of filteredAvailabilityOptions | async"
-                                [value]="option">
-                                {{option}}
+                                [value]="option.displayName">
+                                {{option.displayName}}
                             </mat-option>
                         </mat-autocomplete>
                     </mat-form-field>
@@ -69,7 +69,11 @@
                 </div>
                 <div class="col-lg-2 filter-form-buttons">
 
-                    <button type="submit" class="btn search-filter">Filter Results</button>
+                    <button type="submit" class="btn search-filter">
+                        <span *ngIf="!isFindingExperts">Filter Results</span>
+                        <span *ngIf="isFindingExperts">Finding Experts <fa-icon class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon></span>
+                        
+                    </button>
                     <span class="reset-filters"
                         (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
                         Filters</span>

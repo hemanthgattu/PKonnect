@@ -41,7 +41,7 @@
         <div class="col-md-5 employee-skills">
             <div class="row employee-minor-details">
                 <div class="employee-minor-details-element">
-                    <span *ngIf="true" class="employee-assignment">
+                    <span *ngIf="!employee.onProject" class="employee-assignment">
                         <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                             [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         <strong> Available for Assignment</strong>
@@ -70,7 +70,7 @@
                     <div class="col-6 skill-name"><span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
                     <div class="col-6 employee-rating-bar">
-                        <div class="progress">
+                        <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5" matTooltipPosition="right">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"
                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>

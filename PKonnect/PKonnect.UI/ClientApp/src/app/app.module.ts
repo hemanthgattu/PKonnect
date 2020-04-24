@@ -22,7 +22,7 @@ import { MsAdalAngular6Module } from 'microsoft-adal-angular6';
       tenant: '5786743f-b4c4-4f8e-978e-95d7ff2aef9d',
       clientId: '870244e3-2770-4ab1-84f3-fb91d35111e5',
       redirectUri: 'http://localhost:4200/',
-      //redirectUri: 'https://pkonnectui.azurewebsites.net/',
+      // redirectUri: 'https://pkonnectui.azurewebsites.net/',
       //endpoints: {
       //  'api application url': 'api application client id', // this is for feteching the access token  
       //},

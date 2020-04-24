@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild } from '@angular/core';
-import { faSlidersH, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSlidersH, faTimes, faSearch, faSpinner, fas } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
@@ -9,6 +9,7 @@ import { startWith, map } from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
 import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
+import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -22,14 +23,18 @@ export class EmployeeSearchFilterComponent implements OnInit {
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
+
   public faSlidersH = faSlidersH;
   public faTimes = faTimes;
   public faSearch = faSearch;
+  public faSpinner = faSpinner;
+  public fas = fas;
 
   private mobileWidth = 420;
   public searchEmployeesRequest: SearchCriteria = {};
   public searchSkills = [];
   public searchName = '';
+  public isFindingExperts = false;
   @Output() public employeeResponseEvent = new EventEmitter();
 
   public roleControl = new FormControl();
@@ -53,22 +58,30 @@ export class EmployeeSearchFilterComponent implements OnInit {
   };
 
   public availabilityControl = new FormControl();
-  public filteredAvailabilityOptions: Observable<string[]>;
-  public availabilityOptions: string[] = [
-    'On Bench',
-    'On Project'
+  public filteredAvailabilityOptions: Observable<any>;
+
+  public availabilityOptions = [
+    {
+      displayName: 'Available',
+      availabilityValue: 'On Bench'
+    },
+    {
+      displayName: 'On Project',
+      availabilityValue: 'On Project'
+    }
   ];
 
   constructor(
     private rest: RestService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adalSvc: MsAdalAngular6Service
     ) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
+    console.log('email: ' + this.adalSvc.LoggedInUserEmail);
 
     this.getAllRoles();
-    // this.getAllLocations();
 
     this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
       startWith(''),
@@ -89,7 +102,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
   // _availabilityFilter
   _availabilityFilter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.availabilityOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.availabilityOptions.filter(option => option.displayName.toLowerCase().indexOf(filterValue) === 0);
   }
 
   // _roleFilter
@@ -128,6 +141,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   // On Submit Filter Results
   searchEmployees(searchCriteria: SearchCriteria): void {
+    this.isFindingExperts = true;
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.skillName = this.searchSkills;
@@ -138,6 +152,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
           this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
         }
         this.employeeResponseEvent.emit(data);
+        this.isFindingExperts = false;
       },
       (error) => {
         console.error(error);
@@ -165,9 +180,9 @@ export class EmployeeSearchFilterComponent implements OnInit {
     }
 
     if (finalUrl[finalUrl.length - 1] !== '?') {
-      finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}`;
+      finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.adalSvc.LoggedInUserEmail}`;
     } else {
-      finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}`;
+      finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.adalSvc.LoggedInUserEmail}`;
     }
 
     console.log(finalUrl);
@@ -222,7 +237,11 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   setAvailability(option: string) {
     console.log(option);
-    this.searchEmployeesRequest.resourceStatus = option;
+    if (option === this.availabilityOptions[0].displayName) {
+      this.searchEmployeesRequest.resourceStatus = this.availabilityOptions[0].availabilityValue;
+    } else {
+      this.searchEmployeesRequest.resourceStatus = option;
+    }
   }
 
   setRole(option: string) {
