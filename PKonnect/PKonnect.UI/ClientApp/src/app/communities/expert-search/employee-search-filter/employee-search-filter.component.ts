@@ -79,10 +79,13 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
-    console.log('email: ' + this.adalSvc.LoggedInUserEmail);
 
     this.getAllRoles();
 
+    this.setFilteredOptions();
+  }
+
+  setFilteredOptions(): void {
     this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
       startWith(''),
       map(value => this._availabilityFilter(value))
@@ -266,6 +269,7 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.searchName = undefined;
     this.searchNameChildComp.emptyName();
     this.searchSkillChildComp.selectedSkills = [];
+    this.setFilteredOptions();
   }
 
   reset(){
