@@ -108,13 +108,13 @@ export class EmployeeSearchFilterComponent implements OnInit {
   // _roleFilter
   _roleFilter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.roleOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.roleOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   // _locationFilter
   _locationFilter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.locationOptions.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.locationOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 

@@ -35,7 +35,7 @@ export class SearchSkillInputComponent implements OnInit {
 
   private _filter(value) {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0 && !this.selectedSkills.includes(option));
+    return this.options.filter(option => option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option));
   }
 
   public log(value: string) {
