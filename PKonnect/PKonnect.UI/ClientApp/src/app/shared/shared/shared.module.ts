@@ -5,6 +5,7 @@ import { RestService } from './services/rest/rest.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
   imports: [
     CommonModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatTooltipModule
   ],
   exports: [NavBarComponent, TruncatePipe],
   providers: [ RestService ]

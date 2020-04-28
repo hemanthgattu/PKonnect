@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { startWith, map, debounce, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
+import { environment } from '../../../../../environments/environment';
+
 @Component({
   selector: 'app-search-name-input',
   templateUrl: './search-name-input.component.html',
@@ -54,9 +56,9 @@ export class SearchNameInputComponent implements OnInit {
   }
 
   getAllEmployeeNames() {
-    this.rest.httpGet(`https://pkwebapi.azurewebsites.net/odata/Employees`).subscribe(
+    this.rest.httpGet(`${environment.communitiesApi}/Employees`).subscribe(
       (data) => {
-        this.options = data.value.map((employee) => employee.FullName);
+        this.options = data.map((employee) => employee.fullName);
       },
       (error) => console.log(error)
     );

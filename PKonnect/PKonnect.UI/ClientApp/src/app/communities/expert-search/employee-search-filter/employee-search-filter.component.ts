@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
 import { faSlidersH, faTimes, faSearch, faSpinner, fas } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
@@ -6,23 +6,25 @@ import { environment } from '../../../../environments/environment';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
 import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-employee-search-filter',
   templateUrl: './employee-search-filter.component.html',
   styleUrls: ['./employee-search-filter.component.scss']
 })
-export class EmployeeSearchFilterComponent implements OnInit {
+export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   @ViewChild(SearchNameInputComponent) searchNameChildComp: SearchNameInputComponent;
   @ViewChild(SearchSkillInputComponent) searchSkillChildComp: SearchSkillInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
+  private subs = new SubSink();
 
   public faSlidersH = faSlidersH;
   public faTimes = faTimes;
@@ -148,8 +150,9 @@ export class EmployeeSearchFilterComponent implements OnInit {
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.skillName = this.searchSkills;
-    const getEmployeesUrl = this.createEmployeeRequest(environment.employeeApi, this.searchEmployeesRequest, 1, 10);
-    this.rest.httpGet(getEmployeesUrl).subscribe(
+    const filterResultsURL = `${environment.communitiesApi}/Employees/GetEmployeeDetails`;
+    const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, 1, 10);
+    this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
         if (data.length <= 0) {
           this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
@@ -159,8 +162,10 @@ export class EmployeeSearchFilterComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
+        this.isFindingExperts = false;
       }
-    );
+    ));
   }
 
   createEmployeeRequest(url: string, searchRequest: SearchCriteria, pageNumb: number, pageSize: number): string {
@@ -193,25 +198,25 @@ export class EmployeeSearchFilterComponent implements OnInit {
   }
 
   getAllRoles(): void{
-    this.rest.httpGet('https://pkwebapi.azurewebsites.net/api/EmployeeRoles').subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/EmployeeRoles`).subscribe(
       (data) => {
         this.roleOptions = data.map(role => role.roleName);
       },
       (error) => {
         console.log(error);
       }
-    );
+    ));
   }
 
   getAllLocations(): void{
-    this.rest.httpGet('https://pkwebapi.azurewebsites.net/api/Addresses').subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Addresses`).subscribe(
       (data) => {
         this.locationOptions = data.map(location => `${location.city}, ${location.state}`);
       },
       (error) => {
         console.log(error);
       }
-    );
+    ));
   }
 
   handleEmptyInput(event: any, key: string){
@@ -274,5 +279,9 @@ export class EmployeeSearchFilterComponent implements OnInit {
 
   reset(){
     console.log('Reset please');
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

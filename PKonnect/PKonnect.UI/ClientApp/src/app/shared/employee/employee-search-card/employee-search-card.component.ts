@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-search-card',

@@ -16,7 +16,7 @@
         <form #searchEmployeeForm="ngForm" (keydown.enter)="$event.preventDefault()"
             (ngSubmit)="searchEmployees(searchEmployeeForm.value);">
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <mat-form-field>
                         <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
                             [matAutocomplete]="role" (change)="handleEmptyInput($event, 'role')">
@@ -50,7 +50,7 @@
                     </mat-form-field>
                 </div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-1">
                     <mat-form-field>
                         <input type="text" #locationInput placeholder="Location" matInput
                             [formControl]="locationControl" [matAutocomplete]="location"
@@ -59,7 +59,7 @@
                             (optionSelected)="setLocation($event.option.value)">
                             <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
                                 [value]="option">
-                                <span class="country-flag">
+                                <span>
                                     <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
                                 </span>
                                 {{option}}
@@ -74,6 +74,7 @@
                         <span *ngIf="isFindingExperts">Finding Experts <fa-icon class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon></span>
                         
                     </button>
+                    
                     <span class="reset-filters"
                         (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
                         Filters</span>
