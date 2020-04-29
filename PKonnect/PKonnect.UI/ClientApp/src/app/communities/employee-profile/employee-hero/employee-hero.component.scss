@@ -1,0 +1,126 @@
+$small-screen: 500px;
+$medium-screen: 900px;
+
+.employee-hero {
+  padding: 60px 50px;
+}
+
+.image {
+  border-radius: 50%;
+  border: 8px solid #d8aa3a;
+  width: 230px;
+  height: 230px;
+  background-color: #fff;
+
+  @media screen and (max-width: $medium-screen) {
+    border: 5px solid #d8aa3a;
+    width: 180px;
+    height: 180px;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    border: 3px solid #d8aa3a;
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.employee-general {
+  padding-left: 50px;
+
+  @media screen and (max-width: $small-screen) {
+    padding-left: 0px;
+  }
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 82px;
+  margin: 0px;
+  color: #ffffff;
+
+  @media screen and (max-width: $small-screen) {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    color: #202b34;
+    margin-top: 10px;
+  }
+}
+
+p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  color: #a5b2b6;
+
+  @media screen and (max-width: $small-screen) {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #a5b2b6;
+  }
+}
+
+.employee-buttons {
+  @media screen and (max-width: $small-screen) {
+    text-align: center;
+  }
+}
+
+.btn-mentor {
+  margin: 10px 15px 15px 0px;
+  background: #d6dce5;
+  border-radius: 360px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #202b34;
+
+  .mentor-text {
+    padding-left: 5px;
+  }
+
+  &:hover {
+    color: #000000;
+    background: rgb(189, 194, 201);
+  }
+
+  @media screen and (max-width: $small-screen) {
+    margin: 0px 15px 15px 0px;
+  }
+}
+
+.btn-mvp {
+  margin: 10px 15px 15px 0px;
+  background: #d8aa3a;
+  border-radius: 360px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #202b34;
+
+  .mentor-text {
+    padding-left: 5px;
+  }
+
+  &:hover {
+    color: #000000;
+    background: rgb(187, 149, 50);
+  }
+
+  @media screen and (max-width: $small-screen) {
+    margin: 0px 15px 15px 0px;
+  }
+}
