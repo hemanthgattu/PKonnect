@@ -1,18 +1,20 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { startWith, map, debounce, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../../environments/environment';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-search-name-input',
   templateUrl: './search-name-input.component.html',
   styleUrls: ['./search-name-input.component.scss']
 })
-export class SearchNameInputComponent implements OnInit {
+export class SearchNameInputComponent implements OnInit, OnDestroy {
 
   @Output() public searchNameEvent = new EventEmitter();
+  private subs = new SubSink();
   myControl = new FormControl();
   filteredOptions: Observable<string[]>;
   options: string[] = [];
@@ -50,24 +52,31 @@ export class SearchNameInputComponent implements OnInit {
 
   handleEmptyInput(event: any) {
     if (event.target.value === '') {
-      console.log('empty input');
+      // console.log('empty input');
       this.log(undefined);
+    } else {
+      // console.log('Name : ' + event.target.value);
+      this.log(event.target.value);
     }
   }
 
   getAllEmployeeNames() {
-    this.rest.httpGet(`${environment.communitiesApi}/Employees`).subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Employees`).subscribe(
       (data) => {
         this.options = data.map((employee) => employee.fullName);
       },
-      (error) => console.log(error)
-    );
+      (error: Error) => console.log(error)
+    ));
   }
 
   emptyName() {
     console.log(this.myControl.value);
     this.myControl.reset();
     console.log(this.myControl.value);
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
+import { SharedMethodsService } from '../services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,15 +16,32 @@ export class NavBarComponent implements OnInit {
   public faUserCircle = faUserCircle;
   public toggle = true;
   public userName: string;
+  public isMobile = false;
+  private resizeTimeout: any;
 
-  constructor(private adalSvc: MsAdalAngular6Service) { }
+  constructor(
+    private adalSvc: MsAdalAngular6Service,
+    private sharedMethods: SharedMethodsService
+    ) { }
 
   ngOnInit(): void {
     this.userName = this.adalSvc.LoggedInUserName;
+    this.isMobile = this.sharedMethods.isMobile();
   }
 
   toggleIcon() {
     this.toggle = !this.toggle;
+  }
+
+  // Checks width of the screen when screen re-size
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+    }
+    this.resizeTimeout = setTimeout((() => {
+      this.isMobile = this.sharedMethods.isMobile();
+    }).bind(this), 500);
   }
 
 }

@@ -160,7 +160,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
         this.employeeResponseEvent.emit(data);
         this.isFindingExperts = false;
       },
-      (error) => {
+      (error: Error) => {
         console.error(error);
         this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
         this.isFindingExperts = false;
@@ -202,7 +202,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
       (data) => {
         this.roleOptions = data.map(role => role.roleName);
       },
-      (error) => {
+      (error: Error) => {
         console.log(error);
       }
     ));
@@ -213,7 +213,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
       (data) => {
         this.locationOptions = data.map(location => `${location.city}, ${location.state}`);
       },
-      (error) => {
+      (error: Error) => {
         console.log(error);
       }
     ));
@@ -221,8 +221,13 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   handleEmptyInput(event: any, key: string){
     if (event.target.value === '') {
-      console.log('empty input');
+      // console.log('empty input');
       this.searchEmployeesRequest[key] = undefined;
+    }
+    if (key === 'role') {
+      // console.log('Selected Role: ' + this.searchEmployeesRequest.role);
+      // console.log('Role : ' + event.target.value);
+      this.searchEmployeesRequest.role = event.target.value;
     }
   }
 
@@ -253,7 +258,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   setRole(option: string) {
-    console.log(option);
+    // console.log(option);
     this.searchEmployeesRequest.role = option;
   }
 

@@ -1,8 +1,8 @@
 <div class="navbar navbar-default">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">
-            <img src="../../../../assets/images/PkLogo.png" width="30" height="30"
-                class="d-inline-block align-top" alt="">
+            <img src="../../../../assets/images/PkLogo.png" width="30" height="30" class="d-inline-block align-top"
+                alt="">
         </a>
     </div>
     <!-- <div class="nav-toggle">
@@ -13,6 +13,9 @@
         Communities
     </span>
     <span class="profile">
-            <fa-icon class="slider-icon side-nav-toggle" [icon]="faUserCircle" size="lg"></fa-icon>
+        <fa-icon class="slider-icon side-nav-toggle" [icon]="faUserCircle" size="lg"></fa-icon>
+        <span *ngIf="!isMobile" class="pk-title">
+            {{userName}}
+        </span>
     </span>
 </div>

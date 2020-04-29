@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { startWith, map, debounce, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { SubSink } from 'subsink';
   templateUrl: './search-skill-input.component.html',
   styleUrls: ['./search-skill-input.component.scss']
 })
-export class SearchSkillInputComponent implements OnInit {
+export class SearchSkillInputComponent implements OnInit, OnDestroy {
 
   @Output() public searchSkillEvent = new EventEmitter();
 
@@ -61,12 +61,12 @@ export class SearchSkillInputComponent implements OnInit {
   }
 
   getAllSkills(): void {
-    this.rest.httpGet(`${environment.communitiesApi}/Skills`).subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Skills`).subscribe(
       (data) => {
         this.options = data.map((skill) => skill.textName);
       },
       (error: Error) => console.log(error)
-    );
+    ));
   }
 
   getErrorMessage() {
@@ -74,8 +74,11 @@ export class SearchSkillInputComponent implements OnInit {
   }
 
   availSkillsValidator(input: string): void {
-    console.log(this.options.map(v => v.toLowerCase()).includes(input.toLowerCase()));
     this.valid = this.options.map(v => v.toLowerCase()).includes(input.toLowerCase());
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }
 
