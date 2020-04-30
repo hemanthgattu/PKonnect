@@ -42,6 +42,10 @@ $logo-color-420: 17%;
 
 }
 
+.navbar-brand {
+    cursor: pointer;
+}
+
 .pk-title{
     text-align: center;
     margin-right: auto;
@@ -50,6 +54,7 @@ $logo-color-420: 17%;
     font-weight: bold;
     font-size: 14px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .side-nav-toggle{
@@ -60,4 +65,5 @@ $logo-color-420: 17%;
 
 .profile{
     float: right;
+    cursor: pointer;
 }

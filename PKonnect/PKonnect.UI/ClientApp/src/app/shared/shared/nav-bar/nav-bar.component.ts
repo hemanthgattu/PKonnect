@@ -3,6 +3,7 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SharedMethodsService } from '../services/shared-methods/shared-methods.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,7 +22,8 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private adalSvc: MsAdalAngular6Service,
-    private sharedMethods: SharedMethodsService
+    private sharedMethods: SharedMethodsService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,14 @@ export class NavBarComponent implements OnInit {
     this.resizeTimeout = setTimeout((() => {
       this.isMobile = this.sharedMethods.isMobile();
     }).bind(this), 500);
+  }
+
+  goToProfile() {
+    this.router.navigate(['profile', { id: this.userName }]);
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
   }
 
 }
