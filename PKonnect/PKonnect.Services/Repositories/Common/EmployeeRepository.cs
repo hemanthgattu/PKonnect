@@ -45,7 +45,7 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public IQueryable<object> GetEmployeeDetails(string skillName, string employeeName, string role, string resourceStatus, string location, int pageSize, int pageNumber)
+        public object GetEmployeeDetails(string skillName, string employeeName, string role, string resourceStatus, string location, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
@@ -167,8 +167,15 @@ namespace PKonnect.Services.DataServices
 
 
                 var employeeSkills = details.Where(a => a.EmployeeSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
+                var recordCount = details.Count();
 
-                return employeeSkills;
+                var skillDetails = new SkillDetails
+                {
+                    EmployeeSkillDetails = employeeSkills,
+                    RecordCount = recordCount
+                };
+
+                return skillDetails;
             }
 
             return null;
