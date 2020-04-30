@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faTrophy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-hero',
@@ -11,9 +11,6 @@ export class EmployeeHeroComponent implements OnInit {
 
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
-  public faCheckCircle = faCheckCircle;
-  public faMap = faMap;
-  public faEnvelope = faEnvelope;
 
   constructor() { }
 

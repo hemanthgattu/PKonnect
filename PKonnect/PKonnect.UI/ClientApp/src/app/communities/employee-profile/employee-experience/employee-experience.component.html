@@ -1,0 +1,52 @@
+<div class="employee-experience">
+    <h1>About</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit accusantium possimus reprehenderit illo alias
+        consequuntur aliquam eligendi culpa voluptate quas quod voluptas dolor nihil repellat porro, explicabo
+        doloremque? Veniam, consequuntur! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit accusantium
+        possimus reprehenderit illo alias consequuntur aliquam eligendi culpa voluptate quas quod voluptas dolor nihil
+        repellat porro, explicabo doloremque? Veniam, consequuntur!</p>
+    <h1>Experience</h1>
+    <div class="employee-projects">
+        <div class="employee-project" *ngFor="let project of projects">
+                <div class="row">
+                        <div class="col-md-10">
+                            <h2>{{project.name}}</h2>
+                            <p>{{project.description}}</p>
+                        </div>
+                        <div class="col-md-2">
+                            <button *ngIf="project.isActive" type="button" class="btn btn-project-active">
+                                <span class="mentor-text">Active</span>
+                            </button>
+                            <button *ngIf="!project.isActive" type="button" class="btn btn-project-completed">
+                                <span class="mentor-text">Complete</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row employee-project-location">
+                        <div class="col-md-4">
+                                <div class="row">
+                                        <div class="col-1">
+                                                <fa-icon class="slider-icon" [icon]="faMapMarkerAlt" size="md"></fa-icon>
+                                        </div>
+                                        <div class="col-10">
+                                                <span class="employee-info-key">Location: </span> {{project.city}}, {{project.state}}
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="row">
+                                        <div class="col-1">
+                                                <fa-icon class="slider-icon" [icon]="faCalendar" size="md"></fa-icon>
+                                        </div>
+                                        <div class="col-10">
+                                                <span class="employee-info-key">End Date: </span> {{project.endDate}}
+                                        </div>
+                                </div>
+                        </div>
+                    </div>
+                    <hr>
+        </div>
+    </div>
+    <h1>Certifications</h1>
+    <span class="employee-certificate" *ngFor="let certificate of certifications">{{certificate}} <br></span>
+</div>

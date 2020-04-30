@@ -85,6 +85,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.getAllRoles();
 
     this.setFilteredOptions();
+
+    this.onInitSearchEmployees();
   }
 
   setFilteredOptions(): void {
@@ -142,6 +144,26 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // Mobile view - Toggle search form when clicked on filter button
   toggleSearch(): void {
     this.toggleSearchForm = !this.toggleSearchForm;
+  }
+
+  // On Init Search
+  onInitSearchEmployees(): void {
+    this.isFindingExperts = true;
+    const getEmployeesUrl = 'https://pkwebapi.azurewebsites.net/api/Employees/GetEmployeeDetails?skillName=ASP.NET%20MVC%2CC%23&pageNumber=1&pageSize=10';
+    this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
+      (data) => {
+        if (data.length <= 0) {
+          this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
+        }
+        this.employeeResponseEvent.emit(data);
+        this.isFindingExperts = false;
+      },
+      (error: Error) => {
+        console.error(error);
+        this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
+        this.isFindingExperts = false;
+      }
+    ));
   }
 
   // On Submit Filter Results

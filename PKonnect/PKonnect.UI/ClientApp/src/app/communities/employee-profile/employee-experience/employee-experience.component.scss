@@ -1,0 +1,92 @@
+.employee-experience {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 25px 45px;
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  color: #202b34;
+  padding: 20px 0px;
+}
+
+h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  color: #202b34;
+  margin-bottom: 10px;
+}
+
+p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 18px;
+  color: #17425e;
+}
+
+.btn-project-active {
+  background: #c7e4f8;
+  border-radius: 100px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  color: #2a4e65;
+  padding: 3px 25px;
+}
+
+.btn-project-completed {
+  background: #c5f3be;
+  border-radius: 100px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  color: #2e963d;
+  padding: 3px 18px;
+}
+
+.slider-icon {
+  color: red;
+}
+
+.employee-info-key {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #202b34;
+}
+
+hr {
+  background: #f9f9f9;
+  height: 2px;
+  margin: 30px 0px;
+}
+
+.employee-certificate {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000000;
+}
+
+.employee-project-location {
+    margin-top: 10px;
+}
