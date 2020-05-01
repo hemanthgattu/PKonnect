@@ -27,4 +27,7 @@
     <div class="view-more-employees" *ngIf="employeeSearchResults.length < employeeSearchResultsCount">
             <button type="submit" class="btn btn-major" (click)="viewMore()">View More</button>
     </div>
+    <button *ngIf="windowScrolled" class="btn btn-scroll-top" title="Go to top" (click)="scrollToTop()">
+            <fa-icon class="slider-icon" [icon]="faArrowUp" size="md"></fa-icon>
+    </button>
 </div>

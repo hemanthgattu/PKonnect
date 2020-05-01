@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { faFilter, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-search-results',
@@ -12,6 +12,8 @@ export class EmployeeSearchResultsComponent implements OnInit {
   public employeeSearchResults = [];
   public employeeSearchResultsCount = 0;
   public faFilter = faFilter;
+  public faArrowUp = faArrowUp;
+  public windowScrolled: boolean;
 
   constructor() { }
 
@@ -33,6 +35,25 @@ export class EmployeeSearchResultsComponent implements OnInit {
   viewMore() {
     console.log('Get more employees - employee cards');
     this.moreEmployees.emit();
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+      if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+          this.windowScrolled = true;
+      } else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 30) {
+          this.windowScrolled = false;
+      }
+  }
+
+  scrollToTop() {
+    (function smoothScroll() {
+      const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothScroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 8));
+      }
+    })();
   }
 
 }
