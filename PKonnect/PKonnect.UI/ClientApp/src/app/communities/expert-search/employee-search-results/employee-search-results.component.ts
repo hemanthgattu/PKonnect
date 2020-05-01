@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,7 +8,9 @@ import { faFilter } from '@fortawesome/free-solid-svg-icons';
 })
 export class EmployeeSearchResultsComponent implements OnInit {
 
-  public employeeSearchResults: any;
+  @Output() moreEmployees = new EventEmitter();
+  public employeeSearchResults = [];
+  public employeeSearchResultsCount = 0;
   public faFilter = faFilter;
 
   constructor() { }
@@ -18,11 +20,19 @@ export class EmployeeSearchResultsComponent implements OnInit {
 
   @Input()
   set employeeSearchResult(searchResult: any) {
-    this.employeeSearchResults = searchResult;
+    if (!!searchResult) {
+      if (!searchResult.newData) {
+        this.employeeSearchResults = this.employeeSearchResults.concat(searchResult.employeeSkillDetails);
+      } else {
+        this.employeeSearchResults = searchResult.employeeSkillDetails;
+      }
+      this.employeeSearchResultsCount = searchResult.recordCount;
+    }
   }
 
   viewMore() {
-    console.log('Get more employees');
+    console.log('Get more employees - employee cards');
+    this.moreEmployees.emit();
   }
 
 }

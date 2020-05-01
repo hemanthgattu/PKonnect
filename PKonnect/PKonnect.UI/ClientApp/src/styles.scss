@@ -57,5 +57,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     margin: 5px 5px 5px 0px;
     &:hover {
         background: $color-black-hover;
+        color: $color-white;
     }
 }

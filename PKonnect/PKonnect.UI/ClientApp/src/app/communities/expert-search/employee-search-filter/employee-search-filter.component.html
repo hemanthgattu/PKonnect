@@ -14,7 +14,7 @@
     </div>
     <div *ngIf="!isMobile || toggleSearchForm" class="search-criteria">
         <form #searchEmployeeForm="ngForm" (keydown.enter)="$event.preventDefault()"
-            (ngSubmit)="searchEmployees(searchEmployeeForm.value);">
+            (ngSubmit)="searchEmployees(1, 10, true);">
             <div class="row">
                 <div class="col-lg-3">
                     <mat-form-field>

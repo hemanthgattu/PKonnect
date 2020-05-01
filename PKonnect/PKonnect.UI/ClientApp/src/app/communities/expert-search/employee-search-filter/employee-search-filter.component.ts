@@ -39,6 +39,9 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   public isFindingExperts = false;
   @Output() public employeeResponseEvent = new EventEmitter();
 
+  public pageNumber = 1;
+  public pageSize = 10;
+
   public roleControl = new FormControl();
   public filteredRoleOptions: Observable<string[]>;
   public roleOptions: string[] = [];
@@ -86,7 +89,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
     this.setFilteredOptions();
 
-    this.onInitSearchEmployees();
+    // this.onInitSearchEmployees();
   }
 
   setFilteredOptions(): void {
@@ -149,7 +152,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // On Init Search
   onInitSearchEmployees(): void {
     this.isFindingExperts = true;
-    const getEmployeesUrl = 'https://pkwebapi.azurewebsites.net/api/Employees/GetEmployeeDetails?skillName=ASP.NET%20MVC%2CC%23&pageNumber=1&pageSize=10';
+    const getEmployeesUrl = 'https://communities.pkglobal.com/API/api/Employees/GetEmployeeDetails?skillName=ASP.NET%20MVC%2CC%23&pageNumber=1&pageSize=10';
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
         if (data.length <= 0) {
@@ -167,17 +170,25 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   // On Submit Filter Results
-  searchEmployees(searchCriteria: SearchCriteria): void {
+  searchEmployees(pageNumber: number, pageSize: number, newData: boolean): void {
+    if (newData) {
+      this.pageNumber = 1;
+    }
     this.isFindingExperts = true;
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.skillName = this.searchSkills;
     const filterResultsURL = `${environment.communitiesApi}/Employees/GetEmployeeDetails`;
-    const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, 1, 10);
+    const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
-        if (data.length <= 0) {
+        if (data.employeeSkillDetails.length <= 0) {
           this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
+        }
+        if (this.pageNumber <= 1) {
+          data.newData = newData;
+        } else {
+          data.newData = newData;
         }
         this.employeeResponseEvent.emit(data);
         this.isFindingExperts = false;
@@ -188,6 +199,13 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
         this.isFindingExperts = false;
       }
     ));
+  }
+
+  getMoreEmployees() {
+    console.log('Get more employeed - search filter');
+    this.pageNumber++;
+    console.log(this.pageNumber);
+    this.searchEmployees(this.pageNumber, this.pageSize, false);
   }
 
   createEmployeeRequest(url: string, searchRequest: SearchCriteria, pageNumb: number, pageSize: number): string {

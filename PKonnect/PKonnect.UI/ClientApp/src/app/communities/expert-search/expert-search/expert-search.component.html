@@ -1,6 +1,6 @@
 <div class="container">
     <div>
-        <app-employee-search-filter (employeeResponseEvent)="message($event)"></app-employee-search-filter>
-        <app-employee-search-results [employeeSearchResult]="employeeSearchResult"></app-employee-search-results>
+        <app-employee-search-filter (employeeResponseEvent)="message($event)" ></app-employee-search-filter>
+        <app-employee-search-results [employeeSearchResult]="employeeSearchResult" (moreEmployees)="getMoreEmployees()"></app-employee-search-results>
     </div>
 </div>

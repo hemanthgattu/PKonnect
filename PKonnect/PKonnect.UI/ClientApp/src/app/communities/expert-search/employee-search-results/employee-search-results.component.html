@@ -1,7 +1,7 @@
 <div *ngIf="!!employeeSearchResults && employeeSearchResults.length > 0" class="employee-results">
     <div class="cards-nav">
         <div class="cards-count">
-            <p class="showing-text">Showing 1 - {{(employeeSearchResults.length > 10) ? 10 : employeeSearchResults.length}} of {{employeeSearchResults.length}}</p>
+            <p class="showing-text">Showing 1 - {{employeeSearchResults.length}} of {{employeeSearchResultsCount}}</p>
         </div>
         <!-- <div class="sort">
                 <div class="btn-group">
@@ -24,7 +24,7 @@
             <app-employee-search-card [employeeData]="employee"></app-employee-search-card>
         </div>
     </div>
-    <div class="view-more-employees" *ngIf="employeeSearchResults.length > 10">
+    <div class="view-more-employees" *ngIf="employeeSearchResults.length < employeeSearchResultsCount">
             <button type="submit" class="btn btn-major" (click)="viewMore()">View More</button>
     </div>
 </div>
