@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace PKonnect.Models.Common
 {
+    public class SkillDetails
+    {
+        public IQueryable<EmployeeSkillDetails> EmployeeSkillDetails { get; set; }
+        public int RecordCount { get; set; }
+    }
+
+
     public class EmployeeSkillDetails
     {
         public long EmployeeId { get; set; }
@@ -20,7 +28,6 @@ namespace PKonnect.Models.Common
 
         public List<EmployeeSkillList> EmployeeSkills { get; set; }
     }
-
 
     public class EmployeeSkillList
     {
