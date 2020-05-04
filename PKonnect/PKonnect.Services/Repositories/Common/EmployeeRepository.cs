@@ -123,26 +123,27 @@ namespace PKonnect.Services.DataServices
                 //                      }).ToList();
 
 
+           
 
-              
+
 
 
 
 
                 var details = (from employee in _pkonnectdatacontext.Employee
                                join employeeRole in _pkonnectdatacontext.EmployeeRole
-                              on (employee.EmployeeRoleId ?? 0) equals employeeRole.EmployeeRoleId into ER
-                               from E in ER.DefaultIfEmpty()
+                              on employee.EmployeeRoleId  equals employeeRole.EmployeeRoleId into ER
+                               from employeeRole in ER.DefaultIfEmpty()
                                join intacct in _pkonnectdatacontext.IntacctLocation
                                on employee.IntacctLocationId equals intacct.IntacctLocationId
-                               where (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
+                               where
+                               (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
                                 && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
-                              && (role == null || (E.RoleName == role))
-                              && (location == null || (intacct.Country == location))
-                              && E.IsActive
-                               // && location == null || (locations.Contains(employee.SiteState))
-                               //&& location == null || (locations.Contains(employee.SiteCity))
-
+                              && (role == null || (employee.RoleName == role))
+                              &&
+                              (location == null || (intacct.Country == location))
+                              && employee.IsActive
+                            
                                select new EmployeeSkillDetails()
                                {
                                    EmployeeId = employee.EmployeeId,
@@ -154,7 +155,7 @@ namespace PKonnect.Services.DataServices
                                    City = employee.SiteCity,
                                    State = employee.SiteState,
                                    Country = employee.Country,
-                                   Role = E.RoleName,
+                                   Role = employee.RoleName,
                                    ResourceStatus = employee.ResourceStatus,
                                    OnProject = (employee.ResourceStatus == "On Project" ? true : false),
                                    EmployeeSkills = (from es in _pkonnectdatacontext.EmployeeSkill
