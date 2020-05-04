@@ -56,7 +56,9 @@ namespace PKonnect.Services.DataServices
                     SkillNames = skillNames,
                     ResourceStatus = resourceStatus,
                     Location = location,
-                    IsActive =true
+                    IsActive = true,
+                    CreatedDate = DateTime.Now,
+                    PageNumber = pageNumber
                 };
 
                 _pkonnectdatacontext.Analytics.Add(analytics);

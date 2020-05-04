@@ -20,6 +20,6 @@ namespace PKonnect.Models.Common
         public DateTimeOffset ModifiedDate { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public bool IsActive { get; set; }
-
+        public long PageNumber { get; set; }
     }
 }
