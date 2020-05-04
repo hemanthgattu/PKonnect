@@ -25,6 +25,9 @@ namespace PKonnect.Models.Common
         public string ZipCode { get; set; }
         public string Country { get; set; }
         public string Role { get; set; }
+        public bool OnProject { get; set; }
+        public string ResourceStatus { get; set; }
+
 
         public List<EmployeeSkillList> EmployeeSkills { get; set; }
     }

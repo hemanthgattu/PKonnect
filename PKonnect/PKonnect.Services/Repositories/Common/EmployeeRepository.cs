@@ -45,15 +45,30 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public object GetEmployeeDetails(string skillName, string employeeName, string role, string resourceStatus, string location, int pageSize, int pageNumber)
+        public object GetEmployeeDetails(string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
+                Analytics analytics = new Analytics
+                {
+                    EmployeeEmailId = email,
+                    Role = role,
+                    SkillNames = skillNames,
+                    ResourceStatus = resourceStatus,
+                    Location = location,
+                    IsActive =true
+                };
+
+                _pkonnectdatacontext.Analytics.Add(analytics);
+                // executes the appropriate commands to implement the changes to the database  
+                _pkonnectdatacontext.SaveChanges();
+
+
                 string[] SkillNames = new string[] { };
                 string[] locations = new string[] { };
 
-                if (!string.IsNullOrEmpty(skillName))
-                    SkillNames = skillName.Split(',');
+                if (!string.IsNullOrEmpty(skillNames))
+                    SkillNames = skillNames.Split(',');
 
                 if (!string.IsNullOrEmpty(location))
                     locations = location.Split(',');
@@ -85,7 +100,7 @@ namespace PKonnect.Services.DataServices
 
 
                 var skills = (from s in _pkonnectdatacontext.Skill
-                              where (skillName == null || (SkillNames.Contains(s.TextName))) && s.IsActive
+                              where (skillNames == null || (SkillNames.Contains(s.TextName))) && s.IsActive
                               select new
                               {
                                   s.SkillGroup,
@@ -107,17 +122,22 @@ namespace PKonnect.Services.DataServices
 
 
 
+              
+
 
 
 
                 var details = (from employee in _pkonnectdatacontext.Employee
-
                                join employeeRole in _pkonnectdatacontext.EmployeeRole
-                              on (employee.EmployeeRoleId ?? 0) equals employeeRole.EmployeeRoleId
-
+                              on (employee.EmployeeRoleId ?? 0) equals employeeRole.EmployeeRoleId into ER
+                               from E in ER.DefaultIfEmpty()
+                               join intacct in _pkonnectdatacontext.IntacctLocation
+                               on employee.IntacctLocationId equals intacct.IntacctLocationId
                                where (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
-                               && (role == null || (employeeRole.RoleName == role)) && employeeRole.IsActive
-                               && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
+                                && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
+                              && (role == null || (E.RoleName == role))
+                              && (location == null || (intacct.Country == location))
+                              && E.IsActive
                                // && location == null || (locations.Contains(employee.SiteState))
                                //&& location == null || (locations.Contains(employee.SiteCity))
 
@@ -132,7 +152,9 @@ namespace PKonnect.Services.DataServices
                                    City = employee.SiteCity,
                                    State = employee.SiteState,
                                    Country = employee.Country,
-                                   Role = employeeRole.RoleName,
+                                   Role = E.RoleName,
+                                   ResourceStatus = employee.ResourceStatus,
+                                   OnProject = (employee.ResourceStatus == "On Project" ? true : false),
                                    EmployeeSkills = (from es in _pkonnectdatacontext.EmployeeSkill
                                                      join s in _pkonnectdatacontext.Skill
                                                     on es.SkillId equals s.SkillId into empSkill
@@ -153,7 +175,6 @@ namespace PKonnect.Services.DataServices
                                                          SkillId = es.SkillId
                                                      }
                                                      ).ToList()
-
                                }).ToList();
 
 
@@ -161,8 +182,11 @@ namespace PKonnect.Services.DataServices
                 //          join EmployeeRole
 
 
-                details = details.Where(d => d.EmployeeSkills.Any(y => (skillName == null || (SkillNames.Contains(y.TextName))))).ToList();
+                var details1 = details.Where(d => d.EmployeeSkills.Any(y => (skillNames == null || (SkillNames.Contains(y.TextName))))).ToList();
 
+                var details2 = details.Where(d => d.EmployeeSkills.Count == 0).ToList();
+
+                details = details1.Union(details2).ToList();
 
 
 
