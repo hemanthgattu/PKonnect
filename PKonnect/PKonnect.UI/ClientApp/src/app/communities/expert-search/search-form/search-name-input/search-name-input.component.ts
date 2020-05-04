@@ -39,12 +39,20 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
     if (!!value) {
       const filterValue = value.toLowerCase();
       return this.options.filter(option => {
-        if (option.toLowerCase().includes(filterValue)) {
+        if (!!option && option.toLowerCase().includes(filterValue)) {
           return option;
         }
       });
     }
   }
+
+  /* 
+    {
+        if (!!option && option.toLowerCase().includes(filterValue)) {
+          return option;
+        }
+      }
+  */
 
   public log(value: string) {
     this.searchNameEvent.emit(value);

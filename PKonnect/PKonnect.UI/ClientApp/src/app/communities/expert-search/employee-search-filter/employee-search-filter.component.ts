@@ -118,7 +118,11 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // _roleFilter
   _roleFilter(value: string) {
     const filterValue = value.toLowerCase();
-    return this.roleOptions.filter(option => option.toLowerCase().includes(filterValue));
+    return this.roleOptions.filter(option => {
+      if (!!option && option.toLowerCase().includes(filterValue)) {
+        return option;
+      }
+    });
   }
 
   // _locationFilter

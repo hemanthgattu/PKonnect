@@ -46,8 +46,20 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
   private _filter(value: string) {
     const filterValue = value.toLowerCase();
     this.availSkillsValidator(value);
-    return this.options.filter(option => option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option));
+    return this.options.filter(option => {
+      if (!!option && option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option)) {
+        return option;
+      }
+    });
   }
+
+  /*
+    option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option)
+
+    if (!!option && option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option)) {
+        return option;
+    }
+  */
 
   public log(value: string) {
     if (!!value && !this.selectedSkills.includes(value) && this.selectedSkills.length < 5) {
