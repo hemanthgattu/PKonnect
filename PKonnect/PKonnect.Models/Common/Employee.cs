@@ -8,11 +8,11 @@ namespace PKonnect.Models.Common
 {
     public partial class Employee
     {
-        //public Employee()
-        //{
-        //    EmployeeSkills = new HashSet<EmployeeSkill>();
+        public Employee()
+        {
+            EmployeeSkills = new HashSet<EmployeeSkill>();
 
-        //}
+        }
 
         [Key]
         public long EmployeeId { get; set; }
@@ -57,7 +57,7 @@ namespace PKonnect.Models.Common
         public long? EmployeeRoleId { get; set; }
 
         public string ResourceStatus { get; set; }
-        //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
         public string IntacctLocationName { get; set; }
         public long? IntacctLocationId { get; set; }
 

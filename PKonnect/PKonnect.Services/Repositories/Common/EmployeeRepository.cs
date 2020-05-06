@@ -45,7 +45,7 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public object GetEmployeeDetails(string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
+        public object GetEmployeeDetails(long? employeeId,string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
@@ -138,8 +138,9 @@ namespace PKonnect.Services.DataServices
                                on employee.IntacctLocationId equals intacct.IntacctLocationId
                                where
                                (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
+                               && (employeeId == null || (employee.EmployeeId == employeeId))
                                 && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
-                              && (role == null || (employee.RoleName == role))
+                              && (role == null || (employeeRole.RoleName == role))
                               &&
                               (location == null || (intacct.Country == location))
                               && employee.IsActive

@@ -35,6 +35,7 @@ namespace PKonnect.WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+
         public IActionResult Get(int? id)
         {
             if (id == null)
@@ -63,13 +64,13 @@ namespace PKonnect.WebApi.Controllers
         //GET api/values
         [HttpGet("GetEmployeeDetails")]
         [ODataRoute("GetEmployeeDetails")]
-        public object GetEmployeeDetails([FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] int pageSize, [FromODataUri] int pageNumber)
+        public object GetEmployeeDetails([FromODataUri] long? employeeId, [FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] int pageSize = 10, [FromODataUri] int pageNumber = 1)
 
         {
             // employeeName = "Eric Fabela Sanchez";
             // skillName = "Java";
             //role = "Developer - DotNet";
-            return _context.GetEmployeeDetails(skillName, employeeName, role, resourceStatus, location, email, pageSize, pageNumber);
+            return _context.GetEmployeeDetails(employeeId, skillName, employeeName, role, resourceStatus, location, email, pageSize, pageNumber);
         }
 
         #region commented code 
