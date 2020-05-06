@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace PKonnect.Models.Common
 {
     public class EmployeeRole
     {
+        [Key]
         public long EmployeeRoleId { get; set; }
         public string RoleName { get; set; }
         public string RoleGroup { get; set; }

@@ -132,10 +132,10 @@ namespace PKonnect.Services.DataServices
 
                 var details = (from employee in _pkonnectdatacontext.Employee
                                join employeeRole in _pkonnectdatacontext.EmployeeRole
-                              on employee.EmployeeRoleId  equals employeeRole.EmployeeRoleId into ER
+                                on employee.EmployeeRoleId  equals employeeRole.EmployeeRoleId into ER
                                from employeeRole in ER.DefaultIfEmpty()
                                join intacct in _pkonnectdatacontext.IntacctLocation
-                               on employee.IntacctLocationId equals intacct.IntacctLocationId
+                               on employee.IntacctLocationId equals intacct.IntacctLocationId                               
                                where
                                (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
                                && (employeeId == null || (employee.EmployeeId == employeeId))
@@ -160,6 +160,14 @@ namespace PKonnect.Services.DataServices
                                    RoleDescription = employeeRole.RoleDescription,
                                    ResourceStatus = employee.ResourceStatus,
                                    OnProject = (employee.ResourceStatus == "On Project" ? true : false),
+                                   IsMvp = employee.IsMvp,
+                                   IsAvailable = employee.IsAvailable,
+                                   Mentor = employee.Mentor,
+                                   HiredDate = employee.HiredDate,
+                                   EmployeeLocation = employee.EmployeeLocation,
+                                   Manager = employee.Manager,
+                                   COE = employee.COE,
+                                   AboutEmployee = employee.AboutEmployee,
                                    EmployeeSkills = (from es in _pkonnectdatacontext.EmployeeSkill
                                                      join s in _pkonnectdatacontext.Skill
                                                     on es.SkillId equals s.SkillId into empSkill
@@ -179,7 +187,10 @@ namespace PKonnect.Services.DataServices
                                                          SkillType = emps.SkillType,
                                                          SkillId = es.SkillId
                                                      }
-                                                     ).ToList()
+                                                     ).ToList(),
+                                   EmployeeCertifications = (from ec in _pkonnectdatacontext.EmployeeCertification
+                                                             where ec.EmployeeId == employee.EmployeeId
+                                                             select ec).ToList()
                                }).ToList();
 
 
