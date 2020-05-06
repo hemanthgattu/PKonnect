@@ -27,6 +27,7 @@ namespace PKonnect.Models.Common
         public string Role { get; set; }
         public bool OnProject { get; set; }
         public string ResourceStatus { get; set; }
+        public string RoleDescription { get; set; }
 
 
         public List<EmployeeSkillList> EmployeeSkills { get; set; }

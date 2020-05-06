@@ -156,7 +156,8 @@ namespace PKonnect.Services.DataServices
                                    City = employee.SiteCity,
                                    State = employee.SiteState,
                                    Country = employee.Country,
-                                   Role = employee.RoleName,
+                                   Role = employeeRole.RoleName,
+                                   RoleDescription = employeeRole.RoleDescription,
                                    ResourceStatus = employee.ResourceStatus,
                                    OnProject = (employee.ResourceStatus == "On Project" ? true : false),
                                    EmployeeSkills = (from es in _pkonnectdatacontext.EmployeeSkill
