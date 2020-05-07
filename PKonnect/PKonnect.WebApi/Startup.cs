@@ -76,6 +76,7 @@ namespace PKonnect.WebApi
             services.AddScoped<IClientLocationRepository, ClientLocationRepository>();
             services.AddScoped<IEmployeeRoleRepository, EmployeeRoleRepository>();
             services.AddScoped<IIntacctLocationRepository, IntacctLocationRepository>();
+            services.AddScoped<IEmployeeCertificationRepository, EmployeeCertificationRepository>();
 
             services.AddControllers();
 
@@ -145,8 +146,9 @@ namespace PKonnect.WebApi
             builder.EntitySet<ClientLocation>("ClientLocations");
             builder.EntitySet<ClientLocation>("ClientLocations");
             builder.EntitySet<IntacctLocation>("IntacctLocations");
+            builder.EntitySet<EmployeeCertification>("EmployeeCertifications");
 
-
+            
             builder.EntitySet<Employee>(nameof(Employee));
             {
                 var function = builder.Function("GetEmployeeDetails");

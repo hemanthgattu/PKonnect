@@ -25,8 +25,20 @@ namespace PKonnect.Models.Common
         public string ZipCode { get; set; }
         public string Country { get; set; }
         public string Role { get; set; }
+        public bool OnProject { get; set; }
+        public string ResourceStatus { get; set; }
+        public string RoleDescription { get; set; }
+        public bool IsMvp { get; set; }
+        public bool IsAvailable { get; set; }
+        public string Mentor { get; set; }
+        public DateTimeOffset? HiredDate { get; set; }
+        public string EmployeeLocation { get; set; }
+        public string Manager { get; set; }
+        public string COE { get; set; }
+        public string AboutEmployee { get; set; }
 
         public List<EmployeeSkillList> EmployeeSkills { get; set; }
+        public List<EmployeeCertification> EmployeeCertifications { get; set; }
     }
 
     public class EmployeeSkillList

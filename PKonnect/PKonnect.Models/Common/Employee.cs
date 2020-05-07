@@ -8,11 +8,12 @@ namespace PKonnect.Models.Common
 {
     public partial class Employee
     {
-        //public Employee()
-        //{
-        //    EmployeeSkills = new HashSet<EmployeeSkill>();
+        public Employee()
+        {
+            EmployeeSkills = new HashSet<EmployeeSkill>();
+            EmployeeCertification = new HashSet<EmployeeCertification>();
 
-        //}
+        }
 
         [Key]
         public long EmployeeId { get; set; }
@@ -57,10 +58,18 @@ namespace PKonnect.Models.Common
         public long? EmployeeRoleId { get; set; }
 
         public string ResourceStatus { get; set; }
-        //public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
+        public virtual ICollection<EmployeeCertification> EmployeeCertification { get; set; }
         public string IntacctLocationName { get; set; }
         public long? IntacctLocationId { get; set; }
 
-
+        public bool IsMvp { get; set; }
+        public bool IsAvailable { get; set; }
+        public string Mentor { get; set; }
+        public DateTimeOffset? HiredDate { get; set; }
+        public string EmployeeLocation { get; set; }
+        public string Manager { get; set; }
+        public string COE { get; set; }
+        public string AboutEmployee { get; set; }
     }
 }
