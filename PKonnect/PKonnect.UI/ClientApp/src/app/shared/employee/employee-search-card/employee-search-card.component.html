@@ -30,11 +30,10 @@
                         </div> -->
 
                     <div class="row employee-description">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur quidem obcaecati velit
-                            sequi ipsam consequatur, distinctio ut?</p>
+                        <p *ngIf="!!employee.roleDescription">{{employee.roleDescription | truncate:100:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
-                    <!-- <button type="button" class="btn btn-outline-secondary view-profile">View Profile</button> -->
+                    <button type="button" (click)="goToProfile(employee.employeeId)" class="btn btn-outline-secondary view-profile">View Profile</button>
                 </div>
             </div>
         </div>

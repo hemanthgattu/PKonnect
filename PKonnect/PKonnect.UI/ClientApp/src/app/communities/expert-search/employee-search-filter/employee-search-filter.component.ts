@@ -289,6 +289,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   nameMessage(message: string) {
+    console.log('Pushed name: ' + message);
     this.searchName = message;
   }
 

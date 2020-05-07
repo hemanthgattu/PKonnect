@@ -2,7 +2,7 @@
     <div class="title" id="title">
         <div class="row">
             <div class="col-8">
-                <h1>Find Role or Skills</h1>
+                <h1>Find Consultants</h1>
             </div>
             <div class="col-4">
                 <div *ngIf="isMobile" class="slider" (click)="toggleSearch()">
@@ -49,7 +49,6 @@
                         </mat-autocomplete>
                     </mat-form-field>
                 </div>
-
                 <div class="col-lg-1">
                     <mat-form-field>
                         <input type="text" #locationInput placeholder="Location" matInput
@@ -68,17 +67,15 @@
                     </mat-form-field>
                 </div>
                 <div class="col-lg-2 filter-form-buttons">
-
                     <button type="submit" class="btn search-filter">
                         <span *ngIf="!isFindingExperts">Filter Results</span>
-                        <span *ngIf="isFindingExperts">Finding Experts <fa-icon class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon></span>
+                        <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon></span>
                         
                     </button>
                     
                     <span class="reset-filters"
                         (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
                         Filters</span>
-
                 </div>
             </div>
             <div class="row">

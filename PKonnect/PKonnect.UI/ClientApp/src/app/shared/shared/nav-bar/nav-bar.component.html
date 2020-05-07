@@ -12,7 +12,7 @@
     <span class="pk-title" (click)="goToHome()">
         Communities
     </span>
-    <span class="profile">
+    <span class="profile" (click)="goToProfile()">
         <fa-icon class="slider-icon side-nav-toggle" [icon]="faUserCircle" size="lg"></fa-icon>
         <span *ngIf="!isMobile" class="pk-title">
             {{userName}}

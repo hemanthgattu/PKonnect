@@ -8,11 +8,11 @@ const routes: Routes = [
     loadChildren: () => import('./communities/expert-search/expert-search.module').then(m => m.ExpertSearchModule)
     , pathMatch: 'full', canActivate: [AuthenticationGuard]
   },
-  // {
-  //   path: 'profile',
-  //   loadChildren: () => import('./communities/employee-profile/employee-profile.module').then(m => m.EmployeeProfileModule)
-  //   , pathMatch: 'full', canActivate: [AuthenticationGuard]
-  // },
+  {
+    path: 'profile',
+    loadChildren: () => import('./communities/employee-profile/employee-profile.module').then(m => m.EmployeeProfileModule)
+    , pathMatch: 'full', canActivate: [AuthenticationGuard]
+  },
   {
     path: '**',
     redirectTo: '/',
@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule],
   providers: [AuthenticationGuard]
 })

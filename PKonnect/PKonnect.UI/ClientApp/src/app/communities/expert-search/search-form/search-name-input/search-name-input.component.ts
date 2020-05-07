@@ -46,15 +46,8 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
     }
   }
 
-  /* 
-    {
-        if (!!option && option.toLowerCase().includes(filterValue)) {
-          return option;
-        }
-      }
-  */
-
   public log(value: string) {
+    console.log('Pushed name: ' + value);
     this.searchNameEvent.emit(value);
   }
 
@@ -63,7 +56,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
       // console.log('empty input');
       this.log(undefined);
     } else {
-      // console.log('Name : ' + event.target.value);
+      console.log('Handled Name : ' + event.target.value);
       this.log(event.target.value);
     }
   }

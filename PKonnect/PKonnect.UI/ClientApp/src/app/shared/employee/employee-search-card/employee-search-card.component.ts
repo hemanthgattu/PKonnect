@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-search-card',
@@ -21,7 +22,8 @@ export class EmployeeSearchCardComponent implements OnInit {
 
 
   constructor(
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,10 @@ export class EmployeeSearchCardComponent implements OnInit {
     document.execCommand('copy');
     document.body.removeChild(selBox);
     this.snackBar.open('Email Copied to Clipboard', undefined , { panelClass: 'snack-bar-success' });
+  }
+
+  goToProfile(employeeId: number) {
+    this.router.navigate(['/profile'], { queryParams: { id: employeeId} });
   }
 }
 

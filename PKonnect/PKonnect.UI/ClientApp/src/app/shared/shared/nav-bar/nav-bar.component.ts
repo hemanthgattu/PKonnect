@@ -47,7 +47,7 @@ export class NavBarComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(['profile', { id: this.userName }]);
+    this.router.navigate(['/profile'], { queryParams: { id: this.userName } });
   }
 
   goToHome() {

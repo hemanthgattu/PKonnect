@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { faFilter, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faArrowUp, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-search-results',
@@ -11,9 +11,13 @@ export class EmployeeSearchResultsComponent implements OnInit {
   @Output() moreEmployees = new EventEmitter();
   public employeeSearchResults = [];
   public employeeSearchResultsCount = 0;
+
   public faFilter = faFilter;
   public faArrowUp = faArrowUp;
+  public faSpinner = faSpinner;
+
   public windowScrolled: boolean;
+  public viewMoreLoading = false;
 
   constructor() { }
 
@@ -29,11 +33,13 @@ export class EmployeeSearchResultsComponent implements OnInit {
         this.employeeSearchResults = searchResult.employeeSkillDetails;
       }
       this.employeeSearchResultsCount = searchResult.recordCount;
+      this.viewMoreLoading = false;
     }
   }
 
   viewMore() {
     console.log('Get more employees - employee cards');
+    this.viewMoreLoading = true;
     this.moreEmployees.emit();
   }
 

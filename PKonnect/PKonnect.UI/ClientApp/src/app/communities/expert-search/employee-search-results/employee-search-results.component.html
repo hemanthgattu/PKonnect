@@ -25,7 +25,10 @@
         </div>
     </div>
     <div class="view-more-employees" *ngIf="employeeSearchResults.length < employeeSearchResultsCount">
-            <button type="submit" class="btn btn-major" (click)="viewMore()">View More</button>
+            <button type="submit" class="btn btn-major" (click)="viewMore()">
+                <span *ngIf="!viewMoreLoading">View More</span>
+                <fa-icon *ngIf="viewMoreLoading" class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon>
+            </button>
     </div>
     <button *ngIf="windowScrolled" class="btn btn-scroll-top" title="Go to top" (click)="scrollToTop()">
             <fa-icon class="slider-icon" [icon]="faArrowUp" size="md"></fa-icon>

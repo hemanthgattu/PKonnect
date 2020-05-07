@@ -9,12 +9,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EmployeeProfileComponent implements OnInit {
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-    ) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.router.routerState.snapshot.url.split('=')[1]);
+    this.activatedRoute.queryParamMap.subscribe(
+      (data) => {
+        console.log(data.get('id'));
+      }
+    );
   }
 
 }
