@@ -15,7 +15,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
 
   @Output() public searchNameEvent = new EventEmitter();
   private subs = new SubSink();
-  myControl = new FormControl();
+  myControl: FormControl;
   filteredOptions: Observable<string[]>;
   options: string[] = [];
   timeout = null;
@@ -26,12 +26,12 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
     // get all employees
     this.getAllEmployeeNames();
 
+    this.myControl = new FormControl();
+
     // filter from options
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => {
-        return this._filter(value);
-      })
+      map(value => this._filter(value))
     );
   }
 
