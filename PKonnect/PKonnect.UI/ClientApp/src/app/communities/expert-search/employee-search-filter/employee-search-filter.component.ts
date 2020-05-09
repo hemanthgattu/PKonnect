@@ -13,6 +13,7 @@ import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SubSink } from 'subsink';
 import { SearchRoleInputComponent } from '../search-form/search-role-input/search-role-input.component';
 import { SearchAvailInputComponent } from '../search-form/search-avail-input/search-avail-input.component';
+import { SearchLocationInputComponent } from '../search-form/search-location-input/search-location-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -25,6 +26,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   @ViewChild(SearchSkillInputComponent) searchSkillChildComp: SearchSkillInputComponent;
   @ViewChild(SearchRoleInputComponent) searchRoleChildComp: SearchRoleInputComponent;
   @ViewChild(SearchAvailInputComponent) searchAvailChildComp: SearchAvailInputComponent;
+  @ViewChild(SearchLocationInputComponent) searchLocationChildComp: SearchLocationInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
@@ -46,23 +48,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   public pageNumber = 1;
   public pageSize = 10;
 
-  public locationControl = new FormControl();
-  public filteredLocationOptions: Observable<string[]>;
-  public locationOptions: string[] = [
-    'USA',
-    'IND',
-    'ARG',
-    'MEX'
-  ];
-
-  public locationFlags = {
-    USA: { id: 'flag-us' },
-    IND: { id: 'flag-in' },
-    ARG: { id: 'flag-ar' },
-    MEX: { id: 'flag-mx' }
-  };
-
-
   constructor(
     private rest: RestService,
     private snackBar: MatSnackBar,
@@ -71,23 +56,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
-
-    this.setFilteredOptions();
   }
-
-  setFilteredOptions(): void {
-    this.filteredLocationOptions = this.locationControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._locationFilter(value))
-    );
-  }
-
-  // _locationFilter
-  _locationFilter(value: string) {
-    const filterValue = value.toLowerCase();
-    return this.locationOptions.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
 
   // Check width of the screen
   checkWidth(): boolean {
@@ -208,8 +177,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.resourceStatus = message;
   }
 
-  setLocation(option: string) {
-    this.searchEmployeesRequest.location = option;
+  locationMessage(message: string) {
+    this.searchEmployeesRequest.location = message;
   }
 
   emptySkills() {
@@ -221,8 +190,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchNameChildComp.emptyName();
     this.searchRoleChildComp.emptyRole();
     this.searchAvailChildComp.emptyAvail();
+    this.searchLocationChildComp.emptyLocation();
     this.searchSkillChildComp.selectedSkills = [];
-    this.setFilteredOptions();
   }
 
   ngOnDestroy() {

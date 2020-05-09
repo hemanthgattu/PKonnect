@@ -29,31 +29,17 @@
                     <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
                 </div>
                 <div class="col-lg-1">
-                    <mat-form-field>
-                        <input type="text" #locationInput placeholder="Location" matInput
-                            [formControl]="locationControl" [matAutocomplete]="location"
-                            (change)="handleEmptyInput($event, 'location')">
-                        <mat-autocomplete autoActiveFirstOption #location="matAutocomplete"
-                            (optionSelected)="setLocation($event.option.value)">
-                            <mat-option #locationSearch *ngFor="let option of filteredLocationOptions | async"
-                                [value]="option">
-                                <span>
-                                    <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
-                                </span>
-                                {{option}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
+                    <app-search-location-input (searchLocationEvent)="locationMessage($event)">
+                    </app-search-location-input>
                 </div>
                 <div class="col-lg-2 filter-form-buttons">
                     <button type="submit" class="btn search-filter">
                         <span *ngIf="!isFindingExperts">Filter Results</span>
-                        <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner" [spin]="true" size="md"></fa-icon></span>
-                        
+                        <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
+                                [spin]="true" size="md"></fa-icon></span>
                     </button>
-                    
-                    <span class="reset-filters"
-                        (click)="locationInput.value =''; emptySkills();">Reset
+
+                    <span class="reset-filters" (click)="emptySkills();">Reset
                         Filters</span>
                 </div>
             </div>

@@ -1,1 +1,15 @@
-<p>search-location-input works!</p>
+<form #locationSearchForm>
+    <mat-form-field>
+        <input type="text" #locationInput placeholder="Location" matInput [formControl]="locationControl"
+            [matAutocomplete]="location" (change)="handleEmptyInput($event)">
+        <mat-autocomplete autoActiveFirstOption #location="matAutocomplete"
+            (optionSelected)="setLocation($event.option.value)">
+            <mat-option #locationSearch *ngFor="let option of locationOptions" [value]="option">
+                <span>
+                    <ngx-emoji [emoji]="locationFlags[option]" size="20"></ngx-emoji>
+                </span>
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
