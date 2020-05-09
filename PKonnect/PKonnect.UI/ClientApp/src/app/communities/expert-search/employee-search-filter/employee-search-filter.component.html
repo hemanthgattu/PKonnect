@@ -17,17 +17,7 @@
             (ngSubmit)="searchEmployees(1, 10, true);">
             <div class="row">
                 <div class="col-lg-3">
-                    <mat-form-field>
-                        <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
-                            [matAutocomplete]="role" (change)="handleEmptyInput($event, 'role')">
-                        <mat-autocomplete autoActiveFirstOption #role="matAutocomplete"
-                            (optionSelected)="setRole($event.option.value)">
-                            <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async" [value]="option"
-                                matTooltip="{{option}}" matTooltipPosition="right">
-                                {{option}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
+                    <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
                 </div>
                 <div class="col-lg-2">
                     <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
@@ -74,7 +64,7 @@
                     </button>
                     
                     <span class="reset-filters"
-                        (click)="roleInput.value=''; availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
+                        (click)="availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
                         Filters</span>
                 </div>
             </div>

@@ -18,7 +18,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   public faCheckCircle = faCheckCircle;
   public faMap = faMap;
   public faEnvelope = faEnvelope;
-  public displayPicture = 'https://prokarma001-my.sharepoint.com/User%20Photos/Profile%20Pictures/HGattu_prokarma_com_lThumb.jpg';
+  public displayPicture = '';
 
 
   constructor(

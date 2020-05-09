@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,10 +11,9 @@ export class EmployeeHeroComponent implements OnInit {
 
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
+  @Input() employeeHeroDetails: any;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

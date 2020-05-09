@@ -1,0 +1,12 @@
+<form #roleSearchForm>
+    <mat-form-field>
+        <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
+            [matAutocomplete]="role" (change)="handleEmptyInput($event)">
+        <mat-autocomplete autoActiveFirstOption #role="matAutocomplete" (optionSelected)="setRole($event.option.value)">
+            <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async" [value]="option"
+                matTooltip="{{option}}" matTooltipPosition="right">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

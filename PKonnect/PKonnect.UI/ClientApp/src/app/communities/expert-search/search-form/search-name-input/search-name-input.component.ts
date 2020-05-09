@@ -47,13 +47,11 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   }
 
   public log(value: string) {
-    console.log('Pushed name: ' + value);
     this.searchNameEvent.emit(value);
   }
 
   handleEmptyInput(event: any) {
     if (event.target.value === '') {
-      // console.log('empty input');
       this.log(undefined);
     } else {
       console.log('Handled Name : ' + event.target.value);
@@ -71,9 +69,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   }
 
   emptyName() {
-    console.log(this.myControl.value);
     this.myControl.reset();
-    console.log(this.myControl.value);
   }
 
   ngOnDestroy() {

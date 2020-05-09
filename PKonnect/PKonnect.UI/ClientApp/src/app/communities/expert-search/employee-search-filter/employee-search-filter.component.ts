@@ -11,6 +11,7 @@ import { SearchNameInputComponent } from '../search-form/search-name-input/searc
 import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SubSink } from 'subsink';
+import { SearchRoleInputComponent } from '../search-form/search-role-input/search-role-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -21,6 +22,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   @ViewChild(SearchNameInputComponent) searchNameChildComp: SearchNameInputComponent;
   @ViewChild(SearchSkillInputComponent) searchSkillChildComp: SearchSkillInputComponent;
+  @ViewChild(SearchRoleInputComponent) searchRoleChildComp: SearchRoleInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
@@ -41,10 +43,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   public pageNumber = 1;
   public pageSize = 10;
-
-  public roleControl = new FormControl();
-  public filteredRoleOptions: Observable<string[]>;
-  public roleOptions: string[] = [];
 
   public locationControl = new FormControl();
   public filteredLocationOptions: Observable<string[]>;
@@ -85,22 +83,13 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
 
-    this.getAllRoles();
-
     this.setFilteredOptions();
-
-    // this.onInitSearchEmployees();
   }
 
   setFilteredOptions(): void {
     this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
       startWith(''),
       map(value => this._availabilityFilter(value))
-    );
-
-    this.filteredRoleOptions = this.roleControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._roleFilter(value))
     );
 
     this.filteredLocationOptions = this.locationControl.valueChanges.pipe(
@@ -113,16 +102,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   _availabilityFilter(value: string) {
     const filterValue = value.toLowerCase();
     return this.availabilityOptions.filter(option => option.displayName.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-  // _roleFilter
-  _roleFilter(value: string) {
-    const filterValue = value.toLowerCase();
-    return this.roleOptions.filter(option => {
-      if (!!option && option.toLowerCase().includes(filterValue)) {
-        return option;
-      }
-    });
   }
 
   // _locationFilter
@@ -151,26 +130,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // Mobile view - Toggle search form when clicked on filter button
   toggleSearch(): void {
     this.toggleSearchForm = !this.toggleSearchForm;
-  }
-
-  // On Init Search
-  onInitSearchEmployees(): void {
-    this.isFindingExperts = true;
-    const getEmployeesUrl = 'https://communities.pkglobal.com/API/api/Employees/GetEmployeeDetails?skillName=ASP.NET%20MVC%2CC%23&pageNumber=1&pageSize=10';
-    this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
-      (data) => {
-        if (data.length <= 0) {
-          this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
-        }
-        this.employeeResponseEvent.emit(data);
-        this.isFindingExperts = false;
-      },
-      (error: Error) => {
-        console.error(error);
-        this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
-        this.isFindingExperts = false;
-      }
-    ));
   }
 
   // On Submit Filter Results
@@ -241,37 +200,10 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     return finalUrl;
   }
 
-  getAllRoles(): void{
-    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/EmployeeRoles`).subscribe(
-      (data) => {
-        this.roleOptions = data.map(role => role.roleName);
-      },
-      (error: Error) => {
-        console.log(error);
-      }
-    ));
-  }
-
-  getAllLocations(): void{
-    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Addresses`).subscribe(
-      (data) => {
-        this.locationOptions = data.map(location => `${location.city}, ${location.state}`);
-      },
-      (error: Error) => {
-        console.log(error);
-      }
-    ));
-  }
-
   handleEmptyInput(event: any, key: string){
     if (event.target.value === '') {
       // console.log('empty input');
       this.searchEmployeesRequest[key] = undefined;
-    }
-    if (key === 'role') {
-      // console.log('Selected Role: ' + this.searchEmployeesRequest.role);
-      // console.log('Role : ' + event.target.value);
-      this.searchEmployeesRequest.role = event.target.value;
     }
   }
 
@@ -293,6 +225,10 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchName = message;
   }
 
+  roleMessage(message: string) {
+    this.searchEmployeesRequest.role = message;
+  }
+
   setAvailability(option: string) {
     console.log(option);
     if (option === this.availabilityOptions[0].displayName) {
@@ -302,18 +238,9 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     }
   }
 
-  setRole(option: string) {
-    // console.log(option);
-    this.searchEmployeesRequest.role = option;
-  }
-
   setLocation(option: string) {
     console.log(option);
     this.searchEmployeesRequest.location = option;
-  }
-
-  onRoleKey(event: any) {
-    console.log(event);
   }
 
   emptySkills() {
@@ -323,12 +250,9 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.location = undefined;
     this.searchName = undefined;
     this.searchNameChildComp.emptyName();
+    this.searchRoleChildComp.emptyRole();
     this.searchSkillChildComp.selectedSkills = [];
     this.setFilteredOptions();
-  }
-
-  reset(){
-    console.log('Reset please');
   }
 
   ngOnDestroy() {

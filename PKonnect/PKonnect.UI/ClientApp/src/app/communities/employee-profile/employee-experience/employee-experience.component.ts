@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -50,6 +50,8 @@ export class EmployeeExperienceComponent implements OnInit {
     'Oracle Certified Associate Java Programmer (OCAJP) [Java SE 8 Programmer I]',
     'Oracle Certified Associate Java Programmer (OCAJP) [Java SE 11 Programmer]'
   ];
+
+  @Input() employeeExperienceDetails: any;
 
   constructor() { }
 

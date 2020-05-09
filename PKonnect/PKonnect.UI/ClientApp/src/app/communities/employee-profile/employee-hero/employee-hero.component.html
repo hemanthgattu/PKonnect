@@ -2,16 +2,16 @@
     <div class="row employee-hero">
         <div class="col-md-3">
             <div class="display-picture">
-                <img class="image mx-auto my-auto d-block" src="../../../../assets/avatars/male.png" alt="Avatar"
+                <img class="image mx-auto my-auto d-block" src="https://prokarma001.sharepoint.com/_layouts/15/userphoto.aspx?size=M&accountname={{employeeHeroDetails.email}}" alt="Avatar"
                     accept="image/x-png,image/gif,image/jpeg">
             </div>
         </div>
         <div class="col-md-9">
             <div class="employee-general">
-                <h1>Levi Swanson</h1>
-                <p>Software Java Developer II</p>
+                <h1>{{employeeHeroDetails.fullName}}</h1>
+                <p>{{employeeHeroDetails.role}}</p>
                 <div class="employee-buttons">
-                    <button type="button" class="btn btn-mvp">
+                    <button *ngIf="employeeHeroDetails.isMvp" type="button" class="btn btn-mvp">
                         <fa-icon class="slider-icon" [icon]="faTrophy" size="md"></fa-icon>
                         <span class="mentor-text">MVP</span>
                     </button>

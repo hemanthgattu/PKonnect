@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-employee-skills',
@@ -29,6 +29,7 @@ export class EmployeeSkillsComponent implements OnInit {
       skillRating: 5
     }
   ];
+  @Input() employeeSkillDetails: any;
 
   constructor() { }
 

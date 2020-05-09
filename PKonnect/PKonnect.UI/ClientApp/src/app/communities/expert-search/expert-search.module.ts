@@ -18,6 +18,9 @@ import { SharedModule } from '../../shared/shared/shared.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { SearchRoleInputComponent } from './search-form/search-role-input/search-role-input.component';
+import { SearchLocationInputComponent } from './search-form/search-location-input/search-location-input.component';
+import { SearchAvailInputComponent } from './search-form/search-avail-input/search-avail-input.component';
 
 
 const expertSearchRoutes: Routes = [
@@ -30,7 +33,10 @@ const expertSearchRoutes: Routes = [
     EmployeeSearchFilterComponent,
     EmployeeSearchResultsComponent,
     SearchSkillInputComponent,
-    SearchNameInputComponent
+    SearchNameInputComponent,
+    SearchRoleInputComponent,
+    SearchLocationInputComponent,
+    SearchAvailInputComponent
   ],
   imports: [
     CommonModule,
