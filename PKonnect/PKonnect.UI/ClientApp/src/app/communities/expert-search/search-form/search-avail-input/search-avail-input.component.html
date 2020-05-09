@@ -1,1 +1,13 @@
-<p>search-avail-input works!</p>
+<form #availSearchForm>
+    <mat-form-field>
+        <input type="text" #availabilityInput placeholder="Resource Status" matInput [formControl]="availabilityControl"
+            [matAutocomplete]="availability" (change)="handleEmptyInput($event, 'resourceStatus')">
+        <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
+            (optionSelected)="log($event.option.value)">
+            <mat-option #availabilitySearch *ngFor="let option of availabilityOptions"
+                [value]="option.displayName">
+                {{option.displayName}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

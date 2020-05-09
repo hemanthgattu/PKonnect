@@ -26,18 +26,7 @@
                     <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
                 </div>
                 <div class="col-lg-2">
-                    <mat-form-field>
-                        <input type="text" #availabilityInput placeholder="Resource Status" matInput
-                            [formControl]="availabilityControl" [matAutocomplete]="availability"
-                            (change)="handleEmptyInput($event, 'resourceStatus')">
-                        <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
-                            (optionSelected)="setAvailability($event.option.value)">
-                            <mat-option #availabilitySearch *ngFor="let option of filteredAvailabilityOptions | async"
-                                [value]="option.displayName">
-                                {{option.displayName}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
+                    <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
                 </div>
                 <div class="col-lg-1">
                     <mat-form-field>
@@ -64,7 +53,7 @@
                     </button>
                     
                     <span class="reset-filters"
-                        (click)="availabilityInput.value=''; locationInput.value =''; emptySkills();">Reset
+                        (click)="locationInput.value =''; emptySkills();">Reset
                         Filters</span>
                 </div>
             </div>

@@ -38,7 +38,6 @@ export class EmployeeSearchResultsComponent implements OnInit {
   }
 
   viewMore() {
-    console.log('Get more employees - employee cards');
     this.viewMoreLoading = true;
     this.moreEmployees.emit();
   }

@@ -12,6 +12,7 @@ import { SearchSkillInputComponent } from '../search-form/search-skill-input/sea
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SubSink } from 'subsink';
 import { SearchRoleInputComponent } from '../search-form/search-role-input/search-role-input.component';
+import { SearchAvailInputComponent } from '../search-form/search-avail-input/search-avail-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -23,6 +24,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   @ViewChild(SearchNameInputComponent) searchNameChildComp: SearchNameInputComponent;
   @ViewChild(SearchSkillInputComponent) searchSkillChildComp: SearchSkillInputComponent;
   @ViewChild(SearchRoleInputComponent) searchRoleChildComp: SearchRoleInputComponent;
+  @ViewChild(SearchAvailInputComponent) searchAvailChildComp: SearchAvailInputComponent;
   public isMobile = false;
   public toggleSearchForm = false;
   private resizeTimeout: any;
@@ -60,19 +62,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     MEX: { id: 'flag-mx' }
   };
 
-  public availabilityControl = new FormControl();
-  public filteredAvailabilityOptions: Observable<any>;
-
-  public availabilityOptions = [
-    {
-      displayName: 'Available',
-      availabilityValue: 'On Bench'
-    },
-    {
-      displayName: 'On Project',
-      availabilityValue: 'On Project'
-    }
-  ];
 
   constructor(
     private rest: RestService,
@@ -87,21 +76,10 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   setFilteredOptions(): void {
-    this.filteredAvailabilityOptions = this.availabilityControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._availabilityFilter(value))
-    );
-
     this.filteredLocationOptions = this.locationControl.valueChanges.pipe(
       startWith(''),
       map(value => this._locationFilter(value))
     );
-  }
-
-  // _availabilityFilter
-  _availabilityFilter(value: string) {
-    const filterValue = value.toLowerCase();
-    return this.availabilityOptions.filter(option => option.displayName.toLowerCase().indexOf(filterValue) === 0);
   }
 
   // _locationFilter
@@ -165,9 +143,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   getMoreEmployees() {
-    console.log('Get more employeed - search filter');
     this.pageNumber++;
-    console.log(this.pageNumber);
     this.searchEmployees(this.pageNumber, this.pageSize, false);
   }
 
@@ -221,7 +197,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   nameMessage(message: string) {
-    console.log('Pushed name: ' + message);
     this.searchName = message;
   }
 
@@ -229,17 +204,11 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.role = message;
   }
 
-  setAvailability(option: string) {
-    console.log(option);
-    if (option === this.availabilityOptions[0].displayName) {
-      this.searchEmployeesRequest.resourceStatus = this.availabilityOptions[0].availabilityValue;
-    } else {
-      this.searchEmployeesRequest.resourceStatus = option;
-    }
+  availMessage(message: string) {
+    this.searchEmployeesRequest.resourceStatus = message;
   }
 
   setLocation(option: string) {
-    console.log(option);
     this.searchEmployeesRequest.location = option;
   }
 
@@ -251,6 +220,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchName = undefined;
     this.searchNameChildComp.emptyName();
     this.searchRoleChildComp.emptyRole();
+    this.searchAvailChildComp.emptyAvail();
     this.searchSkillChildComp.selectedSkills = [];
     this.setFilteredOptions();
   }
