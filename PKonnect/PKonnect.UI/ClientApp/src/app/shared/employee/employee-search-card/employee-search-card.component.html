@@ -33,7 +33,8 @@
                         <p *ngIf="!!employee.roleDescription">{{employee.roleDescription | truncate:100:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
-                    <button type="button" (click)="goToProfile(employee.employeeId)" class="btn btn-outline-secondary view-profile">View Profile</button>
+                    <button type="button" (click)="goToProfile(employee.employeeId)"
+                        class="btn btn-outline-secondary view-profile">View Profile</button>
                 </div>
             </div>
         </div>
@@ -60,20 +61,33 @@
                         Email
                     </span>
                 </div>
-
-
-
             </div>
             <div class="employee-skills-display">
-                <div class="row employee-skill-display" *ngFor="let employeeSkill of employee.employeeSkills.slice(0, 5)">
+                <div class="row employee-skill-display" *ngFor="let employeeSkill of displayEmployeeSkills">
                     <div class="col-6 skill-name"><span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
                     <div class="col-6 employee-rating-bar">
-                        <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5" matTooltipPosition="right">
+                        <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5"
+                            matTooltipPosition="right">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"
                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
+                </div>
+                <div *ngIf="employee.employeeSkills.length > 5 && displayEmployeeSkills.length <= 5"
+                    class="employee-skills-view-more d-flex flex-row-reverse">
+                    <span class="btn-view-more-skills" (click)="showMoreSkills()">
+                        <fa-icon class="slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
+                        Show More
+                    </span>
+                </div>
+
+                <div *ngIf="employee.employeeSkills.length > 5 && displayEmployeeSkills.length > 5"
+                    class="employee-skills-view-more d-flex flex-row-reverse">
+                    <span class="btn-view-more-skills" (click)="showLessSkills()">
+                        <fa-icon class="slider-icon" [icon]="faChevronUp" size="sm"></fa-icon>
+                        Show Less
+                    </span>
                 </div>
             </div>
         </div>

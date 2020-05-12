@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faTrophy, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy, faCheckCircle, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
 })
 export class EmployeeSearchCardComponent implements OnInit {
 
-  public employee: any;
-
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
   public faCheckCircle = faCheckCircle;
   public faMap = faMap;
   public faEnvelope = faEnvelope;
-  public displayPicture = '';
+  public faChevronDown = faChevronDown;
+  public faChevronUp = faChevronUp;
 
+  public employee: any;
+  public displayPicture = '';
+  public displayEmployeeSkills = [];
 
   constructor(
     private snackBar: MatSnackBar,
@@ -32,6 +34,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   @Input()
   set employeeData(employee: any) {
     this.employee = employee;
+    this.displayEmployeeSkills = this.employee.employeeSkills.slice(0, 5);
     this.setDisplayPicture(this.employee);
   }
 
@@ -39,7 +42,7 @@ export class EmployeeSearchCardComponent implements OnInit {
     this.displayPicture = `https://prokarma001.sharepoint.com/_layouts/15/userphoto.aspx?size=M&accountname=${employee.email}`;
   }
 
-  copyEmailToClipboard(input: string) {
+  copyEmailToClipboard(input: string): void {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -56,6 +59,14 @@ export class EmployeeSearchCardComponent implements OnInit {
 
   goToProfile(employeeId: number) {
     this.router.navigate(['/profile'], { queryParams: { id: employeeId} });
+  }
+
+  showMoreSkills(): void {
+    this.displayEmployeeSkills = this.employee.employeeSkills;
+  }
+
+  showLessSkills(): void {
+    this.displayEmployeeSkills = this.employee.employeeSkills.slice(0, 5);
   }
 }
 

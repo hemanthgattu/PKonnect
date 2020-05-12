@@ -4,6 +4,7 @@ import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SharedMethodsService } from '../services/shared-methods/shared-methods.service';
 import { Router } from '@angular/router';
+import { RestService } from '../services/rest/rest.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -23,12 +24,14 @@ export class NavBarComponent implements OnInit {
   constructor(
     private adalSvc: MsAdalAngular6Service,
     private sharedMethods: SharedMethodsService,
-    private router: Router
+    private router: Router,
+    private rest: RestService
     ) { }
 
   ngOnInit(): void {
     this.userName = this.adalSvc.LoggedInUserName;
     this.isMobile = this.sharedMethods.isMobile();
+    // this.getUserDetails();
   }
 
   toggleIcon() {
@@ -52,6 +55,18 @@ export class NavBarComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['']);
+  }
+
+  getUserDetails() {
+    const userUrl = 'https://graph.microsoft.com/v1.0/me';
+    this.rest.httpGet(userUrl, this.adalSvc.accessToken).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }
