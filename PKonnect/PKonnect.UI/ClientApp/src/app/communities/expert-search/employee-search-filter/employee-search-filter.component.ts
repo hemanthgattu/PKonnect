@@ -56,7 +56,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
-    this.onInitSearchEmployees();
+    // this.onInitSearchEmployees();
   }
 
   // Check width of the screen

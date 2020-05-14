@@ -3,14 +3,25 @@ import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-i
 import { faTrophy, faCheckCircle, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 500,
+  hideDelay: 0,
+  touchendHideDelay: 0,
+};
 
 @Component({
   selector: 'app-employee-search-card',
   templateUrl: './employee-search-card.component.html',
-  styleUrls: ['./employee-search-card.component.scss']
+  styleUrls: ['./employee-search-card.component.scss'],
+  providers: [
+    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}
+  ],
 })
 export class EmployeeSearchCardComponent implements OnInit {
 
+  public displayMoreSkills = false;
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
   public faCheckCircle = faCheckCircle;
@@ -62,10 +73,12 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
   showMoreSkills(): void {
+    this.displayMoreSkills = true;
     this.displayEmployeeSkills = this.employee.employeeSkills;
   }
 
   showLessSkills(): void {
+    this.displayMoreSkills = false;
     this.displayEmployeeSkills = this.employee.employeeSkills.slice(0, 5);
   }
 }
