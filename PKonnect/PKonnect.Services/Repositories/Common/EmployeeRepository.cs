@@ -165,7 +165,7 @@ namespace PKonnect.Services.DataServices
                 details = details1.Union(details2).ToList();
 
                 var employeeSkills = details.Where(a => a.EmployeeSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
-                var recordCount = employeeSkills.Count();
+                var recordCount = employeeSkills.Count() < 10 ? employeeSkills.Count() : details.Count();
 
                 var skillDetails = new SkillDetails
                 {
