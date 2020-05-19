@@ -75,22 +75,6 @@ namespace PKonnect.Services.DataServices
                 if (!string.IsNullOrEmpty(location))
                     locations = location.Split(',');
 
-                //var employees = (from emp in _pkonnectdatacontext.Employee
-                //                 where (employeeName == null || (emp.FullName == employeeName)) && emp.IsActive
-                //                 && (location == null || (emp.City == location))
-                //                 select new
-                //                 {
-                //                     emp.EmployeeId,
-                //                     emp.FirstName,
-                //                     emp.LastName,
-                //                     emp.FullName,
-                //                     emp.Gender,
-                //                     emp.City,
-                //                     emp.State,
-                //                     emp.Country,
-                //                     emp.ZipCode
-                //                 }).ToList();
-
                 var roles = (from r in _pkonnectdatacontext.EmployeeRole
                              where (role == null || (r.RoleName == role)) && r.IsActive
                              select new
@@ -110,25 +94,6 @@ namespace PKonnect.Services.DataServices
                                   s.SkillId,
                                   s.TextName,
                               }).ToList();
-
-                //var employeeskills = (from emp in employees
-                //                      join empSkills in _pkonnectdatacontext.EmployeeSkill
-                //                      on emp.EmployeeId equals empSkills.EmployeeId
-                //                      select new
-                //                      {
-                //                          empSkills.EmployeeSkillId,
-                //                          empSkills.BestFitSkill,
-                //                          empSkills.LastYearUsed,
-                //                          empSkills.SkillRating
-                //                      }).ToList();
-
-
-           
-
-
-
-
-
 
                 var details = (from employee in _pkonnectdatacontext.Employee
                                join employeeRole in _pkonnectdatacontext.EmployeeRole
@@ -193,21 +158,14 @@ namespace PKonnect.Services.DataServices
                                                              select ec).ToList()
                                }).ToList();
 
-
-                //details = from d in details
-                //          join EmployeeRole
-
-
                 var details1 = details.Where(d => d.EmployeeSkills.Any(y => (skillNames == null || (SkillNames.Contains(y.TextName))))).ToList();
 
                 var details2 = details.Where(d => d.EmployeeSkills.Count == 0).ToList();
 
                 details = details1.Union(details2).ToList();
 
-
-
                 var employeeSkills = details.Where(a => a.EmployeeSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
-                var recordCount = details.Count();
+                var recordCount = employeeSkills.Count() < 10 ? employeeSkills.Count() : details.Count();
 
                 var skillDetails = new SkillDetails
                 {
