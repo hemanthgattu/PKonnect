@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { faFilter, faArrowUp, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
+import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 
 @Component({
   selector: 'app-employee-search-results',
@@ -19,7 +21,7 @@ export class EmployeeSearchResultsComponent implements OnInit {
   public windowScrolled: boolean;
   public viewMoreLoading = false;
 
-  constructor() { }
+  constructor(private amplitudeSvc: AmplitudeService) { }
 
   ngOnInit(): void {
   }
