@@ -14,6 +14,8 @@ import { SubSink } from 'subsink';
 import { SearchRoleInputComponent } from '../search-form/search-role-input/search-role-input.component';
 import { SearchAvailInputComponent } from '../search-form/search-avail-input/search-avail-input.component';
 import { SearchLocationInputComponent } from '../search-form/search-location-input/search-location-input.component';
+import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
+import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -41,7 +43,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   private mobileWidth = 420;
   public searchEmployeesRequest: SearchCriteria = {};
   public searchSkills = [];
-  public searchName = '';
+  public searchName: string;
   public isFindingExperts = false;
   @Output() public employeeResponseEvent = new EventEmitter();
 
@@ -51,7 +53,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   constructor(
     private rest: RestService,
     private snackBar: MatSnackBar,
-    private adalSvc: MsAdalAngular6Service
+    private adalSvc: MsAdalAngular6Service,
+    private amplitudeSvc: AmplitudeService
     ) { }
 
   ngOnInit(): void {
@@ -107,10 +110,15 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     }
     this.isFindingExperts = true;
     this.toggleSearchForm = false;
-    this.searchEmployeesRequest.employeeName = this.searchName;
     this.searchEmployeesRequest.skillName = this.searchSkills;
     const filterResultsURL = `${environment.communitiesApi}/Employees/GetEmployeeDetails`;
     const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);
+    console.log(this.searchEmployeesRequest);
+    if (this.pageNumber === 1) {
+      this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH, this.searchEmployeesRequest);
+    } else if (this.pageNumber > 1) {
+      this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH_MORE);
+    }
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
         if (data.employeeSkillDetails.length <= 0) {
@@ -180,7 +188,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   nameMessage(message: string) {
-    this.searchName = message;
+    this.searchEmployeesRequest.employeeName = message;
   }
 
   roleMessage(message: string) {
@@ -200,7 +208,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.resourceStatus = undefined;
     this.searchEmployeesRequest.role = undefined;
     this.searchEmployeesRequest.location = undefined;
-    this.searchName = undefined;
+    this.searchEmployeesRequest.employeeName = undefined;
     this.searchNameChildComp.emptyName();
     this.searchRoleChildComp.emptyRole();
     this.searchAvailChildComp.emptyAvail();
