@@ -208,7 +208,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.resourceStatus = undefined;
     this.searchEmployeesRequest.role = undefined;
     this.searchEmployeesRequest.location = undefined;
-    this.searchName = undefined;
+    this.searchEmployeesRequest.employeeName = undefined;
     this.searchNameChildComp.emptyName();
     this.searchRoleChildComp.emptyRole();
     this.searchAvailChildComp.emptyAvail();
