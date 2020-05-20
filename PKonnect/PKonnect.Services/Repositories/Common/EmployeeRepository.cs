@@ -10,31 +10,31 @@ using System.Threading.Tasks;
 
 namespace PKonnect.Services.DataServices
 {
-    public class ResourcesRepository : IResourcesRepository
+    public class EmployeeRepository : IEmployeeRepository
 
     {
         private readonly PKonnectDataContext _pkonnectdatacontext;
 
-        public ResourcesRepository(PKonnectDataContext PKonnectDataContext)
+        public EmployeeRepository(PKonnectDataContext PKonnectDataContext)
         {
             _pkonnectdatacontext = PKonnectDataContext;
         }
 
-        public int AddResource(Resources employee)
+        public int AddEmployee(Employee employee)
         {
-            _pkonnectdatacontext.Resources.Add(employee);
+            _pkonnectdatacontext.Employee.Add(employee);
             int employeeId = _pkonnectdatacontext.SaveChanges();
             return employeeId;
         }
 
 
-        public IQueryable<Resources> GetResources()
+        public IQueryable<Employee> GetEmployees()
         {
             if (_pkonnectdatacontext != null)
             {
                 try
                 {
-                    return _pkonnectdatacontext.Resources.Where(Resource => Resource.IsActive).AsNoTracking();
+                    return _pkonnectdatacontext.Employee.Where(Employee => Employee.IsActive).AsNoTracking();
                 }
                 catch (Exception ex)
                 {
@@ -45,11 +45,11 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public object GetResourceDetails(long? resourceId,string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
+        public object GetEmployeeDetails(long? employeeId,string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
-                SearchAnalytics analytics = new SearchAnalytics
+                Analytics analytics = new Analytics
                 {
                     EmployeeEmailId = email,
                     Role = role,
@@ -61,7 +61,7 @@ namespace PKonnect.Services.DataServices
                     PageNumber = pageNumber
                 };
 
-                _pkonnectdatacontext.SearchAnalytics.Add(analytics);
+                _pkonnectdatacontext.Analytics.Add(analytics);
                 // executes the appropriate commands to implement the changes to the database  
                 _pkonnectdatacontext.SaveChanges();
 
@@ -75,11 +75,11 @@ namespace PKonnect.Services.DataServices
                 if (!string.IsNullOrEmpty(location))
                     locations = location.Split(',');
 
-                var roles = (from r in _pkonnectdatacontext.Roles
+                var roles = (from r in _pkonnectdatacontext.EmployeeRole
                              where (role == null || (r.RoleName == role)) && r.IsActive
                              select new
                              {
-                                 r.RoleId,
+                                 r.EmployeeRoleId,
                                  r.RoleGroup,
                                  r.RoleName
                              }).ToList();
@@ -95,24 +95,24 @@ namespace PKonnect.Services.DataServices
                                   s.TextName,
                               }).ToList();
 
-                var details = (from employee in _pkonnectdatacontext.Resources
-                               join employeeRole in _pkonnectdatacontext.Roles
-                                on employee.RoleId  equals employeeRole.RoleId into ER
+                var details = (from employee in _pkonnectdatacontext.Employee
+                               join employeeRole in _pkonnectdatacontext.EmployeeRole
+                                on employee.EmployeeRoleId  equals employeeRole.EmployeeRoleId into ER
                                from employeeRole in ER.DefaultIfEmpty()
                                join intacct in _pkonnectdatacontext.IntacctLocation
                                on employee.IntacctLocationId equals intacct.IntacctLocationId                               
                                where
                                (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
-                               && (resourceId == null || (employee.ResourceId == resourceId))
+                               && (employeeId == null || (employee.EmployeeId == employeeId))
                                 && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
                               && (role == null || (employeeRole.RoleName == role))
                               &&
                               (location == null || (intacct.Country == location))
                               && employee.IsActive
                             
-                               select new ResourceSkillDetails()
+                               select new EmployeeSkillDetails()
                                {
-                                   ResourceId = employee.ResourceId,
+                                   EmployeeId = employee.EmployeeId,
                                    FirstName = employee.FirstName,
                                    LastName = employee.LastName,
                                    FullName = employee.FullName,
@@ -133,18 +133,17 @@ namespace PKonnect.Services.DataServices
                                    Manager = employee.Manager,
                                    COE = employee.COE,
                                    AboutEmployee = employee.AboutEmployee,
-                                   EmployeeId = employee.EmployeeId,
-                                   ResourceSkills = (from es in _pkonnectdatacontext.ResourceSkills
+                                   EmployeeSkills = (from es in _pkonnectdatacontext.EmployeeSkill
                                                      join s in _pkonnectdatacontext.Skill
                                                     on es.SkillId equals s.SkillId into empSkill
                                                      from emps in empSkill.DefaultIfEmpty()
-                                                     where (es.ResourceId == employee.ResourceId) && es.IsActive
+                                                     where (es.EmployeeId == employee.EmployeeId) && es.IsActive
                                                         && es.BestFitSkill
                                                      orderby es.SkillRating descending
                                                      //&& (skillName == null || (SkillNames.Contains(emps.TextName))))
-                                                     select new ResourceSkillList()
+                                                     select new EmployeeSkillList()
                                                      {
-                                                         ResourceSkillId = es.ResourceSkillId,
+                                                         EmployeeSkillId = es.EmployeeSkillId,
                                                          BestFitSkill = es.BestFitSkill,
                                                          TextName = emps.TextName,
                                                          SkillRating = es.SkillRating,
@@ -155,17 +154,17 @@ namespace PKonnect.Services.DataServices
                                                      }
                                                      ).ToList(),
                                    EmployeeCertifications = (from ec in _pkonnectdatacontext.EmployeeCertification
-                                                             where ec.EmployeeId == employee.ResourceId
+                                                             where ec.EmployeeId == employee.EmployeeId
                                                              select ec).ToList()
                                }).ToList();
 
-                var details1 = details.Where(d => d.ResourceSkills.Any(y => (skillNames == null || (SkillNames.Contains(y.TextName))))).ToList();
+                var details1 = details.Where(d => d.EmployeeSkills.Any(y => (skillNames == null || (SkillNames.Contains(y.TextName))))).ToList();
 
-                var details2 = details.Where(d => d.ResourceSkills.Count == 0).ToList();
+                var details2 = details.Where(d => d.EmployeeSkills.Count == 0).ToList();
 
                 details = details1.Union(details2).ToList();
 
-                var employeeSkills = details.Where(a => a.ResourceSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
+                var employeeSkills = details.Where(a => a.EmployeeSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
                 var recordCount = employeeSkills.Count() < 10 ? employeeSkills.Count() : details.Count();
 
                 var skillDetails = new SkillDetails
@@ -180,21 +179,21 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public int DeleteResource(int? id)
+        public int DeleteEmployee(int? id)
         {
             int res = 0;
-            var objEmployee = _pkonnectdatacontext.Resources.FirstOrDefault(b => b.ResourceId == id);
+            var objEmployee = _pkonnectdatacontext.Employee.FirstOrDefault(b => b.EmployeeId == id);
             if (objEmployee != null)
             {
-                _pkonnectdatacontext.Resources.Remove(objEmployee);
+                _pkonnectdatacontext.Employee.Remove(objEmployee);
                 res = _pkonnectdatacontext.SaveChanges();
             }
             return res;
         }
 
-        public Resources GetResource(int? id)
+        public Employee GetEmployee(int? id)
         {
-            var employee = _pkonnectdatacontext.Resources.FirstOrDefault(b => b.ResourceId == id);
+            var employee = _pkonnectdatacontext.Employee.FirstOrDefault(b => b.EmployeeId == id);
             return employee;
         }
     }

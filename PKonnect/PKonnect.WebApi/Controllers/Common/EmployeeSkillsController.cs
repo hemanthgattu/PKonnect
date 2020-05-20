@@ -14,21 +14,21 @@ namespace PKonnect.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class ResourceSkillsController : BaseApiController
+    public class EmployeeSkillsController : BaseApiController
     {
-        private readonly IResourceSkillsRepository _context;
+        private readonly IEmployeeSkillRepository _context;
 
-        public ResourceSkillsController(IResourceSkillsRepository context)
+        public EmployeeSkillsController(IEmployeeSkillRepository context)
         {
             _context = context;
         }
 
         // GET api/values
         [HttpGet]
-        [ProducesResponseType(typeof(ResourceSkills), 200)]
-        public IEnumerable<ResourceSkills> Get()
+        [ProducesResponseType(typeof(EmployeeSkill), 200)]
+        public IEnumerable<EmployeeSkill> Get()
         {
-            return _context.GetResourceSkills();
+            return _context.GetEmployeeSkills();
         }
 
         // GET api/values/5
@@ -42,7 +42,7 @@ namespace PKonnect.WebApi.Controllers
 
             try
             {
-                var post = _context.GetResourceSkill(id);
+                var post = _context.GetEmployeeSkill(id);
 
                 if (post == null)
                 {

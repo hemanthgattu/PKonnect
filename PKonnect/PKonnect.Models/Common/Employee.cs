@@ -6,17 +6,17 @@ using System.Text;
 
 namespace PKonnect.Models.Common
 {
-    public partial class Resources
+    public partial class Employee
     {
-        public Resources()
+        public Employee()
         {
-            EmployeeSkills = new HashSet<ResourceSkills>();
+            EmployeeSkills = new HashSet<EmployeeSkill>();
             EmployeeCertification = new HashSet<EmployeeCertification>();
 
         }
 
         [Key]
-        public long ResourceId { get; set; }
+        public long EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
@@ -31,7 +31,7 @@ namespace PKonnect.Models.Common
         public string SecondaryEmailAddress { get; set; }
         public string RecordType { get; set; }
         public string ReportsTo { get; set; }
-        public string EmployeeId { get; set; }
+        public string EmployeeNumber { get; set; }
         public string Category { get; set; }
 
         public string SiteCity { get; set; }
@@ -55,10 +55,10 @@ namespace PKonnect.Models.Common
         public string SourceSystemId { get; set; }
         public string RoleName { get; set; }
         public string OnBenchReason { get; set; }
-        public long? RoleId { get; set; }
+        public long? EmployeeRoleId { get; set; }
 
         public string ResourceStatus { get; set; }
-        public virtual ICollection<ResourceSkills> EmployeeSkills { get; set; }
+        public virtual ICollection<EmployeeSkill> EmployeeSkills { get; set; }
         public virtual ICollection<EmployeeCertification> EmployeeCertification { get; set; }
         public string IntacctLocationName { get; set; }
         public long? IntacctLocationId { get; set; }

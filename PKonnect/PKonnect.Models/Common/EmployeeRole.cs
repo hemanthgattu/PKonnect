@@ -5,10 +5,10 @@ using System.Text;
 
 namespace PKonnect.Models.Common
 {
-    public class Roles
+    public class EmployeeRole
     {
         [Key]
-        public long RoleId { get; set; }
+        public long EmployeeRoleId { get; set; }
         public string RoleName { get; set; }
         public string RoleGroup { get; set; }
         public string SourceSystemName { get; set; }

@@ -5,8 +5,6 @@ import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SharedMethodsService } from '../services/shared-methods/shared-methods.service';
 import { Router } from '@angular/router';
 import { RestService } from '../services/rest/rest.service';
-import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-nav-bar',
@@ -33,7 +31,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     this.userName = this.adalSvc.LoggedInUserName;
     this.isMobile = this.sharedMethods.isMobile();
-    this.getUserDetails();
+    // this.getUserDetails();
   }
 
   toggleIcon() {
@@ -60,8 +58,8 @@ export class NavBarComponent implements OnInit {
   }
 
   getUserDetails() {
-    const userUrl = 'https://graph.microsoft.com/v1.0/me/photo/$value';
-    this.rest.httpGet(userUrl).subscribe(
+    const userUrl = 'https://graph.microsoft.com/v1.0/me';
+    this.rest.httpGet(userUrl, this.adalSvc.accessToken).subscribe(
       (data) => {
         console.log(data);
       },
@@ -69,7 +67,6 @@ export class NavBarComponent implements OnInit {
         console.log(error);
       }
     );
-
-    console.log(this.adalSvc.accessToken);
   }
+
 }

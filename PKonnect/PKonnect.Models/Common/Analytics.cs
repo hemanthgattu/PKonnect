@@ -6,10 +6,10 @@ using System.Text;
 
 namespace PKonnect.Models.Common
 {
-    public class SearchAnalytics
+    public class Analytics
     {
         [Key]
-        public long SearchAnalyticsId { get; set; }
+        public long AnalyticsId { get; set; }
         public string EmployeeEmailId { get; set; }
         public string QueryString { get; set; }
         public string Role { get; set; }

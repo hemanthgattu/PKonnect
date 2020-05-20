@@ -16,11 +16,11 @@ namespace PKonnect.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class ResourcesController : BaseApiController
+    public class EmployeesController : BaseApiController
     {
-        private readonly IResourcesRepository _context;
+        private readonly IEmployeeRepository _context;
 
-        public ResourcesController(IResourcesRepository context)
+        public EmployeesController(IEmployeeRepository context)
         {
             _context = context;
         }
@@ -28,9 +28,9 @@ namespace PKonnect.WebApi.Controllers
         // GET api/values
         [HttpGet]
         [EnableQuery()]
-        public IQueryable<Resources> Get()
+        public IQueryable<Employee> Get()
         {
-            return _context.GetResources();
+            return _context.GetEmployees();
         }
 
         // GET api/values/5
@@ -45,7 +45,7 @@ namespace PKonnect.WebApi.Controllers
 
             try
             {
-                var post = _context.GetResource(id);
+                var post = _context.GetEmployee(id);
 
                 if (post == null)
                 {
@@ -62,15 +62,15 @@ namespace PKonnect.WebApi.Controllers
 
 
         //GET api/values
-        [HttpGet("GetResourceDetails")]
-        [ODataRoute("GetResourceDetails")]
-        public object GetResourceDetails([FromODataUri] long? resourceId, [FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] int pageSize = 10, [FromODataUri] int pageNumber = 1)
+        [HttpGet("GetEmployeeDetails")]
+        [ODataRoute("GetEmployeeDetails")]
+        public object GetEmployeeDetails([FromODataUri] long? employeeId, [FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] int pageSize = 10, [FromODataUri] int pageNumber = 1)
 
         {
             // employeeName = "Eric Fabela Sanchez";
             // skillName = "Java";
             //role = "Developer - DotNet";
-            return _context.GetResourceDetails(resourceId, skillName, employeeName, role, resourceStatus, location, email, pageSize, pageNumber);
+            return _context.GetEmployeeDetails(employeeId, skillName, employeeName, role, resourceStatus, location, email, pageSize, pageNumber);
         }
 
         #region commented code 

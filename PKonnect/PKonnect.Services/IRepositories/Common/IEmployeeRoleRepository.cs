@@ -6,9 +6,9 @@ using System.Text;
 
 namespace PKonnect.Repositories.IRepositories.Common
 {
-    public interface IRolesRepository
+    public interface IEmployeeRoleRepository
     {
-        IQueryable<Roles> GetRoles();
-        Roles GetRole(int? id);
+        IQueryable<EmployeeRole> GetRoles();
+        EmployeeRole GetRole(int? id);
     }
 }

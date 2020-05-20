@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace PKonnect.Services.DataServices
 {
-    public class ResourceSkillsRepository : IResourceSkillsRepository
+    public class EmployeeSkillRepository : IEmployeeSkillRepository
 
     {
         private readonly PKonnectDataContext _pkonnectdatacontext;
 
-        public ResourceSkillsRepository(PKonnectDataContext PKonnectDataContext)
+        public EmployeeSkillRepository(PKonnectDataContext PKonnectDataContext)
         {
             _pkonnectdatacontext = PKonnectDataContext;
         }
 
 
-        public IQueryable<ResourceSkills> GetResourceSkills()
+        public IQueryable<EmployeeSkill> GetEmployeeSkills()
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.ResourceSkills.Where(ResourceSkill => ResourceSkill.IsActive)//.Include(EmployeeSkill => EmployeeSkill.Skills)
+                return _pkonnectdatacontext.EmployeeSkill.Where(EmployeeSkill => EmployeeSkill.IsActive)//.Include(EmployeeSkill => EmployeeSkill.Skills)
                     .AsNoTracking();
             }
 
@@ -33,9 +33,9 @@ namespace PKonnect.Services.DataServices
         }
 
     
-        public ResourceSkills GetResourceSkill(int? id)
+        public EmployeeSkill GetEmployeeSkill(int? id)
         {
-            var employeeSkill = _pkonnectdatacontext.ResourceSkills.FirstOrDefault(b => b.ResourceSkillId == id);
+            var employeeSkill = _pkonnectdatacontext.EmployeeSkill.FirstOrDefault(b => b.EmployeeSkillId == id);
             return employeeSkill;
         }
     }
