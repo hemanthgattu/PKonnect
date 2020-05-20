@@ -128,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "pk-connections"
+    }
+  },
+  "defaultProject": "pk-connections",
+  "cli": {
+    "analytics": "b93ba326-1103-4486-b9c4-5955219fcf0e"
+  }
 }

@@ -70,13 +70,15 @@ namespace PKonnect.WebApi
             //     });
 
             services.AddScoped<ICommunityFeedbackRepository, CommunityFeedbackRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<IEmployeeSkillRepository, EmployeeSkillRepository>();
+            services.AddScoped<IResourcesRepository, ResourcesRepository>();
+            services.AddScoped<IResourceSkillsRepository, ResourceSkillsRepository>();
             services.AddScoped<ISkillsRepository, SkillsRepository>();
             services.AddScoped<IClientLocationRepository, ClientLocationRepository>();
-            services.AddScoped<IEmployeeRoleRepository, EmployeeRoleRepository>();
+            services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IIntacctLocationRepository, IntacctLocationRepository>();
             services.AddScoped<IEmployeeCertificationRepository, EmployeeCertificationRepository>();
+            services.AddScoped<ISearchAnalyticsRepository, SearchAnalyticsRepository>();
+            services.AddScoped<IPageAnalyticsRepository, PageAnalyticsRepository>();
 
             services.AddControllers();
 
@@ -139,19 +141,21 @@ namespace PKonnect.WebApi
         public static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Employee>("Employees");
-            builder.EntitySet<EmployeeSkill>("EmployeeSkills");
+            builder.EntitySet<Resources>("Resources");
+            builder.EntitySet<ResourceSkills>("ResourceSkills");
             builder.EntitySet<Skill>("Skills");
-            builder.EntitySet<EmployeeRole>("EmployeeRoles");
+            builder.EntitySet<Roles>("Roles");
             builder.EntitySet<ClientLocation>("ClientLocations");
             builder.EntitySet<ClientLocation>("ClientLocations");
             builder.EntitySet<IntacctLocation>("IntacctLocations");
             builder.EntitySet<EmployeeCertification>("EmployeeCertifications");
+            builder.EntitySet<SearchAnalytics>("SearchAnalytics");
+            builder.EntitySet<PageAnalytics>("PageAnalytics");
 
             
-            builder.EntitySet<Employee>(nameof(Employee));
+            builder.EntitySet<Resources>(nameof(Resources));
             {
-                var function = builder.Function("GetEmployeeDetails");
+                var function = builder.Function("GetResourceDetails");
                 function.Parameter<string>("skillName");
                 function.Parameter<string>("employeeName");
                 //function.Parameter<string>("availability");

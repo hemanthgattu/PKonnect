@@ -15,14 +15,15 @@ namespace PKonnect.Context
         }
 
         public DbSet<CommunityFeedback> CommunityFeedback { get; set; }
-        public DbSet<Employee> Employee { get; set; }
+        public DbSet<Resources> Resources { get; set; }
         public DbSet<Skill> Skill { get; set; }
-        public DbSet<EmployeeSkill> EmployeeSkill { get; set; }
+        public DbSet<ResourceSkills> ResourceSkills { get; set; }
         public DbSet<ClientLocation> ClientLocation { get; set; }
-        public DbSet<EmployeeRole> EmployeeRole { get; set; }
+        public DbSet<Roles> Roles { get; set; }
         public DbSet<IntacctLocation> IntacctLocation { get; set; }
-        public DbSet<Analytics> Analytics { get; set; }
+        public DbSet<SearchAnalytics> SearchAnalytics { get; set; }
         public DbSet<EmployeeCertification> EmployeeCertification { get; set; }
+        public DbSet<PageAnalytics> PageAnalytics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
