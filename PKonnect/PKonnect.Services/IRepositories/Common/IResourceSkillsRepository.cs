@@ -6,12 +6,12 @@ using System.Text;
 
 namespace PKonnect.Services.Infrastructure
 {
-    public interface IEmployeeSkillRepository
+    public interface IResourceSkillsRepository
     {
-        IQueryable<EmployeeSkill> GetEmployeeSkills();
+        IQueryable<ResourceSkills> GetResourceSkills();
 
 
-        EmployeeSkill GetEmployeeSkill(int? id);
+        ResourceSkills GetResourceSkill(int? id);
         
     }
 }

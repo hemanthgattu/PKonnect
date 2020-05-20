@@ -6,12 +6,12 @@ using System.Text;
 
 namespace PKonnect.Mappers.Common
 {
-    public class EmployeeSkillMap
+    public class ResourceSkillsMap
     {
-        public EmployeeSkillMap(EntityTypeBuilder<EmployeeSkill> entityBuilder)
+        public ResourceSkillsMap(EntityTypeBuilder<ResourceSkills> entityBuilder)
         {
-            entityBuilder.HasKey(t => t.EmployeeSkillId);
-            entityBuilder.Property(t => t.EmployeeId).IsRequired();
+            entityBuilder.HasKey(t => t.ResourceSkillId);
+            entityBuilder.Property(t => t.ResourceId).IsRequired();
             entityBuilder.Property(t => t.SkillId).IsRequired();
         }
     }

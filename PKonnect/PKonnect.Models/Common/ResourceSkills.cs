@@ -5,15 +5,11 @@ using System.Text;
 
 namespace PKonnect.Models.Common
 {
-    public partial class EmployeeSkill
+    public partial class ResourceSkills
     {
-        //public EmployeeSkill()
-        //{
-        //    Skills = new HashSet<Skill>();
-        //}
         [Key]
-        public long EmployeeSkillId { get; set; }
-        public long EmployeeId { get; set; }
+        public long ResourceSkillId { get; set; }
+        public long ResourceId { get; set; }
         public long SkillId { get; set; }
         public bool BestFitSkill { get; set; }
         public long SkillRating { get; set; }
