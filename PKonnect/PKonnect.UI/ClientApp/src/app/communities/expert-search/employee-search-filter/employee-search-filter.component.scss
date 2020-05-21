@@ -179,3 +179,9 @@ h1 {
         text-decoration: underline;
     }
 }
+
+.submit-skills {
+    @extend .reset-filters;
+    float: right;
+}
+
