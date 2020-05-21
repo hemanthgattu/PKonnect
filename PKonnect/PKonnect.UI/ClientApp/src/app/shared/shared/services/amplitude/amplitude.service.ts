@@ -12,7 +12,10 @@ export class AmplitudeService {
   constructor(private adalSvc: MsAdalAngular6Service) { }
 
   initilize() {
-    amplitude.getInstance().init(environment.amplitudeKey, this.adalSvc.LoggedInUserEmail);
+    const userId = this.adalSvc.LoggedInUserEmail.split('@')[0];
+    if (!!userId) {
+      amplitude.getInstance().init(environment.amplitudeKey, userId);
+    }
   }
 
   setEvent(eventName: string, eventProperty?: any) {
