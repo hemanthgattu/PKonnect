@@ -6,11 +6,11 @@ using System.Text;
 
 namespace PKonnect.Mappers.Common
 {
-    public class EmployeeRoleMap
+    public class PageAnalyticsMap
     {
-        public EmployeeRoleMap(EntityTypeBuilder<EmployeeRole> entityBuilder)
+        public PageAnalyticsMap(EntityTypeBuilder<PageAnalytics> entityBuilder)
         {
-            entityBuilder.HasKey(t => t.EmployeeRoleId);
-        }        
+            entityBuilder.HasKey(t => t.PageAnalyticsId);
+        }
     }
 }

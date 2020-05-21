@@ -9,28 +9,28 @@ using System.Text;
 
 namespace PKonnect.Repositories.Repositories.Common
 {
-    public class EmployeeRoleRepository : IEmployeeRoleRepository
+    public class RolesRepository : IRolesRepository
     {
         private readonly PKonnectDataContext _pkonnectdatacontext;
 
-        public EmployeeRoleRepository(PKonnectDataContext PKonnectDataContext)
+        public RolesRepository(PKonnectDataContext PKonnectDataContext)
         {
             _pkonnectdatacontext = PKonnectDataContext;
         }
 
-        public IQueryable<EmployeeRole> GetRoles()
+        public IQueryable<Roles> GetRoles()
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.EmployeeRole.Where(role => role.IsActive).AsNoTracking();
+                return _pkonnectdatacontext.Roles.Where(role => role.IsActive).AsNoTracking();
             }
 
             return null;
         }
 
-        public EmployeeRole GetRole(int? id)
+        public Roles GetRole(int? id)
         {
-            var role = _pkonnectdatacontext.EmployeeRole.FirstOrDefault(b => b.EmployeeRoleId == id);
+            var role = _pkonnectdatacontext.Roles.FirstOrDefault(b => b.RoleId == id);
             return role;
         }
     }

@@ -7,14 +7,14 @@ namespace PKonnect.Models.Common
 {
     public class SkillDetails
     {
-        public IQueryable<EmployeeSkillDetails> EmployeeSkillDetails { get; set; }
+        public IQueryable<ResourceSkillDetails> EmployeeSkillDetails { get; set; }
         public int RecordCount { get; set; }
     }
 
 
-    public class EmployeeSkillDetails
+    public class ResourceSkillDetails
     {
-        public long EmployeeId { get; set; }
+        public long ResourceId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
@@ -36,16 +36,16 @@ namespace PKonnect.Models.Common
         public string Manager { get; set; }
         public string COE { get; set; }
         public string AboutEmployee { get; set; }
+        public string EmployeeId { get; set; }
 
-        public List<EmployeeSkillList> EmployeeSkills { get; set; }
+        public List<ResourceSkillList> ResourceSkills { get; set; }
         public List<EmployeeCertification> EmployeeCertifications { get; set; }
     }
 
-    public class EmployeeSkillList
+    public class ResourceSkillList
     {
-
         //public long EmployeeId { get; set; }
-        public long EmployeeSkillId { get; set; }
+        public long ResourceSkillId { get; set; }
         public long SkillId { get; set; }
         public bool BestFitSkill { get; set; }
         public long SkillRating { get; set; }
@@ -56,7 +56,5 @@ namespace PKonnect.Models.Common
         public string PracticeArea { get; set; }
         public string Term { get; set; }
         public string TextName { get; set; }
-
-
     }
 }
