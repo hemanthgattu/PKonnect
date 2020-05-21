@@ -44,13 +44,15 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
   }
 
   private _filter(value: string) {
-    const filterValue = value.toLowerCase();
-    this.availSkillsValidator(value);
-    return this.options.filter(option => {
-      if (!!option && option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option)) {
-        return option;
-      }
-    });
+    if (!!value) {
+      const filterValue = value.toLowerCase();
+      this.availSkillsValidator(value);
+      return this.options.filter(option => {
+        if (!!option && option.toLowerCase().includes(filterValue) && !this.selectedSkills.includes(option)) {
+          return option;
+        }
+      });
+    }
   }
 
   /*
@@ -87,6 +89,10 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
 
   availSkillsValidator(input: string): void {
     this.valid = this.options.map(v => v.toLowerCase()).includes(input.toLowerCase());
+  }
+
+  emptySkill() {
+    this.myControl.reset();
   }
 
   ngOnDestroy() {

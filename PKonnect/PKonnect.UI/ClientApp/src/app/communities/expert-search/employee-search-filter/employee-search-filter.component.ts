@@ -113,7 +113,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.skillName = this.searchSkills;
     const filterResultsURL = `${environment.communitiesApi}/Employees/GetEmployeeDetails`;
     const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);
-    console.log(this.searchEmployeesRequest);
     if (this.pageNumber === 1) {
       this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH, this.searchEmployeesRequest);
     } else if (this.pageNumber > 1) {
@@ -213,7 +212,13 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchRoleChildComp.emptyRole();
     this.searchAvailChildComp.emptyAvail();
     this.searchLocationChildComp.emptyLocation();
+    this.searchSkillChildComp.emptySkill();
     this.searchSkillChildComp.selectedSkills = [];
+    this.employeeResponseEvent.emit({
+      employeeSkillDetails: [],
+      recordCount: 0,
+      newData: true
+    });
   }
 
   ngOnDestroy() {
