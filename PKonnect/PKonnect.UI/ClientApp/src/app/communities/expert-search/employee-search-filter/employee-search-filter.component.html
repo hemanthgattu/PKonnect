@@ -21,8 +21,9 @@
                 </div>
                 <div class="col-lg-2">
                     <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
-                    <a href="https://prokarma001.sharepoint.com/Pages/SkillRequestForm.aspx" class="submit-skills"
-                        target="_blank" rel="noopener">Can't find a skill?</a>
+                    <!-- <a href="https://prokarma001.sharepoint.com/Pages/SkillRequestForm.aspx" class="submit-skills"
+                        target="_blank" rel="noopener">Can't find a skill?</a> -->
+                    <!-- <span class="reset-filters" (click)="goToAddSkills()">Can't find a skill?</span> -->
                 </div>
                 <div class="col-lg-2">
                     <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
@@ -41,8 +42,7 @@
                                 [spin]="true" size="md"></fa-icon></span>
                     </button>
 
-                    <span class="reset-filters" (click)="emptySkills();">Reset
-                        Filters</span>
+                    <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
                 </div>
             </div>
             <div class="row">

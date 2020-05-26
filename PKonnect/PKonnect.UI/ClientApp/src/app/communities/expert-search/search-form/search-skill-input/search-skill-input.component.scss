@@ -19,6 +19,28 @@ $color-white: #FFFFFF;
     padding: 0px 5px 5px 5px;
 }
 
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.submit-skills {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    padding-left: 0;
+    color: #1B83B1;
+    z-index: 99;
+    padding-left: 6px;
+    padding-bottom: 0;
+
+    &:hover{
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
 ::ng-deep .mat-form-field-label{
     font-size: 14px !important;
 }
