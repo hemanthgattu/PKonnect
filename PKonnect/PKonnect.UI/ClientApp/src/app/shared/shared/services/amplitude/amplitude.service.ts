@@ -9,6 +9,10 @@ import * as amplitude from 'amplitude-js';
 })
 export class AmplitudeService {
 
+  private props = {
+    role: '',
+    skill: []
+  };
   constructor(private adalSvc: MsAdalAngular6Service) { }
 
   initilize() {
@@ -19,8 +23,16 @@ export class AmplitudeService {
   }
 
   setEvent(eventName: string, eventProperty?: any) {
-    if (environment.sendEvents) {
-      amplitude.getInstance().logEvent(eventName);
+    if (eventProperty) {
+      this.props.role = eventProperty.role;
+      this.props.skill = eventProperty.skillName;
+    }
+    if (environment.sendEvents ) {
+      if (this.props && !!this.props.role || this.props.skill.length > 0) {
+        amplitude.getInstance().logEvent(eventName, this.props);
+      } else {
+        amplitude.getInstance().logEvent(eventName);
+      }
     }
   }
 }
