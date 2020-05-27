@@ -60,7 +60,7 @@ $color-white: #ffffff;
 .btn-scroll-top {
   display: block;
   position: fixed;
-  bottom: 20px;
+  bottom: 3em;
   right: 20px;
   z-index: 99;
   border: none;
@@ -73,7 +73,7 @@ $color-white: #ffffff;
   cursor: pointer;
 
   @media screen and (max-width: $break-small) {
-    bottom: 5px;
+    bottom: 3em;
     right: 5px;
   }
 }
