@@ -6,17 +6,18 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
-  declarations: [NavBarComponent, TruncatePipe],
+  declarations: [NavBarComponent, TruncatePipe, FooterComponent],
   imports: [
     CommonModule,
     HttpClientModule,
     FontAwesomeModule,
     MatTooltipModule
   ],
-  exports: [NavBarComponent, TruncatePipe],
+  exports: [NavBarComponent, TruncatePipe, FooterComponent],
   providers: [ RestService ]
 })
 export class SharedModule { }
