@@ -34,7 +34,7 @@
                         matTooltipPosition="right">{{employee.roleDescription | truncate:230:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
-                    <!-- <button type="button" (click)="goToProfile(employee.employeeId)"
+                    <!-- <button type="button" (click)="goToProfile(employee.resourceId)"
                         class="btn btn-outline-secondary view-profile">View Profile</button> -->
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="employee.employeeSkills.length > 5 && displayEmployeeSkills.length <= 5"
+                <div *ngIf="employee.resourceSkills.length > 5 && displayEmployeeSkills.length <= 5"
                     class="employee-skills-view-more d-flex flex-row-reverse">
                     <span class="btn-view-more-skills" (click)="showMoreSkills()">
                         <fa-icon class="slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
@@ -84,7 +84,7 @@
                     </span>
                 </div>
 
-                <div *ngIf="employee.employeeSkills.length > 5 && displayEmployeeSkills.length > 5"
+                <div *ngIf="employee.resourceSkills.length > 5 && displayEmployeeSkills.length > 5"
                     class="employee-skills-view-more d-flex flex-row-reverse">
                     <span class="btn-view-more-skills" (click)="showLessSkills()">
                         <fa-icon class="slider-icon" [icon]="faChevronUp" size="sm"></fa-icon>

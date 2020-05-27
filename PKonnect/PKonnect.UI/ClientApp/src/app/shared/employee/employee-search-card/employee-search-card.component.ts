@@ -45,7 +45,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   @Input()
   set employeeData(employee: any) {
     this.employee = employee;
-    this.displayEmployeeSkills = this.employee.employeeSkills.slice(0, 5);
+    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
     this.setDisplayPicture(this.employee);
   }
 
@@ -74,12 +74,12 @@ export class EmployeeSearchCardComponent implements OnInit {
 
   showMoreSkills(): void {
     this.displayMoreSkills = true;
-    this.displayEmployeeSkills = this.employee.employeeSkills;
+    this.displayEmployeeSkills = this.employee.resourceSkills;
   }
 
   showLessSkills(): void {
     this.displayMoreSkills = false;
-    this.displayEmployeeSkills = this.employee.employeeSkills.slice(0, 5);
+    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
   }
 }
 

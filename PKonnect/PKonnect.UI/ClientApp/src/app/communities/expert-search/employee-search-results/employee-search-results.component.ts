@@ -30,9 +30,9 @@ export class EmployeeSearchResultsComponent implements OnInit {
   set employeeSearchResult(searchResult: any) {
     if (!!searchResult) {
       if (!searchResult.newData) {
-        this.employeeSearchResults = this.employeeSearchResults.concat(searchResult.employeeSkillDetails);
+        this.employeeSearchResults = this.employeeSearchResults.concat(searchResult.resourceSkillDetails);
       } else {
-        this.employeeSearchResults = searchResult.employeeSkillDetails;
+        this.employeeSearchResults = searchResult.resourceSkillDetails;
       }
       this.employeeSearchResultsCount = searchResult.recordCount;
       this.viewMoreLoading = false;

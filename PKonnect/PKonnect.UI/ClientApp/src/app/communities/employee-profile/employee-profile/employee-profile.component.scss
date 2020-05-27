@@ -2,11 +2,11 @@ $small-screen: 500px;
 
 .employee-profile {
   background: url(../../../../assets/images/employee-profile-bg.png) no-repeat;
-  background-size: 100% 30%, cover;
+  background-size: 100% 20%, cover;
   height: 100%;
 
   @media screen and (max-width: $small-screen) {
-    background-size: 100% 20%, cover;
+    background-size: 100% 7%, cover;
   }
 }
 

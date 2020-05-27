@@ -24,7 +24,7 @@
             <app-employee-search-card [employeeData]="employee"></app-employee-search-card>
         </div>
     </div>
-    <div class="cards-count">
+    <div class="cards-count" *ngIf="employeeSearchResults.length >= 5">
             <p class="showing-text">Showing 1 - {{employeeSearchResults.length}} of {{employeeSearchResultsCount}}</p>
         </div>
     <div class="view-more-employees" *ngIf="employeeSearchResults.length < employeeSearchResultsCount">

@@ -35,11 +35,11 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
   }
 
   getEmployeeDetailsWithId(id: number): void {
-    const getEmployeeUrl = `${environment.communitiesApi}/Employees/GetEmployeeDetails?employeeId=${id}`;
+    const getEmployeeUrl = `${environment.communitiesApi}/resources/GetResourceDetails?ResourceId=${id}`;
     this.sub = this.rest.httpGet(getEmployeeUrl).subscribe(
       (data) => {
-        if (data.recordCount > 0 && data.employeeSkillDetails.length > 0 ) {
-          this.employeeDetails = data.employeeSkillDetails[0];
+        if (data.recordCount > 0 && data.resourceSkillDetails.length > 0 ) {
+          this.employeeDetails = data.resourceSkillDetails[0];
           this.displayProfile = true;
           console.log(this.employeeDetails);
         } else {

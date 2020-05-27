@@ -111,7 +111,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.isFindingExperts = true;
     this.toggleSearchForm = false;
     this.searchEmployeesRequest.skillName = this.searchSkills;
-    const filterResultsURL = `${environment.communitiesApi}/Employees/GetEmployeeDetails`;
+    const filterResultsURL = `${environment.communitiesApi}/resources/GetResourceDetails`;
     const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);
     if (this.pageNumber === 1) {
       this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH, this.searchEmployeesRequest);
@@ -120,7 +120,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     }
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
-        if (data.employeeSkillDetails.length <= 0) {
+        if (data.resourceSkillDetails.length <= 0) {
           this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
         }
         if (this.pageNumber <= 1) {
