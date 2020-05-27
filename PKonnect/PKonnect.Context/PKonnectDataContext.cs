@@ -24,6 +24,9 @@ namespace PKonnect.Context
         public DbSet<SearchAnalytics> SearchAnalytics { get; set; }
         public DbSet<EmployeeCertification> EmployeeCertification { get; set; }
         public DbSet<PageAnalytics> PageAnalytics { get; set; }
+        public DbSet<Department> Department { get; set; }
+        public DbSet<ProjectMaster> ProjectMaster { get; set; }
+        public DbSet<ResourceAssignments> ResourceAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

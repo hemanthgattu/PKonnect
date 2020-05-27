@@ -10,8 +10,8 @@ namespace PKonnect.Models.Common
     {
         public Resources()
         {
-            EmployeeSkills = new HashSet<ResourceSkills>();
-            EmployeeCertification = new HashSet<EmployeeCertification>();
+            //EmployeeSkills = new HashSet<ResourceSkills>();
+            //EmployeeCertification = new HashSet<EmployeeCertification>();
 
         }
 
@@ -58,8 +58,8 @@ namespace PKonnect.Models.Common
         public long? RoleId { get; set; }
 
         public string ResourceStatus { get; set; }
-        public virtual ICollection<ResourceSkills> EmployeeSkills { get; set; }
-        public virtual ICollection<EmployeeCertification> EmployeeCertification { get; set; }
+        //public virtual ICollection<ResourceSkills> EmployeeSkills { get; set; }
+        //public virtual ICollection<EmployeeCertification> EmployeeCertification { get; set; }
         public string IntacctLocationName { get; set; }
         public long? IntacctLocationId { get; set; }
 
@@ -71,5 +71,7 @@ namespace PKonnect.Models.Common
         public string Manager { get; set; }
         public string COE { get; set; }
         public string AboutEmployee { get; set; }
+        public long? DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
     }
 }

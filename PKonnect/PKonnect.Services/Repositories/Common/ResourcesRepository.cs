@@ -108,8 +108,7 @@ namespace PKonnect.Services.DataServices
                               && (role == null || (employeeRole.RoleName == role))
                               &&
                               (location == null || (intacct.Country == location))
-                              && employee.IsActive
-                            
+                              && employee.IsActive                            
                                select new ResourceSkillDetails()
                                {
                                    ResourceId = employee.ResourceId,
@@ -134,6 +133,8 @@ namespace PKonnect.Services.DataServices
                                    COE = employee.COE,
                                    AboutEmployee = employee.AboutEmployee,
                                    EmployeeId = employee.EmployeeId,
+                                   DepartmentId = employee.DepartmentId,
+                                   DepartmentName = employee.DepartmentName,
                                    ResourceSkills = (from es in _pkonnectdatacontext.ResourceSkills
                                                      join s in _pkonnectdatacontext.Skill
                                                     on es.SkillId equals s.SkillId into empSkill
@@ -165,12 +166,12 @@ namespace PKonnect.Services.DataServices
 
                 details = details1.Union(details2).ToList();
 
-                var employeeSkills = details.Where(a => a.ResourceSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
-                var recordCount = employeeSkills.Count() < 10 ? employeeSkills.Count() : details.Count();
+                var resourceSkills = details.Where(a => a.ResourceSkills.Any()).ToList().AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
+                var recordCount = resourceSkills.Count() < 10 ? resourceSkills.Count() : details.Count();
 
                 var skillDetails = new SkillDetails
                 {
-                    EmployeeSkillDetails = employeeSkills,
+                    ResourceSkillDetails = resourceSkills,
                     RecordCount = recordCount
                 };
 
