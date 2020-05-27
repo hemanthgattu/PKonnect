@@ -79,6 +79,9 @@ namespace PKonnect.WebApi
             services.AddScoped<IEmployeeCertificationRepository, EmployeeCertificationRepository>();
             services.AddScoped<ISearchAnalyticsRepository, SearchAnalyticsRepository>();
             services.AddScoped<IPageAnalyticsRepository, PageAnalyticsRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IProjectMasterRepository, ProjectMasterRepository>();
+            services.AddScoped<IResourceAssignmentsRepository, ResourceAssignmentsRepository>();
 
             services.AddControllers();
 
@@ -91,10 +94,6 @@ namespace PKonnect.WebApi
             services.AddOData();
 
             services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
-
-
-
         }
 
         //https://localhost:44314
@@ -125,8 +124,6 @@ namespace PKonnect.WebApi
                 endpoints.MapControllers();
             });
 
-
-
             app.UseMvc(routeBuilder =>
             {
 
@@ -134,9 +131,7 @@ namespace PKonnect.WebApi
                 routeBuilder.Expand().Select().Count().OrderBy().Filter();
                 routeBuilder.MapODataServiceRoute("odata", "odata", GetEdmModel());
             });
-
         }
-
 
         public static IEdmModel GetEdmModel()
         {
@@ -151,7 +146,9 @@ namespace PKonnect.WebApi
             builder.EntitySet<EmployeeCertification>("EmployeeCertifications");
             builder.EntitySet<SearchAnalytics>("SearchAnalytics");
             builder.EntitySet<PageAnalytics>("PageAnalytics");
-
+            builder.EntitySet<Department>("Departments");
+            builder.EntitySet<ProjectMaster>("ProjectMasters");
+            builder.EntitySet<ResourceAssignments>("ResourceAssignments");
 
             builder.EntitySet<Resources>(nameof(Resources));
             {
