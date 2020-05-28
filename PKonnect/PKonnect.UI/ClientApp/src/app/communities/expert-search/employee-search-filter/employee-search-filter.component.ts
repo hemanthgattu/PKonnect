@@ -3,9 +3,6 @@ import { faSlidersH, faTimes, faSearch, faSpinner, fas } from '@fortawesome/free
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
 import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
@@ -30,7 +27,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   @ViewChild(SearchAvailInputComponent) searchAvailChildComp: SearchAvailInputComponent;
   @ViewChild(SearchLocationInputComponent) searchLocationChildComp: SearchLocationInputComponent;
   public isMobile = false;
-  public toggleSearchForm = false;
+  public toggleSearchForm = true;
   private resizeTimeout: any;
   private subs = new SubSink();
 
@@ -109,7 +106,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
       this.pageNumber = 1;
     }
     this.isFindingExperts = true;
-    this.toggleSearchForm = false;
+    this.toggleSearchForm = true;
     this.searchEmployeesRequest.skillName = this.searchSkills;
     const filterResultsURL = `${environment.communitiesApi}/resources/GetResourceDetails`;
     const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);

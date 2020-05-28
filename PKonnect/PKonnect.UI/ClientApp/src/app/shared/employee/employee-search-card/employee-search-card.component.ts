@@ -33,6 +33,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   public employee: any;
   public displayPicture = '';
   public displayEmployeeSkills = [];
+  public isEmployee: boolean;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -47,6 +48,7 @@ export class EmployeeSearchCardComponent implements OnInit {
     this.employee = employee;
     this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
     this.setDisplayPicture(this.employee);
+    this.isEmployee = this.setEmployee(this.employee.employeeId);
   }
 
   setDisplayPicture(employee: any) {
@@ -80,6 +82,13 @@ export class EmployeeSearchCardComponent implements OnInit {
   showLessSkills(): void {
     this.displayMoreSkills = false;
     this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
+  }
+
+  setEmployee(employeeId: string): boolean {
+    if (employeeId.slice(0, 2) === 'E1') {
+      return true;
+    }
+    return false;
   }
 }
 

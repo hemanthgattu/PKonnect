@@ -12,9 +12,19 @@
                 <div class="col-9 employee-details">
 
 
-                    <span class="employee-full-name">{{employee.fullName}}</span><br>
+                    <span class="employee-full-name">{{employee.fullName}}</span>
+                    <div class="employee-type" *ngIf="!!employee.employeeId">
+                        <button type="button" class="btn btn-mentor" *ngIf="isEmployee">
+                            <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
+                            <span class="mentor-text">Employee</span>
+                        </button>
+                        <button type="button" class="btn btn-mentor" *ngIf="!isEmployee">
+                            <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
+                            <span class="mentor-text">Contractor</span>
+                        </button>
+                    </div>
+                    <br>
                     <span class="employee-role">{{employee.role}}</span>
-
                     <!-- <div class="col-5">
                             <div class="row">
                                 <button type="button" class="btn btn-mentor" matTooltip="Feature Coming Soon..."
@@ -31,7 +41,7 @@
 
                     <div class="row employee-description">
                         <p *ngIf="!!employee.roleDescription" matTooltip="{{employee.roleDescription}}"
-                        matTooltipPosition="right">{{employee.roleDescription | truncate:230:"..."}}</p>
+                            matTooltipPosition="right">{{employee.roleDescription | truncate:230:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
                     <!-- <button type="button" (click)="goToProfile(employee.resourceId)"
@@ -65,8 +75,8 @@
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of displayEmployeeSkills">
-                    <div class="col-6 skill-name" matTooltip="{{employeeSkill.textName}}"
-                    matTooltipPosition="right"><span>{{employeeSkill.textName | truncate:21:"..."}}</span>
+                    <div class="col-6 skill-name" matTooltip="{{employeeSkill.textName}}" matTooltipPosition="right">
+                        <span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
                     <div class="col-6 employee-rating-bar">
                         <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5"

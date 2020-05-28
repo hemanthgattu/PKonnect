@@ -89,6 +89,10 @@
     color: #1B83B1;
 }
 
+.employee-type {
+    display: inline-block;
+}
+
 .employee-description{
     font-style: normal;
     font-weight: normal;
@@ -102,7 +106,7 @@
 }
 
 .btn-mentor {
-    margin: 0px 5px 15px 5px;
+    margin: 0px 5px 0px 20px;
     background: #D6DCE5;
     border-radius: 560px;
     font-style: normal;
