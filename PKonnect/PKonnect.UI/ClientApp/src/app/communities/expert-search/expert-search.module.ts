@@ -21,6 +21,7 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/mater
 import { SearchRoleInputComponent } from './search-form/search-role-input/search-role-input.component';
 import { SearchLocationInputComponent } from './search-form/search-location-input/search-location-input.component';
 import { SearchAvailInputComponent } from './search-form/search-avail-input/search-avail-input.component';
+import { SearchCertificationInputComponent } from './search-form/search-certification-input/search-certification-input.component';
 
 
 const expertSearchRoutes: Routes = [
@@ -36,7 +37,8 @@ const expertSearchRoutes: Routes = [
     SearchNameInputComponent,
     SearchRoleInputComponent,
     SearchLocationInputComponent,
-    SearchAvailInputComponent
+    SearchAvailInputComponent,
+    SearchCertificationInputComponent
   ],
   imports: [
     CommonModule,

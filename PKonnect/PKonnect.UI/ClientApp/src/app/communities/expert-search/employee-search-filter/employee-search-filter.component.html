@@ -19,30 +19,31 @@
                 <div class="col-lg-3">
                     <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
-                    <!-- <a href="https://prokarma001.sharepoint.com/Pages/SkillRequestForm.aspx" class="submit-skills"
-                        target="_blank" rel="noopener">Can't find a skill?</a> -->
-                    <!-- <span class="reset-filters" (click)="goToAddSkills()">Can't find a skill?</span> -->
                 </div>
                 <div class="col-lg-2">
-                    <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
+                    <app-search-certification-input></app-search-certification-input>
                 </div>
                 <div class="col-lg-2">
-                    <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
-                </div>
-                <div class="col-lg-1">
-                    <app-search-location-input (searchLocationEvent)="locationMessage($event)">
-                    </app-search-location-input>
-                </div>
+                        <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
+                    </div>
                 <div class="col-lg-2 filter-form-buttons">
                     <button type="submit" class="btn search-filter">
                         <span *ngIf="!isFindingExperts">Filter Results</span>
                         <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
                                 [spin]="true" size="md"></fa-icon></span>
                     </button>
-
                     <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
+                </div>
+                <div class="col-lg-2">
+                    <app-search-location-input (searchLocationEvent)="locationMessage($event)">
+                    </app-search-location-input>
                 </div>
             </div>
             <div class="row">
