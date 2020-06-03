@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-search-certification-input',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCertificationInputComponent implements OnInit {
 
+  public certControl = new FormControl();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  emptyCert() {
+    this.certControl.setValue(undefined);
   }
 
 }

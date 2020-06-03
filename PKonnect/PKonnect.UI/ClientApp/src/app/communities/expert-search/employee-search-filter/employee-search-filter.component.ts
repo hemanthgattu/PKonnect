@@ -13,6 +13,7 @@ import { SearchAvailInputComponent } from '../search-form/search-avail-input/sea
 import { SearchLocationInputComponent } from '../search-form/search-location-input/search-location-input.component';
 import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
+import { SearchCertificationInputComponent } from '../search-form/search-certification-input/search-certification-input.component';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -26,6 +27,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   @ViewChild(SearchRoleInputComponent) searchRoleChildComp: SearchRoleInputComponent;
   @ViewChild(SearchAvailInputComponent) searchAvailChildComp: SearchAvailInputComponent;
   @ViewChild(SearchLocationInputComponent) searchLocationChildComp: SearchLocationInputComponent;
+  @ViewChild(SearchCertificationInputComponent) certChildComp: SearchCertificationInputComponent;
   public isMobile = false;
   public toggleSearchForm = true;
   private resizeTimeout: any;
@@ -210,6 +212,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchAvailChildComp.emptyAvail();
     this.searchLocationChildComp.emptyLocation();
     this.searchSkillChildComp.emptySkill();
+    this.certChildComp.emptyCert();
     this.searchSkillChildComp.selectedSkills = [];
     this.employeeResponseEvent.emit({
       employeeSkillDetails: [],

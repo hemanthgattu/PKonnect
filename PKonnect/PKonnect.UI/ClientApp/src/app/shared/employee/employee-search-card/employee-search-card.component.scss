@@ -76,13 +76,16 @@
 }
 
 .employee-full-name{
+    display: inline-block;
     font-style: normal;
     font-weight: 900;
     font-size: 20px;
     color: #000000;
+    padding-right: 20px;
 }
 
 .employee-role {
+    display: block;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -106,7 +109,7 @@
 }
 
 .btn-mentor {
-    margin: 0px 5px 0px 20px;
+    margin: 0px 5px 0px 0px;
     background: #D6DCE5;
     border-radius: 560px;
     font-style: normal;

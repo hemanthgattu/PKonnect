@@ -1,6 +1,6 @@
 <form #certSearchForm>
     <mat-form-field>
-        <input type="text" #certificationInput placeholder="Certifications" matInput>
+        <input type="text" #certificationInput placeholder="Search by certification(s)" [formControl]="certControl" matInput>
         <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete">
             <mat-option #availabilitySearch>
             </mat-option>
