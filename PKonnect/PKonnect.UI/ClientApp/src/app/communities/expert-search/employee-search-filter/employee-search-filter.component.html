@@ -4,93 +4,101 @@
             <div class="col-8">
                 <h1>Find Consultants</h1>
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <div *ngIf="isMobile" class="slider" (click)="toggleSearch()">
                     <fa-icon class="slider-icon" [icon]="faSlidersH" size="lg"></fa-icon>
                     <span class="slider-icon-text">Filter</span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-    <div *ngIf="!isMobile || toggleSearchForm" class="search-criteria">
+    <!-- *ngIf="!isMobile || toggleSearchForm"  -->
+    <div class="search-criteria">
         <form #searchEmployeeForm="ngForm" (keydown.enter)="$event.preventDefault()"
             (ngSubmit)="searchEmployees(1, 10, true);">
-            <div class="row new-form">
-                <div class="col-lg-10">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
+            <div class="filter-results-form">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
+                            </div>
+                            <div class="col-lg-3">
+                                <app-search-skill-input (searchSkillEvent)="skillMessage($event)">
+                                </app-search-skill-input>
+                            </div>
+                            <div class="col-lg-3">
+                                <app-search-certification-input></app-search-certification-input>
+                            </div>
+                            <div class="col-lg-2">
+                                <app-search-location-input (searchLocationEvent)="locationMessage($event)">
+                                </app-search-location-input>
+
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
-                        </div>
-                        <div class="col-lg-3">
-                            <app-search-certification-input></app-search-certification-input>
-                        </div>
-                        <div class="col-lg-2">
-                            <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
+                            </div>
+                            <div class="col-lg-3">
+                                <app-search-avail-input (searchAvailEvent)="availMessage($event)">
+                                </app-search-avail-input>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
-                        </div>
-                        <div class="col-lg-3">
-                            <app-search-location-input (searchLocationEvent)="locationMessage($event)">
-                            </app-search-location-input>
-                        </div>
+                    <div class="col-lg-2 filter-form-buttons">
+                        <button type="submit" class="btn search-filter">
+                            <span *ngIf="!isFindingExperts">Filter Results</span>
+                            <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
+                                    [spin]="true" size="md"></fa-icon></span>
+                        </button>
+                        <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
                     </div>
                 </div>
-                <div class="col-lg-2 filter-form-buttons">
-                    <button type="submit" class="btn search-filter">
-                        <span *ngIf="!isFindingExperts">Filter Results</span>
-                        <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
-                                [spin]="true" size="md"></fa-icon></span>
-                    </button>
-                    <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
-                </div>
-            </div>
-            <!-- <div class="row">
-                <div class="col-lg-3">
-                    <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
-                </div>
-                <div class="col-lg-3">
-                    <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
-                </div>
-                <div class="col-lg-2">
-                    <app-search-certification-input></app-search-certification-input>
-                </div>
-                <div class="col-lg-2">
-                    <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
-                </div>
-                <div class="col-lg-2 filter-form-buttons">
-                    <button type="submit" class="btn search-filter">
-                        <span *ngIf="!isFindingExperts">Filter Results</span>
-                        <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
-                                [spin]="true" size="md"></fa-icon></span>
-                    </button>
-                    <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
-                </div>
-                <div class="col-lg-2">
-                    <app-search-location-input (searchLocationEvent)="locationMessage($event)">
-                    </app-search-location-input>
-                </div>
-            </div> -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="skills">
-                        <mat-chip-list>
-                            <mat-chip *ngFor="let skill of searchSkills; let i = index;">
-                                {{skill}}
-                                <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
-                                    (click)="removeSkill(i)"></fa-icon>
-                            </mat-chip>
-                        </mat-chip-list>
+                <!-- Old form format -->
+                <!-- <div class="row">
+                            <div class="col-lg-3">
+                                <app-search-role-input (searchRoleEvent)="roleMessage($event)"></app-search-role-input>
+                            </div>
+                            <div class="col-lg-3">
+                                <app-search-skill-input (searchSkillEvent)="skillMessage($event)"></app-search-skill-input>
+                            </div>
+                            <div class="col-lg-2">
+                                <app-search-certification-input></app-search-certification-input>
+                            </div>
+                            <div class="col-lg-2">
+                                <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
+                            </div>
+                            <div class="col-lg-2 filter-form-buttons">
+                                <button type="submit" class="btn search-filter">
+                                    <span *ngIf="!isFindingExperts">Filter Results</span>
+                                    <span *ngIf="isFindingExperts">Finding <fa-icon class="slider-icon" [icon]="faSpinner"
+                                            [spin]="true" size="md"></fa-icon></span>
+                                </button>
+                                <span class="reset-filters" (click)="emptySkills();">Reset Filters</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <app-search-avail-input (searchAvailEvent)="availMessage($event)"></app-search-avail-input>
+                            </div>
+                            <div class="col-lg-2">
+                                <app-search-location-input (searchLocationEvent)="locationMessage($event)">
+                                </app-search-location-input>
+                            </div>
+                        </div> -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="skills">
+                            <mat-chip-list>
+                                <mat-chip *ngFor="let skill of searchSkills; let i = index;">
+                                    {{skill}}
+                                    <fa-icon class="slider-icon remove-skill" [icon]="faTimes" size="sm"
+                                        (click)="removeSkill(i)"></fa-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
                     </div>
                 </div>
             </div>

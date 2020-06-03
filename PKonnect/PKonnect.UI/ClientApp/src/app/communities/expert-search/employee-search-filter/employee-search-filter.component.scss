@@ -14,6 +14,13 @@ $color-white: #FFFFFF;
     }
 }
 
+@media screen and (max-width: $break-small) {
+    .filter-results-form {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
 h1 {
     font-style: normal;
     font-weight: bold;
