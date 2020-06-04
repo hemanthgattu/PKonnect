@@ -10,9 +10,8 @@ namespace PKonnect.Models.Common
         [Key]
         public long ProjectMasterId { get; set; }
         public string ProjectName { get; set; }
-        public DateTimeOffset ProjectEndDate { get; set; }
-        public string ProjectRole { get; set; }
-        public string Description { get; set; }
+        public bool IsActive { get; set; }
+        public string AccountName { get; set; }
         public string Location { get; set; }
         public string ProjectStatus { get; set; }
         public DateTimeOffset ModifiedDate { get; set; }

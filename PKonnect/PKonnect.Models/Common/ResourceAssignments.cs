@@ -13,6 +13,7 @@ namespace PKonnect.Models.Common
         public long? ProjectMasterId { get; set; }
         public DateTimeOffset ModifiedDate { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset ResourceEndDate { get; set; }
         public string SourceSystemName { get; set; }
         public string SourceSystemId { get; set; }
         public bool IsActive { get; set; }
