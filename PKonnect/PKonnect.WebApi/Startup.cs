@@ -93,7 +93,9 @@ namespace PKonnect.WebApi
             services.AddCors();
             services.AddOData();
 
-            services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.AddControllers(option => option.EnableEndpointRouting = false).AddNewtonsoftJson();
         }
 
         //https://localhost:44314
