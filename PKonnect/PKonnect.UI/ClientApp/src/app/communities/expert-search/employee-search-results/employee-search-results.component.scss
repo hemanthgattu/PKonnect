@@ -12,7 +12,7 @@ $color-white: #ffffff;
   width: 100%;
 }
 .cards-count {
-  float: left;
+  display: inline-block;
 }
 .sort {
   float: right;
