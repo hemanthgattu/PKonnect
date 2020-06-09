@@ -75,9 +75,9 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
   }
 
   getAllSkills(): void {
-    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Skills`).subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/Skills?$select=textName`).subscribe(
       (data) => {
-        this.options = data.map((skill) => skill.textName);
+        this.options = data.map((skill) => skill.TextName);
       },
       (error: Error) => console.log(error)
     ));
