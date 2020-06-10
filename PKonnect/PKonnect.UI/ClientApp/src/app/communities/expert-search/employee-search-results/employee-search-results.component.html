@@ -26,7 +26,7 @@
     </div>
     <div class="cards-count" *ngIf="employeeSearchResults.length >= 5">
             <p class="showing-text">Showing 1 - {{employeeSearchResults.length}} of {{employeeSearchResultsCount}}</p>
-        </div>
+    </div>
     <div class="view-more-employees" *ngIf="employeeSearchResults.length < employeeSearchResultsCount">
             <button type="submit" class="btn btn-major" (click)="viewMore()">
                 <span *ngIf="!viewMoreLoading">View More</span>

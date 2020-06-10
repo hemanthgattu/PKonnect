@@ -47,9 +47,9 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
   }
 
   getAllRoles(): void {
-    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/roles`).subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/roles?$select=roleName`).subscribe(
       (data) => {
-        this.roleOptions = data.map(role => role.roleName);
+        this.roleOptions = data.map(role => role.RoleName);
       },
       (error: Error) => {
         console.log(error);

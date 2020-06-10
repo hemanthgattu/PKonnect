@@ -1,6 +1,6 @@
 <form #availSearchForm>
     <mat-form-field>
-        <input type="text" #availabilityInput placeholder="Resource Status" matInput [formControl]="availabilityControl"
+        <input type="text" #availabilityInput placeholder="Consultant status" matInput [formControl]="availabilityControl"
             [matAutocomplete]="availability" (change)="handleEmptyInput($event, 'resourceStatus')">
         <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
             (optionSelected)="log($event.option.value)">

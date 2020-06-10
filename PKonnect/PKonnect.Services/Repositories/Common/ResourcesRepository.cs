@@ -197,7 +197,7 @@ namespace PKonnect.Services.DataServices
                 //.Where(a => a.ResourceSkills.Any())ToList().
 
                 var resourceSkills = details.AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
-                var recordCount = resourceSkills.Count() < 10 ? resourceSkills.Count() : details.Count();
+                var recordCount = resourceSkills.Count() < 10 & details.Count() <= resourceSkills.Count() ? resourceSkills.Count() : details.Count();
 
                 var skillDetails = new SkillDetails
                 {
