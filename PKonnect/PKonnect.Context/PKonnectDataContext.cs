@@ -28,6 +28,10 @@ namespace PKonnect.Context
         public DbSet<ProjectMaster> ProjectMaster { get; set; }
         public DbSet<ResourceAssignments> ResourceAssignments { get; set; }
 
+        public DbSet<CertificationVendors> CertificationVendors { get; set; }
+        public DbSet<Certifications> Certifications { get; set; }
+        public DbSet<ResourceCertifications> ResourceCertifications { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

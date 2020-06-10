@@ -45,7 +45,7 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public object GetResourceDetails(long? resourceId, string skillNames, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber)
+        public object GetResourceDetails(long? resourceId, string skillNames, string employeeName, string role, string resourceStatus, string location, string email,string certificationNames, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
@@ -68,12 +68,16 @@ namespace PKonnect.Services.DataServices
 
                 string[] SkillNames = new string[] { };
                 string[] locations = new string[] { };
+                string[] Certifications = new string[] { };
 
                 if (!string.IsNullOrEmpty(skillNames))
                     SkillNames = skillNames.Split(',');
 
                 if (!string.IsNullOrEmpty(location))
                     locations = location.Split(',');
+
+                if (!string.IsNullOrEmpty(certificationNames))
+                    Certifications = certificationNames.Split(',');
 
                 var roles = (from r in _pkonnectdatacontext.Roles
                              where (role == null || (r.RoleName == role)) && r.IsActive
@@ -102,7 +106,7 @@ namespace PKonnect.Services.DataServices
                                join intacct in _pkonnectdatacontext.IntacctLocation
                                on employee.IntacctLocationId equals intacct.IntacctLocationId
                                where
-                               // (employee.DepartmentName == "IT Svcs Gen - Projects" || employee.DepartmentName == "Research and Development" || string.IsNullOrEmpty(employee.DepartmentName)) &&
+                               (employee.DepartmentName == "IT Svcs Gen - Projects" || employee.DepartmentName == "Research and Development" || employee.DepartmentName == "Missing") &&
                                (employeeName == null || (employee.FullName == employeeName)) && employee.IsActive
                                && (resourceId == null || (employee.ResourceId == resourceId))
                                 && (resourceStatus == null || (employee.ResourceStatus == resourceStatus))
@@ -156,9 +160,26 @@ namespace PKonnect.Services.DataServices
                                                          SkillId = es.SkillId
                                                      }
                                                      ).ToList(),
-                                   //EmployeeCertifications = (from ec in _pkonnectdatacontext.EmployeeCertification
-                                   //                          where ec.EmployeeId == employee.ResourceId
-                                   //                          select ec).ToList()
+                                   ResourceCertifications = (from cv in _pkonnectdatacontext.CertificationVendors
+                                                             join c in _pkonnectdatacontext.Certifications
+                                                             on cv.CertificationVendorId equals c.CertificationVendorId
+                                                             join rc in _pkonnectdatacontext.ResourceCertifications
+                                                             on c.CertificationId equals rc.CertificationId
+                                                             where (rc.ResourceId == employee.ResourceId) && rc.IsActive
+                                                             && (certificationNames == null || (certificationNames.Contains(c.CertificationName)))
+                                                             orderby rc.AchivedDate descending
+                                                             select new ResourceCertificationsList()
+                                                             {
+                                                                 ResourceCertificationId = rc.ResourceCertificationId,
+                                                                 CertificationId = rc.CertificationId,
+                                                                 LicenseNumber = rc.LicenseNumber,
+                                                                 AchivedDate = rc.AchivedDate,
+                                                                 ExpirationDate = rc.ExpirationDate,
+                                                                 VendorName = cv.VendorName,
+                                                                 CertificationName = c.CertificationName,
+                                                                 CertificationNumber = c.CertificationNumber
+                                                             }
+                                                             ).ToList()
                                }).ToList();
 
                 var details1 = details.Where(d => d.ResourceSkills.Any(y => (skillNames == null || (SkillNames.Contains(y.TextName))))).ToList();
@@ -166,6 +187,13 @@ namespace PKonnect.Services.DataServices
                 var details2 = details.Where(d => d.ResourceSkills.Count == 0).ToList();
 
                 details = details1.Union(details2).ToList();
+
+                //var details3 = details.Where(d => d.ResourceCertifications.Any(y => (certificationNames == null || (certificationNames.Contains(y.CertificationNumber))))).ToList();
+
+                //var details4 = details.Where(d => d.ResourceCertifications.Count == 0).ToList();
+
+                details = details1.Union(details2).ToList();
+
                 //.Where(a => a.ResourceSkills.Any())ToList().
 
                 var resourceSkills = details.AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);

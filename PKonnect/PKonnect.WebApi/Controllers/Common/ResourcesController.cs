@@ -64,13 +64,13 @@ namespace PKonnect.WebApi.Controllers
         //GET api/values
         [HttpGet("GetResourceDetails")]
         [ODataRoute("GetResourceDetails")]
-        public object GetResourceDetails([FromODataUri] long? resourceId, [FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] int pageSize = 10, [FromODataUri] int pageNumber = 1)
+        public object GetResourceDetails([FromODataUri] long? resourceId, [FromODataUri] string skillName, [FromODataUri] string employeeName, [FromODataUri]string role, [FromODataUri] string resourceStatus, [FromODataUri]string location, [FromODataUri] string email, [FromODataUri] string certificationNames, [FromODataUri] int pageSize = 10, [FromODataUri] int pageNumber = 1)
 
         {
             // employeeName = "Eric Fabela Sanchez";
             // skillName = "Java";
             //role = "Developer - DotNet";
-            return _context.GetResourceDetails(resourceId, skillName, employeeName, role, resourceStatus, location, email, pageSize, pageNumber);
+            return _context.GetResourceDetails(resourceId, skillName, employeeName, role, resourceStatus, location, email,certificationNames,pageSize, pageNumber);
         }
 
         #region commented code 

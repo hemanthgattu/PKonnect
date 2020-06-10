@@ -9,7 +9,7 @@ namespace PKonnect.Services.Infrastructure
     public interface IResourcesRepository
     {
         IQueryable<Resources> GetResources();
-        object GetResourceDetails(long? employeeId,string skillName, string employeeName, string role, string resourceStatus, string location, string email, int pageSize, int pageNumber);
+        object GetResourceDetails(long? employeeId,string skillName, string employeeName, string role, string resourceStatus, string location, string email, string certificationNames, int pageSize, int pageNumber);
         int DeleteResource(int? id);
         Resources GetResource(int? id);
         int AddResource(Resources employee);

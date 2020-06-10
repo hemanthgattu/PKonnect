@@ -41,7 +41,7 @@ namespace PKonnect.Models.Common
         public string DepartmentName { get; set; }
 
         public List<ResourceSkillList> ResourceSkills { get; set; }
-        public List<EmployeeCertification> EmployeeCertifications { get; set; }
+        public List<ResourceCertificationsList> ResourceCertifications { get; set; }
     }
 
     public class ResourceSkillList
@@ -58,5 +58,18 @@ namespace PKonnect.Models.Common
         public string PracticeArea { get; set; }
         public string Term { get; set; }
         public string TextName { get; set; }
+    }
+
+    public class ResourceCertificationsList
+    {
+        
+        public long ResourceCertificationId { get; set; }        
+        public long? CertificationId { get; set; }
+        public string LicenseNumber { get; set; }
+        public DateTime AchivedDate { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        public string VendorName { get; set; }
+        public string CertificationName { get; set; }
+        public string CertificationNumber { get; set; }
     }
 }

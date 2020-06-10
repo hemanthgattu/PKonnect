@@ -82,6 +82,7 @@ namespace PKonnect.WebApi
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IProjectMasterRepository, ProjectMasterRepository>();
             services.AddScoped<IResourceAssignmentsRepository, ResourceAssignmentsRepository>();
+            services.AddScoped<ICertificationsRepository, CertificationsRepository>();
 
             services.AddControllers();
 
@@ -151,7 +152,7 @@ namespace PKonnect.WebApi
             builder.EntitySet<Department>("Departments");
             builder.EntitySet<ProjectMaster>("ProjectMasters");
             builder.EntitySet<ResourceAssignments>("ResourceAssignments");
-
+            builder.EntitySet<Certifications>("Certifications");
             builder.EntitySet<Resources>(nameof(Resources));
             {
                 var function = builder.Function("GetResourceDetails");
