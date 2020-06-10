@@ -24,7 +24,7 @@ namespace PKonnect.Services.DataServices
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.Skill.Where(skill => skill.IsActive).AsNoTracking();
+                return _pkonnectdatacontext.Skill.Where(skill => skill.IsActive).OrderBy(s => s.TextName).AsNoTracking();
             }
 
             return null;

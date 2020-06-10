@@ -22,7 +22,7 @@ namespace PKonnect.Repositories.Repositories.Common
         {
             if (_pkonnectdatacontext != null)
             {
-                return _pkonnectdatacontext.Roles.Where(role => role.IsActive).AsNoTracking();
+                return _pkonnectdatacontext.Roles.Where(role => role.IsActive).OrderBy(r => r.RoleName).AsNoTracking();
             }
 
             return null;

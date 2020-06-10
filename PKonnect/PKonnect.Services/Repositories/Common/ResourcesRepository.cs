@@ -34,7 +34,7 @@ namespace PKonnect.Services.DataServices
             {
                 try
                 {
-                    return _pkonnectdatacontext.Resources.Where(Resource => Resource.IsActive).AsNoTracking();
+                    return _pkonnectdatacontext.Resources.Where(Resource => Resource.IsActive).OrderBy(R => R.FullName).AsNoTracking();
                 }
                 catch (Exception ex)
                 {
@@ -45,7 +45,7 @@ namespace PKonnect.Services.DataServices
             return null;
         }
 
-        public object GetResourceDetails(long? resourceId, string skillNames, string employeeName, string role, string resourceStatus, string location, string email,string certificationNames, int pageSize, int pageNumber)
+        public object GetResourceDetails(long? resourceId, string skillNames, string employeeName, string role, string resourceStatus, string location, string email, string certificationNames, int pageSize, int pageNumber)
         {
             if (_pkonnectdatacontext != null)
             {
