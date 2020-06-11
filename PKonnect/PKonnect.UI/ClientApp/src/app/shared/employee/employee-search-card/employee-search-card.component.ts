@@ -4,6 +4,8 @@ import { faTrophy, faCheckCircle, faChevronDown, faChevronUp } from '@fortawesom
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { RestService } from '../../shared/services/rest/rest.service';
+import { AuthService } from '../../shared/services/auth/auth.service';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 500,
@@ -31,13 +33,15 @@ export class EmployeeSearchCardComponent implements OnInit {
   public faChevronUp = faChevronUp;
 
   public employee: any;
-  public displayPicture = '';
+  public displayPicture: any;
   public displayEmployeeSkills = [];
   public isEmployee: boolean;
 
   constructor(
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private restService: RestService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +56,29 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
   setDisplayPicture(employee: any) {
-    this.displayPicture = `https://prokarma001.sharepoint.com/_layouts/15/userphoto.aspx?size=M&accountname=${employee.email}`;
+    const url = `https://graph.microsoft.com/v1.0/users/${employee.email}/photo/$value`;
+    this.authService.acquireAccessToken().then(result => {
+      this.restService.httpGet(url, result).subscribe(
+        (data) => {
+          this.createImageFromBlob(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    });
   }
+
+  createImageFromBlob(image: Blob) {
+    console.log(image);
+    const reader = new FileReader();
+    reader.addEventListener('load', () => {
+       this.displayPicture = reader.result;
+    }, false);
+    if (image) {
+       reader.readAsDataURL(image);
+    }
+ }
 
   copyEmailToClipboard(input: string): void {
     const selBox = document.createElement('textarea');

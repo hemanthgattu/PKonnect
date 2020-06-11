@@ -6,7 +6,6 @@ import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchNameInputComponent } from '../search-form/search-name-input/search-name-input.component';
 import { SearchSkillInputComponent } from '../search-form/search-skill-input/search-skill-input.component';
-import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import { SubSink } from 'subsink';
 import { SearchRoleInputComponent } from '../search-form/search-role-input/search-role-input.component';
 import { SearchAvailInputComponent } from '../search-form/search-avail-input/search-avail-input.component';
@@ -14,6 +13,7 @@ import { SearchLocationInputComponent } from '../search-form/search-location-inp
 import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 import { SearchCertificationInputComponent } from '../search-form/search-certification-input/search-certification-input.component';
+import { AuthService } from 'src/app/shared/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -52,8 +52,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   constructor(
     private rest: RestService,
     private snackBar: MatSnackBar,
-    private adalSvc: MsAdalAngular6Service,
-    private amplitudeSvc: AmplitudeService
+    private amplitudeSvc: AmplitudeService,
+    private authSvc: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -163,9 +163,9 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     }
 
     if (finalUrl[finalUrl.length - 1] !== '?') {
-      finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.adalSvc.LoggedInUserEmail}`;
+      finalUrl += `&pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.authSvc.getUserDetails().email}`;
     } else {
-      finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.adalSvc.LoggedInUserEmail}`;
+      finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.authSvc.getUserDetails().email}`;
     }
 
     console.log(finalUrl);
