@@ -1,249 +1,270 @@
 .employee-card {
-    margin-bottom: 17px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    padding: 15px;
-    height: 210px;
+  margin-bottom: 17px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  // height: 210px;
 
-    @media screen and (max-width: 1200px) {
-        height: 210px;
-    }
+  // @media screen and (max-width: 1200px) {
+  //     height: 210px;
+  // }
 
-    @media screen and (max-width: 990px) {
-        height: 230px;
-    }
+  // @media screen and (max-width: 990px) {
+  //     height: 230px;
+  // }
 
-    @media screen and (max-width: 768px) {
-        height: 310px;
-    }
+  // @media screen and (max-width: 768px) {
+  //     height: 310px;
+  // }
 
-    @media screen and (max-width: 450px) {
-        height: 320px;
-    }
+  // @media screen and (max-width: 450px) {
+  //     height: 320px;
+  // }
 
-    @media screen and (max-width: 445px) {
-        height: 360px;
-    }
+  // @media screen and (max-width: 445px) {
+  //     height: 360px;
+  // }
 
-    @media screen and (max-width: 430px) {
-        height: 330px;
-    }
+  // @media screen and (max-width: 430px) {
+  //     height: 330px;
+  // }
 
-    @media screen and (max-width: 380px) {
-        height: 350px;
-    }
+  // @media screen and (max-width: 380px) {
+  //     height: 350px;
+  // }
 
-    @media screen and (max-width: 380px) {
-        height: 380px;
-    }
+  // @media screen and (max-width: 380px) {
+  //     height: 380px;
+  // }
 
-    @media screen and (max-width: 275px) {
-        height: 420px;
-    }
+  // @media screen and (max-width: 275px) {
+  //     height: 420px;
+  // }
 }
 
 .employee-card-show-more {
-    margin-bottom: 17px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    padding: 15px;
+  margin-bottom: 17px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 .display-picture {
-    margin-top: 20px;
+  margin-top: 20px;
 
-    @media screen and (max-width: 431px) {
-        margin-top: 10px;
-    }
+  @media screen and (max-width: 431px) {
+    margin-top: 10px;
+  }
 }
 
 .image {
-    border-radius: 50%;
-    border: 3px solid #D8AA3A;
-    width: 100px;
-    height: 100px;
+  border-radius: 50%;
+  border: 3px solid #d8aa3a;
+  width: 100px;
+  height: 100px;
 
-    @media screen and (max-width: 992px) {
-        margin: 7px;
-        width: 80px;
-        height: 80px;
-    }
+  @media screen and (max-width: 992px) {
+    margin: 7px;
+    width: 80px;
+    height: 80px;
   }
-
-.employee-details {
-    padding-top: 10px;
-    padding-left: 30px;
 }
 
-.employee-full-name{
-    display: inline-block;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 20px;
-    color: #000000;
-    padding-right: 20px;
+.employee-details {
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.employee-full-name {
+  display: inline-block;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  color: #000000;
+  padding-right: 5px;
 }
 
 .employee-role {
-    display: block;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    color: #1B83B1;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  color: #1b83b1;
 }
 
 .employee-type {
-    display: inline-block;
+  display: block;
+  margin-top: 10px;
+
+  .slider-icon {
+    margin-right: 5px !important;
+  }
+
+  span.employee-type-item {
+    margin-right: 10px !important;
+  }
 }
 
-.employee-description{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    color: rgba(32, 43, 52, 0.8);
-    padding: 10px 0px 0px 15px;
+.employee-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(32, 43, 52, 0.8);
+  padding: 10px 0px 0px 15px;
 
-    @media screen and (max-width: 767px) {
-        display: none;
-    }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
+
+.employee-cert {
+  p {
+    display: block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 20px;
+    color: #000;
+    margin-bottom: 5px;
+  }
+
+  .certs {
+    display: block;
+  }
+}
+
+.mat-chip.mat-standard-chip {
+  color: #626262;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 20px;
 }
 
 .btn-mentor {
-    margin: 0px 5px 0px 0px;
-    background: #D6DCE5;
-    border-radius: 560px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    color: #202B34;
+  margin: 0px 5px 0px 0px;
+  background: #d6dce5;
+  border-radius: 560px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  color: #202b34;
 
-    .mentor-text {
-        padding-left: 5px;
-    }
+  .mentor-text {
+    padding-left: 5px;
+  }
 
-    &:hover {
-        color: #000000;
-        background: rgb(189, 194, 201);
-    }
+  &:hover {
+    color: #000000;
+    background: rgb(189, 194, 201);
+  }
 }
 
 .btn-mvp {
-    margin: 0px 5px 15px 5px;
-    background: #D8AA3A;
-    border-radius: 360px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 22px;
-    color: #202B34;
+  margin: 0px 5px 15px 5px;
+  background: #d8aa3a;
+  border-radius: 360px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 22px;
+  color: #202b34;
 
-    .mentor-text {
-        padding-left: 5px;
-    }
+  .mentor-text {
+    padding-left: 5px;
+  }
 
-    &:hover {
-        color: #000000;
-        background: rgb(187, 149, 50);
-    }
+  &:hover {
+    color: #000000;
+    background: rgb(187, 149, 50);
+  }
 }
 
 .view-profile {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 .employee-minor-details {
-    margin-right: 10px;
-    float: right;
+  margin-right: 10px;
+  float: right;
+
+  .employee-minor-details-element {
+    margin-left: 10px;
+  }
+
+  @media screen and (max-width: 445px) {
+    float: center;
+    margin: 0px;
 
     .employee-minor-details-element {
-        margin-left: 10px;
+      margin: 10px 30px 0px 30px;
     }
-
-    @media screen and (max-width: 445px) {
-        float: center;
-        margin: 0px;
-
-        .employee-minor-details-element {
-            margin: 10px 30px 0px 30px;
-        }
-    }
-
+  }
 }
 
 .employee-skills-display {
+  margin-top: 25px;
 
-    margin-top: 25px;
-    
-    .employee-skill-display {
-        padding: 7px 10px 0px 0px;                
+  .employee-skill-display {
+    padding: 7px 10px 0px 0px;
 
-        @media screen and (max-width: 450px) {
-            padding: 10px 20px 0px 30px;
-        }
+    @media screen and (max-width: 450px) {
+      padding: 10px 20px 0px 30px;
     }
+  }
 
-    
-    .skill-name {
-        text-align: right;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        color: #000000;
-
-        @media screen and (max-width: 450px) {
-            text-align: left;
-        }
-    }
-
-    .employee-rating-bar{
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-
-    .progress-bar{
-        background: #1B83B1;
-        border-radius: 10px;
-    }
-
-    .progress {
-        height: 11px !important;
-    }
-
-}
-
-.employee-email{
-    cursor: pointer;
-}
-
-.employee-state{
-    margin-left: 0px !important;
-}
-
-.employee-city{
-    margin-left: 5px !important;
-}
-
-::ng-deep .mat-snack-bar-container.snack-bar-success {
-    background-color: #28a745;
-    color: #ffffff;
-}
-
-.btn-view-more-skills {
-    font-family: Roboto;
-    cursor: pointer;
+  .skill-name {
+    text-align: right;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    line-height: 22px;
-    padding: 5px 10px 0px 0px;
-    color: #1B83B1;
-    align-self: flex-end;
+    color: #000000;
 
-    &:hover{
-        text-decoration: underline;
+    @media screen and (max-width: 450px) {
+      text-align: left;
     }
+  }
+
+  .employee-rating-bar {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .progress-bar {
+    background: #1b83b1;
+    border-radius: 10px;
+  }
+
+  .progress {
+    height: 11px !important;
+  }
 }
 
+.employee-email {
+  cursor: pointer;
+}
 
+::ng-deep .mat-snack-bar-container.snack-bar-success {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.btn-view-more-skills {
+  font-family: Roboto;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 5px 10px 0px 0px;
+  color: #1b83b1;
+  align-self: flex-end;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

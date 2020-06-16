@@ -10,20 +10,29 @@
                     </div>
                 </div>
                 <div class="col-9 employee-details">
-
-
                     <span class="employee-full-name">{{employee.fullName}}</span>
-                    <div class="employee-type" *ngIf="!!employee.employeeId">
-                        <button type="button" class="btn btn-mentor" *ngIf="isEmployee">
-                            <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
-                            <span class="mentor-text">Employee</span>
-                        </button>
-                        <button type="button" class="btn btn-mentor" *ngIf="!isEmployee">
-                            <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
-                            <span class="mentor-text">Contractor</span>
-                        </button>
-                    </div>
                     <span class="employee-role">{{employee.role}}</span>
+                    <div class="employee-info-details">
+                        <div class="employee-type">
+                            <span class="employee-type-item" *ngIf="!!employee.employeeId">
+                                <span *ngIf="isEmployee">
+                                    <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
+                                    <span class="text">Employee</span>
+                                </span>
+                                <span *ngIf="!isEmployee">
+                                    <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
+                                    <span class="text">Contractor</span>
+                                </span>
+                            </span>
+                            <span class="employee-location employee-type-item"
+                                *ngIf="!!employee.city || !!employee.state">
+                                <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
+                                <span *ngIf="!!employee.city" class="employee-city">{{employee.city}}</span>
+                                <span *ngIf="!!employee.state" class="employee-state">, {{employee.state}}</span>
+                                <span *ngIf="!!employee.country"> ({{employee.country}})</span>
+                            </span>
+                        </div>
+                    </div>
                     <!-- <div class="col-5">
                             <div class="row">
                                 <button type="button" class="btn btn-mentor" matTooltip="Feature Coming Soon..."
@@ -40,11 +49,19 @@
 
                     <div class="row employee-description">
                         <p *ngIf="!!employee.roleDescription" matTooltip="{{employee.roleDescription}}"
-                            matTooltipPosition="right">{{employee.roleDescription | truncate:230:"..."}}</p>
+                            matTooltipPosition="right">{{employee.roleDescription | truncate:180:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
                     <!-- <button type="button" (click)="goToProfile(employee.resourceId)"
                         class="btn btn-outline-secondary view-profile">View Profile</button> -->
+                    <div class="employee-cert" *ngIf="employee.resourceCertifications.length >= 1">
+                        <p>CERTIFICATIONS</p>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let cert of employee.resourceCertifications; let i = index;">
+                                {{cert.certificationName}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
                 </div>
             </div>
         </div>
@@ -55,13 +72,6 @@
                         <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                             [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         <strong> Available for Assignment</strong>
-                    </span>
-                </div>
-                <div class="employee-minor-details-element">
-                    <span class="employee-location" *ngIf="!!employee.city || !!employee.state">
-                        <fa-icon class="slider-icon" [icon]="faMap" size="md"></fa-icon>
-                        <span *ngIf="!!employee.city" class="employee-city">{{employee.city}}</span>
-                        <span *ngIf="!!employee.state" class="employee-state">, {{employee.state}}</span>
                     </span>
                 </div>
                 <div class="employee-minor-details-element">
