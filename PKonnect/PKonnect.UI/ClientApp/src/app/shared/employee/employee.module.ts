@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { SharedModule } from '../shared/shared.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     FontAwesomeModule,
     MatTooltipModule,
     MatSnackBarModule,
-    SharedModule
+    SharedModule,
+    MatChipsModule
   ],
   exports: [EmployeeSearchCardComponent],
   providers: [

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { MsAdalAngular6Service } from 'microsoft-adal-angular6';
 import * as amplitude from 'amplitude-js';
 
 @Injectable({
@@ -12,10 +11,11 @@ export class AmplitudeService {
     role: '',
     skill: []
   };
-  constructor(private adalSvc: MsAdalAngular6Service) { }
+  constructor() { }
 
   initilize() {
-    const userId = this.adalSvc.LoggedInUserEmail.split('@')[0];
+    // const userId = this.adalSvc.LoggedInUserEmail.split('@')[0];
+    const userId = '';
     if (!!userId) {
       amplitude.getInstance().init(environment.amplitudeKey, userId);
     }
