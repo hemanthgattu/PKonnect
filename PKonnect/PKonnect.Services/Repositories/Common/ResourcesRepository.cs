@@ -188,16 +188,16 @@ namespace PKonnect.Services.DataServices
 
                 details = details1.Union(details2).ToList();
 
-                //var details3 = details.Where(d => d.ResourceCertifications.Any(y => (certificationNames == null || (certificationNames.Contains(y.CertificationNumber))))).ToList();
+                var details3 = details.Where(d => d.ResourceCertifications.Any(y => (certificationNames == null || (certificationNames.Contains(y.CertificationName))))).ToList();
 
                 //var details4 = details.Where(d => d.ResourceCertifications.Count == 0).ToList();
 
-                details = details1.Union(details2).ToList();
+                //details = details1.Union(details2).ToList();
 
                 //.Where(a => a.ResourceSkills.Any())ToList().
 
-                var resourceSkills = details.AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
-                var recordCount = resourceSkills.Count() < 10 & details.Count() <= resourceSkills.Count() ? resourceSkills.Count() : details.Count();
+                var resourceSkills = details3.AsQueryable().Skip((pageNumber - 1) * pageSize).Take(pageSize);
+                var recordCount = resourceSkills.Count() < 10 & details3.Count() <= resourceSkills.Count() ? resourceSkills.Count() : details3.Count();
 
                 var skillDetails = new SkillDetails
                 {
