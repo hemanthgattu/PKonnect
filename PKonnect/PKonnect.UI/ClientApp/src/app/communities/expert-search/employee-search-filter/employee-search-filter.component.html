@@ -28,7 +28,7 @@
                                 </app-search-skill-input>
                             </div>
                             <div class="col-lg-3">
-                                <app-search-certification-input></app-search-certification-input>
+                                <app-search-certification-input (searchCertEvent)="certMessage($event)"></app-search-certification-input>
                             </div>
                             <div class="col-lg-2">
                                 <app-search-location-input (searchLocationEvent)="locationMessage($event)">

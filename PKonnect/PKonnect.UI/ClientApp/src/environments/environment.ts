@@ -21,7 +21,7 @@ export const environment = {
   OAuthSettings: {
     appId: 'e2b5fe89-90ac-4d13-912a-92168eb677f6',
     scopes: [
-      'user.read'
+      'User.Read'
     ]
   },
   amplitudeKey: 'a7e92d34197475a5fc2ea2e23d8938e3',

@@ -54,14 +54,6 @@
                     <!-- Hiding View profile until view profile page is ready -->
                     <!-- <button type="button" (click)="goToProfile(employee.resourceId)"
                         class="btn btn-outline-secondary view-profile">View Profile</button> -->
-                    <div class="employee-cert" *ngIf="employee.resourceCertifications.length >= 1">
-                        <p>CERTIFICATIONS</p>
-                        <mat-chip-list>
-                            <mat-chip *ngFor="let cert of employee.resourceCertifications; let i = index;">
-                                {{cert.certificationName}}
-                            </mat-chip>
-                        </mat-chip-list>
-                    </div>
                 </div>
             </div>
         </div>
@@ -95,7 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="employee.resourceSkills.length > 5 && displayEmployeeSkills.length <= 5"
+                <!-- <div *ngIf="employee.resourceSkills.length > displayEmployeeSkillCount && displayEmployeeSkills.length <= displayEmployeeSkillCount"
                     class="employee-skills-view-more d-flex flex-row-reverse">
                     <span class="btn-view-more-skills" (click)="showMoreSkills()">
                         <fa-icon class="slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
@@ -103,14 +95,27 @@
                     </span>
                 </div>
 
-                <div *ngIf="employee.resourceSkills.length > 5 && displayEmployeeSkills.length > 5"
+                <div *ngIf="employee.resourceSkills.length > displayEmployeeSkillCount && displayEmployeeSkills.length > displayEmployeeSkillCount"
                     class="employee-skills-view-more d-flex flex-row-reverse">
                     <span class="btn-view-more-skills" (click)="showLessSkills()">
                         <fa-icon class="slider-icon" [icon]="faChevronUp" size="sm"></fa-icon>
                         Show Less
                     </span>
-                </div>
+                </div> -->
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10" style="padding-left: 5px">
+                <div class="employee-cert" *ngIf="employee.resourceCertifications.length >= 1">
+                        <p>CERTIFICATIONS</p>
+                        <mat-chip-list>
+                            <mat-chip *ngFor="let cert of employee.resourceCertifications.slice(0,3); let i = index;">
+                                {{cert.certificationName}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
         </div>
     </div>
 </div>

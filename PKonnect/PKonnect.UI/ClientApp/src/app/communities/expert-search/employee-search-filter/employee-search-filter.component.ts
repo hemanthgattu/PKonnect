@@ -85,10 +85,10 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // On Init Search
   onInitSearchEmployees(): void {
     this.isFindingExperts = true;
-    const getEmployeesUrl = 'https://communities.pkglobal.com/API/api/Employees/GetEmployeeDetails?skillName=ASP.NET%20MVC%2CC%23&pageNumber=1&pageSize=10';
+    const getEmployeesUrl = `https://communities.pkglobal.com/API/api/resources/GetResourceDetails?employeeName=${this.authSvc.getUserDetails().name}&pageNumber=1&pageSize=10&email=${this.authSvc.getUserDetails().email}`;
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
-        if (data.length <= 0) {
+        if (data.resourceSkillDetails.length <= 0) {
           this.snackBar.open('No results found on Filter Results', undefined , { panelClass: 'snack-bar-danger' });
         }
         this.employeeResponseEvent.emit(data);
@@ -201,12 +201,16 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.location = message;
   }
 
+  certMessage(message: string) {
+    this.searchEmployeesRequest.certificationNames = message;
+  }
   emptySkills() {
     this.searchSkills = [];
     this.searchEmployeesRequest.resourceStatus = undefined;
     this.searchEmployeesRequest.role = undefined;
     this.searchEmployeesRequest.location = undefined;
     this.searchEmployeesRequest.employeeName = undefined;
+    this.searchEmployeesRequest.certificationNames = undefined;
     this.searchNameChildComp.emptyName();
     this.searchRoleChildComp.emptyRole();
     this.searchAvailChildComp.emptyAvail();

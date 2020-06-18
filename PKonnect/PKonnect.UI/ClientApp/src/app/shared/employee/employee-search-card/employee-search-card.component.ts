@@ -35,6 +35,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   public employee: any;
   public displayPicture: any;
   public displayEmployeeSkills = [];
+  public displayEmployeeSkillCount = 4;
   public isEmployee: boolean;
 
   constructor(
@@ -50,7 +51,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   @Input()
   set employeeData(employee: any) {
     this.employee = employee;
-    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
+    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, this.displayEmployeeSkillCount);
     this.setDisplayPicture(this.employee);
     this.isEmployee = this.setEmployee(this.employee.employeeId);
   }
@@ -106,7 +107,7 @@ export class EmployeeSearchCardComponent implements OnInit {
 
   showLessSkills(): void {
     this.displayMoreSkills = false;
-    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, 5);
+    this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, this.displayEmployeeSkillCount);
   }
 
   setEmployee(employeeId: string): boolean {

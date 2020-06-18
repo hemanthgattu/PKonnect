@@ -1,8 +1,12 @@
 <form #certSearchForm>
     <mat-form-field>
-        <input type="text" #certificationInput placeholder="Search by certification(s)" [formControl]="certControl" matInput>
-        <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete">
-            <mat-option #availabilitySearch>
+        <input type="text" #certificationInput placeholder="Search by certification(s)" [formControl]="certControl" matInput
+        [matAutocomplete]="cert" (change)="handleEmptyInput($event)">
+        <mat-autocomplete autoActiveFirstOption #cert="matAutocomplete"
+        (optionSelected)="log($event.option.value)">
+            <mat-option #certification *ngFor="let option of filteredOptions | async" [value]="option"
+                matTooltip="{{option}}" matTooltipPosition="right">
+                {{option}}
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
