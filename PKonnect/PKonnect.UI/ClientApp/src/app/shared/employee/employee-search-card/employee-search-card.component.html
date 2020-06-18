@@ -59,27 +59,23 @@
         </div>
         <div class="col-md-5 employee-skills">
             <div class="row employee-minor-details">
-                <div class="employee-minor-details-element">
-                    <span *ngIf="!employee.onProject" class="employee-assignment">
+                    <span class="employee-minor-details-element" *ngIf="!employee.onProject">
                         <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                             [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         <strong> Available for Assignment</strong>
                     </span>
-                </div>
-                <div class="employee-minor-details-element">
-                    <span class="employee-email" matTooltip="Click to copy Email" matTooltipPosition="right"
+                    <span class="employee-email employee-minor-details-element" matTooltip="Click to copy Email" matTooltipPosition="right"
                         (click)="copyEmailToClipboard(employee.email)">
                         <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
                         Email
                     </span>
-                </div>
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of displayEmployeeSkills">
-                    <div class="col-6 skill-name" matTooltip="{{employeeSkill.textName}}" matTooltipPosition="right">
+                    <div class="col-md-6 skill-name" matTooltip="{{employeeSkill.textName}}" matTooltipPosition="right">
                         <span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
-                    <div class="col-6 employee-rating-bar">
+                    <div class="col-md-6 employee-rating-bar">
                         <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5"
                             matTooltipPosition="right">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"
@@ -105,17 +101,14 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row employee-certifications">
         <div class="col-md-2"></div>
-        <div class="col-md-10" style="padding-left: 5px">
-                <div class="employee-cert" *ngIf="employee.resourceCertifications.length >= 1">
-                        <p>CERTIFICATIONS</p>
-                        <mat-chip-list>
-                            <mat-chip *ngFor="let cert of employee.resourceCertifications.slice(0,3); let i = index;">
-                                {{cert.certificationName}}
-                            </mat-chip>
-                        </mat-chip-list>
-                    </div>
+        <div class="col-md-10">
+            <div class="employee-cert" *ngIf="employee.resourceCertifications.length >= 1">
+                <p>CERTIFICATIONS</p>
+                <span class="cert-list"
+                    *ngFor="let cert of employee.resourceCertifications.slice(0,3); let i = index;">{{cert.certificationName}}</span>
+            </div>
         </div>
     </div>
 </div>
