@@ -11,11 +11,11 @@ namespace PKonnect.Models.Common
         public long CertificationId { get; set; }
         public string CertificationName { get; set; }
         public string CertificationNumber { get; set; }
-        public long CertificationVendorId { get; set; }
+        public long? CertificationVendorId { get; set; }
         public string SourceSystemName { get; set; }
         public string SourceSystemId { get; set; }
-        public DateTimeOffset CreatedDate { get; set; }
-        public DateTimeOffset ModifiedDate { get; set; }
+        public DateTimeOffset? CreatedDate { get; set; }
+        public DateTimeOffset? ModifiedDate { get; set; }
         public bool IsActive { get; set; }
 
     }
