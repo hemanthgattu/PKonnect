@@ -13,7 +13,13 @@ $color-black-normal: #202B34;
 $color-black-hover: #000000;
 $color-white: #FFFFFF;
 
-html, body { height: 100%; }
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+html, body { 
+    height: 100%;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #E5E5E5; }
 
 ::ng-deep .mat-snack-bar-container.snack-bar-success {

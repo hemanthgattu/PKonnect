@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as amplitude from 'amplitude-js';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,10 @@ export class AmplitudeService {
     role: '',
     skill: []
   };
-  constructor() { }
+  constructor(private authSvc: AuthService) { }
 
   initilize() {
-    // const userId = this.adalSvc.LoggedInUserEmail.split('@')[0];
-    const userId = '';
+    const userId = this.authSvc.getUserDetails().email.split('@')[0];
     if (!!userId) {
       amplitude.getInstance().init(environment.amplitudeKey, userId);
     }

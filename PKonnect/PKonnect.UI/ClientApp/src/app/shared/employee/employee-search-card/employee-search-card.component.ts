@@ -57,6 +57,11 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
   setDisplayPicture(employee: any) {
+    if (employee.gender === 'Male') {
+      this.displayPicture = '../../../../assets/avatars/male.png';
+    } else {
+      this.displayPicture = '../../../../assets/avatars/female.png';
+    }
     const url = `https://graph.microsoft.com/v1.0/users/${employee.email}/photo/$value`;
     this.authService.acquireAccessToken().then(result => {
       this.restService.httpGet(url, result).subscribe(
@@ -71,7 +76,6 @@ export class EmployeeSearchCardComponent implements OnInit {
   }
 
   createImageFromBlob(image: Blob) {
-    console.log(image);
     const reader = new FileReader();
     reader.addEventListener('load', () => {
        this.displayPicture = reader.result;
