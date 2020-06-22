@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SearchSkillInputComponent } from './search-form/search-skill-input/search-skill-input.component';
 import { SearchNameInputComponent } from './search-form/search-name-input/search-name-input.component';
 import { SharedModule } from '../../shared/shared/shared.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { EmojiModule } from '@ctrl/ngx-emoji-mart/ngx-emoji';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { SearchRoleInputComponent } from './search-form/search-role-input/search-role-input.component';
@@ -64,6 +64,15 @@ const expertSearchRoutes: Routes = [
         duration: 2500,
         horizontalPosition: 'right',
         verticalPosition: 'top'
+      }
+    },
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: {
+        showDelay: 500,
+        hideDelay: 0,
+        touchendHideDelay: 0,
+        touchGestures: 'off'
       }
     }
   ]

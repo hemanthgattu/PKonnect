@@ -3,23 +3,14 @@ import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-i
 import { faTrophy, faCheckCircle, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { RestService } from '../../shared/services/rest/rest.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
-
-export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
-  showDelay: 500,
-  hideDelay: 0,
-  touchendHideDelay: 0,
-};
+import { SharedMethodsService } from '../../shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-search-card',
   templateUrl: './employee-search-card.component.html',
-  styleUrls: ['./employee-search-card.component.scss'],
-  providers: [
-    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults}
-  ],
+  styleUrls: ['./employee-search-card.component.scss']
 })
 export class EmployeeSearchCardComponent implements OnInit {
 
@@ -42,18 +33,18 @@ export class EmployeeSearchCardComponent implements OnInit {
     private snackBar: MatSnackBar,
     private router: Router,
     private restService: RestService,
-    private authService: AuthService
+    private authService: AuthService,
+    private sharedService: SharedMethodsService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @Input()
   set employeeData(employee: any) {
     this.employee = employee;
     this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, this.displayEmployeeSkillCount);
     this.setDisplayPicture(this.employee);
-    this.isEmployee = this.setEmployee(this.employee.employeeId);
+    this.isEmployee = this.sharedService.isEmployee(this.employee.employeeId);
   }
 
   setDisplayPicture(employee: any) {

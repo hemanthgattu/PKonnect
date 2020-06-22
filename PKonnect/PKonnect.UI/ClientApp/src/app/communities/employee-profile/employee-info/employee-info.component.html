@@ -18,7 +18,7 @@
                                 <fa-icon class="slider-icon" [icon]="faCalendar" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Hired: </span> 01/2019
+                                <span class="employee-info-key">Hired: </span> {{employeeInfoDetails.hiredDate | date : 'MM/yyyy'}}
                         </div>
                 </div>
         </div>
@@ -52,7 +52,7 @@
                                 <fa-icon class="slider-icon" [icon]="faUserCircle" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Manager: </span> John Doe
+                                <span class="employee-info-key">Manager: </span> {{employeeInfoDetails.manager}}
                         </div>
                 </div>
         </div>

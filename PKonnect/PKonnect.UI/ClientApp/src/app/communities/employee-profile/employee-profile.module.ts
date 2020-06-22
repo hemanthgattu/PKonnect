@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EmployeeInfoComponent } from './employee-info/employee-info.component';
 import { EmployeeExperienceComponent } from './employee-experience/employee-experience.component';
 import { EmployeeSkillsComponent } from './employee-skills/employee-skills.component';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 
 const employeeProfileRoutes: Routes = [
   { path: '', component: EmployeeProfileComponent }
@@ -28,6 +28,17 @@ const employeeProfileRoutes: Routes = [
     FontAwesomeModule,
     MatTooltipModule,
     RouterModule.forChild(employeeProfileRoutes)
+  ],
+  providers: [
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: {
+        showDelay: 500,
+        hideDelay: 0,
+        touchendHideDelay: 0,
+        touchGestures: 'off'
+      }
+    }
   ]
 })
 export class EmployeeProfileModule { }

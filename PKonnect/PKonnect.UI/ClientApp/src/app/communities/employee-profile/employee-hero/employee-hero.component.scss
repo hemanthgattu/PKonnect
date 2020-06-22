@@ -28,6 +28,11 @@ $medium-screen: 900px;
 .employee-general {
   padding-left: 50px;
 
+  p {
+    display: inline-block;
+    padding-right: 5px;
+  }
+
   @media screen and (max-width: $small-screen) {
     padding-left: 0px;
   }
