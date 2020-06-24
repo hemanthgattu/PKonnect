@@ -58,10 +58,10 @@
         </div>
         <div class="col-md-5 employee-skills">
             <div class="row employee-minor-details">
-                    <span class="employee-minor-details-element" *ngIf="!employee.onProject">
+                    <span class="employee-minor-details-element">
                         <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                             [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
-                        <strong> Available for Assignment</strong>
+                        <strong> {{!employee.onProject ? employee.onBenchReason : employee.resourceStatus}}</strong>
                     </span>
                     <span class="employee-email employee-minor-details-element" matTooltip="Click to copy Email" matTooltipPosition="right"
                         (click)="copyEmailToClipboard(employee.email)">
