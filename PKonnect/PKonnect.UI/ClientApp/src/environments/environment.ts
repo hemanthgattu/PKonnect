@@ -15,13 +15,26 @@ export const environment = {
   // clientId: 'ae57e1a3-3061-40ce-88ef-6d5c9d385160',
 
   /** new test keys */
+  // tenant: '06b63d62-9374-4d41-a269-4971ff69c4c7',
+  // clientId: 'e2b5fe89-90ac-4d13-912a-92168eb677f6',
+  // authority: 'https://login.microsoftonline.com/06b63d62-9374-4d41-a269-4971ff69c4c7/',
+  // OAuthSettings: {
+  //   appId: 'e2b5fe89-90ac-4d13-912a-92168eb677f6',
+  //   scopes: [
+  //     'User.Read',
+  //     'User.ReadBasic.All'
+  //   ]
+  // },
+
+  // prod
   tenant: '06b63d62-9374-4d41-a269-4971ff69c4c7',
-  clientId: 'e2b5fe89-90ac-4d13-912a-92168eb677f6',
+  clientId: 'ae57e1a3-3061-40ce-88ef-6d5c9d385160',
   authority: 'https://login.microsoftonline.com/06b63d62-9374-4d41-a269-4971ff69c4c7/',
   OAuthSettings: {
-    appId: 'e2b5fe89-90ac-4d13-912a-92168eb677f6',
+    appId: 'ae57e1a3-3061-40ce-88ef-6d5c9d385160',
     scopes: [
-      'User.Read'
+      'User.Read',
+      'User.ReadBasic.All'
     ]
   },
   amplitudeKey: 'a7e92d34197475a5fc2ea2e23d8938e3',

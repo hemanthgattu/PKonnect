@@ -12,7 +12,7 @@ export class AuthService {
   async acquireAccessToken(): Promise<string> {
     const result = await this.msalService.acquireTokenSilent(environment.OAuthSettings)
       .catch((reason) => {
-        console.log('Get token failed');
+        console.log(reason);
       });
 
     if (result) {

@@ -12,7 +12,7 @@ export class SearchAvailInputComponent {
   public availabilityControl = new FormControl();
   public availabilityOptions = [
     {
-      displayName: 'Available',
+      displayName: 'On Bench',
       availabilityValue: 'On Bench'
     },
     {

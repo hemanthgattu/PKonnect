@@ -27,6 +27,8 @@ export class EmployeeSearchCardComponent implements OnInit {
   public displayPicture: any;
   public displayEmployeeSkills = [];
   public displayEmployeeSkillCount = 4;
+  public displayCerts = [];
+  public displayCertsCount = 2;
   public isEmployee: boolean;
 
   constructor(
@@ -43,6 +45,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   set employeeData(employee: any) {
     this.employee = employee;
     this.displayEmployeeSkills = this.employee.resourceSkills.slice(0, this.displayEmployeeSkillCount);
+    this.displayCerts = this.employee.resourceCertifications.slice(0, this.displayCertsCount);
     this.setDisplayPicture(this.employee);
     this.isEmployee = this.sharedService.isEmployee(this.employee.employeeId);
   }
