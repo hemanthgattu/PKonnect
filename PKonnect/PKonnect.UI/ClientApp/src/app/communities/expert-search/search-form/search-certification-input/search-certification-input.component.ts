@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SubSink } from 'subsink';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
@@ -11,7 +11,7 @@ import { startWith, map } from 'rxjs/operators';
   templateUrl: './search-certification-input.component.html',
   styleUrls: ['./search-certification-input.component.scss']
 })
-export class SearchCertificationInputComponent implements OnInit {
+export class SearchCertificationInputComponent implements OnInit, OnDestroy {
 
   @Output() public searchCertEvent = new EventEmitter();
   public certControl = new FormControl();
@@ -65,6 +65,10 @@ export class SearchCertificationInputComponent implements OnInit {
 
   emptyCert() {
     this.certControl.setValue(undefined);
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 
 }

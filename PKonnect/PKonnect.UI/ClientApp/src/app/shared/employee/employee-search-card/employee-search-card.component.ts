@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { faUserCircle, faMap, faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy, faCheckCircle, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import { RestService } from '../../shared/services/rest/rest.service';
 import { AuthService } from '../../shared/services/auth/auth.service';
 import { SharedMethodsService } from '../../shared/services/shared-methods/shared-methods.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-employee-search-card',
   templateUrl: './employee-search-card.component.html',
   styleUrls: ['./employee-search-card.component.scss']
 })
-export class EmployeeSearchCardComponent implements OnInit {
+export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
 
   public displayMoreSkills = false;
   public faUserCircle = faUserCircle;
@@ -30,6 +31,7 @@ export class EmployeeSearchCardComponent implements OnInit {
   public displayCerts = [];
   public displayCertsCount = 2;
   public isEmployee: boolean;
+  private subs = new SubSink();
 
   constructor(
     private snackBar: MatSnackBar,
@@ -58,7 +60,7 @@ export class EmployeeSearchCardComponent implements OnInit {
     }
     const url = `https://graph.microsoft.com/v1.0/users/${employee.email}/photo/$value`;
     this.authService.acquireAccessToken().then(result => {
-      this.restService.httpGet(url, result).subscribe(
+      this.subs = this.restService.httpGet(url, result).subscribe(
         (data) => {
           this.createImageFromBlob(data);
         },
@@ -113,6 +115,10 @@ export class EmployeeSearchCardComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }
 
