@@ -5,8 +5,9 @@ import { MsalGuard } from '@azure/msal-angular';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./communities/expert-search/expert-search.module').then(m => m.ExpertSearchModule)
-    , pathMatch: 'full', canActivate: [ MsalGuard ]
+    loadChildren: () => import('./communities/expert-search/expert-search.module').then(m => m.ExpertSearchModule),
+    pathMatch: 'full',
+    canActivate: [ MsalGuard ]
   },
   // {
   //   path: 'profile',

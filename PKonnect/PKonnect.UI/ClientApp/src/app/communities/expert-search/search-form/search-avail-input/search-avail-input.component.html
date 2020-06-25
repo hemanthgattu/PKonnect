@@ -1,13 +1,57 @@
 <form #availSearchForm>
     <mat-form-field>
-        <input type="text" #availabilityInput placeholder="Consultant status" matInput [formControl]="availabilityControl"
-            [matAutocomplete]="availability" (change)="handleEmptyInput($event, 'resourceStatus')">
+        <input type="text" #availabilityInput placeholder="Consultant status" matInput
+            [formControl]="availabilityControl" [matAutocomplete]="availability"
+            (change)="handleEmptyInput($event, 'resourceStatus')">
         <mat-autocomplete autoActiveFirstOption #availability="matAutocomplete"
             (optionSelected)="log($event.option.value)">
-            <mat-option #availabilitySearch *ngFor="let option of availabilityOptions"
+            <!-- <mat-option #availabilitySearch *ngFor="let option of availabilityOptions"
                 [value]="option.displayName">
                 {{option.displayName}}
+            </mat-option> -->
+            <mat-option #availabilitySearch value="On Project">
+                On Project
             </mat-option>
+            <mat-optgroup label="On Bench">
+                <mat-option #availabilitySearch value="On Bench - Available for Assignment">
+                        Available for Assignment
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - Proposed for Assignment">
+                        Proposed for Assignment
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - Client Strategic Bench">
+                        Client Strategic Bench
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - Trainee">
+                        Trainee
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - On long term leave">
+                        On long term leave
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - On Internal Project">
+                        On Internal Project
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - CoE">
+                        CoE
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - Vertical">
+                        Vertical
+                </mat-option>
+                <mat-option #availabilitySearch value="On Bench - PIP/Releasing">
+                        PIP/Releasing
+                </mat-option>
+            </mat-optgroup>
         </mat-autocomplete>
     </mat-form-field>
 </form>
+
+<!-- 
+Available for Assignment
+Proposed for Assignment
+Client Strategic Bench
+Trainee
+On long term leave
+On Internal Project
+CoE
+Vertical
+PIP/Releasing -->

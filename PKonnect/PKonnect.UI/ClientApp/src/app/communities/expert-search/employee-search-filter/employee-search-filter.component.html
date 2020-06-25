@@ -36,12 +36,12 @@
                             </div> -->
                         </div>
                         <div class="row">
-                            <div class="col-lg-4">
-                                <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
-                            </div>
+                                <div class="col-lg-4">
+                                        <app-search-avail-input (searchAvailEvent)="availMessage($event)">
+                                        </app-search-avail-input>
+                                    </div>
                             <div class="col-lg-3">
-                                <app-search-avail-input (searchAvailEvent)="availMessage($event)">
-                                </app-search-avail-input>
+                                <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
                             </div>
                             <div class="col-lg-3">
                                 <app-search-location-input (searchLocationEvent)="locationMessage($event)">
