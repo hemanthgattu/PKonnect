@@ -41,7 +41,6 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
         if (data.recordCount > 0 && data.resourceSkillDetails.length > 0 ) {
           this.employeeDetails = data.resourceSkillDetails[0];
           this.displayProfile = true;
-          console.log(this.employeeDetails);
         } else {
           this.redirectToSearch();
         }

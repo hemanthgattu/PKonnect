@@ -46,16 +46,15 @@ export class EmployeeExperienceComponent implements OnInit {
     }
   ];
 
-  certifications = [
-    'Oracle Certified Associate Java Programmer (OCAJP) [Java SE 8 Programmer I]',
-    'Oracle Certified Associate Java Programmer (OCAJP) [Java SE 11 Programmer]'
-  ];
+  certifications: string[];
 
   @Input() employeeExperienceDetails: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.employeeExperienceDetails);
+    this.certifications = this.employeeExperienceDetails.resourceCertifications;
   }
 
 }

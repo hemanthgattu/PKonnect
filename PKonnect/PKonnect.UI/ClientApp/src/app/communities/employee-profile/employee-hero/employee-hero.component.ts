@@ -24,7 +24,6 @@ export class EmployeeHeroComponent implements OnInit {
 
   ngOnInit(): void {
     this.setDisplayPicture(this.employeeHeroDetails);
-    console.log(this.employeeHeroDetails.employeeId);
     this.isEmployee = this.sharedService.isEmployee(this.employeeHeroDetails.employeeId);
   }
 

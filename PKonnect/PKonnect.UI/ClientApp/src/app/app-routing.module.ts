@@ -9,11 +9,11 @@ const routes: Routes = [
     pathMatch: 'full',
     canActivate: [ MsalGuard ]
   },
-  // {
-  //   path: 'profile',
-  //   loadChildren: () => import('./communities/employee-profile/employee-profile.module').then(m => m.EmployeeProfileModule)
-  //   , pathMatch: 'full', canActivate: [ MsalGuard ]
-  // },
+  {
+    path: 'profile',
+    loadChildren: () => import('./communities/employee-profile/employee-profile.module').then(m => m.EmployeeProfileModule)
+    , pathMatch: 'full', canActivate: [ MsalGuard ]
+  },
   {
     path: '**',
     redirectTo: '/',
