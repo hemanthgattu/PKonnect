@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+import { faCalendar, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -11,6 +11,8 @@ export class EmployeeExperienceComponent implements OnInit {
 
   public faCalendar = faCalendar;
   public faMapMarkerAlt = faMapMarkerAlt;
+  public faUserCircle = faUserCircle;
+
   public projects = [
     {
       name: 'Puget Sound Energy',
@@ -19,6 +21,7 @@ export class EmployeeExperienceComponent implements OnInit {
       state: 'WA',
       endDate: '01/2019',
       isActive: true,
+      role: 'Developer - Angular'
     },
     {
       name: 'Puget Sound Energy',
@@ -27,6 +30,7 @@ export class EmployeeExperienceComponent implements OnInit {
       state: 'WA',
       endDate: '01/2019',
       isActive: false,
+      role: 'Developer - Angular'
     },
     {
       name: 'Puget Sound Energy',
@@ -35,6 +39,7 @@ export class EmployeeExperienceComponent implements OnInit {
       state: 'WA',
       endDate: '01/2019',
       isActive: false,
+      role: 'Developer - Angular'
     },
     {
       name: 'Puget Sound Energy',
@@ -43,6 +48,7 @@ export class EmployeeExperienceComponent implements OnInit {
       state: 'WA',
       endDate: '01/2019',
       isActive: false,
+      role: 'Developer - Angular'
     }
   ];
 

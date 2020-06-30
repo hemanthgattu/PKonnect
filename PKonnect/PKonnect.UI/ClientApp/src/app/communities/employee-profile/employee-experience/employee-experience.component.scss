@@ -1,7 +1,14 @@
+$small-screen: 500px;
+$medium-screen: 900px;
+
 .employee-experience {
   background: #ffffff;
   border-radius: 5px;
   padding: 25px 45px;
+
+  @media screen and (max-width: $small-screen) {
+    padding: 25px;
+  }
 }
 
 h1 {

@@ -21,6 +21,7 @@ export class EmployeeInfoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.employeeInfoDetails);
   }
 
 }

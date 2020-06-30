@@ -31,6 +31,7 @@
                                 <span class="employee-info-key">Location: </span>
                                 <span *ngIf="employeeInfoDetails.city"> {{employeeInfoDetails.city}}</span>
                                 <span *ngIf="employeeInfoDetails.state">, {{employeeInfoDetails.state}}</span>
+                                <span *ngIf="employeeInfoDetails.country"> ({{employeeInfoDetails.country}})</span>
                         </div>
                 </div>
         </div>

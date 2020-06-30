@@ -1,5 +1,4 @@
 <div class="employee-experience">
-        <!-- {{employeeExperienceDetails | json}} -->
         <div class="employee-about" *ngIf="employeeExperienceDetails?.roleDescription">
                 <h1>About</h1>
                 <p>{{employeeExperienceDetails.roleDescription}}</p>
@@ -23,7 +22,7 @@
                                 </div>
                         </div>
                         <div class="row employee-project-location">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                         <div class="row">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faMapMarkerAlt" size="md">
@@ -35,7 +34,7 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                         <div class="row">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faCalendar" size="md">
@@ -44,6 +43,18 @@
                                                 <div class="col-10">
                                                         <span class="employee-info-key">End Date: </span>
                                                         {{project.endDate}}
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-3">
+                                        <div class="row">
+                                                <div class="col-1">
+                                                        <fa-icon class="slider-icon" [icon]="faUserCircle" size="md">
+                                                        </fa-icon>
+                                                </div>
+                                                <div class="col-10">
+                                                        <span class="employee-info-key">Role: </span>
+                                                        {{project.role}}
                                                 </div>
                                         </div>
                                 </div>

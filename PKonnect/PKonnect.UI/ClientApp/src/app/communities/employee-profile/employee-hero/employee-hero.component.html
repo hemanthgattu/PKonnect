@@ -9,8 +9,8 @@
         <div class="col-md-9">
             <div class="employee-general">
                 <h1>{{employeeHeroDetails.fullName}}</h1>
-                <p>{{employeeHeroDetails.role}}</p><p *ngIf="employeeHeroDetails.employeeId">({{ isEmployee ? 'Employee' : 'Contractor'}})</p>
-                <div class="employee-buttons">
+                <h4>{{employeeHeroDetails.role}} {{ isEmployee ? '(Employee)' : '(Contractor)'}}</h4>
+                <!-- <div class="employee-buttons">
                     <button *ngIf="employeeHeroDetails.isMvp" type="button" class="btn btn-mvp">
                         <fa-icon class="slider-icon" [icon]="faTrophy" size="md"></fa-icon>
                         <span class="mentor-text">MVP</span>
@@ -20,7 +20,7 @@
                         <fa-icon class="slider-icon" [icon]="faUserCircle" size="lg"></fa-icon>
                         <span class="mentor-text">Mentor</span>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

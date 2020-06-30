@@ -3,6 +3,14 @@ $medium-screen: 900px;
 
 .employee-hero {
   padding: 60px 50px 0px 50px;
+
+  @media screen and (max-width: $medium-screen) {
+    padding: 25% 50px 0px 50px;
+  }
+
+  @media screen and (max-width: $small-screen) {
+    padding: 25% 50px 0px 50px;
+  }
 }
 
 .image {
@@ -59,7 +67,7 @@ h1 {
   }
 }
 
-p {
+h4 {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -80,7 +88,7 @@ p {
 
 .employee-buttons {
   @media screen and (max-width: $small-screen) {
-    text-align: center;
+    
   }
 }
 
