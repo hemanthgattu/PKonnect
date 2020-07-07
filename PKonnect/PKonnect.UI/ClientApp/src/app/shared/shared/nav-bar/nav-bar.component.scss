@@ -128,6 +128,9 @@ $color-black-hover: #000000;
 $color-white: #ffffff;
 
 .form-search-name {
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
   padding-right: 20px;
   width: 350px;
 }
@@ -144,8 +147,14 @@ $color-white: #ffffff;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-  margin: 5px 5px 5px 0px;
-  padding: 0px 5px 5px 15px;
+  padding: 0px 15px 5px 15px;
+}
+
+.form-search-name {
+  ::ng-deep .mat-form-field-infix  {
+    border-top: 5px solid transparent !important;
+    border-bottom: 7px solid transparent !important;
+  }
 }
 
 .mat-input-element { 
@@ -154,10 +163,12 @@ $color-white: #ffffff;
 
 .placeholder {
     color: $color-white;
+    font-style: italic;
 }
 
 .mat-focused .placeholder {
-    color: $color-white;
+    color: gray;
+    font-style: italic;
 }
 
 ::ng-deep .mat-form-field-label {

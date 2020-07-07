@@ -28,6 +28,7 @@ export class EmployeeExperienceComponent implements OnChanges {
   }
 
   isActive(endDate: string) {
+    console.log(endDate);
     const nowYear = new Date().getFullYear();
     const nowMonth = new Date().getMonth();
     const nowDt = new Date().getDate();
@@ -37,7 +38,9 @@ export class EmployeeExperienceComponent implements OnChanges {
     const endMonth = endISODate.getMonth();
     const endDt = endISODate.getDate();
     // console.log('now ' + endYear + ' ' + endMonth + ' ' + endDt);
-    if (endYear > nowYear) {
+    if (endDate === null ) {
+      return true;
+    } else if (endYear > nowYear) {
       return true;
     } else if ( endYear < nowYear) {
       return false;

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
   private subs = new SubSink();
   @Output() searchRoleEvent = new EventEmitter();
 
+  public faQuestionCircle = faQuestionCircle;
   public roleControl = new FormControl();
   public filteredRoleOptions: Observable<string[]>;
   public roleOptions: string[] = [];

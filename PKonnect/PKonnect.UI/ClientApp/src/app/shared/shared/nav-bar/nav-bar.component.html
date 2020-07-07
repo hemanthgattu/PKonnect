@@ -9,15 +9,20 @@
             <fa-icon *ngIf="toggle" class="slider-icon side-nav-toggle" [icon]="faBars" size="lg" (click)="toggleIcon()"></fa-icon>
             <fa-icon *ngIf="!toggle" class="slider-icon side-nav-toggle" [icon]="faTimes" size="lg" (click)="toggleIcon()"></fa-icon>
     </div> -->
-    <span class="pk-title" (click)="goToHome()">
+    <span class="pk-title" *ngIf="!displaySearch" (click)="goToHome()">
         Communities
     </span>
     <div class="form-search-name" *ngIf="displaySearch && !isMobile">
         <form #searchNameForm>
-            <mat-form-field>
+            <mat-form-field floatLabel="never">
                 <input type="text" #searchNameInput matInput [formControl]="myControl"
-                    [matAutocomplete]="name">
-                <mat-placeholder class="placeholder">Search by name</mat-placeholder>
+                    [matAutocomplete]="name" >
+                <mat-placeholder class="placeholder">
+                    &nbsp;
+                    <fa-icon [icon]="faSearch" size="md"></fa-icon>
+                    &nbsp;
+                    Search by name
+                </mat-placeholder>
                 <mat-autocomplete autoActiveFirstOption #name="matAutocomplete">
                     <mat-option #searchName (onSelectionChange)="log(option.EmployeeId)"
                         *ngFor="let option of filteredOptions | async" [value]="option.FullName">

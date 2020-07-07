@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, OnChanges, OnDestroy } from '@angular/core';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { SharedMethodsService } from '../services/shared-methods/shared-methods.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,6 +22,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   public faBars = faBars;
   public faTimes = faTimes;
   public faUserCircle = faUserCircle;
+  public faSearch = faSearch;
   public toggle = true;
   public userName: string;
   public isMobile = false;
