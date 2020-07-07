@@ -1,21 +1,21 @@
-<div class="employee-experience">
-        <div class="employee-about" *ngIf="employeeExperienceDetails?.roleDescription">
+<div class="employee-experience" *ngIf="description || projects.length > 0" >
+        <div class="employee-about" *ngIf="description">
                 <h1>About</h1>
-                <p>{{employeeExperienceDetails.roleDescription}}</p>
+                <p>{{description}}</p>
         </div>
-        <div class="employee-projects">
+        <div class="employee-projects" *ngIf="projects.length > 0">
                 <h1>Experience</h1>
                 <div class="employee-project" *ngFor="let project of projects">
                         <div class="row">
                                 <div class="col-md-10">
-                                        <h2>{{project.name}}</h2>
-                                        <p>{{project.description}}</p>
+                                        <h2>{{project.projectMasters.accountName}}</h2>
+                                        <p>{{project.projectMasters.projectName}}</p>
                                 </div>
                                 <div class="col-md-2">
-                                        <button *ngIf="project.isActive" type="button" class="btn btn-project-active">
+                                        <button *ngIf="isActive(project.resourceEndDate)" type="button" class="btn btn-project-active">
                                                 <span class="mentor-text">Active</span>
                                         </button>
-                                        <button *ngIf="!project.isActive" type="button"
+                                        <button *ngIf="!isActive(project.resourceEndDate)" type="button"
                                                 class="btn btn-project-completed">
                                                 <span class="mentor-text">Complete</span>
                                         </button>
@@ -30,24 +30,24 @@
                                                 </div>
                                                 <div class="col-10">
                                                         <span class="employee-info-key">Location: </span>
-                                                        {{project.city}}, {{project.state}}
+                                                        {{project.projectMasters.location}}
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-md-3">
-                                        <div class="row">
+                                        <div class="row" *ngIf="project.resourceEndDate">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faCalendar" size="md">
                                                         </fa-icon>
                                                 </div>
                                                 <div class="col-10">
                                                         <span class="employee-info-key">End Date: </span>
-                                                        {{project.endDate}}
+                                                        {{project.resourceEndDate | date : 'mediumDate'}}
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-md-3">
-                                        <div class="row">
+                                        <div class="row" *ngIf="project.role">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faUserCircle" size="md">
                                                         </fa-icon>
@@ -64,7 +64,8 @@
         </div>
         <div *ngIf="certifications.length > 0">
                 <h1>Certifications</h1>
-                <span class="employee-certificate" *ngFor="let certificate of certifications">{{certificate.certificationName}}
+                <span class="employee-certificate"
+                        *ngFor="let certificate of certifications">{{certificate.certification.certificationName}}
                         <br></span>
         </div>
 </div>

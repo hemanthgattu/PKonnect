@@ -18,7 +18,6 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   myControl: FormControl;
   filteredOptions: Observable<string[]>;
   options: string[] = [];
-  timeout = null;
 
   constructor(private rest: RestService) { }
 

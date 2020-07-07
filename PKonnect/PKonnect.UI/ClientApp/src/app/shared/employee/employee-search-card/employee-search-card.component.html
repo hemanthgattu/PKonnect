@@ -58,16 +58,16 @@
         </div>
         <div class="col-md-5 employee-skills">
             <div class="row employee-minor-details">
-                    <span class="employee-minor-details-element">
-                        <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
-                            [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
-                        <strong> {{!employee.onProject ? employee.onBenchReason : employee.resourceStatus}}</strong>
-                    </span>
-                    <span class="employee-email employee-minor-details-element" matTooltip="Click to copy Email" matTooltipPosition="right"
-                        (click)="copyEmailToClipboard(employee.email)">
-                        <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
-                        Email
-                    </span>
+                <span class="employee-minor-details-element">
+                    <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
+                        [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
+                    <strong> {{!employee.onProject ? employee.onBenchReason : employee.resourceStatus}}</strong>
+                </span>
+                <span class="employee-email employee-minor-details-element" matTooltip="Click to copy Email"
+                    matTooltipPosition="right" (click)="copyEmailToClipboard(employee.email)">
+                    <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
+                    Email
+                </span>
             </div>
             <div class="employee-skills-display">
                 <div class="row employee-skill-display" *ngFor="let employeeSkill of displayEmployeeSkills">
@@ -112,10 +112,12 @@
     </div>
     <div class="row view-profile">
         <div class="col-md-6 offset-md-3">
-                <span class="btn-view-more-skills" (click)="goToProfile(employee.resourceId)">
-                        <fa-icon class="slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
-                        View Profile
+            <a href="/profile?id={{employee.employeeId}}" target="_blank" rel="noopener" >
+                <span class="btn-view-more-skills">
+                            <fa-icon class=" slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
+                    View Profile
                 </span>
+            </a>
         </div>
     </div>
 </div>

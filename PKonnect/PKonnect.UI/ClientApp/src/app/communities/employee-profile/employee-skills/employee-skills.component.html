@@ -1,16 +1,29 @@
 <div class="employee-skills" *ngIf="employeeSkillDetails.length > 0">
-    <!-- {{employeeSkillDetails | json}} -->
-        <div class="employee-skills-title">
-            <p>Skills</p>
-        </div>
-        <div class="employee-skills-list">
-            <div class="employee-skill" *ngFor="let skill of employeeSkillDetails">
-                <p class="employee-skill-name">{{skill.textName}}</p>
-                <div class="progress" matTooltip="Self Rating: {{skill.skillRating}}/5" matTooltipPosition="right">
-                    <div class="progress-bar" role="progressbar" [style.width.%]="skill.skillRating*20"
-                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+    <div class="employee-skills-title">
+        <p>Skills</p>
+    </div>
+    <div class="employee-skills-list">
+        <div class="employee-skill" *ngFor="let skill of employeeSkills">
+            <p class="employee-skill-name">{{skill.skills.textName}}</p>
+            <div class="progress" matTooltip="Self Rating: {{skill.skillRating}}/5" matTooltipPosition="right">
+                <div class="progress-bar" role="progressbar" [style.width.%]="skill.skillRating*20" aria-valuenow="25"
+                    aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
-</div>
+    </div>
+    <div *ngIf="employeeSkillDetails.length > displayEmployeeSkillCount && employeeSkills.length <= displayEmployeeSkillCount"
+        class="employee-skills-view-more d-flex flex-row-reverse">
+        <span class="btn-view-more-skills" (click)="showMoreSkills()">
+            <fa-icon class="slider-icon" [icon]="faChevronDown" size="sm"></fa-icon>
+            Show More
+        </span>
+    </div>
 
+    <div *ngIf="employeeSkillDetails.length > displayEmployeeSkillCount && employeeSkills.length > displayEmployeeSkillCount"
+        class="employee-skills-view-more d-flex flex-row-reverse">
+        <span class="btn-view-more-skills" (click)="showLessSkills()">
+            <fa-icon class="slider-icon" [icon]="faChevronUp" size="sm"></fa-icon>
+            Show Less
+        </span>
+    </div>
+</div>

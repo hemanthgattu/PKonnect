@@ -1,24 +1,33 @@
 <div class="employee-info">
-        <!-- {{employeeInfoDetails | json}} -->
         <div class="employee-available" *ngIf="!employeeInfoDetails.onProject">
                 <div class="row">
+                        <!-- resourceStatus -->
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                                         [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <strong> Available for Assignment</strong>
+                                <strong> {{availValue}}</strong>
                         </div>
                 </div>
         </div>
-        <!-- No data in api response -->
-        <div class="employee-start-date">
+        <div class="employee-start-date" *ngIf="employeeInfoDetails.hiredDate">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faCalendar" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
                                 <span class="employee-info-key">Hired: </span> {{employeeInfoDetails.hiredDate | date : 'MM/yyyy'}}
+                        </div>
+                </div>
+        </div>
+        <div class="employee-start-date" *ngIf="employeeInfoDetails.experienceInYears">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faUser" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Years Experience: </span> {{employeeInfoDetails.experienceInYears}}
                         </div>
                 </div>
         </div>
@@ -35,8 +44,7 @@
                         </div>
                 </div>
         </div>
-        <!-- No data in api response -->
-        <div class="employee-id" >
+        <div class="employee-id" *ngIf="employeeInfoDetails.employeeId">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faIdCard" size="md"></fa-icon>
@@ -46,8 +54,7 @@
                         </div>
                 </div>
         </div>
-        <!-- No data in api response -->
-        <div class="employee-manager">
+        <div class="employee-manager" *ngIf="employeeInfoDetails.manager">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faUserCircle" size="md"></fa-icon>
@@ -57,35 +64,33 @@
                         </div>
                 </div>
         </div>
-        <div class="employee-email" *ngIf="employeeInfoDetails.email">
+        <div class="employee-email" *ngIf="employeeInfoDetails.primaryEmailAddress">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Email: </span> {{employeeInfoDetails.email}}
+                                <span class="employee-info-key">Email: </span> {{employeeInfoDetails.primaryEmailAddress}}
                         </div>
                 </div>
         </div>
-        <!-- No data in api response -->
-        <div class="employee-coe">
+        <div class="employee-coe" *ngIf="employeeInfoDetails.coe">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">COE: </span> Product Management
+                                <span class="employee-info-key">COE: </span> {{employeeInfoDetails.coe}}
                         </div>
                 </div>
         </div>
-        <!-- No data in api response -->
-        <div class="employee-service-line">
+        <div class="employee-service-line" *ngIf="employeeInfoDetails.serviceLine">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Service Line: </span> Engineering
+                                <span class="employee-info-key">Service Line: </span> {{employeeInfoDetails.serviceLine}}
                         </div>
                 </div>
         </div>

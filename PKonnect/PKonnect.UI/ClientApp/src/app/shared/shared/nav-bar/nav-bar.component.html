@@ -12,6 +12,21 @@
     <span class="pk-title" (click)="goToHome()">
         Communities
     </span>
+    <div class="form-search-name" *ngIf="displaySearch && !isMobile">
+        <form #searchNameForm>
+            <mat-form-field>
+                <input type="text" #searchNameInput matInput [formControl]="myControl"
+                    [matAutocomplete]="name">
+                <mat-placeholder class="placeholder">Search by name</mat-placeholder>
+                <mat-autocomplete autoActiveFirstOption #name="matAutocomplete">
+                    <mat-option #searchName (onSelectionChange)="log(option.EmployeeId)"
+                        *ngFor="let option of filteredOptions | async" [value]="option.FullName">
+                        {{option.FullName}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
     <span class="profile" (click)="goToProfile()">
         <fa-icon class="slider-icon side-nav-toggle" [icon]="faUserCircle" size="lg"></fa-icon>
         <span *ngIf="!isMobile" class="pk-title">

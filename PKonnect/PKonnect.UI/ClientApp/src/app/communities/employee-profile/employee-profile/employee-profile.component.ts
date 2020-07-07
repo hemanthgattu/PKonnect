@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class EmployeeProfileComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
+  private querySub: Subscription;
   public employeeDetails: any;
   public displayProfile = false;
 
@@ -22,24 +23,28 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe(
+    this.querySub = this.activatedRoute.queryParamMap.subscribe(
       (data) => {
         const employeeId = data.get('id');
         if ( !!employeeId ) {
-          this.getEmployeeDetailsWithId(+employeeId);
+          this.getEmployeeDetailsWithId(employeeId);
         } else {
           this.redirectToSearch();
         }
+      },
+      (error) => {
+        console.error(error);
       }
     );
+
   }
 
-  getEmployeeDetailsWithId(id: number): void {
-    const getEmployeeUrl = `${environment.communitiesApi}/resources/GetResourceDetails?ResourceId=${id}`;
+  getEmployeeDetailsWithId(id: string): void {
+    const getEmployeeUrl = `${environment.communitiesApi}/resources/${id}`;
     this.sub = this.rest.httpGet(getEmployeeUrl).subscribe(
       (data) => {
-        if (data.recordCount > 0 && data.resourceSkillDetails.length > 0 ) {
-          this.employeeDetails = data.resourceSkillDetails[0];
+        if (data.primaryEmailAddress) {
+          this.employeeDetails = data;
           this.displayProfile = true;
         } else {
           this.redirectToSearch();
@@ -57,7 +62,10 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (!!this.sub) {
+      this.sub.unsubscribe();
+      this.querySub.unsubscribe();
+    }
   }
 
 

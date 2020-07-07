@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  communitiesApi: 'https://communities.pkglobal.com/API/api',
+  communitiesApi: 'https://communities-dev.pkglobal.com/API/api',
   redirectUri: 'http://localhost:4200/',
   /** azure cloud */
   // tenant: '5786743f-b4c4-4f8e-978e-95d7ff2aef9d',

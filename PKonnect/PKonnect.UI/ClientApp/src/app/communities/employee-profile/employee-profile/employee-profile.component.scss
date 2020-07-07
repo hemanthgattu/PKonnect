@@ -3,15 +3,15 @@ $medium-screen: 900px;
 
 .employee-profile {
   background: url(../../../../assets/images/employee-profile-bg.png) no-repeat;
-  background-size: 100% 20%, cover;
+  background-size: 100% 30vh, cover;
   height: 100%;
 
   @media screen and (max-width: $medium-screen) {
-    background-size: 100% 7%, cover;
+    background-size: 100% 25vh, cover;
   }
 
   @media screen and (max-width: $small-screen) {
-    background-size: 100% 7%, cover;
+    background-size: 100% 30vh, cover;
   }
 }
 

@@ -7,7 +7,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FooterComponent } from './footer/footer.component';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [NavBarComponent, TruncatePipe, FooterComponent],
@@ -15,7 +18,12 @@ import { FooterComponent } from './footer/footer.component';
     CommonModule,
     HttpClientModule,
     FontAwesomeModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [NavBarComponent, TruncatePipe, FooterComponent],
   providers: [ RestService ]

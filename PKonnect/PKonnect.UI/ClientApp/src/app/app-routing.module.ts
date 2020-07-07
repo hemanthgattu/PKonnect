@@ -6,7 +6,6 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./communities/expert-search/expert-search.module').then(m => m.ExpertSearchModule),
-    pathMatch: 'full',
     canActivate: [ MsalGuard ]
   },
   {

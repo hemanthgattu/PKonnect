@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/shared/shared/services/auth/auth.service';
@@ -10,7 +10,7 @@ import { SharedMethodsService } from 'src/app/shared/shared/services/shared-meth
   templateUrl: './employee-hero.component.html',
   styleUrls: ['./employee-hero.component.scss']
 })
-export class EmployeeHeroComponent implements OnInit {
+export class EmployeeHeroComponent implements OnChanges {
 
   public faUserCircle = faUserCircle;
   public faTrophy = faTrophy;
@@ -22,7 +22,7 @@ export class EmployeeHeroComponent implements OnInit {
               private restService: RestService,
               private sharedService: SharedMethodsService) { }
 
-  ngOnInit(): void {
+  ngOnChanges() {
     this.setDisplayPicture(this.employeeHeroDetails);
     this.isEmployee = this.sharedService.isEmployee(this.employeeHeroDetails.employeeId);
   }
@@ -33,7 +33,7 @@ export class EmployeeHeroComponent implements OnInit {
     } else {
       this.displayPicture = '../../../../assets/avatars/female.png';
     }
-    const url = `https://graph.microsoft.com/v1.0/users/${employee.email}/photo/$value`;
+    const url = `https://graph.microsoft.com/v1.0/users/${employee.primaryEmailAddress}/photo/$value`;
     this.authService.acquireAccessToken().then(result => {
       this.restService.httpGet(url, result).subscribe(
         (data) => {
