@@ -21,16 +21,33 @@ export class AmplitudeService {
     }
   }
 
+  // setEvent(eventName: string, eventProperty?: any) {
+  //   if (eventProperty) {
+  //     this.props.role = eventProperty.role;
+  //     this.props.skill = eventProperty.skillName;
+  //   }
+  //   if (environment.sendEvents ) {
+  //     if (this.props && !!this.props.role || this.props.skill.length > 0) {
+  //       amplitude.getInstance().logEvent(eventName, this.props);
+  //     } else {
+  //       amplitude.getInstance().logEvent(eventName);
+  //     }
+  //   }
+  // }
+
   setEvent(eventName: string, eventProperty?: any) {
-    if (eventProperty) {
-      this.props.role = eventProperty.role;
-      this.props.skill = eventProperty.skillName;
-    }
-    if (environment.sendEvents ) {
-      if (this.props && !!this.props.role || this.props.skill.length > 0) {
-        amplitude.getInstance().logEvent(eventName, this.props);
+    if (environment.sendEvents) {
+      if (!!eventProperty) {
+        amplitude.getInstance().logEvent(eventName, eventProperty);
       } else {
         amplitude.getInstance().logEvent(eventName);
+      }
+    } else {
+      if (!!eventProperty) {
+        console.log(eventName);
+        console.log(eventProperty);
+      } else {
+        console.log(eventName);
       }
     }
   }

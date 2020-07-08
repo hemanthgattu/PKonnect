@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from 'src/environments/environment';
+import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
+import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -19,10 +21,12 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private rest: RestService,
-    private router: Router
+    private router: Router,
+    private ampService: AmplitudeService
     ) { }
 
   ngOnInit(): void {
+    this.ampService.setEvent(AmplitudeEvent.VIEW_PROFILE);
     this.querySub = this.activatedRoute.queryParamMap.subscribe(
       (data) => {
         const employeeId = data.get('id');
@@ -36,7 +40,6 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
         console.error(error);
       }
     );
-
   }
 
   getEmployeeDetailsWithId(id: string): void {
@@ -45,6 +48,10 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
       (data) => {
         if (data.primaryEmailAddress) {
           this.employeeDetails = data;
+          const viewProfileSearch = {
+            searchedUserId: this.employeeDetails.primaryEmailAddress.split('@')[0]
+          };
+          this.ampService.setEvent(AmplitudeEvent.VIEW_PROFILE_SEARCH, viewProfileSearch);
           this.displayProfile = true;
         } else {
           this.redirectToSearch();

@@ -28,7 +28,6 @@ export class EmployeeExperienceComponent implements OnChanges {
   }
 
   isActive(endDate: string) {
-    console.log(endDate);
     const nowYear = new Date().getFullYear();
     const nowMonth = new Date().getMonth();
     const nowDt = new Date().getDate();

@@ -32,6 +32,17 @@ h1 {
     }
 }
 
+.question-icon {
+    color: #C70000;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 3px;
+}
+
+.question-icon:hover {
+    cursor: pointer;
+}
+
 .slider {
     display: flex;
     justify-content: center;

@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Output, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
-import { faSlidersH, faTimes, faSearch, faSpinner, fas } from '@fortawesome/free-solid-svg-icons';
+import { faSlidersH, faTimes, faSearch, faSpinner, fas, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { SearchCriteria } from 'src/app/models/searchCriteria.interface';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../environments/environment';
@@ -38,6 +38,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   public faSearch = faSearch;
   public faSpinner = faSpinner;
   public fas = fas;
+  public faQuestionCircle = faQuestionCircle;
 
   private mobileWidth = 420;
   public searchEmployeesRequest: SearchCriteria = {};
@@ -113,7 +114,15 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     const filterResultsURL = `${environment.communitiesApi}/resources/GetResourceDetails`;
     const getEmployeesUrl = this.createEmployeeRequest(filterResultsURL, this.searchEmployeesRequest, pageNumber, pageSize);
     if (this.pageNumber === 1) {
-      this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH, this.searchEmployeesRequest);
+      const eventProps = {
+        role: !!this.searchEmployeesRequest.role ? this.searchEmployeesRequest.role : null,
+        skill: this.searchEmployeesRequest.skillName
+      };
+      if (eventProps.role || eventProps.skill.length > 0) {
+        this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH, eventProps);
+      } else {
+        this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH);
+      }
     } else if (this.pageNumber > 1) {
       this.amplitudeSvc.setEvent(AmplitudeEvent.SEARCH_MORE);
     }

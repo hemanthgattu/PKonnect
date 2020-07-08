@@ -1,22 +1,15 @@
-<div class="row">
-    <div class="col-10">
-        <form #roleSearchForm>
-            <mat-form-field>
-                <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
-                    [matAutocomplete]="role" (change)="handleEmptyInput($event)">
-                <mat-autocomplete autoActiveFirstOption #role="matAutocomplete"
-                    (optionSelected)="setRole($event.option.value)">
-                    <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async" [value]="option"
-                        matTooltip="{{option}}" matTooltipPosition="right">
-                        {{option}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>
-    </div>
-    <div class="col-2">
-        <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="md"
-            matTooltip="Demonstrated responsibility with skill(s) in the current project(s)" matTooltipPosition="above">
-        </fa-icon>
-    </div>
-</div>
+<form #roleSearchForm>
+    <mat-form-field>
+        <input type="text" #roleInput placeholder="Search by role" matInput [formControl]="roleControl"
+            [matAutocomplete]="role" (change)="handleEmptyInput($event)">
+        <mat-autocomplete autoActiveFirstOption #role="matAutocomplete" (optionSelected)="setRole($event.option.value)">
+            <mat-option #roleSearch *ngFor="let option of filteredRoleOptions | async" [value]="option"
+                matTooltip="{{option}}" matTooltipPosition="right">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+<!-- <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="md"
+    matTooltip="Search by role: Demonstrated responsibility with skill(s) in the current project(s)" matTooltipPosition="above">
+</fa-icon> -->

@@ -13,6 +13,18 @@
         </div>
     </div>
     <!-- *ngIf="!isMobile || toggleSearchForm"  -->
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-4">
+                    <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="md"
+                        matTooltip="Search by role: Demonstrated responsibility with skill(s) in the current project(s)"
+                        matTooltipPosition="above">
+                    </fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="search-criteria">
         <form #searchEmployeeForm="ngForm" (keydown.enter)="$event.preventDefault()"
             (ngSubmit)="searchEmployees(1, 10, true);">
@@ -29,7 +41,8 @@
                                 </app-search-skill-input>
                             </div>
                             <div class="col-lg-5">
-                                <app-search-certification-input (searchCertEvent)="certMessage($event)"></app-search-certification-input>
+                                <app-search-certification-input (searchCertEvent)="certMessage($event)">
+                                </app-search-certification-input>
                             </div>
                             <!-- <div class="col-lg-2">
                                 <app-search-location-input (searchLocationEvent)="locationMessage($event)">
@@ -37,10 +50,10 @@
                             </div> -->
                         </div>
                         <div class="row">
-                                <div class="col-lg-4">
-                                        <app-search-avail-input (searchAvailEvent)="availMessage($event)">
-                                        </app-search-avail-input>
-                                    </div>
+                            <div class="col-lg-4">
+                                <app-search-avail-input (searchAvailEvent)="availMessage($event)">
+                                </app-search-avail-input>
+                            </div>
                             <div class="col-lg-3">
                                 <app-search-name-input (searchNameEvent)="nameMessage($event)"></app-search-name-input>
                             </div>
