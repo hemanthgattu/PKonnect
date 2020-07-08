@@ -1,5 +1,5 @@
-$small-screen: 500px;
-$medium-screen: 900px;
+$small-screen: 370px;
+$medium-screen: 500px;
 
 .employee-profile {
   background: url(../../../../assets/images/employee-profile-bg.png) no-repeat;
@@ -11,7 +11,7 @@ $medium-screen: 900px;
   }
 
   @media screen and (max-width: $small-screen) {
-    background-size: 100% 30vh, cover;
+    background-size: 100% 23vh, cover;
   }
 }
 

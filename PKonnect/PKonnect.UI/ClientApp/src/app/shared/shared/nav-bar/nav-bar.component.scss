@@ -132,7 +132,11 @@ $color-white: #ffffff;
   margin-right: auto;
   margin-left: auto;
   padding-right: 20px;
-  width: 350px;
+  width: 500px;
+
+  @media screen and (max-width: 431px) {
+    width: 230px;
+  }
 }
 
 .mat-form-field {

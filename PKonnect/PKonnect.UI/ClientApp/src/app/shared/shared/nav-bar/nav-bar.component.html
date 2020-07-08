@@ -12,7 +12,7 @@
     <span class="pk-title" *ngIf="!displaySearch" (click)="goToHome()">
         Communities
     </span>
-    <div class="form-search-name" *ngIf="displaySearch && !isMobile">
+    <div class="form-search-name" *ngIf="displaySearch">
         <form #searchNameForm>
             <mat-form-field floatLabel="never">
                 <input type="text" #searchNameInput matInput [formControl]="myControl"
