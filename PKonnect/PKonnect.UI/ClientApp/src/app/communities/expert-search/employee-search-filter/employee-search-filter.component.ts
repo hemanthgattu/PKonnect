@@ -14,6 +14,7 @@ import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/ampli
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 import { SearchCertificationInputComponent } from '../search-form/search-certification-input/search-certification-input.component';
 import { AuthService } from 'src/app/shared/shared/services/auth/auth.service';
+import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -46,6 +47,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   public searchName: string;
   public isFindingExperts = false;
   @Output() public employeeResponseEvent = new EventEmitter();
+  public modifiedDate: number;
 
   public pageNumber = 1;
   public pageSize = 10;
@@ -54,11 +56,13 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     private rest: RestService,
     private snackBar: MatSnackBar,
     private amplitudeSvc: AmplitudeService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private sharedMethods: SharedMethodsService
     ) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
+    this.getModifiedDate();
     // this.onInitSearchEmployees();
   }
 
@@ -81,6 +85,20 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // Mobile view - Toggle search form when clicked on filter button
   toggleSearch(): void {
     this.toggleSearchForm = !this.toggleSearchForm;
+  }
+
+  getModifiedDate() {
+    const getDateURL = environment.communitiesApi + '/ResourceCertifications?$select=modifiedDate&$top=1&$orderby=modifiedDate%20DESC';
+    this.subs.add(
+      this.rest.httpGet(getDateURL).subscribe(
+        (data) => {
+          this.modifiedDate = this.sharedMethods.getTimeDifference(data[0].ModifiedDate);
+        },
+        (error) => {
+          console.error(error);
+        }
+      )
+    );
   }
 
   // On Init Search

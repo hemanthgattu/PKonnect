@@ -27,6 +27,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
     color: black;
 }
 
+::ng-deep .mat-snack-bar-container.snack-bar-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+::ng-deep .mat-snack-bar-container.snack-bar-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
 .btn-major {
     width: 149px;
     height: 44px;

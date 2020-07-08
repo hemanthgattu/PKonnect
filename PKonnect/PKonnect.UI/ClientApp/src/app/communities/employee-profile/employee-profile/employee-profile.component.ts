@@ -5,6 +5,7 @@ import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from 'src/environments/environment';
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-profile',
@@ -20,6 +21,7 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private snackBar: MatSnackBar,
     private rest: RestService,
     private router: Router,
     private ampService: AmplitudeService
@@ -54,11 +56,13 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
           this.ampService.setEvent(AmplitudeEvent.VIEW_PROFILE_SEARCH, viewProfileSearch);
           this.displayProfile = true;
         } else {
+          this.snackBar.open('Employee not found', undefined , { panelClass: 'snack-bar-danger' });
           this.redirectToSearch();
         }
       },
       (error) => {
         console.log(error);
+        this.snackBar.open('Employee not found', undefined , { panelClass: 'snack-bar-danger' });
         this.redirectToSearch();
       }
     );

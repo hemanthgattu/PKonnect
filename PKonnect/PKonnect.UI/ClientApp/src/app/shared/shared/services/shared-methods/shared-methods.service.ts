@@ -18,4 +18,12 @@ export class SharedMethodsService {
     return false;
   }
 
+  getTimeDifference(compareTome: string) {
+    const dateNow = new Date().getTime();
+    const modDate = new Date(compareTome).getTime();
+    let diffInMilliSeconds = (dateNow - modDate) / 1000;
+    diffInMilliSeconds /= 60 * 60;
+    return Math.abs(Math.round(diffInMilliSeconds));
+  }
+
 }

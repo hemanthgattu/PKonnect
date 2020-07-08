@@ -1,7 +1,7 @@
 <div class="search">
     <div class="title" id="title">
         <div class="row">
-            <div class="col-8">
+            <div class="col-md-8">
                 <h1>Find Talent</h1>
             </div>
             <!-- <div class="col-4">
@@ -10,6 +10,9 @@
                     <span class="slider-icon-text">Filter</span>
                 </div>
             </div> -->
+            <div class="col-md-4 modified-date" *ngIf="modifiedDate">
+                Last Data Sync: {{modifiedDate}} Hours Ago
+            </div>
         </div>
     </div>
     <!-- *ngIf="!isMobile || toggleSearchForm"  -->
@@ -18,8 +21,8 @@
             <div class="row">
                 <div class="col-lg-4">
                     <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="md"
-                        matTooltip="Search by role: Demonstrated responsibility with skill(s) in the current project(s)"
-                        matTooltipPosition="above">
+                        matTooltipPosition="right"
+                        matTooltip="Search by role: Demonstrated responsibility with skill(s) in the current project(s)">
                     </fa-icon>
                 </div>
             </div>

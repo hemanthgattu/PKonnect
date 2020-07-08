@@ -9,6 +9,7 @@ import { EmployeeInfoComponent } from './employee-info/employee-info.component';
 import { EmployeeExperienceComponent } from './employee-experience/employee-experience.component';
 import { EmployeeSkillsComponent } from './employee-skills/employee-skills.component';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 const employeeProfileRoutes: Routes = [
   { path: '', component: EmployeeProfileComponent }
@@ -27,9 +28,18 @@ const employeeProfileRoutes: Routes = [
     SharedModule,
     FontAwesomeModule,
     MatTooltipModule,
+    MatSnackBarModule,
     RouterModule.forChild(employeeProfileRoutes)
   ],
   providers: [
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 2500,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      }
+    },
     {
       provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
       useValue: {
