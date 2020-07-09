@@ -17,7 +17,8 @@
                                 <fa-icon class="slider-icon" [icon]="faCalendar" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Hired: </span> {{employeeInfoDetails.hiredDate | date : 'MM/yyyy'}}
+                                <span class="employee-info-key">Hired: </span>
+                                {{employeeInfoDetails.hiredDate | date : 'MM/yyyy'}}
                         </div>
                 </div>
         </div>
@@ -27,7 +28,8 @@
                                 <fa-icon class="slider-icon" [icon]="faUser" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Experience: </span> {{employeeInfoDetails.experienceInYears}}
+                                <span class="employee-info-key">Experience: </span>
+                                {{employeeInfoDetails.experienceInYears}}
                         </div>
                 </div>
         </div>
@@ -70,7 +72,8 @@
                                 <fa-icon class="slider-icon" [icon]="faEnvelope" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Email: </span> {{employeeInfoDetails.primaryEmailAddress}}
+                                <span class="employee-info-key">Email: </span>
+                                {{employeeInfoDetails.primaryEmailAddress}}
                         </div>
                 </div>
         </div>
@@ -90,8 +93,53 @@
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Service Line: </span> {{employeeInfoDetails.serviceLine}}
+                                <span class="employee-info-key">Service Line: </span>
+                                {{employeeInfoDetails.serviceLine}}
                         </div>
                 </div>
         </div>
+        <div class="employee-relocate" *ngIf="employeeInfoDetails.willingToRelocate">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faLuggageCart" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Willing To Relocate: </span>
+                                {{employeeInfoDetails.willingToRelocate}}
+                        </div>
+                </div>
+        </div>
+        <div class="employee-travel" *ngIf="employeeInfoDetails.willingToTravel">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faPlaneDeparture" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Willing To Travel: </span>
+                                {{employeeInfoDetails.willingToTravel}}
+                        </div>
+                </div>
+        </div>
+        <div class="employee-immigration-status" *ngIf="employeeInfoDetails.immigrationStatus">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faPassport" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Immigration Status: </span>
+                                {{employeeInfoDetails.immigrationStatus}}
+                        </div>
+                </div>
+        </div>
+        <!-- <div class="employee-service-line">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faComment" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Status Comments: </span>
+                                {{employeeInfoDetails.projectComments}}
+                        </div>
+                </div>
+        </div> -->
 </div>

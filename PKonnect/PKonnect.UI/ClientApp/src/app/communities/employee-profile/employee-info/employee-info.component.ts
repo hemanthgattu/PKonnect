@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, faComment } from '@fortawesome/free-regular-svg-icons';
+import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-employee-info',
@@ -17,6 +17,11 @@ export class EmployeeInfoComponent implements OnChanges {
   public faUserCircle = faUserCircle;
   public faNewspaper = faNewspaper;
   public faUser = faUser;
+  public faComment = faComment;
+  public faPassport = faPassport;
+  public faLuggageCart = faLuggageCart;
+  public faPlaneDeparture = faPlaneDeparture;
+
   @Input() employeeInfoDetails: any;
   public availValue: string;
 
