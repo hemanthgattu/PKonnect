@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LocationService } from 'src/app/shared/shared/services/location/location.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-search-location-input',
   templateUrl: './search-location-input.component.html',
   styleUrls: ['./search-location-input.component.scss']
 })
-export class SearchLocationInputComponent {
+export class SearchLocationInputComponent implements OnInit, OnDestroy{
 
   @Output() searchLocationEvent = new EventEmitter();
   public locationControl = new FormControl();
@@ -23,6 +25,21 @@ export class SearchLocationInputComponent {
     ARG: { id: 'flag-ar' },
     MEX: { id: 'flag-mx' }
   };
+  private subs = new SubSink();
+
+  constructor(private locationService: LocationService) {
+  }
+
+  ngOnInit() {
+    this.subs.sink = this.locationService.getLocation.subscribe(
+      (data: string) => {
+        this.locationControl.setValue(data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   setLocation(option: string) {
     this.searchLocationEvent.emit(option);
@@ -36,6 +53,10 @@ export class SearchLocationInputComponent {
 
   emptyLocation() {
     this.locationControl.setValue(undefined);
+  }
+
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 
 }

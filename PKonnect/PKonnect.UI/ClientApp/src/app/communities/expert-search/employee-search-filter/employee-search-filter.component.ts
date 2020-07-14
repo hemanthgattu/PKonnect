@@ -15,6 +15,7 @@ import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 import { SearchCertificationInputComponent } from '../search-form/search-certification-input/search-certification-input.component';
 import { AuthService } from 'src/app/shared/shared/services/auth/auth.service';
 import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
+import { LocationService } from 'src/app/shared/shared/services/location/location.service';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -57,13 +58,30 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private amplitudeSvc: AmplitudeService,
     private authSvc: AuthService,
-    private sharedMethods: SharedMethodsService
+    private sharedMethods: SharedMethodsService,
+    private locationService: LocationService
     ) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
     this.getModifiedDate();
-    // this.onInitSearchEmployees();
+    this.getUserLocation();
+  }
+
+  getUserLocation() {
+    this.locationService.getLocationByName();
+    this.subs.sink = this.locationService.getLocation.subscribe(
+      (data: string) => {
+        if (!!data) {
+          console.log(data);
+          this.searchEmployeesRequest.location = data;
+          this.searchEmployees(1, 10, true);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   // Check width of the screen
@@ -104,7 +122,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   // On Init Search
   onInitSearchEmployees(): void {
     this.isFindingExperts = true;
-    const getEmployeesUrl = `https://communities.pkglobal.com/API/api/resources/GetResourceDetails?employeeName=${this.authSvc.getUserDetails().name}&pageNumber=1&pageSize=10&email=${this.authSvc.getUserDetails().email}`;
+    const location = 'USA';
+    const getEmployeesUrl = `${environment.communitiesApi}/resources/GetResourceDetails?location=${location}&pageNumber=1&pageSize=10&email=${this.authSvc.getUserDetails().email}`;
     this.subs.add(this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
         if (data.resourceSkillDetails.length <= 0) {
