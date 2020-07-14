@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, faComment } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, faComment, faAddressCard} from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
+import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-info',
   templateUrl: './employee-info.component.html',
   styleUrls: ['./employee-info.component.scss']
 })
-export class EmployeeInfoComponent implements OnChanges {
+export class EmployeeInfoComponent implements OnChanges, OnInit {
 
   public faCheckCircle = faCheckCircle;
   public faEnvelope = faEnvelope;
@@ -21,11 +22,18 @@ export class EmployeeInfoComponent implements OnChanges {
   public faPassport = faPassport;
   public faLuggageCart = faLuggageCart;
   public faPlaneDeparture = faPlaneDeparture;
+  public faAddressCard = faAddressCard;
+
+  public isEmployee: boolean;
 
   @Input() employeeInfoDetails: any;
   public availValue: string;
 
-  constructor() { }
+  constructor(private sharedService: SharedMethodsService) { }
+
+  ngOnInit() {
+    this.isEmployee = this.sharedService.isEmployee(this.employeeInfoDetails.employeeId);
+  }
 
   ngOnChanges() {
     if (this.employeeInfoDetails.resourceStatus === 'On Bench') {

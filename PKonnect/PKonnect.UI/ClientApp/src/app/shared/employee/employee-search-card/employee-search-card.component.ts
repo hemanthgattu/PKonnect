@@ -27,7 +27,7 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
   public employee: any;
   public displayPicture: any;
   public displayEmployeeSkills = [];
-  public displayEmployeeSkillCount = 4;
+  public displayEmployeeSkillCount = 5;
   public displayCerts = [];
   public displayCertsCount = 2;
   public isEmployee: boolean;

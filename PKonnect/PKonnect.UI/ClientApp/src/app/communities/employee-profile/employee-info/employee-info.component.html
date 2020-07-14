@@ -56,6 +56,16 @@
                         </div>
                 </div>
         </div>
+        <div>
+                        <div class="row">
+                                <div class="col-1">
+                                        <fa-icon class="slider-icon" [icon]="faAddressCard" size="md"></fa-icon>
+                                </div>
+                                <div class="col-10">
+                                        <span class="employee-info-key">Resource Type: </span> {{ isEmployee ? 'Employee' : 'Contractor'}}
+                                </div>
+                        </div>
+                </div>
         <div class="employee-manager" *ngIf="employeeInfoDetails.manager">
                 <div class="row">
                         <div class="col-1">

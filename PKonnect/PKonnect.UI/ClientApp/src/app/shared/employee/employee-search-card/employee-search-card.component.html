@@ -48,7 +48,7 @@
 
                     <div class="row employee-description">
                         <p *ngIf="!!employee.roleDescription" matTooltip="{{employee.roleDescription}}"
-                            matTooltipPosition="right">{{employee.roleDescription | truncate:180:"..."}}</p>
+                            matTooltipPosition="right">{{employee.roleDescription | truncate:250:"..."}}</p>
                     </div>
                     <!-- Hiding View profile until view profile page is ready -->
                     <!-- <button type="button" (click)="goToProfile(employee.resourceId)"
