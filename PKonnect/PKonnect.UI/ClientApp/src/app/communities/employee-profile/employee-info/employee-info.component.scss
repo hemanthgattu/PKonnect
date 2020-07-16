@@ -17,3 +17,19 @@
 .employee-info-key {
     font-weight: 500;
 }
+
+.btn-view-hyperlink {
+    font-family: Roboto;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 5px 10px 0px 0px;
+  color: #1b83b1;
+  align-self: flex-end;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,14 +1,17 @@
 <div class="employee-profile" *ngIf="displayProfile">
-    <app-employee-hero [employeeHeroDetails]="employeeDetails"></app-employee-hero>
-    <div class="employee-details">
-        <div class="row">
-            <div class="col-lg-3">
-                <app-employee-info class="employee-profile-cards" [employeeInfoDetails]="employeeDetails"></app-employee-info>
-                <app-employee-skills class="employee-profile-cards" [employeeSkillDetails]="employeeDetails.resourceSkills"></app-employee-skills>
+    <div class="employee-profile-container">
+            <app-employee-hero [employeeHeroDetails]="employeeDetails"></app-employee-hero>
+            <div class="employee-details">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <app-employee-info class="employee-profile-cards" [employeeInfoDetails]="employeeDetails"></app-employee-info>
+                        <app-employee-skills class="employee-profile-cards" [employeeSkillDetails]="employeeDetails.resourceSkills"></app-employee-skills>
+                        <app-employee-industry class="employee-profile-cards" [employeeInfoDetails]="employeeDetails"></app-employee-industry>
+                    </div>
+                    <div class="col-lg-9">
+                        <app-employee-experience class="employee-profile-cards" [employeeExperienceDetails]="employeeDetails"></app-employee-experience>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <app-employee-experience class="employee-profile-cards" [employeeExperienceDetails]="employeeDetails"></app-employee-experience>
-            </div>
-        </div>
     </div>
 </div>

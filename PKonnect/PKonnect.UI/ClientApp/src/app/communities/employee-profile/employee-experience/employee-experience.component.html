@@ -1,4 +1,4 @@
-<div class="employee-experience" *ngIf="description || projects.length > 0" >
+<div class="employee-experience" *ngIf="description || projects.length > 0">
         <div class="employee-about" *ngIf="description">
                 <h1>About</h1>
                 <p>{{description}}</p>
@@ -8,15 +8,22 @@
                 <div class="employee-project" *ngFor="let project of projects">
                         <div class="row">
                                 <div class="col-md-10">
-                                        <h2>{{project.projectMasters.accountName}}</h2>
-                                        <p>{{project.projectMasters.projectName}}</p>
+                                        <h2>{{project.projectMaster.accountName}}</h2>
+                                        <p>{{project.projectMaster.projectName}}
+                                                <span
+                                                        *ngIf="project.projectMaster.account.industryNavigation.industryName !== 'Missing'">
+                                                        &nbsp; | &nbsp;
+                                                        {{project.projectMaster.account.industryNavigation.industryName}}</span>
+
+                                        </p>
                                 </div>
                                 <div class="col-md-2">
-                                        <button *ngIf="isActive(project.resourceEndDate)" type="button" class="btn btn-project-active">
+                                        <button *ngIf="isActive(project.resourceEndDate)" type="button"
+                                                class="btn btn-project-active btn-status">
                                                 <span class="mentor-text">Active</span>
                                         </button>
                                         <button *ngIf="!isActive(project.resourceEndDate)" type="button"
-                                                class="btn btn-project-completed">
+                                                class="btn btn-project-completed btn-status">
                                                 <span class="mentor-text">Complete</span>
                                         </button>
                                 </div>
@@ -30,22 +37,22 @@
                                                 </div>
                                                 <div class="col-10">
                                                         <span class="employee-info-key">Location: </span>
-                                                        {{project.projectMasters.location}}
+                                                        {{project.projectMaster.location}}
                                                 </div>
                                         </div>
                                 </div>
                                 <div class="col-md-3" *ngIf="project.resourceStartDate">
-                                                <div class="row">
-                                                        <div class="col-1">
-                                                                <fa-icon class="slider-icon" [icon]="faCalendar" size="md">
-                                                                </fa-icon>
-                                                        </div>
-                                                        <div class="col-10">
-                                                                <span class="employee-info-key">Start Date: </span>
-                                                                {{project.resourceStartDate | date : 'mediumDate'}}
-                                                        </div>
+                                        <div class="row">
+                                                <div class="col-1">
+                                                        <fa-icon class="slider-icon" [icon]="faCalendar" size="md">
+                                                        </fa-icon>
+                                                </div>
+                                                <div class="col-10">
+                                                        <span class="employee-info-key">Start Date: </span>
+                                                        {{project.resourceStartDate | date : 'mediumDate'}}
                                                 </div>
                                         </div>
+                                </div>
                                 <div class="col-md-3" *ngIf="project.resourceEndDate">
                                         <div class="row">
                                                 <div class="col-1">
@@ -59,7 +66,7 @@
                                         </div>
                                 </div>
                                 <div class="col-md-3" *ngIf="project.role">
-                                        <div class="row" >
+                                        <div class="row">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faUserCircle" size="md">
                                                         </fa-icon>

@@ -1,0 +1,13 @@
+<div class="employee-industry">
+    <div class="employee-industry-title">
+        <p>Industry Work</p>
+    </div>
+    <div class="employee-industry-list">
+            <div class="employee-industry-item" *ngFor="let industry of industries">
+                <div class="row">
+                    <div class="col-1"><fa-icon class="slider-icon" [icon]="faCheck" size="md" [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon></div>
+                    <div class="col-10"><p class="employee-industry-name">{{industry}}</p></div>
+                </div>
+            </div>
+        </div>
+</div>

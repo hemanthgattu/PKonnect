@@ -40,6 +40,14 @@ p {
   color: #17425e;
 }
 
+.btn-status {
+  float: right;
+
+  @media screen and (max-width: $small-screen) {
+    float: left;
+  }
+}
+
 .btn-project-active {
   background: #c7e4f8;
   border-radius: 100px;
@@ -96,4 +104,10 @@ hr {
 
 .employee-project-location {
     margin-top: 10px;
+
+    @media screen and (max-width: $small-screen) {
+      .col-md-3 {
+        padding-top: 7px;
+      }
+    }
 }
