@@ -1,3 +1,12 @@
+.employee-skills-sub-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 20px;
+  }
+
 .employee-skills {
   background: #ffffff;
   border-radius: 5px;
@@ -11,6 +20,10 @@
   font-size: 24px;
   line-height: 28px;
   color: #202b34;
+
+  p {
+    margin: 0px;
+  }
 }
 
 .employee-skill-name {
@@ -24,14 +37,37 @@
   padding-bottom: 5px;
 }
 
-.progress-bar{
-    background: #1B83B1;
-    border-radius: 10px;
+.progress-bar {
+  background: #1b83b1;
+  border-radius: 10px;
 }
 
 .progress {
-    height: 11px !important;
-    margin-bottom: 10px;
+  height: 11px !important;
+  margin-bottom: 10px;
+}
+
+.employee-skills-secondary {
+  .employee-skill-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+  
+  .progress-bar {
+    background: #A5B2B6;
+    border-radius: 10px;
+  }
+  
+  .progress {
+    height: 8px !important;
+    margin-bottom: 8px;
+  }
 }
 
 .btn-view-more-skills {
@@ -41,7 +77,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
-  padding: 5px 10px 0px 0px;
+  padding: 5px 0px 0px 0px;
   color: #1b83b1;
   align-self: flex-end;
 

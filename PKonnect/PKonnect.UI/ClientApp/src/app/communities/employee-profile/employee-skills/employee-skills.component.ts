@@ -10,22 +10,39 @@ export class EmployeeSkillsComponent implements OnChanges {
 
   @Input() employeeSkillDetails: any;
   public employeeSkills: any[];
+  public employeePrimarySkills: any[];
+  public employeeSecondarySkills: any[];
   public displayEmployeeSkillCount = 5;
   public faChevronDown = faChevronDown;
   public faChevronUp = faChevronUp;
+  public displaySecondarySkill = false;
 
   constructor() { }
 
   ngOnChanges() {
-    this.employeeSkills = this.employeeSkillDetails.slice(0, this.displayEmployeeSkillCount);
+    this.employeePrimarySkills = this.employeeSkillDetails.filter((skill: any) => {
+      if (skill.bestFitSkill) {
+        return skill;
+      }
+    });
+    this.employeeSkills = this.employeePrimarySkills.slice(0, this.displayEmployeeSkillCount);
+    this.employeeSecondarySkills = this.employeeSkillDetails.filter((skill: any) => {
+      if (!skill.bestFitSkill) {
+        return skill;
+      }
+    });
+    console.log(this.employeePrimarySkills);
+    console.log(this.employeeSecondarySkills);
   }
 
   showMoreSkills(): void {
-    this.employeeSkills = this.employeeSkillDetails;
+    this.employeeSkills = this.employeePrimarySkills;
+    this.displaySecondarySkill = true;
   }
 
   showLessSkills(): void {
-    this.employeeSkills = this.employeeSkillDetails.slice(0, this.displayEmployeeSkillCount);
+    this.employeeSkills = this.employeePrimarySkills.slice(0, this.displayEmployeeSkillCount);
+    this.displaySecondarySkill = false;
   }
 
 }

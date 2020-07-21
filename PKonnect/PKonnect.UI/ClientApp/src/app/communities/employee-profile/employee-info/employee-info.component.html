@@ -11,6 +11,22 @@
                         </div>
                 </div>
         </div>
+        <div *ngIf="employeeInfoDetails.sourceSystemId">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faSalesforce" size="md"
+                                        [styles]="{'stroke': '#0092DA', 'color': '#0092DA'}"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <a href="https://pkglobal.my.salesforce.com/{{employeeInfoDetails.sourceSystemId}}"
+                                        target="_blank" rel="noopener">
+                                        <span class="btn-view-hyperlink">
+                                                View on Salesforce
+                                        </span>
+                                </a>
+                        </div>
+                </div>
+        </div>
         <div class="employee-start-date" *ngIf="employeeInfoDetails.hiredDate">
                 <div class="row">
                         <div class="col-1">
@@ -56,33 +72,18 @@
                         </div>
                 </div>
         </div>
-        <div>
+        <div *ngIf="employeeInfoDetails.employeeType">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faAddressCard" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
                                 <span class="employee-info-key">Resource Type: </span>
-                                {{ isEmployee ? 'Employee' : 'Contractor'}}
+                                {{ employeeInfoDetails.employeeType}}
                         </div>
                 </div>
         </div>
-        <div *ngIf="employeeInfoDetails.sourceSystemId">
-                <div class="row">
-                        <div class="col-1">
-                                <fa-icon class="slider-icon" [icon]="faSalesforce" size="md"
-                                        [styles]="{'stroke': '#0092DA', 'color': '#0092DA'}"></fa-icon>
-                        </div>
-                        <div class="col-10">
-                                <a href="https://pkglobal.my.salesforce.com/{{employeeInfoDetails.sourceSystemId}}"
-                                        target="_blank" rel="noopener">
-                                        <span class="btn-view-hyperlink">
-                                                View on Salesforce
-                                        </span>
-                                </a>
-                        </div>
-                </div>
-        </div>
+
         <div class="employee-manager" *ngIf="employeeInfoDetails.manager">
                 <div class="row">
                         <div class="col-1">

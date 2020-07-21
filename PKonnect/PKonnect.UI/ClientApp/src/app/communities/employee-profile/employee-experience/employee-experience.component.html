@@ -8,12 +8,13 @@
                 <div class="employee-project" *ngFor="let project of projects">
                         <div class="row">
                                 <div class="col-md-10">
-                                        <h2>{{project.projectMaster.accountName}}</h2>
-                                        <p>{{project.projectMaster.projectName}}
+                                        <h2>{{project.projectMaster?.accountName}}</h2>
+                                        <p>{{project.projectMaster?.projectName}}
                                                 <span
-                                                        *ngIf="project.projectMaster.account.industryNavigation.industryName !== 'Missing'">
+                                                        *ngIf="project.projectMaster?.account?.industryNavigation.industryName !== 'Missing' && 
+                                                                project.projectMaster?.account?.industryNavigation.industryName">
                                                         &nbsp; | &nbsp;
-                                                        {{project.projectMaster.account.industryNavigation.industryName}}</span>
+                                                        Industry : {{project.projectMaster.account?.industryNavigation.industryName}}</span>
 
                                         </p>
                                 </div>
@@ -29,7 +30,7 @@
                                 </div>
                         </div>
                         <div class="row employee-project-location">
-                                <div class="col-md-3">
+                                <div class="col-md-3" *ngIf="project.projectMaster?.location">
                                         <div class="row">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faMapMarkerAlt" size="md">

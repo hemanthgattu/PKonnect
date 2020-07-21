@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared/shared.module';
 import { environment } from './../environments/environment';
 import { MsalModule, MSAL_CONFIG, MsalAngularConfiguration, MSAL_CONFIG_ANGULAR, MsalService } from '@azure/msal-angular';
 import { Configuration } from 'msal';
+import { NgxHotjarModule, NgxHotjarRouterModule } from 'ngx-hotjar';
 
 function MSALConfigFactory(): Configuration {
   return {
@@ -42,7 +43,9 @@ function MSALAngularConfigFactory(): MsalAngularConfiguration {
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    MsalModule
+    MsalModule,
+    NgxHotjarModule.forRoot('1909826'),
+    NgxHotjarRouterModule
   ],
   bootstrap: [AppComponent],
   providers: [

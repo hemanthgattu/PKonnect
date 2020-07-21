@@ -26,16 +26,12 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
   public faAddressCard = faAddressCard;
   public faSalesforce = faSalesforce;
 
-  public isEmployee: boolean;
-
   @Input() employeeInfoDetails: any;
   public availValue: string;
 
-  constructor(private sharedService: SharedMethodsService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.isEmployee = this.sharedService.isEmployee(this.employeeInfoDetails.employeeId);
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     if (this.employeeInfoDetails.resourceStatus === 'On Bench') {
