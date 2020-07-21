@@ -22,9 +22,20 @@ export class EmployeeExperienceComponent implements OnChanges {
   constructor(private rest: RestService) { }
 
   ngOnChanges() {
-    this.projects = this.employeeExperienceDetails.resourceAssignments;
+    this.projects = this.sortExperience(this.employeeExperienceDetails.resourceAssignments);
+    // this.sortExperience(this.projects);
     this.certifications = this.employeeExperienceDetails.resourceCertifications;
     this.getEmployeeDescription();
+  }
+
+  sortExperience(input: any[]) {
+    const sortedArr = input;
+    for (let i = 0; i < input.length; i++) {
+      if (!input[i].resourceEndDate) {
+        sortedArr.unshift(sortedArr.splice(i, 1)[0]);
+      }
+    }
+    return sortedArr;
   }
 
   isActive(endDate: string) {

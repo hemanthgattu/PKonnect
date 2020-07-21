@@ -31,8 +31,6 @@ export class EmployeeSkillsComponent implements OnChanges {
         return skill;
       }
     });
-    console.log(this.employeePrimarySkills);
-    console.log(this.employeeSecondarySkills);
   }
 
   showMoreSkills(): void {
