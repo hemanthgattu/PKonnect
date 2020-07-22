@@ -46,7 +46,7 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
       (data) => {
         this.options = data.map((certification) => certification.CertificationName);
       },
-      (error: Error) => console.log(error)
+      (error: Error) => console.error(error)
     ));
   }
 
@@ -54,7 +54,6 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
     if (event.target.value === '') {
       this.log(undefined);
     } else {
-      console.log('Handled Cert : ' + event.target.value);
       this.log(event.target.value);
     }
   }

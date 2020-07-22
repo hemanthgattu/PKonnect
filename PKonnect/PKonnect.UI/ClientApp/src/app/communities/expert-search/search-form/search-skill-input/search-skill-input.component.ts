@@ -79,7 +79,7 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
       (data) => {
         this.options = data.map((skill) => skill.TextName);
       },
-      (error: Error) => console.log(error)
+      (error: Error) => console.error(error)
     ));
   }
 

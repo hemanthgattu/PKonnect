@@ -36,7 +36,7 @@ export class SearchLocationInputComponent implements OnInit, OnDestroy{
         this.locationControl.setValue(data);
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }

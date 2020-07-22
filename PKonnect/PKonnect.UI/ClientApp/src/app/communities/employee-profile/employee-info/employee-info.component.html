@@ -78,8 +78,9 @@
                                 <fa-icon class="slider-icon" [icon]="faAddressCard" size="md"></fa-icon>
                         </div>
                         <div class="col-10">
-                                <span class="employee-info-key">Resource Type: </span>
+                                <span class="employee-info-key">Employee Type: </span>
                                 {{ employeeInfoDetails.employeeType}}
+                                <span *ngIf="employeeInfoDetails.payType">({{employeeInfoDetails.payType}})</span>
                         </div>
                 </div>
         </div>
@@ -114,6 +115,17 @@
                         </div>
                 </div>
         </div>
+        <div *ngIf="employeeInfoDetails.phoneNumber">
+                        <div class="row">
+                                <div class="col-1">
+                                        <fa-icon class="slider-icon" [icon]="faPhone" size="md"></fa-icon>
+                                </div>
+                                <div class="col-10">
+                                        <span class="employee-info-key">Phone: </span>
+                                        {{employeeInfoDetails.phoneNumber}}
+                                </div>
+                        </div>
+                </div>
         <div class="employee-coe" *ngIf="employeeInfoDetails.coe">
                 <div class="row">
                         <div class="col-1">

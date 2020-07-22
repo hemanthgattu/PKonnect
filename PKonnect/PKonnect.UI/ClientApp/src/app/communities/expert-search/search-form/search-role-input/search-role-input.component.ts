@@ -54,7 +54,7 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
         this.roleOptions = data.map(role => role.RoleName);
       },
       (error: Error) => {
-        console.log(error);
+        console.error(error);
       }
     ));
   }

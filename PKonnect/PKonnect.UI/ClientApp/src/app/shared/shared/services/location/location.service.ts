@@ -20,7 +20,6 @@ export class LocationService {
 
   getLocationByName() {
     const getEmployeesUrl = `${environment.communitiesApi}/resources?$filter=primaryEmailAddress%20eq%20%27${this.authSvc.getUserDetails().email}%27`;
-    console.log(getEmployeesUrl);
     this.rest.httpGet(getEmployeesUrl).subscribe(
       (data) => {
         if (data.length >= 0) {

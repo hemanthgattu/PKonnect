@@ -16,6 +16,7 @@ export class EmployeeHeroComponent implements OnChanges {
   public faTrophy = faTrophy;
   @Input() employeeHeroDetails: any;
   public displayPicture: any;
+  public isNewHire = false;
 
   constructor(private authService: AuthService,
               private restService: RestService,
@@ -23,6 +24,7 @@ export class EmployeeHeroComponent implements OnChanges {
 
   ngOnChanges() {
     this.setDisplayPicture(this.employeeHeroDetails);
+    this.isNewHire = this.sharedService.isNewHire(this.employeeHeroDetails.hiredDate);
   }
 
   setDisplayPicture(employee: any) {
@@ -38,7 +40,7 @@ export class EmployeeHeroComponent implements OnChanges {
           this.createImageFromBlob(data);
         },
         (error) => {
-          console.log(error);
+          console.error(error);
         }
       );
     });

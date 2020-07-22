@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, faComment, faAddressCard} from '@fortawesome/free-regular-svg-icons';
-import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture , faPhone} from '@fortawesome/free-solid-svg-icons';
 import { faSalesforce } from '@fortawesome/free-brands-svg-icons';
-import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-info',
@@ -25,6 +24,7 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
   public faPlaneDeparture = faPlaneDeparture;
   public faAddressCard = faAddressCard;
   public faSalesforce = faSalesforce;
+  public faPhone = faPhone;
 
   @Input() employeeInfoDetails: any;
   public availValue: string;

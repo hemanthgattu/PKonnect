@@ -32,6 +32,7 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
   public displayCertsCount = 2;
   public isEmployee: boolean;
   private subs = new SubSink();
+  public isNewHire = false;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -50,6 +51,7 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
     this.displayCerts = this.employee.resourceCertifications.slice(0, this.displayCertsCount);
     this.setDisplayPicture(this.employee);
     this.isEmployee = this.sharedService.isEmployee(this.employee.employeeId);
+    this.isNewHire = this.sharedService.isNewHire(this.employee.hiredDate);
   }
 
   setDisplayPicture(employee: any) {
@@ -65,7 +67,7 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
           this.createImageFromBlob(data);
         },
         (error) => {
-          console.log(error);
+          console.error(error);
         }
       );
     });

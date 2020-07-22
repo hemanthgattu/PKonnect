@@ -53,7 +53,6 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
     if (event.target.value === '') {
       this.log(undefined);
     } else {
-      console.log('Handled Name : ' + event.target.value);
       this.log(event.target.value);
     }
   }
@@ -63,7 +62,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
       (data) => {
         this.options = data.map((employee) => employee.FullName);
       },
-      (error: Error) => console.log(error)
+      (error: Error) => console.error(error)
     ));
   }
 

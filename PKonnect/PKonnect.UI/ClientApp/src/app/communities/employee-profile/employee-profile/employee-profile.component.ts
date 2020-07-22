@@ -61,7 +61,7 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
         }
       },
       (error) => {
-        console.log(error);
+        console.error(error);
         this.snackBar.open('Employee not found', undefined , { panelClass: 'snack-bar-danger' });
         this.redirectToSearch();
       }

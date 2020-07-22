@@ -2,12 +2,15 @@
     <div class="row employee-hero">
         <div class="col-md-3">
             <div class="display-picture">
-                <img class="image mx-auto my-auto d-block" [src]="displayPicture" alt="Avatar"
-                    accept="image/x-png,image/gif,image/jpeg">
+                <img [ngClass]="isNewHire ? 'image-new-hire mx-auto my-auto d-block' : 'image mx-auto my-auto d-block'"
+                    [src]="displayPicture" alt="Avatar" accept="image/x-png,image/gif,image/jpeg">
             </div>
         </div>
         <div class="col-md-9">
             <div class="employee-general">
+                    <div class="div-new-hire">
+                            <span *ngIf="isNewHire" class="tag-new-hire">New Hire</span>
+                    </div> 
                 <h1>{{employeeHeroDetails.fullName}}</h1>
                 <h4>{{employeeHeroDetails.roleName}}</h4>
                 <!-- <div class="employee-buttons">

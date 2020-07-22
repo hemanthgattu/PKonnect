@@ -73,13 +73,12 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.subs.sink = this.locationService.getLocation.subscribe(
       (data: string) => {
         if (!!data) {
-          console.log(data);
           this.searchEmployeesRequest.location = data;
           this.searchEmployees(1, 10, true);
         }
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
   }
@@ -213,14 +212,11 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     } else {
       finalUrl += `pageNumber=${pageNumb}&pageSize=${pageSize}&email=${this.authSvc.getUserDetails().email}`;
     }
-
-    console.log(finalUrl);
     return finalUrl;
   }
 
   addSkill(value: string) {
     this.searchSkills.push(value);
-    console.log(this.searchSkills);
   }
 
   removeSkill(i: number): void {

@@ -42,12 +42,10 @@ export class EmployeeExperienceComponent implements OnChanges {
     const nowYear = new Date().getFullYear();
     const nowMonth = new Date().getMonth();
     const nowDt = new Date().getDate();
-    // console.log('now ' + nowYear + ' ' + nowMonth + ' ' + nowDt);
     const endISODate = new Date(endDate);
     const endYear = endISODate.getFullYear();
     const endMonth = endISODate.getMonth();
     const endDt = endISODate.getDate();
-    // console.log('now ' + endYear + ' ' + endMonth + ' ' + endDt);
     if (endDate === null ) {
       return true;
     } else if (endYear > nowYear) {
@@ -71,16 +69,14 @@ export class EmployeeExperienceComponent implements OnChanges {
   }
 
   getEmployeeDescription() {
-    // console.log(this.employeeExperienceDetails.roleId);
     const roleId = this.employeeExperienceDetails.roleId;
     const urlRole = `https://communities-dev.pkglobal.com/api/api/Roles/${roleId}`;
     this.rest.httpGet(urlRole).subscribe(
       (data) => {
-        // console.log(data);
         this.description = data.roleDescription;
       },
       (error) => {
-        console.log(error);
+        console.error(error);
       }
     );
     return 'Hellow';

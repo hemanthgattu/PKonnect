@@ -82,7 +82,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       (data) => {
         this.options = data;
       },
-      (error: Error) => console.log(error)
+      (error: Error) => console.error(error)
     );
   }
 
