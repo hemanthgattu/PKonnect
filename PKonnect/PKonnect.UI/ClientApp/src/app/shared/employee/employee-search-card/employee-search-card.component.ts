@@ -33,6 +33,7 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
   public isEmployee: boolean;
   private subs = new SubSink();
   public isNewHire = false;
+  public projectComments: string;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -52,6 +53,8 @@ export class EmployeeSearchCardComponent implements OnInit, OnDestroy {
     this.setDisplayPicture(this.employee);
     this.isEmployee = this.sharedService.isEmployee(this.employee.employeeId);
     this.isNewHire = this.sharedService.isNewHire(this.employee.hiredDate);
+    this.projectComments = this.sharedService.setEmployeeProjectComments(this.employee.onBenchReason, this.employee.projectComments,
+      this.employee.expectedStartDate, this.employee.proposedCustomerForBenchResource);
   }
 
   setDisplayPicture(employee: any) {

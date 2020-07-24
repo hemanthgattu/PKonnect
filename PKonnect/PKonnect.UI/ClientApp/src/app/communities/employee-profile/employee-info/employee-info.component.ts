@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, faComment, faAddressCard} from '@fortawesome/free-regular-svg-icons';
 import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture , faPhone} from '@fortawesome/free-solid-svg-icons';
 import { faSalesforce } from '@fortawesome/free-brands-svg-icons';
+import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-info',
@@ -25,11 +26,12 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
   public faAddressCard = faAddressCard;
   public faSalesforce = faSalesforce;
   public faPhone = faPhone;
+  public projectComments: string;
 
   @Input() employeeInfoDetails: any;
   public availValue: string;
 
-  constructor() { }
+  constructor(private sharedService: SharedMethodsService) { }
 
   ngOnInit() {}
 
@@ -39,6 +41,9 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
     } else if (this.employeeInfoDetails.resourceStatus === 'On Project') {
       this.availValue = 'On Project';
     }
+    this.projectComments = this.sharedService.setEmployeeProjectComments(this.employeeInfoDetails.onBenchReason,
+                            this.employeeInfoDetails.projectComments, this.employeeInfoDetails.expectedStartDate,
+                            this.employeeInfoDetails.proposedCustomerForBenchResource);
   }
 
 }
