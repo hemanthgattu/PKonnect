@@ -6,7 +6,8 @@
                                 <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                                         [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         </div>
-                        <div class="col-10" matTooltip="{{projectComments}}" matTooltipPosition="right">
+                        <div class="col-10" matTooltip="{{projectComments}}" 
+                        matTooltipClass="mat-tool-tip-new-line" matTooltipPosition="right">
                                 <strong> {{availValue}}</strong>
                         </div>
                 </div>
@@ -126,6 +127,17 @@
                         </div>
                 </div>
         </div>
+        <div class="employee-service-line" *ngIf="employeeInfoDetails.serviceLine">
+                        <div class="row">
+                                <div class="col-1">
+                                        <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
+                                </div>
+                                <div class="col-10">
+                                        <span class="employee-info-key">Service Line: </span>
+                                        {{employeeInfoDetails.serviceLine}}
+                                </div>
+                        </div>
+                </div>
         <div class="employee-coe" *ngIf="employeeInfoDetails.coe">
                 <div class="row">
                         <div class="col-1">
@@ -153,17 +165,6 @@
                         </div>
                         <div class="col-10">
                                 <span class="employee-info-key">Discipline: </span> {{employeeInfoDetails.discipline}}
-                        </div>
-                </div>
-        </div>
-        <div class="employee-service-line" *ngIf="employeeInfoDetails.serviceLine">
-                <div class="row">
-                        <div class="col-1">
-                                <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
-                        </div>
-                        <div class="col-10">
-                                <span class="employee-info-key">Service Line: </span>
-                                {{employeeInfoDetails.serviceLine}}
                         </div>
                 </div>
         </div>

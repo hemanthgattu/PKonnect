@@ -54,3 +54,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
         color: $color-white;
     }
 }
+
+.mat-tool-tip-new-line {
+    white-space: pre-line;
+}

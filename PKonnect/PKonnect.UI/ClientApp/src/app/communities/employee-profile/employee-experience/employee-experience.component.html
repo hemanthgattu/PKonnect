@@ -14,7 +14,8 @@
                                                         *ngIf="project.projectMaster?.account?.industryNavigation.industryName !== 'Missing' && 
                                                                 project.projectMaster?.account?.industryNavigation.industryName">
                                                         &nbsp; | &nbsp;
-                                                        Industry : {{project.projectMaster.account?.industryNavigation.industryName}}</span>
+                                                        Industry :
+                                                        {{project.projectMaster.account?.industryNavigation.industryName}}</span>
 
                                         </p>
                                 </div>
@@ -30,18 +31,20 @@
                                 </div>
                         </div>
                         <div class="row employee-project-location">
-                                <div class="col-md-3" *ngIf="project.projectMaster?.location">
+                                <div class="col-md-3" *ngIf="project.projectMaster?.prokarmaProjectManagerName && 
+                                        project.projectMaster?.prokarmaProjectManagerName !== 'Missing'">
                                         <div class="row">
                                                 <div class="col-1">
-                                                        <fa-icon class="slider-icon" [icon]="faMapMarkerAlt" size="md">
+                                                        <fa-icon class="slider-icon" [icon]="faUserCircle" size="md">
                                                         </fa-icon>
                                                 </div>
                                                 <div class="col-10">
-                                                        <span class="employee-info-key">Location: </span>
-                                                        {{project.projectMaster.location}}
+                                                        <span class="employee-info-key">Project Manager: </span>
+                                                        {{project.projectMaster?.prokarmaProjectManagerName}}
                                                 </div>
                                         </div>
                                 </div>
+
                                 <div class="col-md-3" *ngIf="project.resourceStartDate">
                                         <div class="row">
                                                 <div class="col-1">
@@ -66,7 +69,19 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="col-md-3" *ngIf="project.role">
+                                <div class="col-md-3" *ngIf="project.projectMaster?.location">
+                                        <div class="row">
+                                                <div class="col-1">
+                                                        <fa-icon class="slider-icon" [icon]="faMapMarkerAlt" size="md">
+                                                        </fa-icon>
+                                                </div>
+                                                <div class="col-10">
+                                                        <span class="employee-info-key">Location: </span>
+                                                        {{project.projectMaster.location}}
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- <div class="col-md-3" *ngIf="project.role">
                                         <div class="row">
                                                 <div class="col-1">
                                                         <fa-icon class="slider-icon" [icon]="faUserCircle" size="md">
@@ -77,7 +92,8 @@
                                                         {{project.role}}
                                                 </div>
                                         </div>
-                                </div>
+                                </div> -->
+
                         </div>
                         <hr>
                 </div>

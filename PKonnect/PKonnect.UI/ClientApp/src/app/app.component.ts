@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AmplitudeService } from './shared/shared/services/amplitude/amplitude.service';
 import { AmplitudeEvent } from './models/amplitudeEvents.enum';
+import { LocationService } from './shared/shared/services/location/location.service';
 
 
 @Component({
@@ -11,10 +12,12 @@ import { AmplitudeEvent } from './models/amplitudeEvents.enum';
 export class AppComponent implements OnInit {
   title = 'pk-connections';
 
-  constructor(private amplitudeSvc: AmplitudeService) {
+  constructor(private amplitudeSvc: AmplitudeService,
+              private locationService: LocationService) {
 
   }
   ngOnInit() {
+    this.locationService.getLocationByEmail();
     this.amplitudeSvc.initilize();
     this.amplitudeSvc.setEvent(AmplitudeEvent.NEW_SESSION);
   }

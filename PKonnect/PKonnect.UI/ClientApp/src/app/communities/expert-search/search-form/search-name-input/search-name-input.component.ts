@@ -58,7 +58,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   }
 
   getAllEmployeeNames() {
-    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/resources?$select=fullName`).subscribe(
+    this.subs.add(this.rest.httpGet(`${environment.communitiesApi}/resources?$select=fullName&$filter=Category ne 'In-House'`).subscribe(
       (data) => {
         this.options = data.map((employee) => employee.FullName);
       },

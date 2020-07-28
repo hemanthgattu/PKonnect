@@ -39,7 +39,7 @@ export class SharedMethodsService {
 
   setEmployeeProjectComments(reason: string, comment?: string, startDate?: string, expectedClient?: string): string {
     if (reason === 'Proposed for Assignment') {
-      return '# Expected Start Date: ' + new Date(startDate).toDateString() + ' || Proposed Client: ' + expectedClient;
+      return 'Proposed Client: ' + expectedClient + '\n Expected Start Date: ' + new Date(startDate).toDateString();
     } else if (reason === 'Available for Assignment' && comment.toLowerCase() !== 'missing') {
       return comment;
     }

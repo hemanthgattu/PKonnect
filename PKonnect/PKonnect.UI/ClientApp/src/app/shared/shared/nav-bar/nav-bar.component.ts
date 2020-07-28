@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Location } from '@angular/common';
+import { LocationService } from '../services/location/location.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -33,6 +34,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   myControl: FormControl;
   filteredOptions: Observable<string[]>;
   options: any[] = [];
+  public employeeId: string;
 
   constructor(
     private sharedMethods: SharedMethodsService,
@@ -40,7 +42,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
     private authSvc: AuthService,
     private rest: RestService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private locationService: LocationService
     ) { }
 
   ngOnInit(): void {
@@ -64,6 +67,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
       startWith(''),
       map(value => this._filter(value))
     );
+
+    this.getEmployeeId();
   }
 
   private _filter(value) {
@@ -78,7 +83,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   getAllEmployeeNames() {
-    this.subs.sink = this.rest.httpGet(`${environment.communitiesApi}/resources?$select=fullName,employeeId`).subscribe(
+    this.subs.sink = this.rest.httpGet(`${environment.communitiesApi}/resources?$select=fullName,employeeId&$filter=Category ne 'In-House'`)
+    .subscribe(
       (data) => {
         this.options = data;
       },
@@ -105,8 +111,19 @@ export class NavBarComponent implements OnInit, OnDestroy {
     }).bind(this), 500);
   }
 
+  getEmployeeId() {
+    this.subs.sink = this.locationService.getEmployeeId.subscribe(
+      (data) => {
+        this.employeeId = data;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
   goToProfile() {
-    this.router.navigate(['/profile'], { queryParams: { id: this.userName } });
+    this.router.navigate(['/profile'], { queryParams: { id: this.employeeId } });
   }
 
   goToHome() {

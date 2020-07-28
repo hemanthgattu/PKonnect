@@ -69,7 +69,6 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   }
 
   getUserLocation() {
-    this.locationService.getLocationByName();
     this.subs.sink = this.locationService.getLocation.subscribe(
       (data: string) => {
         if (!!data) {
