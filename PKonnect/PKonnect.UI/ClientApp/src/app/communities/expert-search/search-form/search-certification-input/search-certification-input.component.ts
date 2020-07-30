@@ -26,7 +26,10 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
     this.certControl = new FormControl();
     this.filteredOptions = this.certControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => {
+        if (value.length > 2) {
+          return this._filter(value);
+        }})
     );
   }
 

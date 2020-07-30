@@ -11,7 +11,8 @@
                                         <h2>{{project.projectMaster?.accountName}}</h2>
                                         <p>{{project.projectMaster?.projectName}}
                                                 <span
-                                                        *ngIf="project.projectMaster?.account?.industryNavigation.industryName !== 'Missing' && 
+                                                        *ngIf="project.projectMaster?.account?.industryNavigation.industryName !== 'PK Corporate' &&
+                                                                project.projectMaster?.account?.industryNavigation.industryName !== 'Missing' && 
                                                                 project.projectMaster?.account?.industryNavigation.industryName">
                                                         &nbsp; | &nbsp;
                                                         Industry :

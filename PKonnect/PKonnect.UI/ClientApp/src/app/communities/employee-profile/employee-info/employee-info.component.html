@@ -6,8 +6,8 @@
                                 <fa-icon class="slider-icon" [icon]="faCheckCircle" size="md"
                                         [styles]="{'stroke': '#17CB6A', 'color': '#17CB6A'}"></fa-icon>
                         </div>
-                        <div class="col-10" matTooltip="{{projectComments}}" 
-                        matTooltipClass="mat-tool-tip-new-line" matTooltipPosition="right">
+                        <div class="col-10" matTooltip="{{projectComments}}" matTooltipClass="mat-tool-tip-new-line"
+                                matTooltipPosition="right">
                                 <strong> {{availValue}}</strong>
                         </div>
                 </div>
@@ -127,18 +127,30 @@
                         </div>
                 </div>
         </div>
-        <div class="employee-service-line" *ngIf="employeeInfoDetails.serviceLine">
-                        <div class="row">
-                                <div class="col-1">
-                                        <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
-                                </div>
-                                <div class="col-10">
-                                        <span class="employee-info-key">Service Line: </span>
-                                        {{employeeInfoDetails.serviceLine}}
-                                </div>
+        <div class="employee-immigration-status" *ngIf="employeeInfoDetails.immigrationStatus">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faPassport" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Immigration Status: </span>
+                                {{employeeInfoDetails.immigrationStatus}}
                         </div>
                 </div>
-        <div class="employee-coe" *ngIf="employeeInfoDetails.coe">
+        </div>
+        <div class="employee-service-line"
+                *ngIf="employeeInfoDetails.serviceLine && employeeInfoDetails.serviceLine !== 'Missing'">
+                <div class="row">
+                        <div class="col-1">
+                                <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
+                        </div>
+                        <div class="col-10">
+                                <span class="employee-info-key">Service Line: </span>
+                                {{employeeInfoDetails.serviceLine}}
+                        </div>
+                </div>
+        </div>
+        <div class="employee-coe" *ngIf="employeeInfoDetails.coe && employeeInfoDetails.coe !== 'Missing'">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
@@ -148,7 +160,7 @@
                         </div>
                 </div>
         </div>
-        <div class="employee-coe" *ngIf="employeeInfoDetails.coeCore">
+        <div class="employee-coe" *ngIf="employeeInfoDetails.coeCore && employeeInfoDetails.coeCore !== 'Missing'">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
@@ -158,7 +170,8 @@
                         </div>
                 </div>
         </div>
-        <div class="employee-coe" *ngIf="employeeInfoDetails.discipline">
+        <div class="employee-coe"
+                *ngIf="employeeInfoDetails.discipline && employeeInfoDetails.discipline !== 'Missing'">
                 <div class="row">
                         <div class="col-1">
                                 <fa-icon class="slider-icon" [icon]="faNewspaper" size="md"></fa-icon>
@@ -190,17 +203,7 @@
                         </div>
                 </div>
         </div>
-        <div class="employee-immigration-status" *ngIf="employeeInfoDetails.immigrationStatus">
-                <div class="row">
-                        <div class="col-1">
-                                <fa-icon class="slider-icon" [icon]="faPassport" size="md"></fa-icon>
-                        </div>
-                        <div class="col-10">
-                                <span class="employee-info-key">Immigration Status: </span>
-                                {{employeeInfoDetails.immigrationStatus}}
-                        </div>
-                </div>
-        </div>
+
 
         <!-- <div class="employee-service-line">
                 <div class="row">

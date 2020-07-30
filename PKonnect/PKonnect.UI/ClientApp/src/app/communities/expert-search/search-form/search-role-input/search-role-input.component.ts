@@ -33,7 +33,10 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
 
     this.filteredRoleOptions = this.roleControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._roleFilter(value))
+      map(value => {
+        if (value.length > 2) {
+          return this._roleFilter(value);
+        }})
     );
   }
 

@@ -76,7 +76,7 @@
                         <span>{{employeeSkill.textName | truncate:21:"..."}}</span>
                     </div>
                     <div class="col-md-6 employee-rating-bar">
-                        <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5"
+                        <div class="progress" matTooltip="Self Rating: {{employeeSkill.skillRating}}/5  & Last Used Year: {{employeeSkill.lastYearUsed}}"
                             matTooltipPosition="right">
                             <div class="progress-bar" role="progressbar" [style.width.%]="employeeSkill.skillRating*20"
                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

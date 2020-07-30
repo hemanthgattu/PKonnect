@@ -18,7 +18,7 @@ export class EmployeeIndustryComponent implements OnChanges {
     this.industries = [];
     this.employeeInfoDetails.resourceAssignments.map(project => {
       const industryName = project.projectMaster.account.industryNavigation.industryName;
-      if (!!industryName && this.industries.includes(industryName) === false && industryName !== 'Missing') {
+      if (!!industryName && this.industries.includes(industryName) === false && industryName !== 'Missing' && industryName !== 'PK Corporate') {
         this.industries.push(industryName);
       }
     });
