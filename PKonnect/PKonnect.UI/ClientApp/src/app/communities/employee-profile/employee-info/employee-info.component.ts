@@ -3,6 +3,7 @@ import { faEnvelope, faCalendar, faIdCard, faUserCircle, faNewspaper, faUser, fa
 import { faCheckCircle, faMapMarkerAlt, faPassport, faLuggageCart, faPlaneDeparture , faPhone, faStickyNote} from '@fortawesome/free-solid-svg-icons';
 import { faSalesforce } from '@fortawesome/free-brands-svg-icons';
 import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-info',
@@ -32,7 +33,8 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
   @Input() employeeInfoDetails: any;
   public availValue: string;
 
-  constructor(private sharedService: SharedMethodsService) { }
+  constructor(private sharedService: SharedMethodsService,
+              private router: Router) { }
 
   ngOnInit() {}
 
@@ -45,6 +47,10 @@ export class EmployeeInfoComponent implements OnChanges, OnInit {
     this.projectComments = this.sharedService.setEmployeeProjectComments(this.employeeInfoDetails.onBenchReason,
                             this.employeeInfoDetails.projectComments, this.employeeInfoDetails.expectedStartDate,
                             this.employeeInfoDetails.proposedCustomerForBenchResource);
+  }
+
+  goToProfile(employeeId: number) {
+    this.router.navigate(['/profile'], { queryParams: { id: employeeId} });
   }
 
 }

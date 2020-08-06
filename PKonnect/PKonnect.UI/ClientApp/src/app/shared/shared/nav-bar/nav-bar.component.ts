@@ -65,7 +65,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
     // filter from options
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value))
+      map(value => {
+        if (value.length > 2) {
+          return this._filter(value);
+        }})
     );
 
     this.getEmployeeId();

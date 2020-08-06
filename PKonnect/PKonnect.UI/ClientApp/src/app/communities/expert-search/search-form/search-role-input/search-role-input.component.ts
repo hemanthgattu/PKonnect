@@ -6,6 +6,8 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
+import { ESessionKeys } from 'src/app/shared/shared/constants/sessionKeys.interface';
 
 
 @Component({
@@ -24,7 +26,8 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
   public roleOptions: string[] = [];
 
   constructor(
-    private rest: RestService
+    private rest: RestService,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +37,16 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
     this.filteredRoleOptions = this.roleControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if (value.length > 2) {
+        if (!!value && value.length > 2) {
           return this._roleFilter(value);
         }})
     );
+
+    const sessionRoleValue = this.sessionService.getItem(ESessionKeys.SEARCH_ITEMS_ROLE);
+    if (!!sessionRoleValue) {
+      this.roleControl.setValue(sessionRoleValue);
+      this.searchRoleEvent.emit(sessionRoleValue);
+    }
   }
 
   _roleFilter(value: string) {
@@ -63,10 +72,14 @@ export class SearchRoleInputComponent implements OnInit, OnDestroy {
   }
 
   public setRole(value: string) {
+    if (!!value) {
+      this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_ROLE, value);
+    }
     this.searchRoleEvent.emit(value);
   }
 
   handleEmptyInput(event: any) {
+    this.sessionService.deleteItem(ESessionKeys.SEARCH_ITEMS_ROLE);
     this.setRole(event.target.value);
   }
 

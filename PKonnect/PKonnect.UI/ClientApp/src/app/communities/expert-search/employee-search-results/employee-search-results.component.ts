@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
 import { faFilter, faArrowUp, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
+import { ESessionKeys } from 'src/app/shared/shared/constants/sessionKeys.interface';
 
 @Component({
   selector: 'app-employee-search-results',
@@ -21,9 +23,10 @@ export class EmployeeSearchResultsComponent implements OnInit {
   public windowScrolled: boolean;
   public viewMoreLoading = false;
 
-  constructor(private amplitudeSvc: AmplitudeService) { }
+  constructor(private sessionService: SessionService) { }
 
   ngOnInit(): void {
+    this.getSessionResults();
   }
 
   @Input()
@@ -34,8 +37,18 @@ export class EmployeeSearchResultsComponent implements OnInit {
       } else {
         this.employeeSearchResults = searchResult.resourceSkillDetails;
       }
+      this.sessionService.setItem(ESessionKeys.SEARCH_RESULTS, JSON.stringify(this.employeeSearchResults));
       this.employeeSearchResultsCount = searchResult.recordCount;
+      this.sessionService.setItem(ESessionKeys.SEARCH_RESULTS_COUNT, JSON.stringify(this.employeeSearchResultsCount));
       this.viewMoreLoading = false;
+    }
+  }
+
+  getSessionResults() {
+    const sessionResults = JSON.parse(this.sessionService.getItem(ESessionKeys.SEARCH_RESULTS));
+    if (sessionResults) {
+      this.employeeSearchResults = sessionResults;
+      this.employeeSearchResultsCount = JSON.parse(this.sessionService.getItem(ESessionKeys.SEARCH_RESULTS_COUNT));
     }
   }
 

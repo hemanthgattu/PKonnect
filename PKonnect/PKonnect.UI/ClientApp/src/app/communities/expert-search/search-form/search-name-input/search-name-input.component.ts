@@ -5,6 +5,8 @@ import { startWith, map, debounce, filter, debounceTime, distinctUntilChanged } 
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from '../../../../../environments/environment';
 import { SubSink } from 'subsink';
+import { ESessionKeys } from 'src/app/shared/shared/constants/sessionKeys.interface';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
 
 @Component({
   selector: 'app-search-name-input',
@@ -19,7 +21,7 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   filteredOptions: Observable<string[]>;
   options: string[] = [];
 
-  constructor(private rest: RestService) { }
+  constructor(private rest: RestService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
     // get all employees
@@ -31,10 +33,16 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if (value.length > 2) {
+        if (!!value && value.length > 2) {
           return this._filter(value);
         }})
     );
+
+    const sessionNameValue = this.sessionService.getItem(ESessionKeys.SEARCH_ITEMS_NAME);
+    if (!!sessionNameValue) {
+      this.myControl.setValue(sessionNameValue);
+      this.searchNameEvent.emit(sessionNameValue);
+    }
   }
 
   private _filter(value) {
@@ -49,12 +57,16 @@ export class SearchNameInputComponent implements OnInit, OnDestroy {
   }
 
   public log(value: string) {
+    if (!!value) {
+      this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_NAME, value);
+    }
     this.searchNameEvent.emit(value);
   }
 
   handleEmptyInput(event: any) {
     if (event.target.value === '') {
       this.log(undefined);
+      this.sessionService.deleteItem(ESessionKeys.SEARCH_ITEMS_NAME);
     } else {
       this.log(event.target.value);
     }

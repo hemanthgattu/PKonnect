@@ -6,6 +6,8 @@ import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../../environments/environment';
 import { SubSink } from 'subsink';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
+import { ESessionKeys } from 'src/app/shared/shared/constants/sessionKeys.interface';
 
 @Component({
   selector: 'app-search-skill-input',
@@ -27,7 +29,8 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
 
   constructor(
     private rest: RestService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private sessionService: SessionService
   ) { }
 
   ngOnInit(): void {
@@ -40,10 +43,16 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if (value.length > 2) {
+        if (!!value && value.length > 2) {
           return this._filter(value);
         }})
     );
+
+    const sessionSkillValues = JSON.parse(this.sessionService.getItem(ESessionKeys.SEARCH_ITEMS_SKILLS));
+    if (!!sessionSkillValues) {
+      this.selectedSkills = sessionSkillValues;
+      this.searchSkillEvent.emit(sessionSkillValues);
+    }
   }
 
   private _filter(value: string) {
@@ -69,6 +78,7 @@ export class SearchSkillInputComponent implements OnInit, OnDestroy {
   public log(value: string) {
     if (!!value && !this.selectedSkills.includes(value) && this.selectedSkills.length < 5) {
       this.selectedSkills.push(value);
+      this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_SKILLS, JSON.stringify(this.selectedSkills));
       this.searchSkillEvent.emit(this.selectedSkills);
     } else if (this.selectedSkills.length === 5) {
       this.snackBar.open('Cant add more than 5 skills', undefined, { panelClass: 'snack-bar-warning' });

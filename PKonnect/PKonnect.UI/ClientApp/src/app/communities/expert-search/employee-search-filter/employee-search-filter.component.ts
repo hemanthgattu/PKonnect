@@ -16,6 +16,8 @@ import { SearchCertificationInputComponent } from '../search-form/search-certifi
 import { AuthService } from 'src/app/shared/shared/services/auth/auth.service';
 import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 import { LocationService } from 'src/app/shared/shared/services/location/location.service';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
+import { ESessionKeys, ESessionValues } from 'src/app/shared/shared/constants/sessionKeys.interface';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -59,27 +61,37 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     private amplitudeSvc: AmplitudeService,
     private authSvc: AuthService,
     private sharedMethods: SharedMethodsService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private sessionService: SessionService
     ) { }
 
   ngOnInit(): void {
     this.isMobile = this.checkWidth();
     this.getModifiedDate();
     this.getUserLocation();
+
+    const sessionSearchPageValue = JSON.parse(this.sessionService.getItem(ESessionKeys.SEARCH_RESULTS_PAGE));
+    if (!!sessionSearchPageValue) {
+      this.pageNumber = sessionSearchPageValue;
+    }
   }
 
   getUserLocation() {
-    this.subs.sink = this.locationService.getLocation.subscribe(
-      (data: string) => {
-        if (!!data) {
-          this.searchEmployeesRequest.location = data;
-          this.searchEmployees(1, 10, true);
+    const sessionLocationValue = this.sessionService.getItem(ESessionKeys.SEARCH_ITEMS_LOCATION);
+    if (!sessionLocationValue && this.sessionService.getItem(ESessionKeys.SEARCH) !== ESessionValues.SEARCH) {
+      this.subs.sink = this.locationService.getLocation.subscribe(
+        (data: string) => {
+          if (!!data) {
+            this.searchEmployeesRequest.location = data;
+            this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_LOCATION, data);
+            this.searchEmployees(1, 10, true);
+          }
+        },
+        (error) => {
+          console.error(error);
         }
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+      );
+    }
   }
 
   // Check width of the screen
@@ -119,6 +131,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   // On Init Search
   onInitSearchEmployees(): void {
+    this.sessionService.setItem(ESessionKeys.SEARCH, ESessionValues.SEARCH);
     this.isFindingExperts = true;
     const location = 'USA';
     const getEmployeesUrl = `${environment.communitiesApi}/resources/GetResourceDetails?location=${location}&pageNumber=1&pageSize=10&email=${this.authSvc.getUserDetails().email}`;
@@ -140,6 +153,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   // On Submit Filter Results
   searchEmployees(pageNumber: number, pageSize: number, newData: boolean): void {
+    this.sessionService.setItem(ESessionKeys.SEARCH, ESessionValues.SEARCH);
     if (newData) {
       this.pageNumber = 1;
     }
@@ -184,6 +198,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   getMoreEmployees() {
     this.pageNumber++;
+    this.sessionService.setItem(ESessionKeys.SEARCH_RESULTS_PAGE, this.pageNumber);
     this.searchEmployees(this.pageNumber, this.pageSize, false);
   }
 
@@ -220,6 +235,9 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
 
   removeSkill(i: number): void {
     this.searchSkills.splice(i, 1);
+    if (this.searchSkills.length > 0) {
+      this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_SKILLS, JSON.stringify(this.searchSkills));
+    }
   }
 
   skillMessage(message: []) {
@@ -246,6 +264,7 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     this.searchEmployeesRequest.certificationNames = message;
   }
   emptySkills() {
+    this.sessionService.deleteAllItems();
     this.searchSkills = [];
     this.searchEmployeesRequest.resourceStatus = undefined;
     this.searchEmployeesRequest.role = undefined;

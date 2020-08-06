@@ -5,6 +5,8 @@ import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { ESessionKeys } from 'src/app/shared/shared/constants/sessionKeys.interface';
+import { SessionService } from 'src/app/shared/shared/services/session/session.service';
 
 @Component({
   selector: 'app-search-certification-input',
@@ -19,7 +21,7 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
   options: string[] = [];
   filteredOptions: Observable<string[]>;
 
-  constructor(private rest: RestService) { }
+  constructor(private rest: RestService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
     this.getAllCertifications();
@@ -27,10 +29,15 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
     this.filteredOptions = this.certControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        if (value.length > 2) {
+        if (!!value && value.length > 2) {
           return this._filter(value);
         }})
     );
+    const sessionCertValue = this.sessionService.getItem(ESessionKeys.SEARCH_ITEMS_CERTS);
+    if (!!sessionCertValue) {
+      this.certControl.setValue(sessionCertValue);
+      this.searchCertEvent.emit(sessionCertValue);
+    }
   }
 
   private _filter(value) {
@@ -56,12 +63,16 @@ export class SearchCertificationInputComponent implements OnInit, OnDestroy {
   handleEmptyInput(event: any) {
     if (event.target.value === '') {
       this.log(undefined);
+      this.sessionService.deleteItem(ESessionKeys.SEARCH_ITEMS_CERTS);
     } else {
       this.log(event.target.value);
     }
   }
 
   public log(value: string) {
+    if (!!value) {
+      this.sessionService.setItem(ESessionKeys.SEARCH_ITEMS_CERTS, value);
+    }
     this.searchCertEvent.emit(value);
   }
 
