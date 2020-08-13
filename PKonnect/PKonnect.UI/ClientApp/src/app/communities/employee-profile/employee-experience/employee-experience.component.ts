@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { faCalendar, faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
 
 @Component({
@@ -13,6 +13,11 @@ export class EmployeeExperienceComponent implements OnChanges {
   public faCalendar = faCalendar;
   public faMapMarkerAlt = faMapMarkerAlt;
   public faUserCircle = faUserCircle;
+  public faChevronDown = faChevronDown;
+  public faChevronUp = faChevronUp;
+
+  public displayProjectCount = 4;
+  public displayProjects: any[];
   public projects: any[];
   public certifications: string[];
   public description: string;
@@ -23,7 +28,7 @@ export class EmployeeExperienceComponent implements OnChanges {
 
   ngOnChanges() {
     this.projects = this.sortExperience(this.employeeExperienceDetails.resourceAssignments);
-    // this.sortExperience(this.projects);
+    this.showLessSkills();
     this.certifications = this.employeeExperienceDetails.resourceCertifications;
     this.getEmployeeDescription();
   }
@@ -79,6 +84,13 @@ export class EmployeeExperienceComponent implements OnChanges {
         console.error(error);
       }
     );
-    return 'Hellow';
+  }
+
+  showMoreSkills() {
+    this.displayProjects = this.projects;
+  }
+
+  showLessSkills() {
+    this.displayProjects = this.projects.slice(0, this.displayProjectCount);
   }
 }

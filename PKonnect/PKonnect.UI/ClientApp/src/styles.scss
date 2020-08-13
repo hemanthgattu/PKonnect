@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 $pk-connections-primary: mat-palette($mat-indigo);
 $pk-connections-accent: mat-palette($mat-pink, A200, A100, A400);
@@ -9,52 +9,143 @@ $pk-connections-theme: mat-light-theme($pk-connections-primary, $pk-connections-
 @import "~bootstrap/dist/css/bootstrap.css";
 
 $break-small: 510px;
-$color-black-normal: #202B34;
+$color-black-normal: #202b34;
 $color-black-hover: #000000;
-$color-white: #FFFFFF;
+$color-white: #ffffff;
 
 * {
-    -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
 }
 
-html, body { 
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #E5E5E5; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e5e5e5;
+}
 
 ::ng-deep .mat-snack-bar-container.snack-bar-success {
-    background-color: green($color: white);
-    color: black;
+  background-color: green($color: white);
+  color: black;
 }
 
 ::ng-deep .mat-snack-bar-container.snack-bar-warning {
-    background-color: #ffc107;
-    color: #212529;
+  background-color: #ffc107;
+  color: #212529;
 }
 
 ::ng-deep .mat-snack-bar-container.snack-bar-danger {
-    background-color: #dc3545;
-    color: #fff;
-  }
+  background-color: #dc3545;
+  color: #fff;
+}
 
 .btn-major {
-    width: 149px;
-    height: 44px;
-    background: $color-black-normal;
-    border-radius: 4px;
+  width: 149px;
+  height: 44px;
+  background: $color-black-normal;
+  border-radius: 4px;
 
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  color: $color-white;
+  margin: 5px 5px 5px 0px;
+  &:hover {
+    background: $color-black-hover;
     color: $color-white;
-    margin: 5px 5px 5px 0px;
-    &:hover {
-        background: $color-black-hover;
-        color: $color-white;
-    }
+  }
 }
 
 .mat-tool-tip-new-line {
-    white-space: pre-line;
+  white-space: pre-line;
+}
+
+.view-container {
+  padding-top: 50px;
+  color: $color-black-normal;
+
+  h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 59px;
+    @media screen and (max-width: $break-small) {
+      font-size: 30px;
+      line-height: 35px;
+    }
+  }
+
+  .spinner {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .mat-elevation-z8 {
+    border: 1px solid #707070;
+    box-shadow: none !important;
+    margin-bottom: 30px;
+  }
+
+  .name {
+    font-weight: 700;
+  }
+
+  .mat-header-row {
+    background-color: #f2f0f0;
+  }
+
+  .mat-row:hover {
+    background-color: #f2f0f0;
+  }
+
+  .mat-header-cell {
+    text-align: left;
+    justify-content: center;
+    font-size: 14px;
+    min-height: 48px;
+    padding: 0px 10px;
+    border-right: 1px solid #e0e0e0;
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+  }
+
+  .mat-cell {
+    text-align: left;
+    justify-content: center;
+    font-size: 14px;
+    min-height: 48px;
+    border-right: 1px solid #e0e0e0;
+    padding: 0px 10px;
+
+    .left {
+      float: left;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+
+    .right {
+      float: right;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
+  }
 }

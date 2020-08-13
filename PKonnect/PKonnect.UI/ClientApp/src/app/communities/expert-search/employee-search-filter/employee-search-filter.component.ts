@@ -18,6 +18,7 @@ import { SharedMethodsService } from 'src/app/shared/shared/services/shared-meth
 import { LocationService } from 'src/app/shared/shared/services/location/location.service';
 import { SessionService } from 'src/app/shared/shared/services/session/session.service';
 import { ESessionKeys, ESessionValues } from 'src/app/shared/shared/constants/sessionKeys.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-search-filter',
@@ -62,7 +63,8 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
     private authSvc: AuthService,
     private sharedMethods: SharedMethodsService,
     private locationService: LocationService,
-    private sessionService: SessionService
+    private sessionService: SessionService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -263,6 +265,11 @@ export class EmployeeSearchFilterComponent implements OnInit, OnDestroy {
   certMessage(message: string) {
     this.searchEmployeesRequest.certificationNames = message;
   }
+
+  redirectRole() {
+    this.router.navigate(['/role']);
+  }
+
   emptySkills() {
     this.sessionService.deleteAllItems();
     this.searchSkills = [];

@@ -38,10 +38,38 @@ export class SharedMethodsService {
   }
 
   setEmployeeProjectComments(reason: string, comment?: string, startDate?: string, expectedClient?: string): string {
+    const NO_DATA = 'No data available';
     if (reason === 'Proposed for Assignment') {
-      return 'Proposed Client: ' + expectedClient + '\n Expected Start Date: ' + new Date(startDate).toDateString();
-    } else if (reason === 'Available for Assignment' && comment.toLowerCase() !== 'missing') {
+      let details = '';
+      if (!!expectedClient) {
+        details += 'Proposed Client: ' + expectedClient;
+      } else if (!expectedClient) {
+        details += 'Proposed Client: ' + NO_DATA;
+      }
+      if (!!startDate) {
+        details += '\n Expected Start Date: ' + new Date(startDate).toDateString();
+      } else if (!startDate) {
+        details += '\n Expected Start Date: ' + NO_DATA;
+      }
+      return details;
+    } else if (reason === 'Available for Assignment') {
+      if (comment === 'Missing' || !comment) {
+        return NO_DATA;
+      }
       return comment;
+    } else if (reason === 'Client Strategic Bench') {
+      let details = '';
+      if (!!expectedClient) {
+        details += 'Client: ' + expectedClient;
+      } else if (!expectedClient) {
+        details += 'Client: ' + NO_DATA;
+      }
+      if (!!startDate) {
+        details += '\n Current Project Start date: ' + new Date(startDate).toDateString();
+      } else if (!startDate) {
+        details += '\n Current Project Start date: ' + NO_DATA;
+      }
+      return details;
     }
   }
 

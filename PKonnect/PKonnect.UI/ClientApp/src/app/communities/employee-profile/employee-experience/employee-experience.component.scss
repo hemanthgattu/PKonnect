@@ -11,6 +11,17 @@ $medium-screen: 900px;
   }
 }
 
+.employee-experience-certs {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 25px 45px;
+  margin-top: 20px;
+
+  @media screen and (max-width: $small-screen) {
+    padding: 25px;
+  }
+}
+
 h1 {
   font-family: Roboto;
   font-style: normal;
@@ -79,6 +90,10 @@ p {
   color: red;
 }
 
+.slider-icon {
+
+}
+
 .employee-info-key {
   font-family: Roboto;
   font-style: normal;
@@ -111,4 +126,28 @@ hr {
         padding-top: 7px;
       }
     }
+}
+
+.btn-view-more-skills {
+  font-family: Roboto;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 5px 0px 0px 0px;
+  color: #1b83b1;
+  align-self: flex-end;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.slider-icon-view-more {
+  color: #1b83b1;
+}
+
+.view-more {
+  text-align: center;
 }

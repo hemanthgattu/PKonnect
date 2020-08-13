@@ -5,7 +5,7 @@
         </div>
         <div class="employee-projects" *ngIf="projects.length > 0">
                 <h1>Experience</h1>
-                <div class="employee-project" *ngFor="let project of projects">
+                <div class="employee-project" *ngFor="let project of displayProjects">
                         <div class="row">
                                 <div class="col-md-10">
                                         <h2>{{project.projectMaster?.accountName}}</h2>
@@ -98,11 +98,23 @@
                         </div>
                         <hr>
                 </div>
+                <div class="view-more" *ngIf="displayProjects.length <= 4">
+                        <span class="btn-view-more-skills" (click)="showMoreSkills()">
+                                <fa-icon class="slider-icon-view-more" [icon]="faChevronDown" size="sm"></fa-icon>
+                                Show More
+                        </span>
+                </div>
+                <div class="view-more" *ngIf="displayProjects.length > 4">
+                        <span class="btn-view-more-skills" (click)="showLessSkills()">
+                                <fa-icon class="slider-icon-view-more" [icon]="faChevronUp" size="sm"></fa-icon>
+                                Show Less
+                        </span>
+                </div>
         </div>
-        <div *ngIf="certifications.length > 0">
-                <h1>Certifications</h1>
-                <span class="employee-certificate"
-                        *ngFor="let certificate of certifications">{{certificate.certification.certificationName}}
-                        <br></span>
-        </div>
+</div>
+<div class="employee-experience-certs" *ngIf="certifications.length > 0">
+        <h1>Certifications</h1>
+        <span class="employee-certificate"
+                *ngFor="let certificate of certifications">{{certificate.certification.certificationName}}
+                <br></span>
 </div>

@@ -14,6 +14,11 @@ const routes: Routes = [
     , pathMatch: 'full', canActivate: [ MsalGuard ]
   },
   {
+    path: 'role',
+    loadChildren: () => import('./communities/role-defination/role-defination.module').then(m => m.RoleDefinationModule)
+    , pathMatch: 'full', canActivate: [ MsalGuard ]
+  },
+  {
     path: '**',
     redirectTo: '/',
     pathMatch: 'full'

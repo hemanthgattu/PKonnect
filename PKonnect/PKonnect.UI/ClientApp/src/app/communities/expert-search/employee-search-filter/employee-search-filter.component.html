@@ -20,10 +20,11 @@
         <div class="col-lg-10">
             <div class="row">
                 <div class="col-lg-4">
-                    <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="md"
-                        matTooltipPosition="right"
-                        matTooltip="Demonstrated responsibility with skill(s) in the current project(s)">
-                    </fa-icon>
+                    <span (click)="redirectRole()">
+                        <fa-icon class="slider-icon question-icon" [icon]="faQuestionCircle" size="lg" matTooltipPosition="right"
+                            matTooltip="Demonstrated responsibility with skill(s) in the current project(s). Click to know more.">
+                        </fa-icon>
+                    </span>
                 </div>
             </div>
         </div>
