@@ -9,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const expertSearchRoutes: Routes = [
   { path: '', component: RoleDefinationComponent }
@@ -27,6 +28,8 @@ const expertSearchRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSortModule,
+    MatExpansionModule,
+    FontAwesomeModule,
     RouterModule.forChild(expertSearchRoutes)
   ]
 })

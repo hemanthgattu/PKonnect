@@ -32,7 +32,6 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isMobile = this.sharedMethods.isMobile();
-    console.log(this.isMobile);
     this.ampService.setEvent(AmplitudeEvent.VIEW_PROFILE);
     this.querySub = this.activatedRoute.queryParamMap.subscribe(
       (data) => {

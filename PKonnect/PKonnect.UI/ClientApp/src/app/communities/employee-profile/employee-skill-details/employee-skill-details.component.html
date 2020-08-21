@@ -1,4 +1,4 @@
-<div class="employee-skills">
+<div class="employee-skills" *ngIf="employeePrimarySkills.length > 0 || employeeSecondarySkills.length > 0">
     <div class="employee-about-skill">
         <h1>Skills</h1>
         <div class="primary-skills" *ngIf="employeePrimarySkills.length > 0">
@@ -68,7 +68,7 @@
         </div>
         <!-- Show More and show less -->
         <div class="view-more" >
-                <span class="btn-view-more-skills" (click)="showMoreSecondarySkills()" *ngIf="displayEmployeeSecondarySkills.length <= 5 && employeeSecondarySkills.length > 5">
+                <span class="btn-view-more-skills" (click)="showMoreSecondarySkills()" *ngIf="displayEmployeeSecondarySkills.length <= 5 && employeeSecondarySkills.length > 10">
                         <fa-icon class="slider-icon-view-more" [icon]="faChevronDown" size="sm"></fa-icon>
                         Show More
                 </span>

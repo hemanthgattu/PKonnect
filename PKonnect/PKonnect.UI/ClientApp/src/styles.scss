@@ -92,7 +92,7 @@ body {
   }
 
   .mat-elevation-z8 {
-    border: 1px solid #707070;
+    
     box-shadow: none !important;
     margin-bottom: 30px;
   }
@@ -106,7 +106,7 @@ body {
   }
 
   .mat-row:hover {
-    background-color: #f2f0f0;
+    cursor: pointer;
   }
 
   .mat-header-cell {
@@ -115,7 +115,7 @@ body {
     font-size: 14px;
     min-height: 48px;
     padding: 0px 10px;
-    border-right: 1px solid #e0e0e0;
+    
 
     .left {
       float: left;
@@ -131,8 +131,8 @@ body {
     justify-content: center;
     font-size: 14px;
     min-height: 48px;
-    border-right: 1px solid #e0e0e0;
     padding: 0px 10px;
+    border-bottom: 1px solid #E0E0E0;
 
     .left {
       float: left;

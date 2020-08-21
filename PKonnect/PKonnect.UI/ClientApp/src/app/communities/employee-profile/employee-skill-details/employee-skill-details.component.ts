@@ -27,6 +27,8 @@ export class EmployeeSkillDetailsComponent implements OnChanges {
   }
 
   getDetailedSkills(id: number) {
+    this.displayEmployeeSecondarySkills = [];
+    this.employeePrimarySkills = [];
     const URL = environment.communitiesApi + `/resourceskills/${id}`;
     this.sub.sink = this.restService.httpGet(URL).subscribe(
       (data) => {
@@ -38,8 +40,8 @@ export class EmployeeSkillDetailsComponent implements OnChanges {
               this.employeeSecondarySkills.push(skill);
             }
           });
+          this.showLessSecondarySkills();
         }
-        this.showLessSecondarySkills();
       },
       (error) => {
         console.error(error);

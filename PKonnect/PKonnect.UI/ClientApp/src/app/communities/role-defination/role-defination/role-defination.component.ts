@@ -1,17 +1,26 @@
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
-import { environment } from 'src/environments/environment.dev';
-import { SubSink } from 'subsink';
-import { Role } from 'src/app/models/role.interface';
-import { MatTableDataSource } from '@angular/material/table';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Role } from 'src/app/models/role.interface';
+import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
+import { environment } from 'src/environments/environment';
+import { SubSink } from 'subsink';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-role-defination',
   templateUrl: './role-defination.component.html',
-  styleUrls: ['./role-defination.component.scss']
+  styleUrls: ['./role-defination.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('10ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class RoleDefinationComponent implements OnInit, OnDestroy {
 
@@ -22,7 +31,10 @@ export class RoleDefinationComponent implements OnInit, OnDestroy {
   public roleDataSource: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  myControl: FormControl;
+  public myControl: FormControl;
+  public expandedElement: Role;
+  public faChevronDown = faChevronDown;
+  public faChevronUp = faChevronUp;
 
   constructor(private restService: RestService) { }
 
@@ -40,6 +52,10 @@ export class RoleDefinationComponent implements OnInit, OnDestroy {
         this.roleDataSource = new MatTableDataSource<Role>(this.roles);
         this.roleDataSource.sort = this.sort;
         this.roleDataSource.paginator = this.paginator;
+        this.roleDataSource.filterPredicate = (role: Role, filter: string) => {
+          const dataStr = role.roleName + role.serviceLine + role.coE + role.discipline;
+          return dataStr.trim().toLowerCase().indexOf(filter) !== -1;
+        };
       },
       (error) => {
         console.error(error);
@@ -48,7 +64,7 @@ export class RoleDefinationComponent implements OnInit, OnDestroy {
   }
 
   filterTable(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.roleDataSource.filter = filterValue;
   }
