@@ -1,0 +1,23 @@
+$small-screen: 500px;
+$medium-screen: 900px;
+
+.employee-experience-certs {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 25px 45px;
+  margin: 0px 0px 20px 0px;
+
+  @media screen and (max-width: $small-screen) {
+    padding: 25px;
+  }
+}
+
+h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 28px;
+  color: #202b34;
+  padding: 20px 0px 10px 0px;
+}

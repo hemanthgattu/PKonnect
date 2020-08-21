@@ -5,11 +5,13 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <app-employee-info class="employee-profile-cards" [employeeInfoDetails]="employeeDetails"></app-employee-info>
-                        <app-employee-skills class="employee-profile-cards" [employeeSkillDetails]="employeeDetails.resourceSkills"></app-employee-skills>
+                        <app-employee-skills *ngIf="isMobile" class="employee-profile-cards" [employeeSkillDetails]="employeeDetails.resourceSkills"></app-employee-skills>
                         <app-employee-industry class="employee-profile-cards" [employeeInfoDetails]="employeeDetails"></app-employee-industry>
                     </div>
                     <div class="col-lg-9">
                         <app-employee-experience class="employee-profile-cards" [employeeExperienceDetails]="employeeDetails"></app-employee-experience>
+                        <app-employee-skill-details  *ngIf="!isMobile" class="employee-profile-cards" [employeeResourceId]="employeeDetails.resourceId"></app-employee-skill-details>
+                        <app-employee-certs [employeeExperienceDetails]="employeeDetails"></app-employee-certs>
                     </div>
                 </div>
             </div>

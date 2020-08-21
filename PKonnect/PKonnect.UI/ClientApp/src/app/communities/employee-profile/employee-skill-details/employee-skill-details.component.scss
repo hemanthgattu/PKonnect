@@ -1,0 +1,125 @@
+$small-screen: 500px;
+$medium-screen: 900px;
+
+.employee-skills {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 25px 45px;
+
+  @media screen and (max-width: $small-screen) {
+    padding: 25px;
+  }
+}
+
+h1 {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 28px;
+    color: #202b34;
+    padding: 20px 0px 10px 0px;
+  }
+
+  .secondary-skills {
+      margin-top: 20px;
+  }
+
+  .employee-skill {
+      margin-bottom: 10px;
+
+      .progress-bar {
+        background: #1b83b1;
+        border-radius: 10px;
+      }
+      
+      .progress {
+        height: 11px !important;
+        margin-bottom: 10px;
+      }
+  }
+
+  .employee-skill-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .employee-skill-used-year {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: #A5B2B6;
+    float: right;
+
+    @media screen and (max-width: $small-screen) {
+        float: left;
+      }
+  }
+  
+
+  .employee-skills-secondary {
+
+    padding-top: 20px;
+
+    .employee-skill-name {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 18px;
+      color: #000000;
+      margin: 0;
+      padding-bottom: 5px;
+      padding-top: 3px;
+    }
+    
+    .progress-bar {
+      background: #A5B2B6;
+      border-radius: 10px;
+    }
+    
+    .progress {
+      height: 8px !important;
+      margin-bottom: 8px;
+    }
+
+    .divide-left-right {
+        width: 50%;
+        float: left;
+        padding-right: 30px;
+    }
+  }
+
+  .btn-view-more-skills {
+    font-family: Roboto;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 5px 0px 0px 0px;
+    color: #1b83b1;
+    align-self: flex-end;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .slider-icon-view-more {
+    color: #1b83b1;
+  }
+  
+  .view-more {
+    text-align: center;
+  }
+
+  

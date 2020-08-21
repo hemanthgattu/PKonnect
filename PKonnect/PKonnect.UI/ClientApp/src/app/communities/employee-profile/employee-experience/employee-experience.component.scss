@@ -11,17 +11,6 @@ $medium-screen: 900px;
   }
 }
 
-.employee-experience-certs {
-  background: #ffffff;
-  border-radius: 5px;
-  padding: 25px 45px;
-  margin-top: 20px;
-
-  @media screen and (max-width: $small-screen) {
-    padding: 25px;
-  }
-}
-
 h1 {
   font-family: Roboto;
   font-style: normal;

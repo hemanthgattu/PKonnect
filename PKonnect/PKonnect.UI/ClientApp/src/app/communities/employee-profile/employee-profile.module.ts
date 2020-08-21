@@ -11,6 +11,8 @@ import { EmployeeSkillsComponent } from './employee-skills/employee-skills.compo
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { EmployeeIndustryComponent } from './employee-industry/employee-industry.component';
+import { EmployeeSkillDetailsComponent } from './employee-skill-details/employee-skill-details.component';
+import { EmployeeCertsComponent } from './employee-certs/employee-certs.component';
 
 const employeeProfileRoutes: Routes = [
   { path: '', component: EmployeeProfileComponent }
@@ -23,7 +25,9 @@ const employeeProfileRoutes: Routes = [
     EmployeeInfoComponent,
     EmployeeExperienceComponent,
     EmployeeSkillsComponent,
-    EmployeeIndustryComponent
+    EmployeeIndustryComponent,
+    EmployeeSkillDetailsComponent,
+    EmployeeCertsComponent
   ],
   imports: [
     CommonModule,

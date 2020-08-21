@@ -1,0 +1,83 @@
+<div class="employee-skills">
+    <div class="employee-about-skill">
+        <h1>Skills</h1>
+        <div class="primary-skills" *ngIf="employeePrimarySkills.length > 0">
+            <h2>Best Fit</h2>
+            <div class="employee-skill" *ngFor="let skill of employeePrimarySkills">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="employee-skill-name">{{skill.skills.textName}} ({{skill.skillExperienceInYears}} Yrs)
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="employee-skill-used-year">Last Used: {{skill.lastYearUsed}}</p>
+                    </div>
+                </div>
+                <div class="progress"
+                    matTooltip="Self Rating: {{skill.skillRating}}/5"
+                    matTooltipClass="mat-tool-tip-new-line" matTooltipPosition="right">
+                    <div class="progress-bar" role="progressbar" [style.width.%]="skill.skillRating*20"
+                        aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+        </div>
+        <div class="employee-skills-secondary" *ngIf="displayEmployeeSecondarySkills.length > 0">
+            <h2>Other Skills</h2>
+            <div class="employee-skill" *ngFor="let skill of displayEmployeeSecondarySkills; let i = index;">
+                <div class="row">
+                    <div class="col-md-6" *ngIf="skill[0]">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="employee-skill-name">{{skill[0].skills.textName}}
+                                    ({{skill[0].skillExperienceInYears}}
+                                    Yrs)
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="employee-skill-used-year">Last Used: {{skill[0].lastYearUsed}}</p>
+                            </div>
+                        </div>
+                        <div class="progress"
+                            matTooltip="Self Rating: {{skill[0].skillRating}}/5"
+                            matTooltipClass="mat-tool-tip-new-line" matTooltipPosition="right">
+                            <div class="progress-bar" role="progressbar" [style.width.%]="skill[0].skillRating*20"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" *ngIf="skill[1]">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="employee-skill-name">{{skill[1].skills.textName}}
+                                    ({{skill[1].skillExperienceInYears}}
+                                    Yrs)
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="employee-skill-used-year">Last Used: {{skill[1].lastYearUsed}}</p>
+                            </div>
+                        </div>
+                        <div class="progress"
+                            matTooltip="Self Rating: {{skill[1].skillRating}}/5"
+                            matTooltipClass="mat-tool-tip-new-line" matTooltipPosition="right">
+                            <div class="progress-bar" role="progressbar" [style.width.%]="skill[1].skillRating*20"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Show More and show less -->
+        <div class="view-more" >
+                <span class="btn-view-more-skills" (click)="showMoreSecondarySkills()" *ngIf="displayEmployeeSecondarySkills.length <= 5 && employeeSecondarySkills.length > 5">
+                        <fa-icon class="slider-icon-view-more" [icon]="faChevronDown" size="sm"></fa-icon>
+                        Show More
+                </span>
+        </div>
+        <div class="view-more">
+                <span class="btn-view-more-skills" (click)="showLessSecondarySkills()" *ngIf="displayEmployeeSecondarySkills.length > 5">
+                        <fa-icon class="slider-icon-view-more" [icon]="faChevronUp" size="sm"></fa-icon>
+                        Show Less
+                </span>
+        </div>
+    </div>
+</div>

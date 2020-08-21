@@ -1,0 +1,6 @@
+<div class="employee-experience-certs" *ngIf="certifications.length > 0">
+        <h1>Certifications</h1>
+        <span class="employee-certificate"
+                *ngFor="let certificate of certifications">{{certificate.certification.certificationName}}
+                <br></span>
+</div>

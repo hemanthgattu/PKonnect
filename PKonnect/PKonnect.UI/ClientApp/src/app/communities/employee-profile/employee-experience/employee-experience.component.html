@@ -98,7 +98,7 @@
                         </div>
                         <hr>
                 </div>
-                <div class="view-more" *ngIf="displayProjects.length <= 4">
+                <div class="view-more" *ngIf="displayProjects.length <= 4 && projects.length > 4">
                         <span class="btn-view-more-skills" (click)="showMoreSkills()">
                                 <fa-icon class="slider-icon-view-more" [icon]="faChevronDown" size="sm"></fa-icon>
                                 Show More
@@ -111,10 +111,4 @@
                         </span>
                 </div>
         </div>
-</div>
-<div class="employee-experience-certs" *ngIf="certifications.length > 0">
-        <h1>Certifications</h1>
-        <span class="employee-certificate"
-                *ngFor="let certificate of certifications">{{certificate.certification.certificationName}}
-                <br></span>
 </div>

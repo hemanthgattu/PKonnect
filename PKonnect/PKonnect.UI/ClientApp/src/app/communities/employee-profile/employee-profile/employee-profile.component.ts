@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { RestService } from 'src/app/shared/shared/services/rest/rest.service';
@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AmplitudeEvent } from 'src/app/models/amplitudeEvents.enum';
 import { AmplitudeService } from 'src/app/shared/shared/services/amplitude/amplitude.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedMethodsService } from 'src/app/shared/shared/services/shared-methods/shared-methods.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -18,16 +19,20 @@ export class EmployeeProfileComponent implements OnInit, OnDestroy {
   private querySub: Subscription;
   public employeeDetails: any;
   public displayProfile = false;
+  public isMobile: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
     private rest: RestService,
     private router: Router,
-    private ampService: AmplitudeService
+    private ampService: AmplitudeService,
+    private sharedMethods: SharedMethodsService
     ) { }
 
   ngOnInit(): void {
+    this.isMobile = this.sharedMethods.isMobile();
+    console.log(this.isMobile);
     this.ampService.setEvent(AmplitudeEvent.VIEW_PROFILE);
     this.querySub = this.activatedRoute.queryParamMap.subscribe(
       (data) => {

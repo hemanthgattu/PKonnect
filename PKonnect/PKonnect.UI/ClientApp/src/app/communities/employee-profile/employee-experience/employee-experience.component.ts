@@ -19,7 +19,6 @@ export class EmployeeExperienceComponent implements OnChanges {
   public displayProjectCount = 4;
   public displayProjects: any[];
   public projects: any[];
-  public certifications: string[];
   public description: string;
 
   @Input() employeeExperienceDetails: any;
@@ -29,7 +28,6 @@ export class EmployeeExperienceComponent implements OnChanges {
   ngOnChanges() {
     this.projects = this.sortExperience(this.employeeExperienceDetails.resourceAssignments);
     this.showLessSkills();
-    this.certifications = this.employeeExperienceDetails.resourceCertifications;
     this.getEmployeeDescription();
   }
 
